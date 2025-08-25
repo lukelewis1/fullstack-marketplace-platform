@@ -3,12 +3,12 @@
 This document will contain all relevant sections and deliverables for the user research p1 assignment.
 The following table will indicate which lines relate to which group members:
 
-| Student Name  | FAN      | Sections                                                                                            | Lines |
-| ------------- | -------- | --------------------------------------------------------------------------------------------------- | ----- |
-| Oliver Wuttke | WUTT0019 | Project Proposal, Research Methods, Sitemap, Userflow Admin, Both Simple Storyboards and Wireframes |
-| Hans Pujalte  | PUJA0009 | Persona Student, Competitor Analysis, Userflow Browsing Service, 1 Complex Storyboard, Wireframes   |
-| Luke Lewis    | LEWI0454 | Persona Tutor, Userflow Posting Service, 2 Complex Storyboards, Wireframes                          |
-| Seth Lear     | LEAR0022 | Persona Admin, Userflow Dispute, Paper Wireframes, UX Research, Wireframes                          |
+| Student Name  | FAN      | Sections                                                                                            | Lines                                              |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------- |----------------------------------------------------|
+| Oliver Wuttke | WUTT0019 | Project Proposal, Research Methods, Sitemap, Userflow Admin, Both Simple Storyboards and Wireframes | 33-293, 397-402, 411-416 514-517, 524-532, 561-572 |
+| Hans Pujalte  | PUJA0009 | Persona Student, Competitor Analysis, Userflow Browsing Service, 1 Complex Storyboard, Wireframes   | 300-305, 338-396, 418-423, 509-512, 519-522 534-537, 539-552, 580-583 |
+| Luke Lewis    | LEWI0454 | Persona Tutor, Userflow Posting Service, 2 Complex Storyboards, Wireframes                          | 324-335, 432-438, 573-578, 585-590 |
+| Seth Lear     | LEAR0022 | Persona Admin, Userflow Dispute, Paper Wireframes, UX Research, Wireframes                          | 312-322, 325-331, 448-502 |
 
 Project Structure:
 
