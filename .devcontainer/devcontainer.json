@@ -2,7 +2,7 @@
   "name": "COMP2030/9030 FUSS Website with Apache & MySQL",
   "dockerComposeFile": "docker-compose.yml",
   "service": "web",
-  "workspaceFolder": "/workspaces",
+  "workspaceFolder": "/workspaces/COMP2030-Group-8-Assignment",
   "forwardPorts": [8080],
   "customizations": {
     "vscode": {
