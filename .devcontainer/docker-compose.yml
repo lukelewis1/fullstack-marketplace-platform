@@ -3,7 +3,7 @@ services:
     build:
       context: . 
       dockerfile: Dockerfile 
-    container_name: apache-web
+    container_name: FUSS Website DevEnv
     volumes:
       - ../src:/var/www/html
       - ./apache-config.conf:/etc/apache2/sites-available/000-default.conf
