@@ -1,3 +1,5 @@
+name: FUSS_Env
+
 services:
   web:
     build:
