@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* Logo | Search | Profile */
+  align-items: center; /* vertically center items */
+  gap: 1rem; /* spacing between items */
+  padding: 0.5rem 1rem; /* optional padding */
+  background-color: #ffc600; /* match your yellow */
+  outline: 1px solid blue;
+}
+
+/* Logo styling */
+header .site-logo {
+  width: "79px";
+  height: "90px";
+}
+
+/* Search bar styling */
+header .search-bar {
+  width: 100%; /* takes available space in middle column */
+  max-width: 400px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Profile info styling */
+header .user-name-role {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header .user-info .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff; /* placeholder */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
