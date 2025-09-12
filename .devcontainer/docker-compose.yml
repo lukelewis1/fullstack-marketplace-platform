@@ -19,7 +19,7 @@ services:
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: FUSS Database
 
-    restart: no
+    restart: "no"
 
   db:
     image: mysql:8.0 
@@ -29,7 +29,7 @@ services:
       MYSQL_DATABASE: human_factors_db
     volumes:
       - db_data:/var/lib/mysql
-    restart: no
+    restart: "no"
 
 volumes:
   db_data:
