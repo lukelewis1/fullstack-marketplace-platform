@@ -17,7 +17,7 @@ services:
       MYSQL_HOST: db 
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
-      MYSQL_DATABASE: FUSS Database
+      MYSQL_DATABASE: FUSS_DB
 
     restart: "no"
 
@@ -26,9 +26,11 @@ services:
     container_name: mysql-db
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: human_factors_db
+      MYSQL_DATABASE: FUSS_DB
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
     volumes:
-      - db_data:/var/lib/mysql
+      - ../db/init:/docker-entrypoint-initdb.d
     restart: "no"
 
 volumes:
