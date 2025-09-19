@@ -27,7 +27,7 @@ CREATE TABLE Users(
 CREATE TABLE ActiveListings(
     listing_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_id int NOT NULL,
-    price int NOT NULL CHECK (100 > price > 0),
+    price int NOT NULL CHECK (100 > price AND price > 0),
     description varchar(100),
     successful_exchanges int NOT NULL CHECK (successful_exchanges >= 0),
     current_interests int NOT NULL CHECK (current_interests >= 0),
