@@ -5,7 +5,7 @@
   "workspaceFolder": "/workspaces/COMP2030-Group-8-Assignment",
   "forwardPorts": [8080],
   "customizations": {
-    "vscode": {
+    "Dev_Env": {
       "extensions": [
         "ms-vscode.php-debug",
         "felixfbecker.php-intellisense",
