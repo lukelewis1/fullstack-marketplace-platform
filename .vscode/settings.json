@@ -1,0 +1,12 @@
+{
+  "mysql.connections": [
+    {
+      "name": "FUSS_DB",
+      "host": "db",
+      "port": 3306,
+      "user": "admin",
+      "password": "admin",
+      "database": "FUSS_DB"
+    }
+  ]
+}
