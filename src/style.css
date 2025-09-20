@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: #FFFFFF;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 320px;
+    text-align: center;
+}
+
+h1 {
+    color: #002A5C; /* Flinders navy */
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-top: 1rem;
+    text-align: left;
+    color: #002A5C;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 1.5rem;
+    background-color: #FFCC00; /* Flinders gold */
+    border: none;
+    color: #002A5C;
+    font-size: 1rem;
+    padding: 0.75rem;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #e6b800; /* darker gold */
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}

@@ -1,47 +1,44 @@
 <?php
+// signin.php
+session_start();
 
-require_once "./inc/dbconn.inc.php";
+// Simple login handler (demo only!)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-echo "<h1>COMP2030 Assignment Dev Environment Setup</h1><h2>Connected successfully to MySQL database!</h2>";
-
-// Create a table if it doesn't exist
-$sql = "CREATE TABLE IF NOT EXISTS messages (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    message VARCHAR(255) NOT NULL,
-    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)";
-
-if ($conn->query($sql) === TRUE) {
-    echo "<p>Table \"messages\" created successfully or already exists.</p>";
-} else {
-    echo "<p>Error creating table: " . $conn->error . "</p>";
-}
-
-// Insert some data (only if table is empty for demonstration)
-$check_empty = $conn->query("SELECT COUNT(*) as count FROM messages");
-$row = $check_empty->fetch_assoc();
-if ($row['count'] == 0) {
-    $insert_sql = "INSERT INTO messages (message) VALUES ('Connection and insert into db successful')";
-    if ($conn->query($insert_sql) === TRUE) {
-        echo "<p>New record created successfully.</p>";
+    // Replace with DB check (demo just accepts "student"/"password")
+    if ($username === 'student' && $password === 'password') {
+        $_SESSION['user'] = $username;
+        header("Location: welcome.php");
+        exit;
     } else {
-        echo "<p>Error: " . $insert_sql . "<br>" . $conn->error . "</p>";
+        $error = "Invalid username or password.";
     }
 }
-
-// Display messages
-$result = $conn->query("SELECT id, message, reg_date FROM messages");
-
-if ($result->num_rows > 0) {
-    echo "<h2>Messages:</h2>";
-    echo "<ul>";
-    while($row = $result->fetch_assoc()) {
-        echo "<li>" . $row["id"]. " - " . $row["message"]. " (" . $row["reg_date"]. ")</li>";
-    }
-    echo "</ul>";
-} else {
-    echo "<p>No messages yet.</p>";
-}
-
-$conn->close();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flinders Sign In</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="login-container">
+    <h1>Flinders Sign In</h1>
+    <?php if (!empty($error)): ?>
+        <p class="error"><?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
+    <form method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+
+        <button type="submit">Sign In</button>
+    </form>
+</div>
+</body>
+</html>
