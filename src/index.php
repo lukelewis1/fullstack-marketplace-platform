@@ -1,56 +1,59 @@
 <?php
-$conn = include("./inc/dbconn.inc.php");
 
-$error_username = "";
-$error_email = "";
+$conn = require_once './inc/dbconn.inc.php';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
-    $username = trim($_POST['username']);
-    $email    = trim($_POST['email']);
+$user = $_POST['username'] ?? "Oliver";
+$email = $_POST['email'] ?? "email@flinders.edu.au";
+//$valid_email = true;
+//$valid_user = true;
+//$username_error = '';
+//$email_error = '';
+//
+//if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//    $valid_email = false;
+//} else if (!str_ends_with($email, "@flinders.edu.au")) {
+//    $valid_email = false;
+//}
+//
+//if ($valid_email) {
+//    $sql = 'SELECT user_name, email FROM Users WHERE user_name = ? OR email = ?;';
+//    $statement = mysqli_stmt_init($conn);
+//    mysqli_stmt_prepare($statement, $sql);
+//    mysqli_stmt_bind_param($statement, 'ss', $user, $email);
+//
+//    if (mysqli_stmt_execute($statement)) {
+//        $result = mysqli_stmt_get_result($statement);
+//
+//        if ($result && $result->num_rows > 0) {
+//            while ($row = $result->fetch_assoc()) {
+//                if ($row['user_name'] == $user) {
+//                    $valid_user = false;
+//                    $username_error = "This username is currently associated with another account please try something else";
+//                }
+//                if ($row['email'] == $email) {
+//                    $valid_email = false;
+//                    $email_error = "This email is already associated with an account, if this is your email please try logging in";
+//                }
+//            }
+//        } else if ($result && $result->num_rows == 0) {
+//            //transform page into full form sign in
+//        }
+//    } else {
+//        echo mysqli_error($conn);
+//    }
+//} else {
+//    $email_error = "Invalid email address ensure you're using a @flinders.edu.au address";
+//}
 
-    // Check username
-    $stmt = $conn->prepare("SELECT id FROM Users WHERE user_name = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
-    if ($stmt->num_rows > 0) {
-        $error_username = "This username is already in use.";
-    }
-    $stmt->close();
-
-    // Check email
-    $stmt = $conn->prepare("SELECT id FROM Users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
-    if ($stmt->num_rows > 0) {
-        $error_email = "This email already has an account.";
-    }
-    $stmt->close();
-
-    // If no errors → redirect
-    if (empty($error_username) && empty($error_email)) {
-        header("Location: login_start/sign_up.php");
-        exit;
-    }
-}
 ?>
 
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-    <meta charset="UTF-8">
-    <title>Animated Login &amp; Register Form</title>
-    <link rel="stylesheet" href="./login_start/style.css">
 
-</head>
-<body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FUSS Welcome Page</title>
+    <title>FUSS Welcome Page</title> 
     <link rel="stylesheet" href="./login_start/style.css">
 
 </head>
@@ -119,6 +122,60 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
     </div>
 
 </div>
+<div class="register-form">
+    <div class="full-reg-form">
+        <form>
+            <div class="reg-fields">
+                <input type="text" name="username" value="<?php echo htmlspecialchars($user); ?>" readonly required>
+                <label for="">Username</label>
+            </div>
+
+            <div class="reg-fields">
+                <input type="text" name="email" value="<?php echo htmlspecialchars($email); ?>" readonly required>
+                <label for="">Email</label>
+            </div>
+
+            <div class="reg-fields">
+                <input type="password" name="password" required>
+                <label for="">Password</label>
+            </div>
+
+            <div class="reg-fields">
+                <input type="password" name="password-confirm" required>
+                <label for="">Confirm Password</label>
+            </div>
+
+            <div class="reg-fields">
+                <input type="text" name="fname" required>
+                <label for="">First Name</label>
+            </div>
+
+            <div class="reg-fields">
+                <input type="text" name="lname" required>
+                <label for="">Last Name</label>
+            </div>
+
+            <div class="reg-fields">
+                <input type="date" name="dob" required>
+                <label for="">Date of Birth</label>
+            </div>
+
+            <div class="reg-fields">
+                <input type="text" name="role">
+                <label for="">Role/Title</label>
+            </div>
+
+            <div class="reg-fields">
+                <label for="tc">Terms and Conditions</label>
+                <input type="checkbox" id="tc" name="tc" required>
+            </div>
+
+            <div class="submit-btn">
+                <button class="btn" type="submit" name="full-reg">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <script src="index.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
@@ -127,5 +184,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
 </html>
 <script  src="./login_start/script.js"></script>
 
-</body>
-</html>

@@ -1,11 +1,8 @@
-name: FUSS_Env
-
 services:
   web:
     build:
       context: . 
-      dockerfile: Dockerfile 
-    container_name: FUSS_Apache_Web
+      dockerfile: Dockerfile
     volumes:
       - ../src:/var/www/html
       - ./apache-config.conf:/etc/apache2/sites-available/000-default.conf
@@ -22,8 +19,7 @@ services:
     restart: "no"
 
   db:
-    image: mysql:8.0 
-    container_name: mysql-db
+    image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: FUSS_DB
@@ -31,6 +27,8 @@ services:
       MYSQL_PASSWORD: admin
     volumes:
       - ../db/init:/docker-entrypoint-initdb.d
+    ports:
+      - "3307:3306"
     restart: "no"
 
 volumes:
