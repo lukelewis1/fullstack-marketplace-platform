@@ -1,3 +1,40 @@
+<?php
+
+$username = $_POST['username'] ?? null;
+$email = $_POST['email'] ?? null;
+$password = $_POST['password'] ?? null;
+$f_name = $_POST['fname'] ?? null;
+$l_name = $_POST['lname'] ?? null;
+$dob = $_POST['dob'] ?? null;
+$admin = false;
+$acc_status = 0;
+$role = $_POST['role'] ?? null;
+
+if ($username != null) {
+    require_once './inc/dbconn.inc.php';
+
+    $hashed_password = hash('sha256', $password);
+
+    $sql = "
+    INSERT INTO Users (user_name, email, hashed_password, f_name, l_name, dob, is_admin, acc_status, role) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+    ";
+
+    $statement = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($statement, $sql);
+    mysqli_stmt_bind_param(
+            $statement, 'ssssssiis',
+            $username, $email, $hashed_password, $f_name, $l_name, $dob, $admin, $acc_status, $role
+    );
+
+    if (!mysqli_stmt_execute($statement)) {
+        echo mysqli_error($conn);
+    }
+    mysqli_close($conn);
+}
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,13 +57,11 @@
             <div class="input-box animation" style="--D:1; --S:22">
                 <input type="text" required>
                 <label for="">Username</label>
-                <box-icon type='solid' name='user' color="gray"></box-icon>
             </div>
 
             <div class="input-box animation" style="--D:2; --S:23">
                 <input type="password" required>
                 <label for="">Password</label>
-                <box-icon name='lock-alt' type='solid' color="gray"></box-icon>
             </div>
 
             <div class="input-box animation" style="--D:3; --S:24">
@@ -51,14 +86,12 @@
                 <input type="text" required name="username" id="username">
                 <label for="">Username</label>
                 <span class="error-msg" id="username-error"></span>
-                <box-icon type='solid' name='user' color="gray"></box-icon>
             </div>
 
             <div class="input-box animation" style="--li:19; --S:2">
                 <input type="email" id="email" required name="email">
                 <label for="">Flinders Uni Email</label>
                 <span class="error-msg" id="email-error"></span>
-                <box-icon name='envelope' type='solid' color="gray"></box-icon>
             </div>
 
             <div class="input-box animation" style="--li:20; --S:4">
@@ -79,7 +112,7 @@
 </div>
 <div class="register-form hidden" id="step2">
     <div class="full-reg-form">
-        <form>
+        <form id="reg-form" method="post" action="index.php">
             <div class="reg-fields">
                 <input type="text" name="username" id="final-username" readonly required>
                 <label for="">Username</label>
@@ -91,23 +124,27 @@
             </div>
 
             <div class="reg-fields">
-                <input type="password" name="password" required>
+                <input type="password" name="password" required id="pass">
                 <label for="">Password</label>
+                <span class="error-msg "id="password-error"></span>
             </div>
 
             <div class="reg-fields">
-                <input type="password" name="password-confirm" required>
+                <input type="password" name="password-confirm" required id="pass-con">
                 <label for="">Confirm Password</label>
+                <span class="error-msg "id="password-confirm-error"></span>
             </div>
 
             <div class="reg-fields">
-                <input type="text" name="fname" required>
+                <input type="text" name="fname" required id="fname">
                 <label for="">First Name</label>
+                <span class="error-msg "id="fname-error"></span>
             </div>
 
             <div class="reg-fields">
-                <input type="text" name="lname" required>
+                <input type="text" name="lname" required id="lname">
                 <label for="">Last Name</label>
+                <span class="error-msg "id="lname-error"></span>
             </div>
 
             <div class="reg-fields">
@@ -116,8 +153,9 @@
             </div>
 
             <div class="reg-fields">
-                <input type="text" name="role">
+                <input type="text" name="role" id="role">
                 <label for="">Role/Title</label>
+                <span class="error-msg "id="role-error"></span>
             </div>
 
             <div class="reg-fields" id="tc">
@@ -138,7 +176,7 @@
         const username = document.getElementById('username').value.trim();
         const email = document.getElementById('email').value.trim();
 
-        // clear old errors
+
         document.getElementById('username-error').textContent = '';
         document.getElementById('email-error').textContent = '';
 
@@ -159,9 +197,7 @@
                 } else {
                     document.getElementById('final-email').value = email;
                     document.getElementById('final-username').value = username;
-                    // ✅ Hide step1 and show step2
 
-                    // ✅ Transition out step1, transition in step2
                     const step1 = document.getElementById('step1');
                     const step2 = document.getElementById('step2');
 
@@ -178,6 +214,7 @@
     });
 </script>
 
+<script src="login_start/signup_validator.js"></script>
 
 </body>
 </html>
