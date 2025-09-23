@@ -4,7 +4,7 @@
         <div class="site-logo">
           <a href="index.html">
             <img
-              src="/src/fuss-website/images/flinders-logo.png"
+              src="/fuss-website/images/flinders-logo.png"
               alt="Flinders Logo"
             />
           </a>
@@ -28,7 +28,7 @@
           </div>
           <div class="avatar">
             <img
-              src="/src/fuss-website/images/example-profile-picture.jpg"
+              src="/fuss-website/images/example-profile-picture.jpg"
               alt="Profile Picture"
             />
           </div>

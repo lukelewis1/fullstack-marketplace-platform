@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Home Page</title>
-    <link rel="stylesheet" href="/src/fuss-website/css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <?php 
-     include("../inc/header.php");
+     include('../../inc/header.php');
      ?>
 
     <!-- Main Content -->\
+     <h1> User Home Page </h1>
 
     <main></main>
   </body>
