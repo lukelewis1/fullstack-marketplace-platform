@@ -54,7 +54,7 @@ header {
   border: solid #eeb728;
   padding: 0 0.5rem 0 2rem;
   box-sizing: border-box;
-  background-image: url("/fuss-website/images/searchbar.png");
+  background-image: url("../images/site/searchbar.png");
   background-position: 10px center; /* position icon inside input */
   background-repeat: no-repeat;
   background-size: 16px 16px;
