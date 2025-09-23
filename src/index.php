@@ -43,7 +43,7 @@ if ($username != null) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUSS</title>
     <link rel="stylesheet" href="login/style.css">
-    <link rel="icon" href="images/flinderslogo.png">
+    <link rel="icon" href="images/site/flinderslogo.png">
 
 </head>
 <body>
