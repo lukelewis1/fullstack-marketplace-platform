@@ -15,10 +15,10 @@ CREATE TABLE Users(
     id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_name varchar(30) NOT NULL UNIQUE,
     email varchar(50) NOT NULL UNIQUE,
-    hashed_password varchar(50) NOT NULL,
+    hashed_password varchar(256) NOT NULL,
     f_name varchar(25) NOT NULL,
     l_name varchar(25) NOT NULL,
-    age int NOT NULL CHECK (age > 0),
+    dob DATETIME NOT NULL,
     is_admin bool NOT NULL,
     acc_status int NOT NULL,
     role varchar(25) NOT NULL

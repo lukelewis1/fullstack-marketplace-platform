@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/php:0-8.2
+FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -6,4 +6,8 @@ RUN apt-get update && apt-get install -y \
     default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable mysqli pdo_mysql
+
+COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
+
+EXPOSE 80
