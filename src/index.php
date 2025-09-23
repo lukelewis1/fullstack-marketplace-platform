@@ -41,8 +41,8 @@ if ($username != null) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FUSS Welcome Page</title> 
-    <link rel="stylesheet" href="./login_start/style.css">
+    <title>FUSS</title>
+    <link rel="stylesheet" href="login/style.css">
     <link rel="icon" href="images/flinderslogo.png">
 
 </head>
@@ -53,14 +53,14 @@ if ($username != null) {
     <div class="curved-shape2"></div>
     <div class="form-box Login">
         <h2 id="login-btn" class="animation" style="--D:0; --S:21">Login</h2>
-        <form action="#">
+        <form action="login/loader.php" method="post">
             <div class="input-box animation" style="--D:1; --S:22">
-                <input type="text" required>
+                <input type="text" required name="username_log">
                 <label for="">Username</label>
             </div>
 
             <div class="input-box animation" style="--D:2; --S:23">
-                <input type="password" required>
+                <input type="password" required name="password_log">
                 <label for="">Password</label>
             </div>
 
@@ -172,6 +172,12 @@ if ($username != null) {
 </div>
 
 <script>
+    console.log("Script loaded");
+
+    document.getElementById('register-btn').addEventListener('click', function() {
+        console.log("Register button clicked");
+    });
+
     document.getElementById('register-btn').addEventListener('click', function() {
         const username = document.getElementById('username').value.trim();
         const email = document.getElementById('email').value.trim();
@@ -180,7 +186,7 @@ if ($username != null) {
         document.getElementById('username-error').textContent = '';
         document.getElementById('email-error').textContent = '';
 
-        fetch('./login_start/validate.php', {
+        fetch('./login/validate.php', {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body: new URLSearchParams({username, email})
@@ -214,9 +220,9 @@ if ($username != null) {
     });
 </script>
 
-<script src="login_start/signup_validator.js"></script>
+<script src="login/signup_validator.js"></script>
 
 </body>
 </html>
-<script  src="./login_start/script.js"></script>
+<script  src="login/script.js"></script>
 
