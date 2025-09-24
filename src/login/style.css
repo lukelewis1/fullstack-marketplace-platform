@@ -18,9 +18,13 @@
     width: 750px;
     min-height: 450px;
     max-height: 90vh;
-    overflow-y: auto;
+    overflow: hidden;
     transform-origin: center center;
     transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#step2 {
+    overflow: scroll !important;
 }
 
 .hidden {
