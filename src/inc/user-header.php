@@ -27,7 +27,7 @@
 
         <div class="user-info">
           <div class="user-name-role">
-            <span class="user-name">Hans Pujalte</span>
+            <span class="user-name"><?php echo $_SESSION['username']; ?> </span>
             <span class="user-role">Student</span>
           </div>
           <div class="avatar">
@@ -60,9 +60,13 @@
               class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
               <a href="#">Credits</a>
           </li>
-
         </ul>
       </nav>
+
+
+
+
+
     </header>
 
     
