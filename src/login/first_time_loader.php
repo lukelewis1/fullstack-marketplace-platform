@@ -1,9 +1,5 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit;
-}
 
 $bio = $_POST['bio'] ?? '';
 $pfp = $_FILES['pfp'] ?? null;
@@ -74,7 +70,7 @@ mysqli_close($conn);
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 window.location.href = "../user/user-homepage.php";
-            }, 10000);
+            }, 5000);
         });
     </script>
 

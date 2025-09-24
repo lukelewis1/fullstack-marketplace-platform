@@ -1,6 +1,10 @@
-  <?php
-    $currentPage = basename($_SERVER['PHP_SELF']); // Retrieve current page 
-    ?>
+<?php
+    if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+    }
+
+    $currentPage = basename($_SERVER['PHP_SELF']);
+?>
 
 <header>
       <!-- Top Row: Logo, Search, User Info -->
@@ -27,8 +31,25 @@
 
         <div class="user-info">
           <div class="user-name-role">
-            <span class="user-name"><?php echo $_SESSION['username']; ?> </span>
-            <span class="user-role">Student</span>
+            <span class="user-name"><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </span>
+            <span class="user-role">
+              <?php
+                include('../inc/dbconn.inc.php');
+
+                if (isset($_SESSION['username'])) {
+                    $sql = "SELECT role FROM Users WHERE user_name = ?";
+                    $stmt = mysqli_prepare($conn, $sql);
+                    mysqli_stmt_bind_param($stmt, 's', $_SESSION['username']);
+                    mysqli_stmt_execute($stmt);
+                    mysqli_stmt_bind_result($stmt, $role);
+                    mysqli_stmt_fetch($stmt);
+                    echo htmlspecialchars($role ?? 'Student'); // fallback if role is null
+                    mysqli_stmt_close($stmt);
+                } else {
+                    echo "Student";
+                }
+                ?>
+            </span>
           </div>
           <div class="avatar">
             <a href="../user/profile.php">
