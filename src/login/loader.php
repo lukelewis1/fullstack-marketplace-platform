@@ -7,7 +7,7 @@ $password_good = false;
 
 require_once '../inc/dbconn.inc.php';
 
-$sql = 'SELECT user_name, hashed_password FROM Users WHERE user_name = ? AND hashed_password = ?;';
+$sql = 'SELECT user_name, hashed_password, bio FROM Users WHERE user_name = ? AND hashed_password = ?;';
 
 $statement = mysqli_stmt_init($conn);
 mysqli_stmt_prepare($statement, $sql);
@@ -16,6 +16,7 @@ mysqli_stmt_bind_param($statement, 'ss', $user, $hashed_password);
 if (mysqli_stmt_execute($statement)) {
     $result = mysqli_stmt_get_result($statement);
     $row = $result->fetch_assoc();
+    $bio = $row['bio'];
     if ($row && $row['user_name'] === $user) {
         $name_good = true;
     }
@@ -27,9 +28,12 @@ if (mysqli_stmt_execute($statement)) {
 }
 
 if ($name_good && $password_good) {
-    $redirect_page = 'first_time_signup.php';
+    $redirect_page = '../user/user-homepage.php';
     session_start();
     $_SESSION['username'] = $user;
+    if ($bio === null) {
+        $redirect_page = 'first_time_signup.php';
+    }
 } else if (!$name_good || !$password_good) {
     $redirect_page = '../index.php';
 }
