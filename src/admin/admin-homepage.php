@@ -8,15 +8,12 @@
   </head>
   <body>
     <?php 
-     include('../inc/user-header.php');
+     include('../inc/admin-header.php');
      ?>
-    
-    
+
     <!-- Main Content -->
-     <h1> User Home Page </h1>
+     <h1> Admin Home Page </h1>
 
     <main></main>
-
-    <script src="../scripts/global_scripts.js"></script>
   </body>
 </html>

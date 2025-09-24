@@ -13,10 +13,11 @@
     
     
     <!-- Main Content -->
-     <h1> User Home Page </h1>
+     <h1> Messages </h1>
 
     <main></main>
 
     <script src="../scripts/global_scripts.js"></script>
+    <script src="../scripts/script.js"></script>
   </body>
 </html>
