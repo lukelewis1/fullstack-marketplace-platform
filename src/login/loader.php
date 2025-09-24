@@ -27,7 +27,7 @@ if (mysqli_stmt_execute($statement)) {
 }
 
 if ($name_good && $password_good) {
-    $redirect_page = 'home_temp.php';
+    $redirect_page = 'first_time_signup.php';
     session_start();
     $_SESSION['username'] = $user;
 } else if (!$name_good || !$password_good) {
@@ -43,6 +43,7 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <title>FUSS</title>
     <link rel="stylesheet" href="loader_style.css">
+    <link rel="icon" href="../images/site/flinderslogo.png">
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {

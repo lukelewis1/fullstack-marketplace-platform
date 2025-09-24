@@ -18,6 +18,7 @@ CREATE TABLE Users(
     hashed_password varchar(256) NOT NULL,
     f_name varchar(25) NOT NULL,
     l_name varchar(25) NOT NULL,
+    bio varchar(500),
     dob DATETIME NOT NULL,
     is_admin bool NOT NULL,
     acc_status int NOT NULL,
