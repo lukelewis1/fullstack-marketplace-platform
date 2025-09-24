@@ -55,8 +55,6 @@
     const dropArea = document.getElementById('drop-area');
     const fileInput = document.getElementById('pfp');
 
-    dropArea.addEventListener('click', () => fileInput.click());
-
     dropArea.addEventListener('dragover', (e) => {
         e.preventDefault();
         dropArea.classList.add('dragover');
@@ -84,7 +82,6 @@
         const remaining = maxLength - bio.value.length;
         charRemaining.textContent = remaining;
 
-        // disable button if over limit
         if (remaining < 0) {
             submitBtn.disabled = true;
             submitBtn.style.opacity = "0.5";
