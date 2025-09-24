@@ -1,6 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* Side bar + content */
+.page-wrapper {
+  display: flex; /* places sidebar and content in a row */
+  min-height: 100vh; /* make sure it fills the viewport */
+}
+
+.content {
+  flex: 1;
+  padding-left: 1rem;
+  padding-top: 0px;
+  background: #f1f5f9;
+}
+
 /* Reset */
+
 body,
 ul,
 li {
@@ -45,7 +59,7 @@ header {
   display: flex;
   align-items: center;
   gap: 5px;
-  width: 50%;
+  width: 350px;
 }
 .search-bar input {
   flex: 1;
@@ -152,4 +166,75 @@ nav {
 
 .dropdown-content a:hover {
   background: #f3f4f6;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #1e293b;
+  color: #fff;
+  width: 240px;
+  min-height: 100vh;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+/* Collapsed style */
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Header */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: flex-end;
+}
+
+.sidebar.collapsed .sidebar-header {
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+/* Menu */
+.menu {
+  list-style: none;
+  padding: 0.5rem 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.menu li:hover {
+  background: #334155;
+}
+
+.icon {
+  font-size: 1.3rem;
+  width: 30px;
+  text-align: center;
+}
+
+.text {
+  margin-left: 0.8rem;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .text {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#toggleBtn {
+  background: none;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  transition: transform 0.3s ease, color 0.3s ease;
 }

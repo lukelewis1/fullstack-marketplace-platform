@@ -1,40 +1,60 @@
 <?php
-$user = $_POST['username_log'] ?? null;
-$password = $_POST['password_log'] ?? null;
-$hashed_password = hash('sha256', $password);
-$name_good = false;
-$password_good = false;
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit;
+}
+
+$bio = $_POST['bio'] ?? '';
+$pfp = $_FILES['pfp'] ?? '';
 
 require_once '../inc/dbconn.inc.php';
 
-$sql = 'SELECT user_name, hashed_password FROM Users WHERE user_name = ? AND hashed_password = ?;';
+$sql = 'SELECT id FROM Users WHERE user_name = ?;';
 
 $statement = mysqli_stmt_init($conn);
 mysqli_stmt_prepare($statement, $sql);
-mysqli_stmt_bind_param($statement, 'ss', $user, $hashed_password);
+mysqli_stmt_bind_param($statement, 's', $_SESSION['username']);
 
 if (mysqli_stmt_execute($statement)) {
     $result = mysqli_stmt_get_result($statement);
     $row = $result->fetch_assoc();
-    if ($row && $row['user_name'] === $user) {
-        $name_good = true;
-    }
-    if ($row && $row['hashed_password'] === $hashed_password) {
-        $password_good = true;
+    $id = $row['id'];
+    if ($pfp && $pfp['error'] === UPLOAD_ERR_OK) {
+        $upload_dir = "../images/user_pfp/";
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0777, true);
+        }
+
+        $ext = strtolower(pathinfo($pfp['name'], PATHINFO_EXTENSION));
+        $target_file = $upload_dir . $id . "." . $ext;
+
+        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        if (!in_array($ext, $allowed)) {
+            echo "Invalid file type.";
+            exit;
+        }
+
+        if (!move_uploaded_file($pfp['tmp_name'], $target_file)) {
+            echo "Error saving file.";
+        }
     }
 } else {
     echo mysqli_error($conn);
 }
 
-if ($name_good && $password_good) {
-    $redirect_page = 'first_time_signup.php';
-    session_start();
-    $_SESSION['username'] = $user;
-} else if (!$name_good || !$password_good) {
-    $redirect_page = '../index.php';
+$sql = 'UPDATE Users SET bio = ? WHERE user_name = ?';
+
+$statement = mysqli_stmt_init($conn);
+mysqli_stmt_prepare($statement, $sql);
+mysqli_stmt_bind_param($statement, 'ss', $bio, $_SESSION['username']);
+
+if (!mysqli_stmt_execute($statement)) {
+    echo mysqli_error($conn);
 }
 
 mysqli_close($conn);
+
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +68,7 @@ mysqli_close($conn);
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
-                window.location.href = "<?= $redirect_page ?>";
+                window.location.href = "blank";
             }, 10000);
         });
     </script>
@@ -85,7 +105,7 @@ mysqli_close($conn);
         'Asking ChatGPT for Help',
         'Complaining about Group Assignments',
         'Doom Scrolling TikTok...',
-        'Asking for Peoples LinkedIn',
+        'LinkedIn?',
         'Praying for the Jane Street Internship'
     ]
 
@@ -98,3 +118,4 @@ mysqli_close($conn);
 
 </body>
 </html>
+
