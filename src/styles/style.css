@@ -8,7 +8,7 @@
 
 .content {
   flex: 1;
-  padding-left: 1rem;
+  padding-left: 20px;
   padding-top: 0px;
   background: #f1f5f9;
 }
@@ -172,15 +172,18 @@ nav {
 .sidebar {
   background: #1e293b;
   color: #fff;
-  width: 240px;
+  width: 450px; /* Length of sidebar */
   min-height: 100vh;
   transition: width 0.3s ease;
   overflow: hidden;
 }
 
-/* Collapsed style */
-.sidebar.collapsed {
-  width: 70px;
+.sidebar-title {
+  flex: 1; /* pushes toggle button to the end */
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
 }
 
 /* Header */
@@ -189,11 +192,6 @@ nav {
   align-items: center;
   padding: 1rem;
   justify-content: flex-end;
-}
-
-.sidebar.collapsed .sidebar-header {
-  justify-content: center;
-  padding: 1rem 0;
 }
 
 /* Menu */
@@ -214,27 +212,8 @@ nav {
   background: #334155;
 }
 
-.icon {
-  font-size: 1.3rem;
-  width: 30px;
-  text-align: center;
-}
-
 .text {
   margin-left: 0.8rem;
   white-space: nowrap;
   transition: opacity 0.3s ease;
-}
-
-.sidebar.collapsed .text {
-  opacity: 0;
-  pointer-events: none;
-}
-
-#toggleBtn {
-  background: none;
-  font-size: 1rem;
-  border: none;
-  color: white;
-  transition: transform 0.3s ease, color 0.3s ease;
 }
