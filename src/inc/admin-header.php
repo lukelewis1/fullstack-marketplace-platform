@@ -83,7 +83,7 @@
         <ul class="nav-links">
           <li><a href="../user/user-homepage.php" class="<?= ($currentPage == 'user-homepage.php') ? 'active' : '' ?>">Home</a></li>
           <li><a href="../messages/message-inbox.php" class="<?= ($currentPage == 'message-inbox.php') ? 'active' : '' ?>">Messages</a></li>
-          <div class="skill-dropdown">
+          <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill-request.php') ? 'active' : '' ?>">Skill Share</a></li>
             <div class="dropdown-content">
               <a href="../user/skill-post.php">Post Service</a>
@@ -92,12 +92,12 @@
             </div>
           </div>
           
-          <div class="admin-dropdown">
+          <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill-request.php') ? 'active' : '' ?>">Dashboard</a></li>
             <div class="dropdown-content">
-              <a href="../user/skill-post.php">Post Service</a>
-              <a href="../user/skill-request.php"> Request Service </a>
-              <a href="../user/skill-search.php"> Skill Search </a>
+              <a href="../admin/insights.php">Insights</a>
+              <a href="../admin/user-management.php"> User Management </a>
+              <a href="../admin/content-moderation.php"> Content Moderation </a>
             </div>
           </div>
 
