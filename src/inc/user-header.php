@@ -53,10 +53,25 @@
           </div>
           <div class="avatar">
             <a href="../user/profile.php">
-              <img
-              src="/images/site/example-profile-picture.jpg"
-              alt="Profile Picture"
-              />
+
+              <?php 
+
+                if (isset($_SESSION['username'])) {
+                    $sql = "SELECT id FROM Users WHERE user_name = ?";
+                    $stmt = mysqli_prepare($conn, $sql);
+                    mysqli_stmt_bind_param($stmt, 's', $_SESSION['username']);
+                    mysqli_stmt_execute($stmt);
+                    mysqli_stmt_bind_result($stmt, $id);
+                    mysqli_stmt_fetch($stmt);
+                    mysqli_stmt_close($stmt);
+
+                    if ($id) {
+                        $imgSrc = "../images/user_pfp/{$id}.png"; // use the user's ID for the profile pic
+                    }
+                }
+              ?>
+
+              <img src="<?= $imgSrc ?>" alt="Profile Picture" />
             </a> 
             
           </div>
@@ -83,10 +98,6 @@
           </li>
         </ul>
       </nav>
-
-
-
-
 
     </header>
 
