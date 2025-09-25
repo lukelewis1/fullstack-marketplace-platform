@@ -5,7 +5,9 @@
 
     $currentPage = basename($_SERVER['PHP_SELF']);
 
-    require_once ''
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -14,28 +16,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Home Page</title>
-    <link rel="stylesheet" href="../styles/style.css" />
+      <link rel="stylesheet" href="msg_styles.css">
+      <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body>
     <?php 
      include('../inc/user-header.php');
      ?>
-  
-    <!-- Messages -->
-     <div class="page-wrapper">
-      <div class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <span class="sidebar-title">Chats</span> 
-      </div>
-      <ul class="menu">
-      </ul>
-    </div>
 
-    <main class="content">
-    </main>
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">Chats</div>
+            <ul class="chat-list" id="chatList">
+
+            </ul>
+        </aside>
+
+        <main class="chat-area">
+            <div class="chat-header" id="chatHeader">Select a conversation</div>
+            <div class="chat-messages" id="chatMessages">
+
+            </div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type a message..." />
+                <button id="sendBtn">Send</button>
+            </div>
+        </main>
     </div>
 
     <script src="../scripts/global_scripts.js"></script>
     <script src="../scripts/script.js"></script>
+    <script src="msg_script.js"></script>
   </body>
 </html>
