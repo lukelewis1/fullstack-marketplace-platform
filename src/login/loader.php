@@ -16,12 +16,15 @@ mysqli_stmt_bind_param($statement, 'ss', $user, $hashed_password);
 if (mysqli_stmt_execute($statement)) {
     $result = mysqli_stmt_get_result($statement);
     $row = $result->fetch_assoc();
-    $bio = $row['bio'];
-    if ($row && $row['user_name'] === $user) {
-        $name_good = true;
-    }
-    if ($row && $row['hashed_password'] === $hashed_password) {
-        $password_good = true;
+
+    if ($row) {
+        $bio = $row['bio'];
+        if ($row && $row['user_name'] === $user) {
+            $name_good = true;
+        }
+        if ($row && $row['hashed_password'] === $hashed_password) {
+            $password_good = true;
+        }
     }
 } else {
     echo mysqli_error($conn);
@@ -53,7 +56,7 @@ mysqli_close($conn);
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 window.location.href = "<?= $redirect_page ?>";
-            }, 10000);
+            }, 4500);
         });
     </script>
 
