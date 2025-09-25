@@ -151,7 +151,7 @@ nav {
   border-radius: 0.5rem;
 }
 
-.skill-dropdown:hover .skill-dropdown-content {
+.dropdown:hover .dropdown-content {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
