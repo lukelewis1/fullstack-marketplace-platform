@@ -4,6 +4,8 @@
     }
 
     $currentPage = basename($_SERVER['PHP_SELF']);
+
+    require_once ''
 ?>
 
 <!DOCTYPE html>
@@ -19,20 +21,17 @@
      include('../inc/user-header.php');
      ?>
   
-    <!-- Main Content -->
+    <!-- Messages -->
      <div class="page-wrapper">
       <div class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <span class="sidebar-title">Chats</span> 
       </div>
       <ul class="menu">
-        <li><i class="icon">🛒</i><span class="text">Request a Service</span></li>
-        <li><i class="icon">📦</i><span class="text">Post Service</span></li>
       </ul>
     </div>
 
     <main class="content">
-        <h1>Skill Post</h1>
     </main>
     </div>
 
