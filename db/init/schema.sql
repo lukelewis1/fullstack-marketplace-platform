@@ -46,19 +46,6 @@ CREATE TABLE CurrentInterests(
     UNIQUE (consumer_id, listing)
 );
 
-CREATE TABLE ConsumerProducerRelationship(
-    cpr_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    producer_id int NOT NULL,
-    consumer_id int NOT NULL,
-    listing int NOT NULL,
-    original_price int NOT NULL CHECK (original_price > 0),
-    neg_price int NOT NULL CHECK (neg_price > 0),
-    FOREIGN KEY (producer_id) REFERENCES Users(id),
-    FOREIGN KEY (consumer_id) REFERENCES Users(id),
-    FOREIGN KEY (listing) REFERENCES ActiveListings(listing_id),
-    UNIQUE (listing, producer_id, consumer_id)
-);
-
 CREATE TABLE InactiveListings(
     listing_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_id int NOT NULL,
@@ -85,7 +72,6 @@ CREATE TABLE Messages(
     receiver_id int NOT NULL,
     start_date DATETIME NOT NULL,
     end_date DATETIME NOT NULL,
-    buyer_seller bool NOT NULL,
     unseen int,
     FOREIGN KEY (sender_id) REFERENCES Users(id),
     FOREIGN KEY (receiver_id) REFERENCES Users(id)

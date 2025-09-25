@@ -7,11 +7,11 @@ VALUES('oliver','oliver@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873
       ('seth','seth@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Seth','Rogan','Comedian exploring the platform.','1992-08-20',FALSE,1,'User');
 
 
-INSERT INTO Messages (sender_id, receiver_id, start_date, end_date, buyer_seller, unseen)
-VALUES(1,2,'2025-09-20 10:00:00','2025-09-20 10:30:00',TRUE,0), -- oliver -> hans
-      (2,1,'2025-09-21 09:00:00','2025-09-21 09:20:00',FALSE,1), -- hans -> oliver
-      (3,1,'2025-09-22 14:00:00','2025-09-22 14:10:00',TRUE,0), -- luke -> oliver
-      (4,1,'2025-09-23 18:00:00','2025-09-23 18:05:00',FALSE,1); -- seth -> oliver
+INSERT INTO Messages (sender_id, receiver_id, start_date, end_date, unseen)
+VALUES(1,2,'2025-09-20 10:00:00','2025-09-20 10:30:00',,0), -- oliver -> hans
+      (2,1,'2025-09-21 09:00:00','2025-09-21 09:20:00',,1), -- hans -> oliver
+      (3,1,'2025-09-22 14:00:00','2025-09-22 14:10:00',0), -- luke -> oliver
+      (4,1,'2025-09-23 18:00:00','2025-09-23 18:05:00',1); -- seth -> oliver
 
 
 INSERT INTO ChatMessages (conversation_id, sender_id, message_text, sent_at)
