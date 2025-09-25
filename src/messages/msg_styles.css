@@ -1,0 +1,184 @@
+/* layout */
+.page-wrapper {
+    display: flex;
+    height: calc(100vh - 120px); /* adjust for your header height */
+    background: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* sidebar */
+.sidebar {
+    width: 250px;
+    background: #000F2C;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sidebar-header {
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    text-align: left;
+    display: block;
+}
+
+.chat-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.chat-list li {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.chat-list li:hover { background: rgba(255,255,255,0.1); }
+.chat-list li.active { background: rgba(255,255,255,0.2); }
+
+/* chat area */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.chat-header {
+    padding: 1rem;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background: #fafafa;
+}
+
+.message {
+    max-width: 70%;
+    padding: .5rem .75rem;
+    border-radius: 8px;
+    margin-bottom: .5rem;
+    line-height: 1.4;
+}
+
+.message.sent { background: #007bff; color: #fff; margin-left: auto; }
+.message.received { background: #e0e0e0; color: #000; margin-right: auto; }
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: .75rem;
+    font-size: 1rem;
+    border: #FFCC00;
+}
+
+.chat-input button {
+    background: #007bff;
+    color: #fff;
+    padding: 0 1rem;
+    cursor: pointer;
+}
+
+.new-chat {
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+}
+
+.new-chat select {
+    width: calc(100% - 60px);
+    padding: 0.25rem;
+    margin-right: 0.25rem;
+    background: #000F2C;
+    color: #FFCC00;
+
+    border: 2px solid #FFCC00;    /* 🔶 yellow border */
+    border-radius: 6px;           /* 🔶 slightly rounded corners */
+    outline: none;                /* remove blue focus ring */
+}
+
+.new-chat select:focus {
+    border-color: #FFCC00;
+    box-shadow: 0 0 3px #FFCC00;
+}
+
+.new-chat button {
+    background: #000F2C;
+    color: #FFCC00;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+.page-wrapper .sidebar {
+    background: #000F2C;
+    color: #FFCC00;
+}
+
+.page-wrapper .sidebar .sidebar-header {
+    display: flex !important;
+    justify-content: flex-start !important;
+    color: c;
+}
+
+#startChatBtn {
+    position: absolute;
+    width: auto;                /* let the width fit the text instead of 100% */
+    min-width: 60px;            /* optional small minimum */
+    height: 28px;               /* ↓ was 45px */
+    line-height: 26px;          /* center text vertically */
+    padding: 0 12px;            /* less horizontal padding */
+    background: transparent;
+    border-radius: 20px;        /* smaller curve */
+    cursor: pointer;
+    font-size: 14px;            /* smaller text */
+    font-weight: 600;
+    border: 2px solid #FFCC00;
+    overflow: hidden;
+    z-index: 1;
+}
+/* Style each chat item like a messaging app inbox */
+.chat-list li {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    border: 1px solid #FFCC00;   /* thin light border */
+    border-radius: 6px;                        /* rounded corners */
+    margin: 0.25rem 0.5rem;                    /* spacing between items */
+    background: rgba(255,255,255,0.05);        /* subtle contrast on dark sidebar */
+}
+
+.chat-list li:hover {
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);      /* small lift on hover */
+}
+
+.chat-list li.active {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.4);       /* stronger border for active */
+}
+
+.chat-list li.unseen {
+    font-weight: bold;
+}
+.chat-list li.unseen::after {
+    content: '•';
+    color: #FFCC00;
+    margin-left: 6px;
+    font-size: 1.2rem;
+}
+

@@ -4,6 +4,7 @@
 .page-wrapper {
   display: flex; /* places sidebar and content in a row */
   min-height: 100vh; /* make sure it fills the viewport */
+    font-family: 'Poppins', sans-serif;
 }
 
 .content {
@@ -28,7 +29,7 @@ span,
 input,
 button,
 a {
-  font-family: Montserrat, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Header Grid: top row + navbar row */
