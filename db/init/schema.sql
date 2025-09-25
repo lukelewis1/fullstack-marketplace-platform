@@ -86,3 +86,13 @@ CREATE TABLE ChatMessages(
     FOREIGN KEY (conversation_id) REFERENCES Messages(conversation_id),
     FOREIGN KEY (sender_id) REFERENCES Users(id)
 );
+
+CREATE TABLE Friendships (
+    friendship_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    friend_id INT NOT NULL,
+    status enum('pending', 'accepted', 'blocked') DEFAULT 'pending',
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (friend_id) REFERENCES Users(id),
+    UNIQUE KEY unique_friendship (user_id, friend_id)
+);
