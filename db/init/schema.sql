@@ -86,6 +86,7 @@ CREATE TABLE Messages(
     start_date DATETIME NOT NULL,
     end_date DATETIME NOT NULL,
     buyer_seller bool NOT NULL,
+    unseen int,
     FOREIGN KEY (sender_id) REFERENCES Users(id),
     FOREIGN KEY (receiver_id) REFERENCES Users(id)
 );
