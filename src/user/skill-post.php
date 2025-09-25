@@ -20,15 +20,6 @@
      ?>
 
     <div class="page-wrapper">
-    <div class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <button id="toggleBtn">◀</button>
-      </div>
-      <ul class="menu">
-        <li><i class="icon">🛒</i><span class="text">Request a Service</span></li>
-        <li><i class="icon">📦</i><span class="text">Post Service</span></li>
-      </ul>
-    </div>
 
     <main class="content">
       <h1>Skill Post</h1>
