@@ -2,10 +2,10 @@ USE FUSS_DB;
 
 INSERT INTO Users (user_name, email, hashed_password, f_name, l_name, bio, dob, is_admin, acc_status, role)
 VALUES
-    ('oliver','oliver@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Oliver','Wuttke','Hi, I am Oliver, testing FUSS.','2000-01-01',TRUE,1,'Admin'),
-    ('hans','hans@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Hans','Zimmer','Music lover and producer.','1995-03-15',FALSE,1,'User'),
-    ('luke','luke@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Luke','Skywalker','Aspiring Jedi trader.','1998-05-04',FALSE,1,'User'),
-    ('seth','seth@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Seth','Rogan','Comedian exploring the platform.','1992-08-20',FALSE,1,'User');
+    ('Oliver','oliver@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Oliver','Wuttke','Hi, I am Oliver, testing FUSS.','2000-01-01',TRUE,1,'Admin'),
+    ('Hans','hans@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Hans','Zimmer','Music lover and producer.','1995-03-15',FALSE,1,'User'),
+    ('Luke','luke@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Luke','Skywalker','Aspiring Jedi trader.','1998-05-04',FALSE,1,'User'),
+    ('Seth','seth@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Seth','Rogan','Comedian exploring the platform.','1992-08-20',FALSE,1,'User');
 
 INSERT INTO Friendships (user_id, friend_id, status)
 VALUES
