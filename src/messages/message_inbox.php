@@ -19,6 +19,15 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <div class="page-wrapper">
     <aside class="sidebar">
         <div class="sidebar-header">Chats</div>
+
+        <!-- New Chat UI -->
+        <div class="new-chat">
+            <select id="friendSelect">
+                <option value="">-- Start new chat --</option>
+            </select>
+            <button id="startChatBtn">Start</button>
+        </div>
+
         <ul class="chat-list" id="chatList"></ul>
     </aside>
 

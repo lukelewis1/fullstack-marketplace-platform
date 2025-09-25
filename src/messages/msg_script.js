@@ -68,6 +68,14 @@ function fetchMessages() {
             chatMessages.innerHTML = '';
             const myName = document.querySelector('.user-name')?.textContent.trim();
 
+            if (msgs.length === 0) {
+                const empty = document.createElement('div');
+                empty.classList.add('message');
+                empty.style.opacity = '0.6';
+                empty.textContent = 'No messages yet';
+                chatMessages.appendChild(empty);
+            }
+
             msgs.forEach(m => {
                 const div = document.createElement('div');
                 div.classList.add('message');
@@ -113,3 +121,55 @@ sendBtn.addEventListener('click', sendMessage);
 messageInput.addEventListener('keypress', e => {
     if (e.key === 'Enter') sendMessage();
 });
+
+// -------------------------------
+// Populate friend dropdown & start chat
+// -------------------------------
+const friendSelect = document.getElementById('friendSelect');
+const startChatBtn = document.getElementById('startChatBtn');
+
+function loadFriends() {
+    fetch('get_friends.php')
+        .then(r => r.json())
+        .then(friends => {
+            friendSelect.innerHTML = '<option value="">-- Start new chat --</option>';
+            friends.forEach(f => {
+                const opt = document.createElement('option');
+                opt.value = f.id;
+                opt.textContent = f.user_name;
+                friendSelect.appendChild(opt);
+            });
+        })
+        .catch(err => console.error(err));
+}
+
+startChatBtn.addEventListener('click', () => {
+    const fid = friendSelect.value;
+    if (!fid) return;
+
+    fetch('create_conversations.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `friend_id=${encodeURIComponent(fid)}`
+    })
+        .then(r => r.json())
+        .then(data => {
+            loadConversations(); // refresh sidebar
+            if (data.conversation_id) {
+                currentConv = data.conversation_id;
+                const friendName = friendSelect.options[friendSelect.selectedIndex].text;
+                chatHeader.textContent = friendName;
+                fetchMessages();
+
+                // highlight the conversation in the sidebar
+                setTimeout(() => {
+                    const li = [...chatList.children].find(c => c.dataset.id == currentConv);
+                    if (li) li.classList.add('active');
+                }, 300);
+            }
+        })
+        .catch(err => console.error(err));
+});
+
+// Call on page load
+loadFriends();
