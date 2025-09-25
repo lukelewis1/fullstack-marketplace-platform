@@ -16,19 +16,22 @@ $stmt->close();
 $sql = "
 SELECT m.conversation_id,
        CASE WHEN m.sender_id = ? THEN u2.user_name ELSE u1.user_name END AS other_name,
-       COALESCE(MAX(cm.sent_at), m.start_date) AS last_message_time
+       COALESCE(MAX(cm.sent_at), m.start_date) AS last_message_time,
+       CASE 
+            WHEN m.receiver_id = ? THEN m.unseen 
+            ELSE m.unseen_2
+       END AS unseen
 FROM Messages m
 JOIN Users u1 ON u1.id = m.sender_id
 JOIN Users u2 ON u2.id = m.receiver_id
 LEFT JOIN ChatMessages cm ON cm.conversation_id = m.conversation_id
 WHERE m.sender_id = ? OR m.receiver_id = ?
-GROUP BY m.conversation_id, other_name, m.start_date
+GROUP BY m.conversation_id, other_name, m.start_date, m.unseen, m.unseen_2
 ORDER BY last_message_time DESC";
 
-
-
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('iii', $uid, $uid, $uid);
+$stmt->bind_param('iiii', $uid, $uid, $uid, $uid);
+
 $stmt->execute();
 $res = $stmt->get_result();
 

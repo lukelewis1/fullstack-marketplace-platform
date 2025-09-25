@@ -32,6 +32,12 @@ function loadConversations() {
                 const li = document.createElement('li');
                 li.textContent = conv.other_name;
                 li.dataset.id = conv.conversation_id;
+
+                if (Number(conv.unseen) > 0) {
+                    li.classList.add('unseen');
+                }
+
+
                 li.addEventListener('click', () =>
                     selectConversation(conv.conversation_id, conv.other_name, li)
                 );
@@ -51,7 +57,16 @@ function selectConversation(id, name, li) {
     li.classList.add('active');
     chatHeader.textContent = name;
     fetchMessages();
+
+    // mark as seen then refresh list so dot disappears
+    fetch('mark_seen.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: `conversation_id=${encodeURIComponent(id)}`
+    }).then(()=>loadConversations());
 }
+
+
 
 // -----------------------
 // Fetch messages
