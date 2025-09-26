@@ -4,6 +4,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $currentPage = basename($_SERVER['PHP_SELF']);
+
+require_once '../inc/dbconn.inc.php';
+require_once __DIR__ . '/../inc/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +18,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <link rel="stylesheet" href="../styles/style.css" />
 </head>
 <body>
-<?php include('../inc/user-header.php'); ?>
+<?php
+
+include_header($_SESSION['username'] ?? null);
+
+?>
 
 <div class="page-wrapper">
     <aside class="sidebar">
