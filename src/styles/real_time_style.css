@@ -1,0 +1,20 @@
+/* red dot for when there is an unseen message */
+.notification-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: red;
+    transform: translate(-8px, -9px);
+}
+
+/* hidden by default */
+.notification-dot.hidden {
+    display: none;
+}
+
+/* bold effect for unseen message */
+.nav-link.unread {
+    font-weight: bold;
+}
+
