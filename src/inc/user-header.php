@@ -4,6 +4,9 @@
     }
 
     $currentPage = basename($_SERVER['PHP_SELF']);
+
+    require_once __DIR__ . '/../inc/dbconn.inc.php';
+    require_once __DIR__ . '/../inc/functions.php';
 ?>
 
 <header>
@@ -32,31 +35,12 @@
         <div class="user-info">
           <div class="user-name-role">
             <span class="user-name"><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </span>
-            <span class="user-role">
-              <?php
-                include('../inc/dbconn.inc.php');
-
-                if (isset($_SESSION['username'])) {
-                    $sql = "SELECT role FROM Users WHERE user_name = ?";
-                    $stmt = mysqli_prepare($conn, $sql);
-                    mysqli_stmt_bind_param($stmt, 's', $_SESSION['username']);
-                    mysqli_stmt_execute($stmt);
-                    mysqli_stmt_bind_result($stmt, $role);
-                    mysqli_stmt_fetch($stmt);
-                    echo htmlspecialchars($role ?? 'Student'); // fallback if role is null
-                    mysqli_stmt_close($stmt);
-                } else {
-                    echo "Student";
-                }
-                ?>
-            </span>
+            <span class="user-role"> <?php echo htmlspecialchars(get_role($_SESSION['username'] ?? '')); ?> </span>
           </div>
           <div class="avatar">
             <a href="../user/profile.php">
-              <img
-              src="/images/site/example-profile-picture.jpg"
-              alt="Profile Picture"
-              />
+
+              <img src="<?php echo htmlspecialchars(get_profile_image($_SESSION['username'] ?? '')) ?>" alt="Profile Picture" />
             </a> 
             
           </div>
@@ -83,10 +67,6 @@
           </li>
         </ul>
       </nav>
-
-
-
-
 
     </header>
 
