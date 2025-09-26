@@ -4,6 +4,9 @@
     }
 
     $currentPage = basename($_SERVER['PHP_SELF']);
+
+    require_once __DIR__ . '/../inc/dbconn.inc.php';
+    require_once __DIR__ . '/../inc/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,16 +18,15 @@
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body>
-    <?php 
-     include('../inc/user-header.php');
-     ?>
+    <?php
 
-    <div class="page-wrapper">
+     include_header($_SESSION['username'] ?? null);
+
+     ?>
 
     <main class="content">
       <h1>Skill Post</h1>
     </main>
-  </div>
 
     <script src="../scripts/global_scripts.js"></script>
     <script src="../scripts/script.js"></script>

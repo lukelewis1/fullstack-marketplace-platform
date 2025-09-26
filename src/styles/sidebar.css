@@ -1,0 +1,52 @@
+/* Only include on pages with a sidebar */
+.page-wrapper {
+  display: flex; /* sidebar + content row */
+  min-height: 100vh;
+}
+.sidebar {
+  background: #1e293b;
+  color: #fff;
+  width: 450px;
+  min-height: 100vh;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+.sidebar-title {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+}
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: flex-end;
+}
+.menu {
+  list-style: none;
+  padding: 0.5rem 0;
+}
+.menu li {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.menu li:hover {
+  background: #334155;
+}
+.text {
+  margin-left: 0.8rem;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+/* For the content next to sidebar */
+.content {
+  flex: 1;
+  padding: 20px;
+  background: white;
+}

@@ -1,12 +1,7 @@
-# Description
-
-*Please include a summary of the change below. Please also include relevant motivation and context. List any dependencies that are required for this change.*
+## Description:
 
 
-
-## Type of change
-
-Please select options that are relevant.
+## Type of change:
 
 - [ ] Update of documents (report components of the assignment)
 - [ ] Bug fix (non-breaking change which fixes an issue)
@@ -14,11 +9,11 @@ Please select options that are relevant.
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
 
-# Checklist:
+## Checklist:
 
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have assigned this to the current person in the PR Roster (@<!--comment-->group-member-username)
+- [X] My code follows the style guidelines of this project
+- [X] I have performed a self-review of my own code
+- [X] I have commented my code, particularly in hard-to-understand areas
+- [X] I have made corresponding changes to the documentation
+- [X] My changes generate no new warnings
+- [X] I have assigned this to the current person in the PR Roster (@<!--comment-->group-member-username)
