@@ -69,7 +69,7 @@ mysqli_close($conn);
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
-                window.location.href = "../user/user-homepage.php";
+                window.location.href = "../user/user_homepage.php";
             }, 4500);
         });
     </script>

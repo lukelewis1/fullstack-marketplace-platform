@@ -6,7 +6,7 @@ function include_header($username) {
     global $conn;
 
     if (!$username) {
-        include 'user-header.php';
+        include 'user_header.php';
         return;
     }
 
@@ -19,8 +19,8 @@ function include_header($username) {
     mysqli_stmt_close($stmt);
 
     include ($row && (int)$row['is_admin'] === 1)
-        ? 'admin-header.php'
-        : 'user-header.php';
+        ? 'admin_header.php'
+        : 'user_header.php';
 }
 
 // Function to get profile image path using username

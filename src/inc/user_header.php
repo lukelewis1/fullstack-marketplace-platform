@@ -13,7 +13,7 @@
       <!-- Top Row: Logo, Search, User Info -->
       <div class="header-top">
         <div class="site-logo">
-          <a href="../user/user-homepage.php">
+          <a href="../user/user_homepage.php">
             <img
               src="/images/site/flinders-logo.png"
               alt="Flinders Logo"
@@ -50,14 +50,14 @@
       <!-- Navbar Row -->
       <nav>
         <ul class="nav-links">
-          <li><a href="../user/user-homepage.php" class="<?= ($currentPage == 'user-homepage.php') ? 'active' : '' ?>">Home</a></li>
+          <li><a href="../user/user_homepage.php" class="<?= ($currentPage == 'user_homepage.php') ? 'active' : '' ?>">Home</a></li>
           <li><a href="../messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">Messages</a></li>
           <div class="dropdown">
-            <li><a  class="<?= ($currentPage == 'skill-request.php') ? 'active' : '' ?>">Skill Share</a></li>
+            <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Skill Share</a></li>
             <div class="dropdown-content">
-              <a href="../user/skill-post.php">Post Service</a>
-              <a href="../user/skill-request.php"> Request Service </a>
-              <a href="../user/skill-search.php"> Skill Search </a>
+              <a href="../user/skill_post.php">Post Service</a>
+              <a href="../user/skill_request.php"> Request Service </a>
+              <a href="../user/skill_search.php"> Skill Search </a>
             </div>
           </div>
 

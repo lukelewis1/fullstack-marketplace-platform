@@ -16,12 +16,12 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Home Page</title>
     <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="../styles/admin-table.css" />
+    <link rel="stylesheet" href="../styles/admin_table.css" />
   </head>
   <body>
 
     <?php 
-     include('../inc/admin-header.php');
+     include('../inc/admin_header.php');
     ?>
   
     <div class="page-wrapper">

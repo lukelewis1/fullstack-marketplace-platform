@@ -11,7 +11,7 @@
       <!-- Top Row: Logo, Search, User Info -->
       <div class="header-top">
         <div class="site-logo">
-          <a href="../user/user-homepage.php">
+          <a href="../user/user_homepage.php">
             <img
               src="/images/site/flinders-logo.png"
               alt="Flinders Logo"
