@@ -19,7 +19,7 @@ if (!isset($_SESSION['username'])) {
   </head>
   <body>
     <?php 
-     include('../inc/admin-header.php');
+     include('../inc/admin_header.php');
      ?>
 
     <!-- Main Content -->

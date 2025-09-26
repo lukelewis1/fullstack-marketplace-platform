@@ -35,14 +35,14 @@ if (mysqli_stmt_execute($statement)) {
 }
 
 if ($name_good && $password_good) {
-    $redirect_page = '../user/user-homepage.php';
+    $redirect_page = '../user/user_homepage.php';
     session_start();
     $_SESSION['username'] = $user;
     if ($bio === null) {
         $redirect_page = 'first_time_signup.php';
     }
     if ($admin) {
-        $redirect_page = '../admin/admin-homepage.php';
+        $redirect_page = '../admin/admin_homepage.php';
     }
 } else if (!$name_good || !$password_good) {
     $redirect_page = '../index.php';

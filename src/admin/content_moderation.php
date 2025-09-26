@@ -1,5 +1,4 @@
 <?php
-// Start session and check login before any HTML output
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -8,7 +7,6 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../index.php");
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -20,19 +18,13 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body>
+    <?php 
+     include('../inc/admin_header.php');
+     ?>
 
-  <?php
-  include('../inc/user-header.php');
-  ?>
-    
-    
-    <main class="content">
-      <h1> User Home Page </h1>
-    </main>
-     
+    <!-- Main Content -->
+     <h1> Moderation </h1>
 
-    
-
-    <script src="../scripts/global_scripts.js"></script>
+    <main></main>
   </body>
 </html>

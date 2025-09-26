@@ -1,12 +1,12 @@
 <?php
-// might be redundant for now but was default put at all pages for session handling
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $currentPage = basename($_SERVER['PHP_SELF']);
 
-require_once '../inc/dbconn.inc.php';
+require_once __DIR__ . '/../inc/dbconn.inc.php';
 require_once __DIR__ . '/../inc/functions.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,17 +18,13 @@ require_once __DIR__ . '/../inc/functions.php';
     <link rel="stylesheet" href="../styles/style.css" />
 </head>
 <body>
-<?php
-
-include_header($_SESSION['username'] ?? null);
-
-?>
+<?php include_header($_SESSION['username'] ?? null); ?>
 
 <div class="page-wrapper">
     <aside class="sidebar">
         <div class="sidebar-header">Chats</div>
 
-        <!-- new chat drop down menu -->
+        <!-- New Chat UI -->
         <div class="new-chat">
             <select id="friendSelect">
                 <option value="">-- Start new chat --</option>
@@ -39,8 +35,6 @@ include_header($_SESSION['username'] ?? null);
         <ul class="chat-list" id="chatList"></ul>
     </aside>
 
-
-    <!-- list of chats -->
     <main class="chat-area">
         <div class="chat-header" id="chatHeader">Select a conversation</div>
         <div class="chat-messages" id="chatMessages"></div>

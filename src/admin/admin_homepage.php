@@ -19,11 +19,11 @@ if (!isset($_SESSION['username'])) {
   </head>
   <body>
     <?php 
-     include('../inc/admin-header.php');
+     include('../inc/admin_header.php');
      ?>
 
     <!-- Main Content -->
-     <h1> Moderation </h1>
+     <h1> Admin Home Page </h1>
 
     <main></main>
   </body>
