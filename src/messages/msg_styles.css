@@ -1,12 +1,12 @@
-/* layout */
+/* page layout */
 .page-wrapper {
     display: flex;
-    height: calc(100vh - 120px); /* adjust for your header height */
+    height: calc(100vh - 120px);
     background: #f9f9f9;
     font-family: 'Poppins', sans-serif;
 }
 
-/* sidebar */
+/* sidebar positioning and size */
 .sidebar {
     width: 250px;
     background: #000F2C;
@@ -15,6 +15,7 @@
 
 }
 
+/* sidebar header formatting */
 .sidebar-header {
     padding: 1rem;
     font-weight: bold;
@@ -23,6 +24,7 @@
     text-align: left;
     display: block;
 }
+
 
 .chat-list {
     list-style: none;
@@ -41,7 +43,7 @@
 .chat-list li:hover { background: rgba(255,255,255,0.1); }
 .chat-list li.active { background: rgba(255,255,255,0.2); }
 
-/* chat area */
+
 .chat-area {
     flex: 1;
     display: flex;
@@ -71,6 +73,7 @@
     line-height: 1.4;
 }
 
+/* colouring for messages white and blue like imessage */
 .message.sent { background: #007bff; color: #fff; margin-left: auto; }
 .message.received { background: #e0e0e0; color: #000; margin-right: auto; }
 
@@ -99,18 +102,19 @@
     background: rgba(255,255,255,0.05);
 }
 
+/* flinders colouring for new chat selector */
 .new-chat select {
     width: calc(100% - 60px);
     padding: 0.25rem;
     margin-right: 0.25rem;
     background: #000F2C;
     color: #FFCC00;
-
-    border: 2px solid #FFCC00;    /* 🔶 yellow border */
-    border-radius: 6px;           /* 🔶 slightly rounded corners */
-    outline: none;                /* remove blue focus ring */
+    border: 2px solid #FFCC00;
+    border-radius: 6px;
+    outline: none;
 }
 
+/* 99% sure this has no effect */
 .new-chat select:focus {
     border-color: #FFCC00;
     box-shadow: 0 0 3px #FFCC00;
@@ -132,44 +136,43 @@
 .page-wrapper .sidebar .sidebar-header {
     display: flex !important;
     justify-content: flex-start !important;
-    color: c;
 }
 
+/* the start chat button is controlled by a global style for buttons this is all just to make it smaller and fit */
 #startChatBtn {
     position: absolute;
-    width: auto;                /* let the width fit the text instead of 100% */
-    min-width: 60px;            /* optional small minimum */
-    height: 28px;               /* ↓ was 45px */
-    line-height: 26px;          /* center text vertically */
-    padding: 0 12px;            /* less horizontal padding */
+    width: auto;
+    min-width: 60px;
+    height: 28px;
+    line-height: 26px;
+    padding: 0 12px;
     background: transparent;
-    border-radius: 20px;        /* smaller curve */
+    border-radius: 20px;
     cursor: pointer;
-    font-size: 14px;            /* smaller text */
+    font-size: 14px;
     font-weight: 600;
     border: 2px solid #FFCC00;
     overflow: hidden;
     z-index: 1;
 }
-/* Style each chat item like a messaging app inbox */
+/* style each chat item like a messaging app inbox */
 .chat-list li {
     padding: 0.75rem 1rem;
     cursor: pointer;
     transition: background 0.2s, box-shadow 0.2s;
-    border: 1px solid #FFCC00;   /* thin light border */
-    border-radius: 6px;                        /* rounded corners */
-    margin: 0.25rem 0.5rem;                    /* spacing between items */
-    background: rgba(255,255,255,0.05);        /* subtle contrast on dark sidebar */
+    border: 1px solid #FFCC00;
+    border-radius: 6px;
+    margin: 0.25rem 0.5rem;
+    background: rgba(255,255,255,0.05);
 }
 
 .chat-list li:hover {
-    background: rgba(255,255,255,0.1);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);      /* small lift on hover */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 .chat-list li.active {
     background: rgba(255,255,255,0.2);
-    border-color: rgba(255,255,255,0.4);       /* stronger border for active */
+    border-color: rgba(255,255,255,0.4);
 }
 
 .chat-list li.unseen {

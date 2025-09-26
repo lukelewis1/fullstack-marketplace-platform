@@ -8,6 +8,7 @@
 ?>
 
 <header>
+    <link rel="stylesheet" href="../styles/real_time_style.css" />
       <!-- Top Row: Logo, Search, User Info -->
       <div class="header-top">
         <div class="site-logo">
@@ -64,7 +65,12 @@
       <nav>
         <ul class="nav-links">
           <li><a href="../admin/admin_homepage.php" class="<?= ($currentPage == 'admin_homepage.php') ? 'active' : '' ?>">Home</a></li>
-          <li><a href="../messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">Messages</a></li>
+          <li>
+              <a href="../messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">
+                  Messages
+                  <span id="msg-badge" class="notification-dot hidden"></span>
+              </a>
+          </li>
           <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Skill Share</a></li>
             <div class="dropdown-content">
@@ -89,7 +95,7 @@
           </li>
         </ul>
       </nav>
-
+    <script src="../scripts/real_time_msg_script.js"></script>
     </header>
 
     
