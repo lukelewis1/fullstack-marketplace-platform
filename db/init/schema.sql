@@ -12,34 +12,35 @@ DROP TABLE IF EXISTS ActiveListings;
 DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users(
-    id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    user_name varchar(30) NOT NULL UNIQUE,
-    email varchar(50) NOT NULL UNIQUE,
-    hashed_password varchar(256) NOT NULL,
-    f_name varchar(25) NOT NULL,
-    l_name varchar(25) NOT NULL,
-    bio varchar(500),
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    user_name VARCHAR(30) NOT NULL UNIQUE,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    hashed_password VARCHAR(256) NOT NULL,
+    f_name VARCHAR(25) NOT NULL,
+    l_name VARCHAR(25) NOT NULL,
+    bio VARCHAR(500),
     dob DATETIME NOT NULL,
-    is_admin bool NOT NULL,
-    acc_status int NOT NULL,
-    role varchar(25) NOT NULL
+    is_admin BOOL NOT NULL,
+    acc_status INT NOT NULL,
+    role VARCHAR(25) NOT NULL,
+    fuss_credit INT NOT NULL
 );
 
 CREATE TABLE ActiveListings(
-    listing_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    user_id int NOT NULL,
-    price int NOT NULL CHECK (100 > price AND price > 0),
-    description varchar(100),
-    successful_exchanges int NOT NULL CHECK (successful_exchanges >= 0),
-    current_interests int NOT NULL CHECK (current_interests >= 0),
+    listing_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    user_id INT NOT NULL,
+    price INT NOT NULL CHECK (100 > price AND price > 0),
+    description VARCHAR(100),
+    successful_exchanges INT NOT NULL CHECK (successful_exchanges >= 0),
+    current_interests INT NOT NULL CHECK (current_interests >= 0),
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
 CREATE TABLE CurrentInterests(
-    ci_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    consumer_id int NOT NULL,
-    producer_id int NOT NULL,
-    listing int NOT NULL,
+    ci_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    consumer_id INT NOT NULL,
+    producer_id INT NOT NULL,
+    listing INT NOT NULL,
     FOREIGN KEY (consumer_id) REFERENCES Users(id),
     FOREIGN KEY (producer_id) REFERENCES  Users(id),
     FOREIGN KEY (listing) REFERENCES ActiveListings(listing_id),
@@ -47,33 +48,33 @@ CREATE TABLE CurrentInterests(
 );
 
 CREATE TABLE InactiveListings(
-    listing_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    user_id int NOT NULL,
-    price int NOT NULL CHECK (price > 0),
-    description varchar(100),
-    successful_transactions int NOT NULL CHECK (successful_transactions >= 0),
+    listing_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    user_id INT NOT NULL,
+    price INT NOT NULL CHECK (price > 0),
+    description VARCHAR(100),
+    successful_transactions INT NOT NULL CHECK (successful_transactions >= 0),
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
 CREATE TABLE Disputes(
-    dispute_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    initiator_id int NOT NULL,
-    respondent_id int NOT NULL,
-    listing_id int NOT NULL,
-    status varchar(20) NOT NULL,
+    dispute_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    initiator_id INT NOT NULL,
+    respondent_id INT NOT NULL,
+    listing_id INT NOT NULL,
+    status VARCHAR(20) NOT NULL,
     FOREIGN KEY (initiator_id) REFERENCES Users(id),
     FOREIGN KEY (respondent_id) REFERENCES Users(id),
     FOREIGN KEY (listing_id) REFERENCES ActiveListings(listing_id)
 );
 
 CREATE TABLE Messages(
-    conversation_id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    sender_id int NOT NULL,
-    receiver_id int NOT NULL,
+    conversation_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
     start_date DATETIME NOT NULL,
     end_date DATETIME NOT NULL,
-    unseen int,
-    unseen_2 int,
+    unseen INT,
+    unseen_2 INT,
     FOREIGN KEY (sender_id) REFERENCES Users(id),
     FOREIGN KEY (receiver_id) REFERENCES Users(id)
 );

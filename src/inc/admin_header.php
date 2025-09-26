@@ -5,6 +5,16 @@
 
     require_once __DIR__ . '/../inc/dbconn.inc.php';
     require_once __DIR__ . '/../inc/functions.php';
+
+    $sql = 'SELECT fuss_credit FROM Users WHERE user_name = ?;';
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('s', $_SESSION['username']);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $row = $result->fetch_assoc();
+    $credit_balance = $row['fuss_credit'];
+    $statement->close();
 ?>
 
 <header>
@@ -51,6 +61,7 @@
                 }
                 ?>
             </span>
+              <span>FUSS Credit Balance: <?php echo $credit_balance; ?></span>
           </div>
           <div class="avatar">
             <a href="../user/profile.php">
