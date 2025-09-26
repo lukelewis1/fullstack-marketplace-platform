@@ -9,6 +9,7 @@ $dob = $_POST['dob'] ?? null;
 $admin = false;
 $acc_status = 0;
 $role = $_POST['role'] ?? null;
+$credits = 5;
 
 if ($username != null) {
     require_once './inc/dbconn.inc.php';
@@ -16,15 +17,14 @@ if ($username != null) {
     $hashed_password = hash('sha256', $password);
 
     $sql = "
-    INSERT INTO Users (user_name, email, hashed_password, f_name, l_name, dob, is_admin, acc_status, role) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
-    ";
+    INSERT INTO Users (user_name, email, hashed_password, f_name, l_name, dob, is_admin, acc_status, role, fuss_credit) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     $statement = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($statement, $sql);
     mysqli_stmt_bind_param(
-            $statement, 'ssssssiis',
-            $username, $email, $hashed_password, $f_name, $l_name, $dob, $admin, $acc_status, $role
+            $statement, 'ssssssiisi',
+            $username, $email, $hashed_password, $f_name, $l_name, $dob, $admin, $acc_status, $role, $credits
     );
 
     if (!mysqli_stmt_execute($statement)) {
