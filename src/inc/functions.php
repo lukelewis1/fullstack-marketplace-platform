@@ -23,9 +23,9 @@ function include_header($username) {
         : 'user-header.php';
 }
 
+// Function to get profile image path using username
 function get_profile_image($username) {
     global $conn;
-    $img = "../images/user_pfp/default.jpg";
 
     if ($username) {
         $sql = "SELECT id FROM Users WHERE user_name = ?";
@@ -37,9 +37,28 @@ function get_profile_image($username) {
         mysqli_stmt_close($stmt);
 
         if (!empty($id)) {
-            $img = "../images/user_pfp/{$id}.jpg";
+            $img = "../images/user_pfp/{$id}.png"; // Handle different file types
         }
     }
     return $img;
+}
+
+// Function to get user role using userid
+function get_role($userid){
+    global $conn;
+
+    if ($userid) {
+        $sql = "SELECT role FROM Users WHERE user_name = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, 's', $userid);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $role);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt);
+        return $role ?? 'Student'; // fallback if role is null
+    } else {
+        return 'Student';
+    }
+
 }
 ?>

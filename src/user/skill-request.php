@@ -23,8 +23,6 @@
      ?>
 
     <div class="page-wrapper">
-
-
     <main class="content">
       <h1>Skill Request</h1>
     </main>

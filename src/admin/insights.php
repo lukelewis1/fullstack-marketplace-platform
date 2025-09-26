@@ -23,8 +23,11 @@ if (!isset($_SESSION['username'])) {
      ?>
 
     <!-- Main Content -->
-     <h1> Insights </h1>
+     
 
-    <main></main>
+    <main class="content">
+      <h1> Insights </h1>
+    </main>
+    
   </body>
 </html>

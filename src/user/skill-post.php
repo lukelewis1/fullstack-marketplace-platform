@@ -24,12 +24,9 @@
 
      ?>
 
-    <div class="page-wrapper">
-
     <main class="content">
       <h1>Skill Post</h1>
     </main>
-  </div>
 
     <script src="../scripts/global_scripts.js"></script>
     <script src="../scripts/script.js"></script>
