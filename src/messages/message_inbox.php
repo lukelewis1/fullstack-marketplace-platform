@@ -1,4 +1,5 @@
 <?php
+// might be redundant for now but was default put at all pages for session handling
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
