@@ -4,6 +4,9 @@
     }
 
     $currentPage = basename($_SERVER['PHP_SELF']);
+
+    require_once __DIR__ . '/../inc/dbconn.inc.php';
+    require_once __DIR__ . '/../inc/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +19,8 @@
   </head>
   <body>
     <?php 
-     include('../inc/user-header.php');
-     ?>
+     include_header($_SESSION['username'] ?? null);
+     ?> 
   
     <!-- Main Content -->
      <div class="page-wrapper">

@@ -26,7 +26,7 @@ if (!isset($_SESSION['username'])) {
   ?>
     
     
-    <main>
+    <main class="content">
       <h1> User Home Page </h1>
     </main>
      

@@ -3,14 +3,14 @@
       session_start();
     }
 
-    $currentPage = basename($_SERVER['PHP_SELF']);
+    require_once __DIR__ . '/../inc/dbconn.inc.php';
 ?>
 
 <header>
       <!-- Top Row: Logo, Search, User Info -->
       <div class="header-top">
         <div class="site-logo">
-          <a href="../user/user-homepage.php">
+          <a href="../admin/admin-homepage.php">
             <img
               src="/images/site/flinders-logo.png"
               alt="Flinders Logo"
@@ -34,7 +34,6 @@
             <span class="user-name"><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </span>
             <span class="user-role">
               <?php
-                include('../inc/dbconn.inc.php');
 
                 if (isset($_SESSION['username'])) {
                     $sql = "SELECT role FROM Users WHERE user_name = ?";
@@ -81,7 +80,7 @@
       <!-- Navbar Row -->
       <nav>
         <ul class="nav-links">
-          <li><a href="../user/user-homepage.php" class="<?= ($currentPage == 'user-homepage.php') ? 'active' : '' ?>">Home</a></li>
+          <li><a href="../admin/admin-homepage.php" class="<?= ($currentPage == 'admin-homepage.php') ? 'active' : '' ?>">Home</a></li>
           <li><a href="../messages/message-inbox.php" class="<?= ($currentPage == 'message-inbox.php') ? 'active' : '' ?>">Messages</a></li>
           <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill-request.php') ? 'active' : '' ?>">Skill Share</a></li>

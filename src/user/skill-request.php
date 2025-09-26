@@ -4,6 +4,9 @@
     }
 
     $currentPage = basename($_SERVER['PHP_SELF']);
+
+    require_once __DIR__ . '/../inc/dbconn.inc.php';
+    require_once __DIR__ . '/../inc/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,28 +19,7 @@
   </head>
   <body>
     <?php 
-     
-
-     require_once '../inc/dbconn.inc.php';
-     $sql = 'SELECT is_admin FROM Users WHERE user_name = ?;';
-
-    $statement = mysqli_stmt_init($conn);
-    mysqli_stmt_prepare($statement, $sql);
-    mysqli_stmt_bind_param($statement, 's', $_SESSION['username']);
-
-    if (mysqli_stmt_execute($statement)) {
-        $result = mysqli_stmt_get_result($statement);
-        $row = $result->fetch_assoc();
-        if ($row) {
-            if ($row['is_admin'] === 1) {
-                include('../inc/admin-header.php');
-            } else {
-                include('../inc/user-header.php');
-            }
-        }
-    } else {
-        echo mysqli_error($conn);
-    }
+     include_header($_SESSION['username'] ?? null);
      ?>
 
     <div class="page-wrapper">

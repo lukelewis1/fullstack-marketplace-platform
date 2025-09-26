@@ -4,6 +4,8 @@
     }
 
     $currentPage = basename($_SERVER['PHP_SELF']);
+
+    require_once __DIR__ . '/../inc/dbconn.inc.php';
 ?>
 
 <header>
@@ -34,7 +36,6 @@
             <span class="user-name"><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </span>
             <span class="user-role">
               <?php
-                include('../inc/dbconn.inc.php');
 
                 if (isset($_SESSION['username'])) {
                     $sql = "SELECT role FROM Users WHERE user_name = ?";
