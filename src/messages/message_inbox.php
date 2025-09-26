@@ -20,7 +20,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <aside class="sidebar">
         <div class="sidebar-header">Chats</div>
 
-        <!-- New Chat UI -->
+        <!-- new chat drop down menu -->
         <div class="new-chat">
             <select id="friendSelect">
                 <option value="">-- Start new chat --</option>
@@ -31,6 +31,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <ul class="chat-list" id="chatList"></ul>
     </aside>
 
+
+    <!-- list of chats -->
     <main class="chat-area">
         <div class="chat-header" id="chatHeader">Select a conversation</div>
         <div class="chat-messages" id="chatMessages"></div>

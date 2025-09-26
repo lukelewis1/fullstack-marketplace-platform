@@ -1,7 +1,3 @@
-// =======================
-// Message Inbox Frontend
-// =======================
-
 let currentConv = null;
 
 const chatList      = document.getElementById('chatList');
@@ -10,9 +6,7 @@ const chatMessages  = document.getElementById('chatMessages');
 const messageInput  = document.getElementById('messageInput');
 const sendBtn       = document.getElementById('sendBtn');
 
-// -----------------------
-// Load sidebar chats
-// -----------------------
+// Loads in conversations that are returned from get_conversations.php in json format
 function loadConversations() {
     fetch('get_conversations.php')
         .then(r => {
@@ -21,6 +15,7 @@ function loadConversations() {
         })
         .then(data => {
             chatList.innerHTML = '';
+            // No conversations
             if (data.length === 0) {
                 const li = document.createElement('li');
                 li.textContent = 'No conversations';
@@ -28,6 +23,8 @@ function loadConversations() {
                 chatList.appendChild(li);
                 return;
             }
+            // Load in each conversation as a list item with the username of the other person
+            // if a conversation has an unseen message adds unseen class to list item which is defined in msg_styles.css
             data.forEach(conv => {
                 const li = document.createElement('li');
                 li.textContent = conv.other_name;
@@ -36,8 +33,6 @@ function loadConversations() {
                 if (Number(conv.unseen) > 0) {
                     li.classList.add('unseen');
                 }
-
-
                 li.addEventListener('click', () =>
                     selectConversation(conv.conversation_id, conv.other_name, li)
                 );
@@ -48,9 +43,7 @@ function loadConversations() {
 }
 loadConversations();
 
-// -----------------------
-// Select a conversation
-// -----------------------
+//
 function selectConversation(id, name, li) {
     currentConv = id;
     [...chatList.children].forEach(c => c.classList.remove('active'));
@@ -58,7 +51,7 @@ function selectConversation(id, name, li) {
     chatHeader.textContent = name;
     fetchMessages();
 
-    // mark as seen then refresh list so dot disappears
+    // when user selects a conversation marked as unseen calls mark_seen.php which updates db and turns off the unseen flag.
     fetch('mark_seen.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -68,9 +61,7 @@ function selectConversation(id, name, li) {
 
 
 
-// -----------------------
-// Fetch messages
-// -----------------------
+// constructs the conversation between two users
 function fetchMessages() {
     if (!currentConv) return;
 
@@ -90,7 +81,7 @@ function fetchMessages() {
                 empty.textContent = 'No messages yet';
                 chatMessages.appendChild(empty);
             }
-
+            // each new message is its own div element
             msgs.forEach(m => {
                 const div = document.createElement('div');
                 div.classList.add('message');
@@ -104,14 +95,10 @@ function fetchMessages() {
         .catch(err => console.error(err));
 }
 
-// -----------------------
-// Poll for new messages
-// -----------------------
-setInterval(fetchMessages, 3000);
+// live polling every 1 second for non-refresh live messages
+setInterval(fetchMessages, 1000);
 
-// -----------------------
-// Send a message
-// -----------------------
+// send message function uses the send_messages.php to insert the message in the db
 function sendMessage() {
     const text = messageInput.value.trim();
     if (!text || !currentConv) return;
@@ -131,18 +118,16 @@ function sendMessage() {
         })
         .catch(err => console.error(err));
 }
-
+// sends on click event
 sendBtn.addEventListener('click', sendMessage);
 messageInput.addEventListener('keypress', e => {
     if (e.key === 'Enter') sendMessage();
 });
 
-// -------------------------------
-// Populate friend dropdown & start chat
-// -------------------------------
 const friendSelect = document.getElementById('friendSelect');
 const startChatBtn = document.getElementById('startChatBtn');
 
+// populates the drop down menu for starting new conversations with all friends
 function loadFriends() {
     fetch('get_friends.php')
         .then(r => r.json())
@@ -158,6 +143,7 @@ function loadFriends() {
         .catch(err => console.error(err));
 }
 
+// if a chat doesn't already exist between friends a new one is create
 startChatBtn.addEventListener('click', () => {
     const fid = friendSelect.value;
     if (!fid) return;

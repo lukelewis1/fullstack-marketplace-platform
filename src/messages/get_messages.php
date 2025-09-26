@@ -5,6 +5,7 @@ require_once '../inc/dbconn.inc.php';
 $conv = $_GET['conversation_id'] ?? null;
 if(!$conv){ http_response_code(400); exit; }
 
+// gets the messages for a given conversation
 $sql = "
 SELECT cm.msg_id, cm.sender_id, u.user_name, cm.message_text, cm.sent_at
 FROM ChatMessages cm
@@ -17,6 +18,7 @@ $stmt->bind_param('i', $conv);
 $stmt->execute();
 $res = $stmt->get_result();
 
+// puts all messages in a list then into json to be inserted as divs in msg_style.js
 $msgs = [];
 while ($r = $res->fetch_assoc()) {
     $msgs[] = $r;

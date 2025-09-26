@@ -5,7 +5,7 @@ require_once '../inc/dbconn.inc.php';
 $user = $_SESSION['username'] ?? null;
 if(!$user){ http_response_code(401); exit; }
 
-// get current user id safely
+// get current user id
 $stmt = $conn->prepare("SELECT id FROM Users WHERE user_name=?");
 $stmt->bind_param('s',$user);
 $stmt->execute();
@@ -13,6 +13,8 @@ $stmt->bind_result($uid);
 if(!$stmt->fetch()){ http_response_code(403); exit('User not found'); }
 $stmt->close();
 
+// returns a list of conversations with each conversation being a new row with the other persons username,
+// timestamp of most recent message and the unseen status of the message
 $sql = "
 SELECT m.conversation_id,
        CASE WHEN m.sender_id = ? THEN u2.user_name ELSE u1.user_name END AS other_name,
@@ -35,6 +37,7 @@ $stmt->bind_param('iiii', $uid, $uid, $uid, $uid);
 $stmt->execute();
 $res = $stmt->get_result();
 
+// returns the conversations in json format so they can be populated as list items in msg_script.js
 $convs = [];
 while($row = $res->fetch_assoc()) $convs[] = $row;
 
