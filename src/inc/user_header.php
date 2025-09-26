@@ -7,6 +7,16 @@
 
     require_once __DIR__ . '/../inc/dbconn.inc.php';
     require_once __DIR__ . '/../inc/functions.php';
+
+    $sql = 'SELECT fuss_credit FROM Users WHERE user_name = ?;';
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('s', $_SESSION['username']);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $row = $result->fetch_assoc();
+    $credit_balance = $row['fuss_credit'];
+    $statement->close();
 ?>
 
 <header>
@@ -37,6 +47,7 @@
           <div class="user-name-role">
             <span class="user-name"><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </span>
             <span class="user-role"> <?php echo htmlspecialchars(get_role($_SESSION['username'] ?? '')); ?> </span>
+              <span>FUSS Credit Balance: <?php echo $credit_balance; ?></span>
           </div>
           <div class="avatar">
             <a href="../user/profile.php">
