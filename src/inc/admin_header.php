@@ -11,7 +11,7 @@
       <!-- Top Row: Logo, Search, User Info -->
       <div class="header-top">
         <div class="site-logo">
-          <a href="../admin/admin-homepage.php">
+          <a href="../admin/admin_homepage.php">
             <img
               src="/images/site/flinders-logo.png"
               alt="Flinders Logo"
@@ -63,23 +63,23 @@
       <!-- Navbar Row -->
       <nav>
         <ul class="nav-links">
-          <li><a href="../admin/admin-homepage.php" class="<?= ($currentPage == 'admin-homepage.php') ? 'active' : '' ?>">Home</a></li>
-          <li><a href="../messages/message-inbox.php" class="<?= ($currentPage == 'message-inbox.php') ? 'active' : '' ?>">Messages</a></li>
+          <li><a href="../admin/admin_homepage.php" class="<?= ($currentPage == 'admin_homepage.php') ? 'active' : '' ?>">Home</a></li>
+          <li><a href="../messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">Messages</a></li>
           <div class="dropdown">
-            <li><a  class="<?= ($currentPage == 'skill-request.php') ? 'active' : '' ?>">Skill Share</a></li>
+            <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Skill Share</a></li>
             <div class="dropdown-content">
-              <a href="../user/skill-post.php">Post Service</a>
-              <a href="../user/skill-request.php"> Request Service </a>
-              <a href="../user/skill-search.php"> Skill Search </a>
+              <a href="../user/skill_post.php">Post Service</a>
+              <a href="../user/skill_request.php"> Request Service </a>
+              <a href="../user/skill_search.php"> Skill Search </a>
             </div>
           </div>
           
           <div class="dropdown">
-            <li><a  class="<?= ($currentPage == 'skill-request.php') ? 'active' : '' ?>">Dashboard</a></li>
+            <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Dashboard</a></li>
             <div class="dropdown-content">
               <a href="../admin/insights.php">Insights</a>
-              <a href="../admin/user-management.php"> User Management </a>
-              <a href="../admin/content-moderation.php"> Content Moderation </a>
+              <a href="../admin/user_management.php"> User Management </a>
+              <a href="../admin/content_moderation.php"> Content Moderation </a>
             </div>
           </div>
 
