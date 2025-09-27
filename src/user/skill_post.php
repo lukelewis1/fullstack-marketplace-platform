@@ -79,6 +79,8 @@
 
               <!-- Section for setting availability -->
 
+              <label id="avail-label">Select your Availability for this Service/Skill:</label>
+
               <div class="scheduler">
 
                   <div class="day" data-day="monday">
