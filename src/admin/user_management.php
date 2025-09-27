@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Home Page</title>
     <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="../styles/admin_table.css" />
+    <link rel="stylesheet" href="../styles/user_management.css" />
   </head>
   <body>
 
@@ -28,7 +28,21 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Main Content -->
      <main class="content">
-      <h1> User Management </h1>
+  
+      <search> 
+      <div class="search-bar admin-search-bar">
+        <form action="#" method="get">
+          <input
+          type="search"
+          id="search-input"
+          name="q"
+          placeholder="Search"
+                  />
+        </form>
+      </div>
+     
+     </search>
+      
 
       <div class="table-wrapper">
         <table>
@@ -40,7 +54,15 @@ if (!isset($_SESSION['username'])) {
               <th>Email Address</th>
               <th>Role</th>
               <th>Status</th>
-              <th></th> <!-- Empty header for checkbox -->
+              <th>
+                <div class="dropdown admin-filter-dropdown action-dropdown">
+                  <button>Action</button>
+                  <div class="dropdown-content">
+                    <a> View </a>
+                    <a> Edit </a>
+                    <a> Delete </a>
+                  </div>
+              </div> </th> <!-- Empty header for checkbox -->
             </tr>
           </thead>
           <tbody>
