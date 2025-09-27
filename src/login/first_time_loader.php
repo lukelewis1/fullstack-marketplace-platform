@@ -54,6 +54,8 @@ if (!mysqli_stmt_execute($statement)) {
     echo mysqli_error($conn);
 }
 
+$redirect_page = '../user/user_homepage.php';
+
 mysqli_close($conn);
 
 include __DIR__ . '/../inc/loader.html';
