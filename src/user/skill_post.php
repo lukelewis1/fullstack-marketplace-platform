@@ -77,6 +77,89 @@
                   </fieldset>
               </div>
 
+              <!-- Section for setting availability -->
+
+              <div class="scheduler">
+
+                  <div class="day" data-day="monday">
+                      <label>Monday</label>
+                      <div class="timeslot">
+                          <div class="slot">
+                              <input type="time" name="monday_start[]">
+                              <input type="time" name="monday_end[]">
+                          </div>
+                      </div>
+                      <button type="button" class="add-slot">+ Add Timeslot</button>
+                  </div>
+
+                  <div class="day" data-day="tuesday">
+                      <label>Tuesday</label>
+                      <div class="timeslot">
+                          <div class="slot">
+                              <input type="time" name="tuesday_start[]">
+                              <input type="time" name="tuesday_end[]">
+                          </div>
+                      </div>
+                      <button type="button" class="add-slot">+ Add Timeslot</button>
+                  </div>
+
+                  <div class="day" data-day="wednesday">
+                      <label>Wednesday</label>
+                      <div class="timeslot">
+                          <div class="slot">
+                              <input type="time" name="wednesday_start[]">
+                              <input type="time" name="wednesday_end[]">
+                          </div>
+                      </div>
+                      <button type="button" class="add-slot">+ Add Timeslot</button>
+                  </div>
+
+                  <div class="day" data-day="thursday">
+                      <label>Thursday</label>
+                      <div class="timeslot">
+                          <div class="slot">
+                              <input type="time" name="thursday_start[]">
+                              <input type="time" name="thursday_end[]">
+                          </div>
+                      </div>
+                      <button type="button" class="add-slot">+ Add Timeslot</button>
+                  </div>
+
+                  <div class="day" data-day="friday">
+                      <label>Friday</label>
+                      <div class="timeslot">
+                          <div class="slot">
+                              <input type="time" name="friday_start[]">
+                              <input type="time" name="friday_end[]">
+                          </div>
+                      </div>
+                      <button type="button" class="add-slot">+ Add Timeslot</button>
+                  </div>
+
+                  <div class="day" data-day="saturday">
+                      <label>Saturday</label>
+                      <div class="timeslot">
+                          <div class="slot">
+                              <input type="time" name="saturday_start[]">
+                              <input type="time" name="saturday_end[]">
+                          </div>
+                      </div>
+                      <button type="button" class="add-slot">+ Add Timeslot</button>
+                  </div>
+
+                  <div class="day" data-day="sunday">
+                      <label>Sunday</label>
+                      <div class="timeslot">
+                          <div class="slot">
+                              <input type="time" name="sunday_start[]">
+                              <input type="time" name="sunday_end[]">
+                          </div>
+                      </div>
+                      <button type="button" class="add-slot">+ Add Timeslot</button>
+                  </div>
+
+              </div>
+
               <div class="submit-btn">
                   <button class="btn" type="submit" name="full-reg">Post</button>
               </div>
@@ -86,6 +169,8 @@
     </main>
 
     <script src="../scripts/global_scripts.js"></script>
+    <script src="skill_post_handler/skill_post_script.js"></script>
     <script src="../scripts/script.js"></script>
+
   </body>
 </html>
