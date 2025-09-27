@@ -2,6 +2,7 @@ const titleInput = document.getElementById('title');
 const topicInput = document.getElementById('topic');
 const lenError = document.querySelectorAll('.posting-err');
 
+//Checks for if inputs are too long
 titleInput.addEventListener('input', () => {
     if (titleInput.value.length > 50) {
         lenError[0].style.display = 'block';
@@ -19,7 +20,6 @@ topicInput.addEventListener('input', () => {
 });
 
 // Dynamic characters left handling
-
 const descriptionInput = document.getElementById('description');
 const charsLeft = document.getElementById('char-count');
 

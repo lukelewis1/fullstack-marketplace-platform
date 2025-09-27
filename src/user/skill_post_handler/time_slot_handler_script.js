@@ -1,3 +1,4 @@
+// Dynamically adds new timeslots for each day so users can have more than one timeslot on a given day
 document.querySelectorAll('.day').forEach(dayBlock => {
     dayBlock.querySelector('.add-slot').addEventListener('click', () => {
         const timeslots = dayBlock.querySelector('.timeslot');

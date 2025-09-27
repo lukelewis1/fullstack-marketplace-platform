@@ -26,17 +26,20 @@
      ?>
 
       <div id="post-page">
+
+          <!-- Main form containing basic information needed for a service object -->
+
           <form id="post-form" method="post" action="skill_post_handler/skill_post_loader.php">
 
               <div class="posting-field">
                   <label for="title">Service/Skill Name:</label>
-                  <input type="text" id="title" name="skill-name" required>
+                  <input type="text" id="title" name="skill-name" required maxlength="50">
                   <div class="posting-err">Max 50 Characters</div>
               </div>
 
               <div class="posting-field">
                   <label for="topic">Relevant Topic/Degree:</label>
-                  <input type="text" id="topic" name="topic-name" required>
+                  <input type="text" id="topic" name="topic-name" required maxlength="60">
                   <div class="posting-err">Max 60 Characters</div>
               </div>
 

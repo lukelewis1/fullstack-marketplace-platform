@@ -34,6 +34,7 @@ $statement->close();
 
 $service_id = get_lid($uid, $name);
 
+// populates list of lists containing each days start and end times
 $days = [
     'monday'    => [$_POST['monday_start'] ?? [], $_POST['monday_end'] ?? []],
     'tuesday'   => [$_POST['tuesday_start'] ?? [], $_POST['tuesday_end'] ?? []],
