@@ -112,3 +112,7 @@ select {
     margin-bottom: 25px;
 }
 
+.posting-err {
+    color: red !important;
+    display: none;
+}

@@ -31,11 +31,13 @@
               <div class="posting-field">
                   <label for="title">Service/Skill Name:</label>
                   <input type="text" id="title" name="skill-name" required>
+                  <div class="posting-err">Max 50 Characters</div>
               </div>
 
               <div class="posting-field">
                   <label for="topic">Relevant Topic/Degree:</label>
                   <input type="text" id="topic" name="topic-name" required>
+                  <div class="posting-err">Max 60 Characters</div>
               </div>
 
               <div class="posting-field">
@@ -51,13 +53,13 @@
               </div>
 
               <div class="posting-field">
-                  <label for="description">Description of Skill/Service:</label>
-                  <textarea id="description" rows="15" cols="75" name="description" placeholder="Describe your skill or service in detail..."></textarea>
+                  <label for="description">Description of Skill/Service: <span id="char-count">250</span> Characters Remaining</label>
+                  <textarea id="description" rows="15" cols="75" name="description" maxlength="250" placeholder="Describe your skill or service in detail..."></textarea>
               </div>
 
               <div class="posting-field">
                   <label for="price">Enter the Amount of FUSS Credits for This Service:</label>
-                  <input type="number" id="price" name="price-name" required>
+                  <input type="number" id="price" name="price-name" required min="1" max="99">
               </div>
 
               <div class="posting-field">
