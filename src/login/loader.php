@@ -85,30 +85,7 @@ mysqli_close($conn);
     <path class="pl__worm" d="M92,15.492S78.194,4.967,66.743,16.887c-17.231,17.938-28.26,96.974-28.26,96.974L119.85,59.892l-99-31.588,57.528,89.832L97.8,19.349,13.636,88.51l89.012,16.015S81.908,38.332,66.1,22.337C50.114,6.156,36,15.492,36,15.492a56,56,0,1,0,56,0Z" fill="none" stroke="url(#pl-grad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="44 1111" stroke-dashoffset="10" />
 </svg>
 
-<script>
-    function randomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    let dynamicMsg = document.getElementById('msg');
-
-    messages = [
-        'Submitting Extension Requests',
-        'Skipping Lectures',
-        'Watching Lecture Recordings on 2x speed',
-        'Asking ChatGPT for Help',
-        'Complaining about Group Assignments',
-        'Doom Scrolling TikTok...',
-        'Asking for Peoples LinkedIn',
-        'Praying for the Jane Street Internship'
-    ]
-
-    setInterval(() => {
-        const idx = randomInt(0, messages.length - 1);
-        dynamicMsg.textContent = messages[idx];
-    }, 1500);
-
-</script>
+<script src="../scripts/loader_script.js"></script>
 
 </body>
 </html>
