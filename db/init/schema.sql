@@ -36,7 +36,8 @@ CREATE TABLE Listings(
     successful_exchanges INT NOT NULL CHECK (successful_exchanges >= 0),
     is_negotiable BOOL NOT NULL,
     type ENUM('tutoring', 'life_skill', 'tech_support', 'technical', 'practical') NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES Users(id)
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    UNIQUE KEY service_owner(user_id, title)
 );
 
 CREATE TABLE Disputes(
