@@ -169,7 +169,7 @@
 
           </form>
       </div>
-
+    <script src="skill_post_handler/min_timeslots_script.js"></script>
     <script src="../scripts/global_scripts.js"></script>
     <script src="skill_post_handler/time_slot_handler_script.js"></script>
     <script src="skill_post_handler/skill_post_validation_script.js"></script>
