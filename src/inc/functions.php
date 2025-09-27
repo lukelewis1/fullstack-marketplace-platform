@@ -61,4 +61,19 @@ function get_role($userid){
     }
 
 }
+
+// Function which returns the user_id for a given username
+function get_uid($username) {
+    $sql = 'SELECT id FROM Users WHERE user_name = ?;';
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('s', $username);
+    $statement->execute();
+    $statement->bind_result($uid);
+    $statement->fetch();
+    $statement->close();
+    return $uid;
+}
+{
+
+}
 ?>
