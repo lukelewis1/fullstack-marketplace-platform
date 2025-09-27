@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS Friendships;
 DROP TABLE IF EXISTS ChatMessages;
 DROP TABLE IF EXISTS Messages;
 DROP TABLE IF EXISTS Disputes;
-DROP TABLE IF EXISTS ActiveListings;
+DROP TABLE IF EXISTS Listings;
 DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users(
@@ -26,7 +26,7 @@ CREATE TABLE Users(
     fuss_credit INT NOT NULL
 );
 
-CREATE TABLE ActiveListings(
+CREATE TABLE Listings(
     listing_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_id INT NOT NULL,
     price INT NOT NULL CHECK (100 > price AND price > 0),
@@ -47,7 +47,7 @@ CREATE TABLE Disputes(
     status VARCHAR(20) NOT NULL,
     FOREIGN KEY (initiator_id) REFERENCES Users(id),
     FOREIGN KEY (respondent_id) REFERENCES Users(id),
-    FOREIGN KEY (listing_id) REFERENCES ActiveListings(listing_id)
+    FOREIGN KEY (listing_id) REFERENCES Listings(listing_id)
 );
 
 CREATE TABLE Messages(
@@ -93,7 +93,7 @@ CREATE TABLE Bookings (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (booker_id) REFERENCES Users(id),
     FOREIGN KEY (service_provider_id) REFERENCES Users(id),
-    FOREIGN KEY (service_id) REFERENCES ActiveListings(listing_id)
+    FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
 );
 
 CREATE TABLE Availability (
@@ -101,5 +101,5 @@ CREATE TABLE Availability (
     service_id INT NOT NULL,
     start DATETIME NOT NULL,
     end DATETIME NOT NULL,
-    FOREIGN KEY (service_id) REFERENCES ActiveListings(listing_id)
+    FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
 );
