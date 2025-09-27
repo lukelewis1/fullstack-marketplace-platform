@@ -63,4 +63,8 @@ foreach ($days as $dayName => [$startsRaw, $endsRaw]) {
     }
 }
 
+$redirect_page = '../user_homepage.php';
+
+include __DIR__ . '/../../inc/loader.html';
+
 
