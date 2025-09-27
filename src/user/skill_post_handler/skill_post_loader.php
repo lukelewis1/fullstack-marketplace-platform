@@ -53,7 +53,7 @@ foreach ($days as $dayName => [$startsRaw, $endsRaw]) {
             $endTime = $endsRaw[$i] ?? '';
 
             $sql = 'INSERT INTO Availability(service_id, day, start, end) 
-                VALUES (?, ?, ?, ?);';
+                    VALUES (?, ?, ?, ?);';
 
             $statement = $conn->prepare($sql);
             $statement->bind_param('isss', $service_id, $dayName, $startTime, $endTime);

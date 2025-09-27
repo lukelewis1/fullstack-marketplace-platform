@@ -16,7 +16,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>User Home Page</title>
       <link rel="stylesheet" href="../styles/style.css" />
-      <link rel="stylesheet" href="skill_post_handler/skill_post_styles.css" />
+      <link rel="stylesheet" href="skill_post_handler/skill_post_style.css" />
   </head>
   <body>
     <?php
@@ -25,7 +25,6 @@
 
      ?>
 
-    <main class="content">
       <div id="post-page">
           <form id="post-form" method="post" action="skill_post_handler/skill_post_loader.php">
 
@@ -53,7 +52,7 @@
 
               <div class="posting-field">
                   <label for="description">Description of Skill/Service:</label>
-                  <textarea id="description" rows="15" cols="45" name="description" placeholder="Describe your skill or service in detail..."></textarea>
+                  <textarea id="description" rows="15" cols="75" name="description" placeholder="Describe your skill or service in detail..."></textarea>
               </div>
 
               <div class="posting-field">
@@ -168,10 +167,10 @@
 
           </form>
       </div>
-    </main>
 
     <script src="../scripts/global_scripts.js"></script>
-    <script src="skill_post_handler/skill_post_script.js"></script>
+    <script src="skill_post_handler/time_slot_handler_script.js"></script>
+    <script src="skill_post_handler/skill_post_validation_script.js"></script>
     <script src="../scripts/script.js"></script>
 
   </body>
