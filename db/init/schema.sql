@@ -99,7 +99,8 @@ CREATE TABLE Bookings (
 CREATE TABLE Availability (
     availability_id INT AUTO_INCREMENT PRIMARY KEY,
     service_id INT NOT NULL,
-    start DATETIME NOT NULL,
-    end DATETIME NOT NULL,
+    day ENUM('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') NOT NULL,
+    start TIME NOT NULL,
+    end TIME NOT NULL,
     FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
 );
