@@ -4,12 +4,12 @@
 .page-wrapper {
   display: flex; /* places sidebar and content in a row */
   min-height: 100vh; /* make sure it fills the viewport */
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .content {
   flex: 1;
-  padding-left: 20px;
+  padding: 20px;
   padding-top: 0px;
   background: #f1f5f9;
 }
@@ -30,7 +30,7 @@ span,
 input,
 button,
 a {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Header Grid: top row + navbar row */
@@ -63,6 +63,7 @@ header {
   gap: 5px;
   width: 350px;
 }
+
 .search-bar input {
   flex: 1;
   height: 35px;
