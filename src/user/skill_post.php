@@ -27,7 +27,7 @@
 
     <main class="content">
       <div id="post-page">
-          <form id="post-form">
+          <form id="post-form" method="post" action="skill_post_handler/skill_post_loader.php">
 
               <div class="posting-field">
                   <label for="title">Service/Skill Name:</label>
@@ -53,7 +53,7 @@
 
               <div class="posting-field">
                   <label for="description">Description of Skill/Service:</label>
-                  <textarea id="description" rows="15" cols="45" placeholder="Describe your skill or service in detail..."></textarea>
+                  <textarea id="description" rows="15" cols="45" name="description" placeholder="Describe your skill or service in detail..."></textarea>
               </div>
 
               <div class="posting-field">
