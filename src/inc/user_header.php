@@ -62,8 +62,8 @@
       <!-- Navbar Row -->
       <nav>
         <ul class="nav-links">
-          <li><a href="../user/user_homepage.php" class="<?= ($currentPage == 'user_homepage.php') ? 'active' : '' ?>">Home</a></li>
-          <li><a href="../messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">
+          <li><a href="/user/user_homepage.php" class="<?= ($currentPage == 'user_homepage.php') ? 'active' : '' ?>">Home</a></li>
+          <li><a href="/messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">
                   Messages
                   <span id="msg-badge" class="notification-dot hidden"></span>
               </a>
@@ -71,10 +71,19 @@
           <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Skill Share</a></li>
             <div class="dropdown-content">
-              <a href="../user/skill_post.php">Post Service</a>
-              <a href="../user/skill_request.php"> Request Service </a>
-              <a href="../user/skill_search.php"> Skill Search </a>
+              <a href="/user/skill_post.php">Post Service</a>
+              <a href="/user/skill_request.php"> Request Service </a>
+              <a href="/user/skill_search.php"> Skill Search </a>
             </div>
+
+              <div class="dropdown">
+                  <li><a class="<?= ($currentPage == 'friends.php') ? 'active' : '' ?>">Friends</a></li>
+                  <div class="dropdown-content">
+                      <a href="/user/friends/friends.php">Friends</a>
+                      <a href="/user/friends/add_friends.php">Add Friend</a>
+                  </div>
+              </div>
+
           </div>
 
           <li class="credits" 
