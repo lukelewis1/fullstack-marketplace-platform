@@ -66,12 +66,12 @@
                       <legend>Is the Price Negotiable?</legend>
 
                       <label>
-                          <input type="radio" name="negotiable" value="yes" required>
+                          <input type="radio" name="negotiable" value="1" required>
                           Yes
                       </label>
 
                       <label>
-                          <input type="radio" name="negotiable" value="no">
+                          <input type="radio" name="negotiable" value="0">
                           No
                       </label>
                   </fieldset>
