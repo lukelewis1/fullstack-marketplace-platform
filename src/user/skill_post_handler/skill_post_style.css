@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+select {
+    width: 100%;
+    padding: 0.4em;
+}
+
+.btn{
+    margin-top: 25px;
+    position: relative;
+    width: 50%;
+    height: 45px;
+    background: transparent;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #FFCC00;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.submit-btn {
+    color: #000F2C;
+    text-align: center;
+}
+
+.btn::before{
+    content: "";
+    position: absolute;
+    height: 300%;
+    width: 100%;
+    background: linear-gradient(#FFCC00, #FFCC00, #FFCC00, #FFCC00);
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn:hover:before{
+    top: 0;
+}
+
+.scheduler {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    text-align: center;
+}
+
+.day label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.slot {
+    margin-bottom: 0.3rem;
+}
+
+.add-slot {
+    font-size: 0.8rem;
+    color: #0055cc;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+#avail-label {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#post-page {
+    font-family: 'Poppins', sans-serif;
+    color: #FFCC00;
+    max-width: 800px;
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #000F2C;
+    border: 2px solid #FFCC00;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.posting-field {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Make labels sit above their input/textarea/select */
+.posting-field label,
+#avail-label {
+    display: block;          /* forces full-width block */
+    margin-bottom: 0.4rem;   /* little space below the label */
+    font-weight: 600;        /* optional, make it stand out */
+}
+
+.posting-field fieldset {
+    border: 2px solid #FFCC00;
+    border-radius: 8px;
+    max-width: 200px;
+    margin: 1rem auto;
+}
+
+#avail-label {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.posting-err {
+    color: red !important;
+    display: none;
+}

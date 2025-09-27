@@ -2,13 +2,13 @@ DROP DATABASE IF EXISTS FUSS_DB;
 CREATE DATABASE FUSS_DB;
 USE FUSS_DB;
 
+DROP TABLE IF EXISTS Availability;
+DROP TABLE IF EXISTS Bookings;
 DROP TABLE IF EXISTS Friendships;
 DROP TABLE IF EXISTS ChatMessages;
 DROP TABLE IF EXISTS Messages;
 DROP TABLE IF EXISTS Disputes;
-DROP TABLE IF EXISTS InactiveListings;
-DROP TABLE IF EXISTS CurrentInterests;
-DROP TABLE IF EXISTS ActiveListings;
+DROP TABLE IF EXISTS Listings;
 DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users(
@@ -26,34 +26,18 @@ CREATE TABLE Users(
     fuss_credit INT NOT NULL
 );
 
-CREATE TABLE ActiveListings(
+CREATE TABLE Listings(
     listing_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_id INT NOT NULL,
     price INT NOT NULL CHECK (100 > price AND price > 0),
-    description VARCHAR(100),
+    title VARCHAR(50) NOT NULL,
+    topic VARCHAR(60) NOT NULL,
+    description VARCHAR(250),
     successful_exchanges INT NOT NULL CHECK (successful_exchanges >= 0),
-    current_interests INT NOT NULL CHECK (current_interests >= 0),
-    FOREIGN KEY (user_id) REFERENCES Users(id)
-);
-
-CREATE TABLE CurrentInterests(
-    ci_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    consumer_id INT NOT NULL,
-    producer_id INT NOT NULL,
-    listing INT NOT NULL,
-    FOREIGN KEY (consumer_id) REFERENCES Users(id),
-    FOREIGN KEY (producer_id) REFERENCES  Users(id),
-    FOREIGN KEY (listing) REFERENCES ActiveListings(listing_id),
-    UNIQUE (consumer_id, listing)
-);
-
-CREATE TABLE InactiveListings(
-    listing_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    user_id INT NOT NULL,
-    price INT NOT NULL CHECK (price > 0),
-    description VARCHAR(100),
-    successful_transactions INT NOT NULL CHECK (successful_transactions >= 0),
-    FOREIGN KEY (user_id) REFERENCES Users(id)
+    is_negotiable BOOL NOT NULL,
+    type ENUM('tutoring', 'life_skill', 'tech_support', 'technical', 'practical') NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    UNIQUE KEY service_owner(user_id, title)
 );
 
 CREATE TABLE Disputes(
@@ -64,7 +48,7 @@ CREATE TABLE Disputes(
     status VARCHAR(20) NOT NULL,
     FOREIGN KEY (initiator_id) REFERENCES Users(id),
     FOREIGN KEY (respondent_id) REFERENCES Users(id),
-    FOREIGN KEY (listing_id) REFERENCES ActiveListings(listing_id)
+    FOREIGN KEY (listing_id) REFERENCES Listings(listing_id)
 );
 
 CREATE TABLE Messages(
@@ -93,8 +77,31 @@ CREATE TABLE Friendships (
     friendship_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     friend_id INT NOT NULL,
-    status enum('pending', 'accepted', 'blocked') DEFAULT 'pending',
+    status ENUM('pending', 'accepted', 'blocked') DEFAULT 'pending',
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (friend_id) REFERENCES Users(id),
     UNIQUE KEY unique_friendship (user_id, friend_id)
+);
+
+CREATE TABLE Bookings (
+    booking_id INT PRIMARY KEY AUTO_INCREMENT,
+    booker_id INT NOT NULL,
+    service_provider_id INT NOT NULL,
+    start DATETIME NOT NULL,
+    end DATETIME NOT NULL,
+    service_id INT NOT NULL,
+    status ENUM('confirmed', 'pending') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (booker_id) REFERENCES Users(id),
+    FOREIGN KEY (service_provider_id) REFERENCES Users(id),
+    FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
+);
+
+CREATE TABLE Availability (
+    availability_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_id INT NOT NULL,
+    day ENUM('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') NOT NULL,
+    start TIME NOT NULL,
+    end TIME NOT NULL,
+    FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
 );
