@@ -77,7 +77,7 @@ include_header($_SESSION['username'] ?? null);
             />
         </form>
 
-        <ul id="search-results">
+        <ul class="search-results">
             <?php foreach ($matches as $username => $status): ?>
                 <li class="friends-res">
                     <?= htmlspecialchars($username) ?> — <?= $status ?>
