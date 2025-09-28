@@ -1,5 +1,5 @@
 setInterval(() => {
-    fetch('/user/messages/check_unseen.php') // returns a bool true or false
+    fetch('/messages/check_unseen.php') // returns a bool true or false
         .then(res => res.json())
         .then(data => {
             const badge = document.getElementById('msg-badge');
