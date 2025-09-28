@@ -64,7 +64,7 @@
               <span>FUSS Credit Balance: <?php echo $credit_balance; ?></span>
           </div>
           <div class="avatar">
-            <a href="../user/profile.php">
+            <a href="/user/profile.php">
               <img src="<?php echo htmlspecialchars(get_profile_image($_SESSION['username'] ?? '')); ?>" alt="Profile Picture" />
             </a> 
             
@@ -75,9 +75,9 @@
       <!-- Navbar Row -->
       <nav>
         <ul class="nav-links">
-          <li><a href="../admin/admin_homepage.php" class="<?= ($currentPage == 'admin_homepage.php') ? 'active' : '' ?>">Home</a></li>
+          <li><a href="/admin/admin_homepage.php" class="<?= ($currentPage == 'admin_homepage.php') ? 'active' : '' ?>">Home</a></li>
           <li>
-              <a href="../messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">
+              <a href="/messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">
                   Messages
                   <span id="msg-badge" class="notification-dot hidden"></span>
               </a>
