@@ -13,11 +13,11 @@ $uid = get_uid($_SESSION['username']);
 $fid = $_POST['friend_id'];
 $status = 'pending';
 
-$sql = 'INSERT INTO Friendships(user_id, friend_id, status) 
-        VALUES (?, ?, ?);';
+$sql = 'INSERT INTO Friendships(user_id, friend_id, requester_id, status) 
+        VALUES (?, ?, ?, ?);';
 
 $statement = $conn->prepare($sql);
-$statement->bind_param('iis', $uid, $fid, $status);
+$statement->bind_param('iiis', $uid, $fid, $uid, $status);
 $statement->execute();
 $statement->close();
 
