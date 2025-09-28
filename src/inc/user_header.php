@@ -86,6 +86,8 @@
                 </div>
             </div>
 
+            <li><a href="/inc/logout.php" class="<?= ($currentPage == 'logout.php') ? 'active' : '' ?>">Logout</a></li>
+
           <li class="credits" 
               class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
               <a href="#">Credits</a>
