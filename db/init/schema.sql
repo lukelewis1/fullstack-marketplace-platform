@@ -81,6 +81,7 @@ CREATE TABLE Friendships (
     status ENUM('pending', 'accepted', 'blocked') DEFAULT 'pending',
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (friend_id) REFERENCES Users(id),
+    FOREIGN KEY (requester_id) REFERENCES Users(id),
     UNIQUE KEY unique_friendship (user_id, friend_id)
 );
 
