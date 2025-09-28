@@ -69,12 +69,13 @@ include_header($_SESSION['username'] ?? null);
     <ul class="search-results">
         <?php foreach ($fr_received as $id => $name): ?>
         <li class="friends-res">
-            <?= htmlspecialchars($name) ?> - <button class="deny-request" data-id="<?= $id ?>">Deny Friend Request</button>
+            <?= htmlspecialchars($name) ?> - <button class="deny-request" data-id="<?= $id ?>">Deny Friend Request</button> <button class="accept-request" data-id="<?= get_uid($name) ?>">Accept Friend Request</button>
         </li>
         <?php endforeach; ?>
     </ul>
 </div>
 
+<script src="accept_request_script.js"></script>
 <script src="deny_request_script.js"></script>
 <script src="cancel_request_script.js"></script>
 <script src="/../../scripts/global_scripts.js"></script>

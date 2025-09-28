@@ -11,16 +11,17 @@ require_once __DIR__ . '/../../inc/functions.php';
 
 $uid = get_uid($_SESSION['username']);
 
-$sql = "SELECT friend_id FROM Friendships WHERE user_id = ? AND status = 'accepted';";
+$sql = "SELECT friend_id FROM Friendships WHERE user_id = ? AND status = 'accepted'
+        UNION
+        SELECT user_id FROM Friendships WHERE friend_id = ? AND status = 'accepted';";
 $statement = $conn->prepare($sql);
-$statement->bind_param('i', $uid);
+$statement->bind_param('ii', $uid, $uid);
 $statement->execute();
 $result = $statement->get_result();
 
 $friend_ids = [];
-
 while ($row = $result->fetch_assoc()) {
-    $friend_ids[] = $row['friend_id'];
+    $friend_ids[] = $row['friend_id'] ?? $row['user_id']; // handles either column
 }
 $statement->close();
 
