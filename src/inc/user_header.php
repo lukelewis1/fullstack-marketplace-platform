@@ -92,7 +92,7 @@
           </li>
         </ul>
       </nav>
-    <script src="../scripts/real_time_msg_script.js"></script>
+    <script src="/scripts/real_time_msg_script.js"></script>
     </header>
 
     
