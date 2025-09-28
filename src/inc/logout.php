@@ -4,13 +4,16 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+$redirect_page = '/index.php';
+include __DIR__ . '/loader.html';
+
 $_SESSION = [];
 session_unset();
 session_destroy();
 
-$redirect_page = '/index.php';
+
 exit;
 
-include __DIR__ . '/inc/loader.html';
+
 
 
