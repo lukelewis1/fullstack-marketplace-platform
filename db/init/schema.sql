@@ -77,6 +77,7 @@ CREATE TABLE Friendships (
     friendship_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     friend_id INT NOT NULL,
+    requester_id INT NOT NULL,
     status ENUM('pending', 'accepted', 'blocked') DEFAULT 'pending',
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (friend_id) REFERENCES Users(id),
