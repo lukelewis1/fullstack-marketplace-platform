@@ -7,6 +7,8 @@ if (!isset($_SESSION['username'])) {
     header("Location: ../index.php");
     exit;
 }
+
+require_once __DIR__ . '/../inc/dbconn.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -67,24 +69,28 @@ if (!isset($_SESSION['username'])) {
           </thead>
           <tbody>
             <tr>
-              <td>1001</td>
-              <td>Jane</td>
-              <td>Doe</td>
-              <td>jane.doe@example.com</td>
-              <td>Student</td>
-              <td>Active</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <td>1002</td>
-              <td>John</td>
-              <td>Smith</td>
-              <td>john.smith@example.com</td>
-              <td>Admin</td>
-              <td>Inactive</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <!-- Add more rows as needed -->
+              <?php
+
+                $sql = "SELECT id, f_name, l_name, email, role FROM Users;";
+                $stmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                if (mysqli_num_rows($result) > 0) {
+                  while ($row = mysqli_fetch_assoc($result)) {
+                  echo "<tr>";
+                  echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['f_name']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['l_name']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                  echo "<td>" . htmlspecialchars($row['role'] ?? 'N/A' ) . "</td>";
+                  echo "<td>" . 'N/A' . "</td>";
+                  echo "<td><input type='checkbox'></td>";
+                  echo "</tr>";
+                    }
+                  mysqli_free_result($result);
+                          }
+                  mysqli_close($conn);
+?>
           </tbody>
         </table>
       </div>
@@ -95,3 +101,24 @@ if (!isset($_SESSION['username'])) {
      
   </body>
 </html>
+
+<!-- $sql = "SELECT id FROM Users WHERE user_name = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, 's', $username);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $id);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt); -->
+
+<!-- $sql = "SELECT id, name FROM StudentResults;";
+if ($result = mysqli_query($conn, $sql)) {
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      echo "<option value=\"" . $row["id"] . "\" name=\"" . $row["name"] . "\">" . $row["name"] . "</option>";
+        }
+      // Free up memory consumed by the $result object
+      mysqli_free_result($result);
+        }
+    }
+mysqli_close($conn);
+        
