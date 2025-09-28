@@ -101,11 +101,11 @@
           </div>
 
             <div class="dropdown">
-                <li><a class="<?= ($currentPage == 'friends.php') ? 'active' : '' ?>">Friends</a></li>
+                <li><a class="<?= ($currentPage == 'friends.php') ? 'active' : '' ?>">Friends<span id="msg-badge" class="notification-dot hidden"></span></a></li>
                 <div class="dropdown-content">
                     <a href="/user/friends/friends.php">Friends</a>
                     <a href="/user/friends/search_friends.php">Add Friend</a>
-                    <a href="/user/friends/pending_friends.php">Pending Friends</a>
+                    <a href="/user/friends/pending_friends.php">Pending Friends<span id="msg-badge" class="notification-dot hidden"></span></a>
                 </div>
             </div>
 
@@ -115,6 +115,7 @@
           </li>
         </ul>
       </nav>
+    <script src="/scripts/real_time_friend_script.js"></script>
     <script src="/scripts/real_time_msg_script.js"></script>
     </header>
 
