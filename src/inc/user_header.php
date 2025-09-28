@@ -86,12 +86,23 @@
                 </div>
             </div>
 
-          <li class="credits" 
+            <li><a href="/inc/logout.php" class="<?= ($currentPage == 'logout.php') ? 'active' : '' ?>" id="logout-link">Logout</a></li>
+            <div id="logout-modal" style="display:none; position:fixed; top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);">
+                <div style="background:#fff;padding:20px;margin:100px auto;width:300px;text-align:center">
+                    <p>Are you sure you want to log out?</p>
+                    <p>You WILL have to log back in to access FUSS.</p>
+                    <button id="logout-yes">Yes</button>
+                    <button id="logout-no">No</button>
+                </div>
+            </div>
+
+          <li class="credits"
               class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
               <a href="#">Credits</a>
           </li>
         </ul>
       </nav>
+    <script src="/scripts/logout_script.js"></script>
     <script src="/scripts/real_time_msg_script.js"></script>
     </header>
 
