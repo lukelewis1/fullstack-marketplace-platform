@@ -92,6 +92,21 @@ function get_lid($uid, $title) {
     return $lid;
 }
 
+//Function to get a username from a id
+function get_username($uid) {
+    global $conn;
+
+    $sql = 'SELECT user_name FROM Users WHERE id = ?;';
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $uid);
+    $statement->execute();
+    $statement->bind_result($username);
+    $statement->fetch();
+    $statement->close();
+
+    return $username;
+}
+
 {
 
 }
