@@ -7,14 +7,14 @@ VALUES
     ('Luke','luke@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Luke','Skywalker','Aspiring Jedi trader.','1998-05-04',FALSE,1,'User', 5),
     ('Seth','seth@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Seth','Rogan','Comedian exploring the platform.','1992-08-20',FALSE,1,'User', 5);
 
-INSERT INTO Friendships (user_id, friend_id, status)
+INSERT INTO Friendships (user_id, friend_id, requester_id, status)
 VALUES
-      (1,2,'accepted'),
-      (1,3,'accepted'),
-      (1,4,'accepted'),
-      (2,3,'accepted'),
-      (2,4,'accepted'),
-      (3,4,'accepted');
+      (1,2, 1,'accepted'),
+      (1,3, 1,'accepted'),
+      (1,4, 1,'accepted'),
+      (2,3, 2,'accepted'),
+      (2,4, 2,'accepted'),
+      (3,4, 3,'accepted');
 
 # INSERT INTO Messages (sender_id, receiver_id, start_date, end_date, unseen)
 # VALUES

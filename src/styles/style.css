@@ -37,7 +37,7 @@ a {
 header {
   display: grid;
   grid-template-rows: auto auto;
-  background-color: #ffc600;
+  background-color: #FFCC00;
 }
 
 /* Top row: logo, search, user info */
@@ -67,7 +67,7 @@ header {
   flex: 1;
   height: 35px;
   border-radius: 13px;
-  border: solid #eeb728;
+  border: solid #FFCC00;
   padding: 0 0.5rem 0 2rem;
   box-sizing: border-box;
   background-image: url("../images/site/searchbar.png");

@@ -64,7 +64,7 @@
               <span>FUSS Credit Balance: <?php echo $credit_balance; ?></span>
           </div>
           <div class="avatar">
-            <a href="../user/profile.php">
+            <a href="/user/profile.php">
               <img src="<?php echo htmlspecialchars(get_profile_image($_SESSION['username'] ?? '')); ?>" alt="Profile Picture" />
             </a> 
             
@@ -75,9 +75,9 @@
       <!-- Navbar Row -->
       <nav>
         <ul class="nav-links">
-          <li><a href="../admin/admin_homepage.php" class="<?= ($currentPage == 'admin_homepage.php') ? 'active' : '' ?>">Home</a></li>
+          <li><a href="/admin/admin_homepage.php" class="<?= ($currentPage == 'admin_homepage.php') ? 'active' : '' ?>">Home</a></li>
           <li>
-              <a href="../messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">
+              <a href="/messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">
                   Messages
                   <span id="msg-badge" class="notification-dot hidden"></span>
               </a>
@@ -85,28 +85,37 @@
           <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Skill Share</a></li>
             <div class="dropdown-content">
-              <a href="../user/skill_post.php">Post Service</a>
-              <a href="../user/skill_request.php"> Request Service </a>
-              <a href="../user/skill_search.php"> Skill Search </a>
+              <a href="/user/skill_post.php">Post Service</a>
+              <a href="/user/skill_request.php"> Request Service </a>
+              <a href="/user/skill_search.php"> Skill Search </a>
             </div>
           </div>
           
           <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Dashboard</a></li>
             <div class="dropdown-content">
-              <a href="../admin/insights.php">Insights</a>
-              <a href="../admin/user_management.php"> User Management </a>
-              <a href="../admin/content_moderation.php"> Content Moderation </a>
+              <a href="/admin/insights.php">Insights</a>
+              <a href="/admin/user_management.php"> User Management </a>
+              <a href="/admin/content_moderation.php"> Content Moderation </a>
             </div>
           </div>
 
-          <li class="credits" 
+            <div class="dropdown">
+                <li><a class="<?= ($currentPage == 'friends.php') ? 'active' : '' ?>">Friends</a></li>
+                <div class="dropdown-content">
+                    <a href="/user/friends/friends.php">Friends</a>
+                    <a href="/user/friends/search_friends.php">Add Friend</a>
+                    <a href="/user/friends/pending_friends.php">Pending Friends</a>
+                </div>
+            </div>
+
+            <li class="credits"
               class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
               <a href="#">Credits</a>
           </li>
         </ul>
       </nav>
-    <script src="../scripts/real_time_msg_script.js"></script>
+    <script src="/scripts/real_time_msg_script.js"></script>
     </header>
 
     
