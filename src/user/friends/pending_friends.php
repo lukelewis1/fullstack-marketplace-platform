@@ -23,6 +23,20 @@ while ($row = $result->fetch_assoc()) {
 }
 $statement->close();
 
+$sql = "SELECT user_id FROM Friendships WHERE friend_id = ? AND requester_id != ? AND status = 'pending'";
+$statement = $conn->prepare($sql);
+$statement->bind_param('ii', $uid, $uid);
+$statement->execute();
+$result = $statement->get_result();
+
+$fr_received = [];
+while ($row = $result->fetch_assoc()) {
+    $fr_received[$row['user_id']] = get_username($row['user_id']);
+}
+$statement->close();
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -53,13 +67,15 @@ include_header($_SESSION['username'] ?? null);
 <h1>Friend Requests Received</h1>
 <div class="friend-search">
     <ul class="search-results">
-
+        <?php foreach ($fr_received as $id => $name): ?>
         <li class="friends-res">
-
+            <?= htmlspecialchars($name) ?> - <button class="deny-request" data-id="<?= $id ?>">Deny Friend Request</button>
         </li>
+        <?php endforeach; ?>
     </ul>
 </div>
 
+<script src="deny_request_script.js"></script>
 <script src="cancel_request_script.js"></script>
 <script src="/../../scripts/global_scripts.js"></script>
 <script src="/../../scripts/script.js"></script>
