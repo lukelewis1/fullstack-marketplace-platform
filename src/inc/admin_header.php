@@ -104,7 +104,7 @@
                 <li><a class="<?= ($currentPage == 'friends.php') ? 'active' : '' ?>">Friends</a></li>
                 <div class="dropdown-content">
                     <a href="/user/friends/friends.php">Friends</a>
-                    <a href="/user/friends/add_friends.php">Add Friend</a>
+                    <a href="/user/friends/search_friends.php">Add Friend</a>
                 </div>
             </div>
 
