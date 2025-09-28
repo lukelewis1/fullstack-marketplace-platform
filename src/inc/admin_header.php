@@ -105,6 +105,7 @@
                 <div class="dropdown-content">
                     <a href="/user/friends/friends.php">Friends</a>
                     <a href="/user/friends/search_friends.php">Add Friend</a>
+                    <a href="/user/friends/pending_friends.php">Pending Friends</a>
                 </div>
             </div>
 
