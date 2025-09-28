@@ -75,16 +75,15 @@
               <a href="/user/skill_request.php"> Request Service </a>
               <a href="/user/skill_search.php"> Skill Search </a>
             </div>
-
-              <div class="dropdown">
-                  <li><a class="<?= ($currentPage == 'friends.php') ? 'active' : '' ?>">Friends</a></li>
-                  <div class="dropdown-content">
-                      <a href="/user/friends/friends.php">Friends</a>
-                      <a href="/user/friends/search_friends.php">Add Friend</a>
-                  </div>
-              </div>
-
           </div>
+
+            <div class="dropdown">
+                <li><a class="<?= ($currentPage == 'friends.php') ? 'active' : '' ?>">Friends</a></li>
+                <div class="dropdown-content">
+                    <a href="/user/friends/friends.php">Friends</a>
+                    <a href="/user/friends/search_friends.php">Add Friend</a>
+                </div>
+            </div>
 
           <li class="credits" 
               class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
