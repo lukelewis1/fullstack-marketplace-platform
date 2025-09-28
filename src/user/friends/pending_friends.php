@@ -11,30 +11,15 @@ require_once __DIR__ . '/../../inc/functions.php';
 
 $uid = get_uid($_SESSION['username']);
 
-$sql = "SELECT friend_id FROM Friendships WHERE user_id = ? AND status = 'accepted';";
+$sql = "SELECT friend_id FROM Friendships WHERE requester_id = ? AND status = 'pending'";
 $statement = $conn->prepare($sql);
 $statement->bind_param('i', $uid);
 $statement->execute();
 $result = $statement->get_result();
 
-$friend_ids = [];
-
+$fr_sent = [];
 while ($row = $result->fetch_assoc()) {
-    $friend_ids[] = $row['friend_id'];
-}
-$statement->close();
-
-$friend_names = [];
-
-$sql = 'SELECT user_name FROM Users WHERE id = ?;';
-$statement = $conn->prepare($sql);
-
-foreach ($friend_ids as $id) {
-    $statement->bind_param('i', $id);
-    $statement->execute();
-    $result = $statement->get_result();
-    $row = $result->fetch_assoc();
-    $friend_names[$id] = $row['user_name'];
+    $fr_sent[$row['friend_id']] = get_username($row['friend_id']);
 }
 $statement->close();
 
@@ -54,18 +39,28 @@ $statement->close();
 include_header($_SESSION['username'] ?? null);
 ?>
 
-<h1>Friend List</h1>
+<h1>Friend Requests Sent</h1>
 <div class="friend-search">
     <ul class="search-results">
-        <?php foreach ($friend_names as $fid => $name): ?>
-        <li class="friends-res">
-            <?= htmlspecialchars($name) ?> - <button class="remove-friend" data-id="<?= $fid ?>">Remove</button>
-        </li>
+        <?php foreach ($fr_sent as $id => $name): ?>
+            <li class="friends-res">
+                <?= htmlspecialchars($name) ?> - <button class="cancel-request" data-id="<?= $id ?>">Cancel Friend Request</button>
+            </li>
         <?php endforeach; ?>
     </ul>
 </div>
 
-<script src="remove_friend_script.js" type="text/javascript"></script>
+<h1>Friend Requests Received</h1>
+<div class="friend-search">
+    <ul class="search-results">
+
+        <li class="friends-res">
+
+        </li>
+    </ul>
+</div>
+
+<script src="cancel_request_script.js"></script>
 <script src="/../../scripts/global_scripts.js"></script>
 <script src="/../../scripts/script.js"></script>
 </body>

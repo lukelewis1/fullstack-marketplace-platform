@@ -29,26 +29,43 @@ $statement->close();
 $uid = get_uid($_SESSION['username']);
 $add = '';
 
-$sql = 'SELECT friend_id FROM Friendships WHERE user_id = ?;';
+$sql = 'SELECT user_id, friend_id, requester_id, status FROM Friendships WHERE user_id = ? OR friend_id = ?;';
 $statement = $conn->prepare($sql);
-$statement->bind_param('i', $uid);
+$statement->bind_param('ii', $uid, $uid);
 $statement->execute();
 $result = $statement->get_result();
 
 $friend_ids = [];
+$id_stat = [];
 
 while ($row = $result->fetch_assoc()) {
-    $friend_ids[] = $row['friend_id'];
+    $other = ($row['user_id'] == $uid) ? $row['friend_id'] : $row['user_id'];
+    $friend_ids[] = $other;
+    $id_stat[$other] = [
+            'status' => $row['status'],
+            'requester_id' => $row['requester_id']
+    ];
 }
 
 foreach ($matches as $name => $id) {
-    if (in_array($id, $friend_ids)) {
-        $matches[$name] = htmlspecialchars('Already friends');
+    if (isset($id_stat[$id])) {
+        $status    = $id_stat[$id]['status'];
+        $requester = $id_stat[$id]['requester_id'];
+
+        if ($status === 'accepted') {
+            $matches[$name] = 'Already friends';
+        } elseif ($status === 'pending') {
+            if ($requester == $uid) {
+                $matches[$name] = 'Request sent (pending)';
+            } else {
+                $matches[$name] = 'Request received (pending)';
+            }
+        }
     } else {
         $matches[$name] = '<button class="add-friend-btn" data-id="' . htmlspecialchars($id) . '">Add</button>';
     }
 }
-
+$statement->close();
 
 ?>
 
