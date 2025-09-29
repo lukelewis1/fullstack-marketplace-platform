@@ -10,7 +10,7 @@
 
     $uid = get_uid($_SESSION['username']);
 
-    $sql = "SELECT * FROM Listings WHERE user_id = ?;";
+    $sql = "SELECT * FROM Listings WHERE user_id = ? ORDER BY listing_id;";
     $statement = $conn->prepare($sql);
     $statement->bind_param('i', $uid);
     $statement->execute();
@@ -19,7 +19,24 @@
     $my_skills = [];
 
     while ($row = $result->fetch_assoc()) {
+        $lid = $row['listing_id'];
+
+        // Fetch availability for this listing
+        $sql = "SELECT * FROM Availability WHERE service_id = ?";
+        $availStmt = $conn->prepare($sql);
+        $availStmt->bind_param('i', $lid);
+        $availStmt->execute();
+        $ares = $availStmt->get_result();
+
+        $availability = [];
+        while ($arow = $ares->fetch_assoc()) {
+            $availability[] = $arow;
+        }
+
+        $row['availability'] = $availability; // add as a nested array
         $my_skills[] = $row;
+
+        $availStmt->close();
     }
     $statement->close();
 
@@ -47,6 +64,7 @@
             <?php foreach ($my_skills as $skill): ?>
             <h3><?= htmlspecialchars($skill['title']) ?></h3>
                 <li class="skill-res">
+
                     <h5><?= htmlspecialchars($skill['topic']) ?></h5>
                     <p><?= htmlspecialchars($skill['description']) ?></p>
                     <p><?= htmlspecialchars($skill['price']) ?> FUSS Credits</p>
@@ -57,6 +75,19 @@
                     <p>Successful Exchanges: <?= htmlspecialchars($skill['successful_exchanges']) ?></p>
                     <p>Likes: <?= htmlspecialchars($skill['likes']) ?></p>
                     <p>Dislikes: <?= htmlspecialchars($skill['dislikes']) ?></p>
+
+                    <br>
+
+                    <h4>Availability</h4>
+                    <ul class="avail-list">
+                        <?php foreach ($skill['availability'] as $avail): ?>
+                            <li class="avail-item">
+                                <h5><?= htmlspecialchars($avail['day']) ?>:</h5>
+                                <p>Start: <?= htmlspecialchars($avail['start']) ?></p>
+                                <p>End: <?= htmlspecialchars($avail['end']) ?></p>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
                 </li>
             <?php endforeach; ?>
         </ul>
