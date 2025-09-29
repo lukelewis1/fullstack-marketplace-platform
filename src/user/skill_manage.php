@@ -1,4 +1,5 @@
 <?php
+
     if (session_status() === PHP_SESSION_NONE) {
       session_start();
     }
@@ -40,7 +41,6 @@
     }
     $statement->close();
 
-
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +62,7 @@
         <ul class="my-skills">
 
             <?php foreach ($my_skills as $skill): ?>
-            <h3><?= htmlspecialchars($skill['title']) ?></h3>
+            <h3 class="skill-title"><?= htmlspecialchars($skill['title']) ?></h3>
                 <li class="skill-res">
 
                     <h5><?= htmlspecialchars($skill['topic']) ?></h5>
@@ -95,13 +95,19 @@
                         <button class="btn" type="submit" name="full-reg">Edit</button>
                     </div>
                     <div class="submit-btn">
-                        <button class="btn" type="submit" name="full-reg">Delete</button>
+                        <button class="btn delete-btn"
+                                type="button"
+                                data-lid="<?= htmlspecialchars($skill['listing_id']) ?>">
+                            Delete
+                        </button>
                     </div>
+
                 </li>
             <?php endforeach; ?>
         </ul>
     </div>
 
+    <script src="skill_management_handler/delete_skill_script.js"></script>
     <script src="../scripts/global_scripts.js"></script>
     <script src="../scripts/script.js"></script>
   </body>
