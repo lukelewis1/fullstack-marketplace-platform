@@ -107,7 +107,176 @@ function get_username($uid) {
     return $username;
 }
 
-{
+/*
+--- The following section contains a series of functions to be used for displaying listings for services and skills ---
+ */
 
+// Function to display the 20 most liked listings
+function get_popular(): array {
+    global $conn;
+
+    $sql = 'SELECT * FROM Listings ORDER BY likes LIMIT 20;';
+    $statement = $conn->prepare($sql);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $listings = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $listings[] = $row;
+    }
+
+    $statement->close();
+
+    return $listings;
 }
-?>
+
+// Function to return all listings that contain the parsed word in the title or description
+
+function get_listings($search): array {
+    global $conn;
+
+    $sql = "SELECT * FROM Listings WHERE title LIKE CONCAT('%', ?, '%') OR description LIKE CONCAT('%', ?, '%');";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('ss', $search, $search);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $listings = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $listings[] = $row;
+    }
+
+    $statement->close();
+
+    return $listings;
+}
+
+// Function to return all listings that contain the parsed word in the title or description but orders the results based on likes
+function get_listings_popular($search): array {
+    global $conn;
+
+    $sql = "SELECT * FROM Listings WHERE title LIKE CONCAT('%', ?, '%')
+            OR description LIKE CONCAT('%', ?, '%') 
+            ORDER BY likes;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('ss', $search, $search);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $listings = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $listings[] = $row;
+    }
+
+    $statement->close();
+
+    return $listings;
+}
+
+// Function to return all listings that contain the parsed word in the title or description but orders the results based on successful transactions
+function get_listings_success($search): array {
+    global $conn;
+
+    $sql = "SELECT * FROM Listings WHERE title LIKE CONCAT('%', ?, '%')
+            OR description LIKE CONCAT('%', ?, '%') 
+            ORDER BY successful_exchanges;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('ss', $search, $search);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $listings = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $listings[] = $row;
+    }
+
+    $statement->close();
+
+    return $listings;
+}
+
+// Function that returns all listings for a given friend id
+function get_listings_friend($fid): array {
+    global $conn;
+
+    $sql = "SELECT * FROM Listings WHERE user_id = ?;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $fid);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $listings = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $listings[] = $row;
+    }
+
+    $statement->close();
+
+    return $listings;
+}
+
+// Function that returns all listings for a given friend id and a search term
+function get_listings_friend_search($search, $fid): array {
+    global $conn;
+
+    $sql = "SELECT * FROM Listings WHERE title LIKE CONCAT('%', ?, '%') 
+            OR description LIKE CONCAT('%', ?, '%') AND user_id = ?;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('ssi', $search, $search, $fid);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $listings = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $listings[] = $row;
+    }
+
+    $statement->close();
+
+    return $listings;
+}
+
+// Function to return listings that are also available given an array of  availabilities
+function get_listings_available(string $keyword, array $availability): array {
+    global $conn;
+
+    $search = "%$keyword%";
+    $params = [];
+    $sql = "SELECT DISTINCT l.* FROM Listings l ";
+    $joinIndex = 1;
+
+    foreach ($availability as $a) {
+        $alias = "a$joinIndex";
+        $sql .= "JOIN Availability $alias
+                 ON $alias.service_id = l.listing_id
+                 AND $alias.day = ?
+                 AND $alias.start <= ?
+                 AND $alias.end >= ? ";
+        $params[] = $a['day'];
+        $params[] = $a['start'];
+        $params[] = $a['end'];
+        $joinIndex++;
+    }
+
+    $sql .= "WHERE (l.title LIKE ? OR l.description LIKE ?)";
+    $params[] = $search;
+    $params[] = $search;
+
+    $statement = $conn->prepare($sql);
+    $types = str_repeat('s', count($params));
+    $statement->bind_param($types, ...$params);
+    $statement->execute();
+    $result = $statement->get_result();
+    $listings = $result->fetch_all(MYSQLI_ASSOC);
+    $statement->close();
+
+    return $listings;
+}
+
+
