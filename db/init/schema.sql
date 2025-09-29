@@ -108,7 +108,7 @@ CREATE TABLE Availability (
     day ENUM('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') NOT NULL,
     start TIME NOT NULL,
     end TIME NOT NULL,
-    FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
+    FOREIGN KEY (service_id) REFERENCES Listings(listing_id)  ON DELETE CASCADE
 );
 
 CREATE TABLE Reviews (
