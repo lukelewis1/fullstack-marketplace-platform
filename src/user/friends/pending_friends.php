@@ -11,6 +11,7 @@ require_once __DIR__ . '/../../inc/functions.php';
 
 $uid = get_uid($_SESSION['username']);
 
+// Gets all the pending friendships that the user has initiated
 $sql = "SELECT friend_id FROM Friendships WHERE requester_id = ? AND status = 'pending'";
 $statement = $conn->prepare($sql);
 $statement->bind_param('i', $uid);
@@ -23,6 +24,7 @@ while ($row = $result->fetch_assoc()) {
 }
 $statement->close();
 
+// Gets all the friendships that another user has tried to initiate with the user
 $sql = "SELECT user_id FROM Friendships WHERE friend_id = ? AND requester_id != ? AND status = 'pending'";
 $statement = $conn->prepare($sql);
 $statement->bind_param('ii', $uid, $uid);
@@ -56,6 +58,7 @@ include_header($_SESSION['username'] ?? null);
 <h1>Friend Requests Sent</h1>
 <div class="friend-search">
     <ul class="search-results">
+<!--       Dynamically populates the list of pending friendships with the option to cancel the request -->
         <?php foreach ($fr_sent as $id => $name): ?>
             <li class="friends-res">
                 <?= htmlspecialchars($name) ?> - <button class="cancel-request" data-id="<?= $id ?>">Cancel Friend Request</button>
@@ -67,6 +70,7 @@ include_header($_SESSION['username'] ?? null);
 <h1>Friend Requests Received</h1>
 <div class="friend-search">
     <ul class="search-results">
+<!--       Dynamically populates the list of pending friendships TO the current user allowing them to accept or deny them -->
         <?php foreach ($fr_received as $id => $name): ?>
         <li class="friends-res">
             <?= htmlspecialchars($name) ?> - <button class="deny-request" data-id="<?= $id ?>">Deny Friend Request</button> <button class="accept-request" data-id="<?= get_uid($name) ?>">Accept Friend Request</button>

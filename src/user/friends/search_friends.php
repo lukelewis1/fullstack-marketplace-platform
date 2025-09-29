@@ -23,6 +23,9 @@ require_once __DIR__ . '/../../inc/functions.php';
 include_header($_SESSION['username'] ?? null);
 ?>
 
+<!-- Very basic search bar that allows user to search for friends,
+friend_results.php handles the search and display of the results -->
+
 <div class="friend-search">
 
     <h1>Friend Search Area</h1>

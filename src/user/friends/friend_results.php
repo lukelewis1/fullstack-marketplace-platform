@@ -38,6 +38,7 @@ $result = $statement->get_result();
 $friend_ids = [];
 $id_stat = [];
 
+//Matching status of friendship and friend ids
 while ($row = $result->fetch_assoc()) {
     $other = ($row['user_id'] == $uid) ? $row['friend_id'] : $row['user_id'];
     $friend_ids[] = $other;
@@ -47,6 +48,7 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
+// Matching names to ids and replacing the button with suitable options depending on friendship status
 foreach ($matches as $name => $id) {
     if (isset($id_stat[$id])) {
         $status    = $id_stat[$id]['status'];
@@ -83,6 +85,8 @@ $statement->close();
 include_header($_SESSION['username'] ?? null);
 ?>
 
+
+<!-- Includes search bar that has same functionality as the one before that leads to this page -->
 <div class="friend-search">
     <div class="friend-search-bar">
         <form id="friend-form" method="get" action="friend_results.php">
@@ -94,6 +98,7 @@ include_header($_SESSION['username'] ?? null);
             />
         </form>
 
+<!--       Dynamically populates the results with the appropriate buttons -->
         <ul class="search-results">
             <?php foreach ($matches as $username => $status): ?>
                 <li class="friends-res">
