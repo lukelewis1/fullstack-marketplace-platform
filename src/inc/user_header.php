@@ -69,10 +69,10 @@
               </a>
           </li>
           <div class="dropdown">
-            <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Skill Share</a></li>
+            <li><a  class="<?= ($currentPage == 'skill_manage.php') ? 'active' : '' ?>">Skill Share</a></li>
             <div class="dropdown-content">
               <a href="/user/skill_post.php">Post Service</a>
-              <a href="/user/skill_request.php"> Request Service </a>
+              <a href="/user/skill_manage.php"> Service Management </a>
               <a href="/user/skill_search.php"> Skill Search </a>
             </div>
           </div>
