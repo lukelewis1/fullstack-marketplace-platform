@@ -49,7 +49,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>FUSS</title>
-        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="../styles/style.css" />
         <link rel="stylesheet" href="skill_management_handler/skill_manage_style.css" />
   </head>
   <body>
@@ -88,6 +88,15 @@
                             </li>
                         <?php endforeach; ?>
                     </ul>
+
+                    <br>
+
+                    <div class="submit-btn">
+                        <button class="btn" type="submit" name="full-reg">Edit</button>
+                    </div>
+                    <div class="submit-btn">
+                        <button class="btn" type="submit" name="full-reg">Delete</button>
+                    </div>
                 </li>
             <?php endforeach; ?>
         </ul>
