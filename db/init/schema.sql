@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS FUSS_DB;
 CREATE DATABASE FUSS_DB;
 USE FUSS_DB;
 
+DROP TABLE IF EXISTS Reviews;
 DROP TABLE IF EXISTS Availability;
 DROP TABLE IF EXISTS Bookings;
 DROP TABLE IF EXISTS Friendships;
@@ -23,18 +24,20 @@ CREATE TABLE Users(
     is_admin BOOL NOT NULL,
     acc_status INT NOT NULL,
     role VARCHAR(25) NOT NULL,
-    fuss_credit INT NOT NULL
+    fuss_credit FLOAT NOT NULL
 );
 
 CREATE TABLE Listings(
     listing_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_id INT NOT NULL,
-    price INT NOT NULL CHECK (100 > price AND price > 0),
+    price FLOAT NOT NULL CHECK (100 > price AND price > 0),
     title VARCHAR(50) NOT NULL,
     topic VARCHAR(60) NOT NULL,
     description VARCHAR(250),
     successful_exchanges INT NOT NULL CHECK (successful_exchanges >= 0),
     is_negotiable BOOL NOT NULL,
+    likes INT,
+    dislikes INT,
     type ENUM('tutoring', 'life_skill', 'tech_support', 'technical', 'practical') NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id),
     UNIQUE KEY service_owner(user_id, title)
@@ -105,5 +108,13 @@ CREATE TABLE Availability (
     day ENUM('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') NOT NULL,
     start TIME NOT NULL,
     end TIME NOT NULL,
+    FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
+);
+
+CREATE TABLE Reviews (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_id INT NOT NULL,
+    type ENUM('positive', 'negative', 'neutral') DEFAULT 'neutral' NOT NULL,
+    review VARCHAR(500) NOT NULL,
     FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
 );
