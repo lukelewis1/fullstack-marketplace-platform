@@ -34,10 +34,10 @@ CREATE TABLE Listings(
     title VARCHAR(50) NOT NULL,
     topic VARCHAR(60) NOT NULL,
     description VARCHAR(250),
-    successful_exchanges INT NOT NULL CHECK (successful_exchanges >= 0),
+    successful_exchanges INT NOT NULL CHECK (successful_exchanges >= 0) DEFAULT 0,
     is_negotiable BOOL NOT NULL,
-    likes INT,
-    dislikes INT,
+    likes INT DEFAULT 0,
+    dislikes INT DEFAULT 0,
     type ENUM('tutoring', 'life_skill', 'tech_support', 'technical', 'practical') NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id),
     UNIQUE KEY service_owner(user_id, title)
