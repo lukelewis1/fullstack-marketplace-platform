@@ -57,8 +57,8 @@
                     <p>Successful Exchanges: <?= htmlspecialchars($skill['successful_exchanges']) ?></p>
                     <p>Likes: <?= htmlspecialchars($skill['likes']) ?></p>
                     <p>Dislikes: <?= htmlspecialchars($skill['dislikes']) ?></p>
-                    <?php endforeach; ?>
                 </li>
+            <?php endforeach; ?>
         </ul>
     </div>
 
