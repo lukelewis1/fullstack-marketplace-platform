@@ -80,6 +80,7 @@
         <h3 class="skill-title"><?= htmlspecialchars(get_listing_name($listing['service_id'])) ?></h3>
         <li class="skill-res">
             <h5>By <?= htmlspecialchars(get_username($listing['service_provider_id'])) ?></h5>
+            <h5>Price: <?= htmlspecialchars(get_creds($listing['service_id'])) ?> FUSS Credit(s)</h5>
             <h6>Booked in for:</h6>
             <p>Start: <?= htmlspecialchars($listing['start']) ?></p>
             <p>End: <?= htmlspecialchars($listing['end']) ?></p>
@@ -113,6 +114,7 @@
             <h3 class="skill-title"><?= htmlspecialchars(get_listing_name($listing['service_id'])) ?></h3>
             <li class="skill-res">
                 <h5>By <?= htmlspecialchars(get_username($listing['service_provider_id'])) ?></h5>
+                <h5>Price: <?= htmlspecialchars(get_creds($listing['service_id'])) ?> FUSS Credit(s)</h5>
                 <h6>Booked in for:</h6>
                 <p>Start: <?= htmlspecialchars($listing['start']) ?></p>
                 <p>End: <?= htmlspecialchars($listing['end']) ?></p>
