@@ -27,12 +27,20 @@ if (!isset($_SESSION['username'])) {
     
     
     <main class="content">
-      <h1> User Home Page </h1>
+
+      <div class="welcome-section">
+        <h2 class="welcome-message"> Good to have you back, </h2>
+        <h1 class="welcome-name"> <?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </h1>
+        <h2 class="welcome-message"> Take a look around to see announcements and news.  </h2>
+      </div>
+
+      <!-- Additional homepage content can go here -->
+      <div class="news-section"> 
+
+      </div>
+
     </main>
      
-
-    
-
     <script src="../scripts/global_scripts.js"></script>
   </body>
 </html>
