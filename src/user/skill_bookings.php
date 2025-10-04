@@ -104,7 +104,27 @@
 <h1>Skills You Booked: Pending</h1>
 <div class="skills">
     <ul class="my-skills">
+        <?php
+        if ($no_pending) {
+            echo '<h3 class="skill-title">You Have No Pending Bookings</h3>';
+        }
+        else foreach ($pending_listings as $listing):
+            ?>
+            <h3 class="skill-title"><?= htmlspecialchars(get_listing_name($listing['service_id'])) ?></h3>
+            <li class="skill-res">
+                <h5>By <?= htmlspecialchars(get_username($listing['service_provider_id'])) ?></h5>
+                <h6>Booked in for:</h6>
+                <p>Start: <?= htmlspecialchars($listing['start']) ?></p>
+                <p>End: <?= htmlspecialchars($listing['end']) ?></p>
+            </li>
 
+            <div class="submit-btn">
+                <button class="btn cancel-btn"
+                        type="button">
+                    Cancel
+                </button>
+            </div>
+        <?php endforeach; ?>
     </ul>
 </div>
 </body>
