@@ -23,8 +23,12 @@ if (!isset($_SESSION['username'])) {
      ?>
 
     <!-- Main Content -->
-     <h1> Admin Home Page </h1>
-
-    <main></main>
+     <main class="content">
+     <div class="welcome-section">
+        <h2 class="welcome-message"> Good to have you back, </h2>
+        <h1 class="welcome-name"> <?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </h1>
+        <h2 class="welcome-message"> Take a look around to see announcements and news.  </h2>
+      </div>
+      </main>
   </body>
 </html>
