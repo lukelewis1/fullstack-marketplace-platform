@@ -16,7 +16,8 @@ document.querySelectorAll('.delete-btn').forEach(btn => {
                         // Replace the whole skill block with a simple message
                         skill.innerHTML = `<h3>${title.textContent} has been removed</h3>`;
                     } else {
-                        alert('Delete failed');
+                        const spanMsg = btn.parentElement.nextElementSibling;
+                        spanMsg.hidden = false;
                     }
                 });
         }

@@ -98,7 +98,7 @@
                             Delete
                         </button>
                     </div>
-
+                    <span class="skill-booked" hidden="">Skill is currently booked, you need to cancel or fulfill all bookings associated with this listing.</span>
                 </li>
             <?php endforeach; ?>
         </ul>

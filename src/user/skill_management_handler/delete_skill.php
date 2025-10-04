@@ -12,11 +12,23 @@
     $lid = $_POST['listing_id'];
     $uid = get_uid($_SESSION['username']);
 
-    $sql = "DELETE FROM Listings WHERE listing_id = ? AND user_id = ?;";
+    $sql = "SELECT * FROM Bookings WHERE service_id = ?;";
     $statement = $conn->prepare($sql);
-    $statement->bind_param('ii', $lid, $uid);
+    $statement->bind_param('i', $lid);
     $statement->execute();
-    $statement->close();
+    $result = $statement->get_result();
 
-    header('Content-Type: application/json');
-    echo json_encode(true);
+    if ($result->num_rows > 0) {
+        header('Content-Type: application/json');
+        echo json_encode(false);
+        $statement->close();
+    } else {
+        $sql = "DELETE FROM Listings WHERE listing_id = ? AND user_id = ?;";
+        $statement = $conn->prepare($sql);
+        $statement->bind_param('ii', $lid, $uid);
+        $statement->execute();
+        $statement->close();
+
+        header('Content-Type: application/json');
+        echo json_encode(true);
+    }
