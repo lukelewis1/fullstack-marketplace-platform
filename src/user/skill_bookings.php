@@ -9,6 +9,49 @@
     require_once __DIR__ . '/../inc/dbconn.inc.php';
     require_once __DIR__ . '/../inc/functions.php';
 
+    $uid = get_uid($_SESSION['username']);
+    $no_pending = false;
+    $no_confirmed = false;
+
+    // Getting confirmed bookings
+    $sql = "SELECT service_provider_id, start, end, service_id FROM Bookings WHERE booker_id = ? AND status = 'confirmed';";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $uid);
+    $statement->execute();
+    $result = $statement->get_result();
+
+    $confirmed_listings = [];
+
+    if ($row = $result->fetch_assoc()) {
+        $confirmed_listings[] = $row;
+    }
+    else if ($result->num_rows === 0) {
+        $no_confirmed = true;
+    }
+    else {
+        echo "Statement failed: (" . $statement->errno . ") " . $statement->error;
+    }
+    $statement->close();
+
+    // Getting pending bookings
+    $sql = "SELECT service_provider_id, start, end, service_id FROM Bookings WHERE booker_id = ? AND status = 'pending';";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $uid);
+    $statement->execute();
+    $result = $statement->get_result();
+
+    $pending_listings = [];
+
+    if ($row = $result->fetch_assoc()) {
+        $confirmed_listings[] = $row;
+    }
+    else if ($result->num_rows === 0) {
+        $no_pending = true;
+    }
+    else {
+        echo "Statement failed: (" . $statement->errno . ") " . $statement->error;
+    }
+    $statement->close();
 ?>
 
 <!DOCTYPE html>
@@ -17,14 +60,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FUSS</title>
-    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
     <link rel="stylesheet" href="skill_management_handler/skill_manage_style.css" />
 </head>
 <body>
 <?php
-include_header($_SESSION['username'] ?? null);
+    include_header($_SESSION['username'] ?? null);
 ?>
 
-    <h1>Booking Management</h1>
+<h1>Skills You Booked: Confirmed</h1>
+<div class="skills">
+    <ul class="my-skills">
+        <?php
+            if ($no_confirmed) {
+                echo '<h3 class="skill-title">You Have No Confirmed Bookings</h3>';
+            }
+            else {
+                foreach ($confirmed_listings as $listing):
+        ?>
+        <h3 class="skill-title"><?= htmlspecialchars(get_listing_name($listing['service_id'])) ?></h3>
+        <li class="skill-res">
+            <h5>By <?= htmlspecialchars(get_username($listing['service_provider_id'])) ?></h5>
+            <h6>Booked in for:</h6>
+            <p>Start: <?= htmlspecialchars($listing['start']) ?></p>
+            <p>End: <?= htmlspecialchars($listing['end']) ?></p>
+        </li>
+
+    </ul>
+</div>
+<h1>Skills You Booked: Pending</h1>
+<div class="skills">
+    <ul class="my-skills">
+
+    </ul>
+</div>
 </body>
 </html>
