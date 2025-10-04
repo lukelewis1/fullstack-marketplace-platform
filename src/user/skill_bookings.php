@@ -43,7 +43,7 @@
     $pending_listings = [];
 
     if ($row = $result->fetch_assoc()) {
-        $confirmed_listings[] = $row;
+        $pending_listings[] = $row;
     }
     else if ($result->num_rows === 0) {
         $no_pending = true;
@@ -75,8 +75,7 @@
             if ($no_confirmed) {
                 echo '<h3 class="skill-title">You Have No Confirmed Bookings</h3>';
             }
-            else {
-                foreach ($confirmed_listings as $listing):
+            else foreach ($confirmed_listings as $listing):
         ?>
         <h3 class="skill-title"><?= htmlspecialchars(get_listing_name($listing['service_id'])) ?></h3>
         <li class="skill-res">
@@ -86,6 +85,20 @@
             <p>End: <?= htmlspecialchars($listing['end']) ?></p>
         </li>
 
+        <div class="submit-btn">
+            <button class="btn confirm-btn"
+                    type="button">
+                Confirm Service Completion
+            </button>
+        </div>
+
+        <div class="submit-btn">
+            <button class="btn cancel-btn"
+                    type="button">
+                Cancel Service Booking
+            </button>
+        </div>
+        <?php endforeach; ?>
     </ul>
 </div>
 <h1>Skills You Booked: Pending</h1>
