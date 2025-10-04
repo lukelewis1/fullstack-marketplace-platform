@@ -92,9 +92,6 @@
                     <br>
 
                     <div class="submit-btn">
-                        <button class="btn" type="submit" name="full-reg">Edit</button>
-                    </div>
-                    <div class="submit-btn">
                         <button class="btn delete-btn"
                                 type="button"
                                 data-lid="<?= htmlspecialchars($skill['listing_id']) ?>">
