@@ -22,15 +22,13 @@
 
     $confirmed_listings = [];
 
-    if ($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $confirmed_listings[] = $row;
     }
-    else if ($result->num_rows === 0) {
+    if ($result->num_rows === 0) {
         $no_confirmed = true;
     }
-    else {
-        echo "Statement failed: (" . $statement->errno . ") " . $statement->error;
-    }
+
     $statement->close();
 
     // Getting pending bookings
@@ -42,15 +40,13 @@
 
     $pending_listings = [];
 
-    if ($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $pending_listings[] = $row;
     }
-    else if ($result->num_rows === 0) {
+    if ($result->num_rows === 0) {
         $no_pending = true;
     }
-    else {
-        echo "Statement failed: (" . $statement->errno . ") " . $statement->error;
-    }
+
     $statement->close();
 ?>
 
@@ -78,32 +74,34 @@
             else foreach ($confirmed_listings as $listing):
         ?>
         <h3 class="skill-title"><?= htmlspecialchars(get_listing_name($listing['service_id'])) ?></h3>
-        <li class="skill-res">
-            <h5>By <?= htmlspecialchars(get_username($listing['service_provider_id'])) ?></h5>
-            <h5>Price: <?= htmlspecialchars(get_creds($listing['service_id'])) ?> FUSS Credit(s)</h5>
-            <h6>Booked in for:</h6>
-            <p>Start: <?= htmlspecialchars($listing['start']) ?></p>
-            <p>End: <?= htmlspecialchars($listing['end']) ?></p>
-        </li>
+            <div class="skill-el">
+                <li class="skill-res">
+                    <h5>By <?= htmlspecialchars(get_username($listing['service_provider_id'])) ?></h5>
+                    <h5>Price: <?= htmlspecialchars(get_creds($listing['service_id'])) ?> FUSS Credit(s)</h5>
+                    <h6>Booked in for:</h6>
+                    <p>Start: <?= htmlspecialchars($listing['start']) ?></p>
+                    <p>End: <?= htmlspecialchars($listing['end']) ?></p>
+                </li>
 
-        <div class="submit-btn">
-            <button class="btn confirm-btn"
-                    type="button">
-                Confirm Service Completion
-            </button>
-        </div>
+                <div class="submit-btn">
+                    <button class="btn confirm-btn"
+                            type="button">
+                        Confirm Service Completion
+                    </button>
+                </div>
 
-        <div class="submit-btn">
-            <button class="btn cancel-btn"
-                    type="button"
-                    data-id='<?= json_encode([
-                            $listing['service_provider_id'],
-                            $listing['service_id'],
-                            get_listing_name($listing['service_id'])
-                    ]) ?>'>
-                Cancel Service Booking
-            </button>
-        </div>
+                <div class="submit-btn">
+                    <button class="btn cancel-btn"
+                            type="button"
+                            data-id='<?= json_encode([
+                                    $listing['service_provider_id'],
+                                    $listing['service_id'],
+                                    get_listing_name($listing['service_id'])
+                            ]) ?>'>
+                        Cancel Service Booking
+                    </button>
+                </div>
+            </div>
         <?php endforeach; ?>
     </ul>
 </div>
@@ -117,6 +115,7 @@
         else foreach ($pending_listings as $listing):
             ?>
             <h3 class="skill-title"><?= htmlspecialchars(get_listing_name($listing['service_id'])) ?></h3>
+        <div class="skill-el">
             <li class="skill-res">
                 <h5>By <?= htmlspecialchars(get_username($listing['service_provider_id'])) ?></h5>
                 <h5>Price: <?= htmlspecialchars(get_creds($listing['service_id'])) ?> FUSS Credit(s)</h5>
@@ -136,6 +135,7 @@
                     Cancel
                 </button>
             </div>
+        </div>
         <?php endforeach; ?>
     </ul>
 </div>

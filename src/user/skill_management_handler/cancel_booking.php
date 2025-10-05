@@ -67,6 +67,13 @@
     }
     $statement->close();
 
+    // Make it work with live message notifications
+    $sql = "UPDATE Messages SET unseen = 1 WHERE receiver_id = ?;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $provider_id);
+    $statement->execute();
+    $statement->close();
+
     // Lets js know everything went well
     header('Content-Type: application/json');
     echo json_encode(true);

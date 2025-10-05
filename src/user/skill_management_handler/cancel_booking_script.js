@@ -6,7 +6,7 @@ document.querySelectorAll('.cancel-btn').forEach(btn => {
         const message = prompt(`Please enter the reason for cancelling "${serviceName}":`);
         if (!message) return;
 
-        const skill = btn.closest('.skill-res');
+        const skill = btn.closest('.skill-el');
 
         fetch('skill_management_handler/cancel_booking.php', {
             method: 'POST',
@@ -21,7 +21,7 @@ document.querySelectorAll('.cancel-btn').forEach(btn => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    skill.innerHTML = `<h3>Skill has been canceled and provider notified</h3>`;
+                    skill.outerHTML = `<div class="skill-el"><h3>Skill has been canceled and provider notified</h3></div>`;
                 }
             });
     });
