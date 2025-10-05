@@ -47,7 +47,6 @@
           <div class="user-name-role">
             <span class="user-name"><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </span>
             <span class="user-role"> <?php echo htmlspecialchars(get_role($_SESSION['username'] ?? '')); ?> </span>
-              <span>FUSS Credit Balance: <?php echo $credit_balance; ?></span>
           </div>
           <div class="avatar">
             <a href="/user/profile.php">
@@ -99,7 +98,9 @@
 
           <li class="credits"
               class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
-              <a href="#">Credits</a>
+              <a href="#">
+                Credits: <span class="credit-circle"><?php echo htmlspecialchars($credit_balance); ?></span>
+              </a>
           </li>
         </ul>
       </nav>

@@ -161,6 +161,19 @@ nav {
   margin-left: auto;
 }
 
+.credit-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; /* Circle width */
+  height: 30px; /* Circle height */
+  border-radius: 50%; /* Makes it a circle */
+  background-color: #ff9800;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
 /* Dropdown Menu */
 .dropdown {
   position: relative;

@@ -61,7 +61,7 @@
                 }
                 ?>
             </span>
-              <span>FUSS Credit Balance: <?php echo $credit_balance; ?></span>
+              
           </div>
           <div class="avatar">
             <a href="/user/profile.php">
@@ -123,7 +123,9 @@
 
             <li class="credits"
               class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
-              <a href="#">Credits</a>
+              <a href="#">
+                Credits <span class="credit-circle"><?php echo htmlspecialchars($credit_balance); ?></span>
+              </a>
           </li>
         </ul>
       </nav>
