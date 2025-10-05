@@ -95,7 +95,12 @@
 
         <div class="submit-btn">
             <button class="btn cancel-btn"
-                    type="button">
+                    type="button"
+                    data-id='<?= json_encode([
+                            $listing['service_provider_id'],
+                            $listing['service_id'],
+                            get_listing_name($listing['service_id'])
+                    ]) ?>'>
                 Cancel Service Booking
             </button>
         </div>
@@ -122,12 +127,19 @@
 
             <div class="submit-btn">
                 <button class="btn cancel-btn"
-                        type="button">
+                        type="button"
+                        data-id='<?= json_encode([
+                                $listing['service_provider_id'],
+                                $listing['service_id'],
+                                get_listing_name($listing['service_id'])
+                        ]) ?>'>
                     Cancel
                 </button>
             </div>
         <?php endforeach; ?>
     </ul>
 </div>
+
+<script src="skill_management_handler/cancel_booking_script.js"></script>
 </body>
 </html>
