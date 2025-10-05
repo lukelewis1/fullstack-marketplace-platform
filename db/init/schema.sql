@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS FUSS_DB;
 CREATE DATABASE FUSS_DB;
 USE FUSS_DB;
 
+DROP TABLE IF EXISTS TransactionHistory;
 DROP TABLE IF EXISTS Reviews;
 DROP TABLE IF EXISTS Availability;
 DROP TABLE IF EXISTS Bookings;
@@ -117,4 +118,15 @@ CREATE TABLE Reviews (
     type ENUM('positive', 'negative', 'neutral') DEFAULT 'neutral' NOT NULL,
     review VARCHAR(500) NOT NULL,
     FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
+);
+
+CREATE TABLE TransactionHistory (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_id INT NOT NULL,
+    provider_id INT NOT NULL,
+    booker_id INT NOT NULL,
+    price INT NOT NULL,
+    FOREIGN KEY (service_id) REFERENCES Listings(listing_id),
+    FOREIGN KEY (provider_id) REFERENCES Users(id),
+    FOREIGN KEY (booker_id) REFERENCES Users(id)
 );
