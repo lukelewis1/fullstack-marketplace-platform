@@ -38,7 +38,7 @@ CREATE TABLE Listings(
     is_negotiable BOOL NOT NULL,
     likes INT,
     dislikes INT,
-    type ENUM('tutoring', 'life_skill', 'tech_support', 'technical', 'practical') NOT NULL,
+    type VARCHAR(50) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id),
     UNIQUE KEY service_owner(user_id, title)
 );
