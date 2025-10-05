@@ -7,6 +7,14 @@
 
     require_once __DIR__ . '/../inc/dbconn.inc.php';
     require_once __DIR__ . '/../inc/functions.php';
+
+    $file = __DIR__ . '/../data/skill_categories.json';
+
+    // Load current skill categories
+    $categories = [];
+    if (file_exists($file)) {
+        $categories = json_decode(file_get_contents($file), true) ?? [];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -47,11 +55,11 @@
                   <label for="category">Select the Most Relevant Option:</label>
                   <select id="category" name="category-name" required>
                       <option value="">-- Please choose an option --</option>
-                      <option value="tutoring">Tutoring</option>
-                      <option value="life_skill">Life Skill</option>
-                      <option value="tech_support">Tech Support</option>
-                      <option value="technical">Technical</option>
-                      <option value="practical">Practical</option>
+                      <?php
+                        foreach ($categories as $cat) {
+                            echo '<option value="' . htmlspecialchars($cat) . '">' . htmlspecialchars($cat) . '</option>';
+                        }
+                      ?>
                   </select>
               </div>
 
