@@ -95,9 +95,10 @@
           <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill_manage.php') ? 'active' : '' ?>">Dashboard</a></li>
             <div class="dropdown-content">
-              <a href="/admin/insights.php">Insights</a>
-              <a href="/admin/user_management.php"> User Management </a>
-              <a href="/admin/content_moderation.php"> Content Moderation </a>
+                <a href="/admin/insights.php">Insights</a>
+                <a href="/admin/user_management.php"> User Management </a>
+                <a href="/admin/content_moderation.php"> Content Moderation </a>
+                <a href="/admin/skill_category_management.php"> Skill Category Management </a>
             </div>
           </div>
 
