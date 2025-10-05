@@ -107,6 +107,37 @@ function get_username($uid) {
     return $username;
 }
 
+// Function to get the listing name from a listing id
+function get_listing_name($lid) {
+    global $conn;
+
+    $sql = 'SELECT title FROM Listings WHERE listing_id = ?;';
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $lid);
+    $statement->execute();
+    $statement->bind_result($listing_name);
+    $statement->fetch();
+    $statement->close();
+
+    return $listing_name;
+}
+
+//Function to return the amount of FUSS Credits a certain listing costs
+function get_creds($lid) {
+    global $conn;
+
+    $sql = 'SELECT price FROM Listings WHERE listing_id = ?;';
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $lid);
+    $statement->execute();
+    $statement->bind_result($price);
+    $statement->fetch();
+    $statement->close();
+
+    return $price;
+}
+
+
 /*
 --- The following section contains a series of functions to be used for displaying listings for services and skills ---
  */
