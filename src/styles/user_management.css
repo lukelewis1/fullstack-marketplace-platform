@@ -52,6 +52,8 @@ search {
   margin-left: auto;
 }
 
+/* Edit Modal Window */
+
 .modal {
   display: none; /* hide by default */
   position: fixed;
@@ -111,4 +113,38 @@ search {
   float: right;
   font-size: 20px;
   cursor: pointer;
+}
+
+.dropdown-content {
+  min-width: 100px !important;
+}
+
+/* Delete Modal Window */
+
+#confirmModal p {
+  text-align: center;
+}
+
+#submitForm .button-group {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;
+  gap: 10px; /* space between buttons */
+  margin-top: 10px;
+}
+
+#submitForm button {
+  padding: 8px 16px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#submitForm .confirm-btn {
+  background-color: red;
+}
+
+#submitForm .cancel-btn {
+  background-color: grey;
 }

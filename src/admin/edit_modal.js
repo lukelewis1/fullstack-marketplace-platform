@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Close modal
+  // Close modal window
   closeBtn.onclick = () => (modal.style.display = "none");
   window.onclick = (event) => {
     if (event.target == modal) modal.style.display = "none";
@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then((response) => response.text())
       .then((data) => {
-        alert("User updated successfully!");
         modal.style.display = "none";
         location.reload(); // Refresh to show updates
       })
