@@ -25,6 +25,8 @@ if (!isset($_SESSION['username'])) {
     <!-- Main Content -->
      <h1> Moderation </h1>
 
+     
+
     <main></main>
   </body>
 </html>
