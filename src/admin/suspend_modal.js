@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("confirmModal");
-  const closeBtn = document.querySelector("#confirmModal .close");
+  const modal = document.getElementById("suspendModal");
+  const closeBtn = document.querySelector("#suspendModal .close");
   const submitForm = document.getElementById("submitForm");
 
   let deleteUrl = "";
 
   // Open modal
-  document.querySelectorAll(".delete-btn").forEach((btn) => {
+  document.querySelectorAll(".suspend-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       deleteUrl = btn.getAttribute("href");

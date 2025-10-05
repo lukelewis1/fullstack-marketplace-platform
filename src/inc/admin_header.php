@@ -13,7 +13,7 @@
 
     $result = $statement->get_result();
     $row = $result->fetch_assoc();
-    $credit_balance = $row['fuss_credit'];
+    $credit_balance = isset($row['fuss_credit']) ? $row['fuss_credit'] : 0;
     $statement->close();
 ?>
 

@@ -91,6 +91,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
                           Edit
                         </a>
                         <a href='delete_user.php?id=" . urlencode($row['id']) . "' class='delete-btn'>Delete</a>
+                        <a href='suspend_user.php?id=" . urlencode($row['id']) . "' class='suspend-btn'>Suspend</a>
                       </div>
                     </div>
                   </td>";
@@ -120,6 +121,8 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
             <input type="email" name="email" id="edit-email" required>
             <label>Role:</label>
             <input type="text" name="role" id="edit-role" required>
+            <label>FUSS Credits:</label>
+            <input type="text" name="credits" id="fuss-credits" required>
             <button type="submit">Save Changes</button>
           </form>
         </div>
@@ -130,8 +133,22 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Confirm Deletion</h2>
-        
         <p>Are you sure you want to delete this user?</p>
+        <form id="submitForm">
+          <div class="button-group">
+          <button type="submit" class="confirm-btn">Yes</button>
+          <button type="button" class="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Suspend Confirm Modal -->
+      <div id="suspendModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Confirm Suspension</h2>
+        <p>Are you sure you want to suspend this user?</p>
         <form id="submitForm">
           <div class="button-group">
           <button type="submit" class="confirm-btn">Yes</button>
@@ -148,6 +165,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
     </div>
      <script src="../admin/edit_modal.js"></script>
      <script src="../admin/delete_modal.js"></script>
+     <script src="../admin/suspend_modal.js"></script>
   </body>
 </html>
 

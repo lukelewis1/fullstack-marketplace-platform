@@ -121,7 +121,7 @@ search {
 
 /* Delete Modal Window */
 
-#confirmModal p {
+.modal p {
   text-align: center;
 }
 
