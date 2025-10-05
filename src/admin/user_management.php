@@ -78,23 +78,24 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
                   
                   echo "<td>
                     <div class='dropdown action-dropdown'>
-                      <button>Action</button>
-                        <div class='dropdown-content'>
-                          <a href='view_user.php?id=" . urlencode($row['id']) . "'>View</a>
-                          <a href='#'
-                            class='edit-btn' 
-                            data-id='" . htmlspecialchars($row['id']) . "' 
-                            data-fname='" . htmlspecialchars($row['f_name']) . "' 
-                            data-lname='" . htmlspecialchars($row['l_name']) . "' 
-                            data-email='" . htmlspecialchars($row['email']) . "' 
-                            data-role='" . htmlspecialchars($row['role'] ?? '') . "'>
-                            Edit
-                          </a>
-                          <a href='delete_user.php?id=" . urlencode($row['id']) . "' onclick='return confirm(\"Are you sure you want to delete this user?\")'>Delete</a>
-                        </div>
+                      <button>Options</button>
+                      <div class='dropdown-content'>
+                        <a href='view_user.php?id=" . urlencode($row['id']) . "'>View</a>
+                        <a href='#'
+                          class='edit-btn' 
+                          data-id='" . htmlspecialchars($row['id']) . "' 
+                          data-fname='" . htmlspecialchars($row['f_name']) . "' 
+                          data-lname='" . htmlspecialchars($row['l_name']) . "' 
+                          data-email='" . htmlspecialchars($row['email']) . "' 
+                          data-role='" . htmlspecialchars($row['role'] ?? '') . "'>
+                          Edit
+                        </a>
+                        <a href='delete_user.php?id=" . urlencode($row['id']) . "' class='delete-btn'>Delete</a>
                       </div>
-                    </td>";
-                    echo "</tr>";
+                    </div>
+                  </td>";
+                  echo "</tr>";
+
                     }
                   mysqli_free_result($result);
                           }
@@ -124,11 +125,29 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
         </div>
       </div>
 
+      <!-- Delete Confirm Modal -->
+      <div id="confirmModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Confirm Deletion</h2>
+        
+        <p>Are you sure you want to delete this user?</p>
+        <form id="submitForm">
+          <div class="button-group">
+          <button type="submit" class="confirm-btn">Yes</button>
+          <button type="button" class="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
 
     </main>
 
     </div>
-     <script src="../admin/modal.js"></script>
+     <script src="../admin/edit_modal.js"></script>
+     <script src="../admin/delete_modal.js"></script>
   </body>
 </html>
 
