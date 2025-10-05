@@ -83,16 +83,17 @@
               </a>
           </li>
           <div class="dropdown">
-            <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Skill Share</a></li>
+            <li><a  class="<?= ($currentPage == 'skill_manage.php') ? 'active' : '' ?>">Skill Share</a></li>
             <div class="dropdown-content">
-              <a href="/user/skill_post.php">Post Service</a>
-              <a href="/user/skill_request.php"> Request Service </a>
-              <a href="/user/skill_search.php"> Skill Search </a>
+                <a href="/user/skill_post.php">Post Service</a>
+                <a href="/user/skill_manage.php"> Service Management </a>
+                <a href="/user/skill_search.php"> Skill Search </a>
+                <a href="/user/skill_bookings.php">Skill Bookings</a>
             </div>
           </div>
           
           <div class="dropdown">
-            <li><a  class="<?= ($currentPage == 'skill_request.php') ? 'active' : '' ?>">Dashboard</a></li>
+            <li><a  class="<?= ($currentPage == 'skill_manage.php') ? 'active' : '' ?>">Dashboard</a></li>
             <div class="dropdown-content">
               <a href="/admin/insights.php">Insights</a>
               <a href="/admin/user_management.php"> User Management </a>
