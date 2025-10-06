@@ -213,6 +213,11 @@ nav {
   background: #f3f4f6;
 }
 
+/* Avatar Dropdown */
+.avatar-dropdown-content {
+  min-width: 100px !important;
+}
+
 /* Sidebar */
 .sidebar {
   background: #1e293b;
