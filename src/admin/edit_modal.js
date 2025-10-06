@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("edit-l_name").value = btn.dataset.lname;
       document.getElementById("edit-email").value = btn.dataset.email;
       document.getElementById("edit-role").value = btn.dataset.role;
+      document.getElementById("edit-credits").value = btn.dataset.credits;
     });
   });
 
