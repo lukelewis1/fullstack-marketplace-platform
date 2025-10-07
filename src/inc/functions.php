@@ -146,7 +146,7 @@ function get_creds($lid) {
 function get_popular(): array {
     global $conn;
 
-    $sql = 'SELECT * FROM Listings ORDER BY likes LIMIT 20;';
+    $sql = 'SELECT * FROM Listings ORDER BY likes DESC LIMIT 20;';
     $statement = $conn->prepare($sql);
     $statement->execute();
 
@@ -308,6 +308,22 @@ function get_listings_available(string $keyword, array $availability): array {
     $statement->close();
 
     return $listings;
+}
+
+function get_listings_by_id($lid): array {
+    global $conn;
+
+    $sql = "SELECT * FROM Listings WHERE listing_id = ? LIMIT 1;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $lid);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $row = $result->fetch_assoc();
+
+    $statement->close();
+
+    return $row;
 }
 
 
