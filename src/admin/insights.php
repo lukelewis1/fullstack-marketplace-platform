@@ -26,7 +26,44 @@ if (!isset($_SESSION['username'])) {
      
 
     <main class="content">
-      <h1> Insights </h1>
+
+      <div class="stats-container"> 
+
+          <div class="it-stats-container">
+              <div class="it-stats-content">
+                <h3 class="it-stats-title">Total Users</h3>
+                <span style="background-color: green;" class="stats-circle">50
+                </span>
+              </div>
+          </div>
+
+      <div class="it-stats-container">
+            <div class="it-stats-content">
+              <h3 class="it-stats-title">Banned Users</h3>
+              <span style="background-color: red;"class="stats-circle">50
+            </div>
+      </div>
+
+        <div class="it-stats-container">
+            <div class="it-stats-content">
+              <h3 class="it-stats-title">Active Services</h3>
+              <span style="background-color: orange;"class="stats-circle">50
+            </div>
+        </div>
+
+        <div class="it-stats-container">
+            <div class="it-stats-content">
+              <h3 class="it-stats-title">Total Credit Distribution</h3>
+              <span style="background-color: grey;"class="stats-circle">50
+            </div>
+        </div>
+
+        <div class="it-stats-container" style="width: 80%; height: 500px;">
+            <div class="it-stats-content">
+              <h3 class="it-stats-title">Recent Skills</h3>
+            </div>
+        </div>
+
     </main>
     
   </body>
