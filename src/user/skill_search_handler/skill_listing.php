@@ -10,6 +10,10 @@
 
     $id = (int)$_GET['id'];
     $listing = get_listings_by_id($id);
+    $slots = get_available_slots_for_listing((int)$listing['listing_id'], 14);
+    $username     = $_SESSION['username'] ?? null;
+    $userCredits  = $username ? (float)get_user_credits($username) : 0.0;
+    $price        = (float)$listing['price'];
 ?>
 
 <!DOCTYPE html>
@@ -44,12 +48,61 @@
                   : htmlspecialchars('Price is NOT Negotiable'); ?>
             </p>
             <p class="price"></p>
-            <p>Likes: <?= htmlspecialchars($listing['likes']) ?></p>
+            <p>Likes: <?= htmlspecialchars((string)($listing['likes'] ?? 0), ENT_QUOTES, 'UTF-8') ?></p>
           </li>
         </ul>
+        <form id="booking-form" action="./booking_request.php" method="post">
+          <section id="booking-root">
+          <select id="availability-select" name="slot" required>
+            <option selected disabled>Availabile times</option>
+          </select>
+        </section>
+
+        <br><input type="submit" value="Request">
+        </form>
       </main>
       
     </div>
+    <script>
+      window.BOOKING_CONTEXT = {
+        price: <?= json_encode($price) ?>,
+        userCredits: <?= json_encode($userCredits) ?>,
+        isLoggedIn: <?= json_encode((bool)$username) ?>
+      };
+      // Data from PHP
+      const AVAILABLE_SLOTS = <?= json_encode($slots, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>;
+
+      // Simple: fill a <select> with options from slots
+      function populateAvailabilitySelect(selectEl, slots) {
+        if (!selectEl) return;
+
+        // Clear existing dynamic options (keep the first placeholder)
+        while (selectEl.options.length > 1) selectEl.remove(1);
+
+        if (!Array.isArray(slots) || slots.length === 0) {
+          // Replace placeholder text if nothing available
+          selectEl.options[0].textContent = 'No availability';
+          selectEl.disabled = true;
+          return;
+        }
+
+        // Add options: value as "start|end", label as human-readable
+        for (const s of slots) {
+          const opt = document.createElement('option');
+          opt.value = `${s.start}|${s.end}`;
+          opt.textContent = s.label ?? `${s.start} – ${s.end}`;
+          selectEl.appendChild(opt);
+        }
+        selectEl.disabled = false;
+      }
+
+      // Run after DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        const sel = document.getElementById('availability-select');
+        populateAvailabilitySelect(sel, AVAILABLE_SLOTS);
+      });
+    </script>
+    <script src="./confirmation_popup_script.js"></script>
     <script src="../scripts/global_scripts.js"></script>
     <script src="../scripts/script.js"></script>
   </body>

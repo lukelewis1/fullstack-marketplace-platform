@@ -73,8 +73,8 @@
                                 : htmlspecialchars('Price is NOT Negotiable'); ?>
                     </p>
                     <p>Successful Exchanges: <?= htmlspecialchars($skill['successful_exchanges']) ?></p>
-                    <p>Likes: <?= htmlspecialchars($skill['likes']) ?></p>
-                    <p>Dislikes: <?= htmlspecialchars($skill['dislikes']) ?></p>
+                    <p>Likes: <?= htmlspecialchars((string)($listing['likes'] ?? 0), ENT_QUOTES, 'UTF-8') ?></p>
+                    <p>Dislikes: <?= htmlspecialchars((string)($listing['dislikes'] ?? 0), ENT_QUOTES, 'UTF-8') ?></p>
 
                     <br>
 

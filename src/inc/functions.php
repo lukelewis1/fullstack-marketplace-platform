@@ -341,4 +341,68 @@ function get_user_credits($uid) {
     return $credits;
 }
 
+function get_available_slots_for_listing(int $listingId, int $daysAhead = 14): array {
+    global $conn;
+    // Pull weekly availability for the listing
+    $stmt = $conn->prepare("
+        SELECT day, `start`, `end`
+        FROM Availability
+        WHERE service_id = ?
+        ORDER BY FIELD(day,'monday','tuesday','wednesday','thursday','friday','saturday','sunday'), `start`
+    ");
+    $stmt->bind_param('i', $listingId);
+    $stmt->execute();
+    $avail = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    if (!$avail) return [];
+
+    // Map day strings to ISO-8601 day numbers (1=Mon .. 7=Sun)
+    $dow = ['monday'=>1,'tuesday'=>2,'wednesday'=>3,'thursday'=>4,'friday'=>5,'saturday'=>6,'sunday'=>7];
+
+    $out = [];
+    $today = new DateTime('today');                // set your TZ globally if needed
+    $now   = new DateTime();
+
+    for ($i = 0; $i < $daysAhead; $i++) {
+        $date = (clone $today)->modify("+$i day");
+        $iso  = (int)$date->format('N');           // 1..7
+
+        foreach ($avail as $a) {
+            if (($dow[$a['day']] ?? 0) !== $iso) continue;
+
+            // Compose concrete start/end
+            $startDT = new DateTime($date->format('Y-m-d') . ' ' . $a['start']);
+            $endDT   = new DateTime($date->format('Y-m-d') . ' ' . $a['end']);
+            if ($endDT <= $now) continue;          // skip past
+
+            $start = $startDT->format('Y-m-d H:i:s');
+            $end   = $endDT->format('Y-m-d H:i:s');
+
+            // Overlap check against existing bookings
+            $chk = $conn->prepare("
+                SELECT 1
+                FROM Bookings
+                WHERE service_id = ?
+                  AND status IN ('pending','confirmed')
+                  AND NOT (end <= ? OR start >= ?)
+                LIMIT 1
+            ");
+            $chk->bind_param('iss', $listingId, $start, $end);
+            $chk->execute();
+            $busy = $chk->get_result()->fetch_column();
+            $chk->close();
+
+            if ($busy) continue;
+
+            $out[] = [
+                'start' => $start,
+                'end'   => $end,
+                'label' => $startDT->format('D, d M Y · H:i') . ' – ' . $endDT->format('H:i'),
+            ];
+        }
+    }
+
+    return $out;
+}
 

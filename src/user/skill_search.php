@@ -51,13 +51,12 @@
           foreach ($results as $listing):
         ?>
         
-        
         <li class="skill-item">
           <a href="/user/skill_search_handler/skill_listing.php?id=<?= (int)$listing['listing_id'] ?>">
             <h3><?= htmlspecialchars($listing['title']) ?></h3>
             <p><?= htmlspecialchars($listing['topic']) ?></p>
             <p class="price"><?= htmlspecialchars($listing['price']) ?> FUSS Credits</p>
-            <p>Likes: <?= htmlspecialchars($listing['likes']) ?></p>
+            <p>Likes: <?= htmlspecialchars((string)($listing['likes'] ?? 0), ENT_QUOTES, 'UTF-8') ?></p>
           </a>
         </li>
         <?php 
