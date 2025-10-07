@@ -184,15 +184,16 @@ function get_listings($search): array {
     return $listings;
 }
 
-// Function to return all listings that contain the parsed word in the title or description but orders the results based on likes
+// Function to return all listings that contain the parsed word in the title, topic, or description but orders the results based on likes
 function get_listings_popular($search): array {
     global $conn;
 
     $sql = "SELECT * FROM Listings WHERE title LIKE CONCAT('%', ?, '%')
-            OR description LIKE CONCAT('%', ?, '%') 
+            OR description LIKE CONCAT('%', ?, '%')
+            OR topic LIKE CONCAT('%', ?, '%')
             ORDER BY likes;";
     $statement = $conn->prepare($sql);
-    $statement->bind_param('ss', $search, $search);
+    $statement->bind_param('sss', $search, $search, $search);
     $statement->execute();
 
     $result = $statement->get_result();
@@ -324,6 +325,20 @@ function get_listings_by_id($lid): array {
     $statement->close();
 
     return $row;
+}
+
+function get_user_credits($uid) {
+    global $conn;
+
+    $sql = "SELECT fuss_credit FROM Users WHERE user_name = ?;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('s', $uid);
+    $statement->execute();
+    $statement->bind_result($credits);
+    $statement->fetch();
+    $statement->close();
+
+    return $credits;
 }
 
 

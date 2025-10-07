@@ -5,8 +5,8 @@
 
     $currentPage = basename($_SERVER['PHP_SELF']);
 
-    require_once __DIR__ . '/../inc/dbconn.inc.php';
-    require_once __DIR__ . '/../inc/functions.php';
+    require_once __DIR__ . '/../../inc/dbconn.inc.php';
+    require_once __DIR__ . '/../../inc/functions.php';
 
     $id = (int)$_GET['id'];
     $listing = get_listings_by_id($id);
@@ -18,8 +18,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= $listing['title'] ?></title>
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="/user/friends/friend_style.css" />
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="skill_search_handler/skill_search_style.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
   </head>
@@ -32,7 +31,7 @@
 
     <div class="page-wrapper">
       <main class="content">
-        <a id="back" href="skill_search.php"><i class="fa-solid fa-xmark"></i></a>
+        <a id="back" href="../skill_search.php"><i class="fa-solid fa-xmark"></i></a>
         <h1 class="list-heading"><?= htmlspecialchars($listing['title']) ?></h1>
         <ul>
           <li>

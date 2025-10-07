@@ -5,10 +5,12 @@
 
     $currentPage = basename($_SERVER['PHP_SELF']);
 
-    require_once __DIR__ . '/../inc/dbconn.inc.php';
-    require_once __DIR__ . '/../inc/functions.php';
+    require_once __DIR__ . '/../../inc/dbconn.inc.php';
+    require_once __DIR__ . '/../../inc/functions.php';
 
-    $results = get_popular();
+    $query = $_GET['q'];
+    $results = get_listings_popular($query);
+    $count = count($results);
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +19,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Home Page</title>
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="skill_search_handler/skill_search_style.css" />
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="skill_search_style.css" />
   </head>
   <body>
     <?php 
@@ -34,7 +36,7 @@
       <h1>Skill Search</h1>
 
       <div class="skill-search-bar">
-        <form id="search-form" method="get" action="./skill_search_handler/search_results.php">
+        <form id="search-form" method="get" action="search_results.php">
             <input
                     type="search"
                     id="search-input"
@@ -45,7 +47,9 @@
     </div>
 
     <div class="skills">
-      <h1>Trending Services</h1>
+      <p class="search-response"><span class="query"><?= $count ?></span> 
+       <?= ($count === 1 ? 'result' : 'results') ?> for 
+       <span class="query"><?= htmlspecialchars($query) ?></span></p>
       <ul class="skill-listings">
         <?php 
           foreach ($results as $listing):
