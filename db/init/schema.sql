@@ -37,8 +37,8 @@ CREATE TABLE Listings(
     description VARCHAR(250),
     successful_exchanges INT NOT NULL CHECK (successful_exchanges >= 0) DEFAULT 0,
     is_negotiable BOOL NOT NULL,
-    likes INT,
-    dislikes INT,
+    likes INT DEFAULT 0,
+    dislikes INT DEFAULT 0,
     type VARCHAR(50) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id),
     UNIQUE KEY service_owner(user_id, title)
