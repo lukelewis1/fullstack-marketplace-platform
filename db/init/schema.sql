@@ -40,7 +40,7 @@ CREATE TABLE Listings(
     likes INT,
     dislikes INT,
     type VARCHAR(50) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     UNIQUE KEY service_owner(user_id, title)
 );
 

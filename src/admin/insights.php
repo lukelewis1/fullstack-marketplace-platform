@@ -37,7 +37,7 @@ require_once __DIR__ . '/../inc/functions.php';
                 <h3 class="it-stats-title">Total Users</h3>
                 <span style="background-color: green;" class="stats-circle">
                   <?php 
-                  $sql = "SELECT COUNT(*) AS total_usersFROM Users";
+                  $sql = "SELECT COUNT(*) AS total_users FROM Users";
                   $result = $conn->query($sql);
                   $row = $result->fetch_assoc();
                   echo $row['total_users'];
