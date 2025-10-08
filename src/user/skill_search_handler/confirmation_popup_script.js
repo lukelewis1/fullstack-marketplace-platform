@@ -87,7 +87,7 @@ function createConfirmModal() {
     const onYes = async () => {
       // 1) client-side credit check
       if (Number.isFinite(price) && Number.isFinite(userCredits) && userCredits < price) {
-        errLine.textContent = `Insufficient credits: you have ${userCredits}, need ${price}.`;
+        errLine.textContent = `Insufficient credits.`;
         return; // keep modal open
       }
 

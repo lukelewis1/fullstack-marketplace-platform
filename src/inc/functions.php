@@ -341,7 +341,7 @@ function get_user_credits($uid) {
     return $credits;
 }
 
-function get_available_slots_for_listing(int $listingId, int $daysAhead = 14): array {
+ function get_available_slots_for_listing(int $listingId, int $daysAhead = null): array {
     global $conn;
     // Pull weekly availability for the listing
     $stmt = $conn->prepare("
@@ -406,3 +406,18 @@ function get_available_slots_for_listing(int $listingId, int $daysAhead = 14): a
     return $out;
 }
 
+function get_booking_details($bid) {
+    global $conn;
+
+    $sql = "SELECT * FROM Bookings WHERE booking_id = ? LIMIT 1;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $bid);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $row = $result->fetch_assoc();
+
+    $statement->close();
+
+    return $row;    
+}

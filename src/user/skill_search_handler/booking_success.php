@@ -8,8 +8,9 @@
     require_once __DIR__ . '/../../inc/dbconn.inc.php';
     require_once __DIR__ . '/../../inc/functions.php';
 
-    $id = (int)$_GET['id'];
-    $listing = get_listings_by_id($id);
+    $bookingId = $_GET['booking_id'];
+    $booking = get_booking_details($bookingId);
+    $listing = get_listings_by_id($booking['service_id']);
 
 ?>
 
@@ -32,22 +33,24 @@
 
     <div class="page-wrapper">
       <main class="content">
-        <a id="back" href="../skill_search.php"><i class="fa-solid fa-xmark"></i></a>
-        <h1 class="list-heading"><?= htmlspecialchars($listing['title']) ?></h1>
-        <ul>
-          <li>
-            <p class="user">By <?= get_username($listing['user_id']) ?></p>
-            <h3><?= htmlspecialchars($listing['price']) ?> FUSS Credits</h3>
-            <h3><?= htmlspecialchars($listing['topic']) ?></h3>
-            <p><?= htmlspecialchars($listing['description']) ?></p>
-            <p><?= $listing['is_negotiable'] === 1
-                  ? htmlspecialchars('Price is Negotiable')
-                  : htmlspecialchars('Price is NOT Negotiable'); ?>
-            </p>
-            <p class="price"></p>
-            <p>Likes: <?= htmlspecialchars((string)($listing['likes'] ?? 0), ENT_QUOTES, 'UTF-8') ?></p>
-          </li>
-        </ul>
+        <!-- <a id="back" href="../skill_search.php"><i class="fa-solid fa-xmark"></i></a> -->
+        <h1 class="list-heading">Booking #<?= $bookingId ?> request has been sent to <?= get_username($booking['service_provider_id']) ?>.</h1>
+        <section class="card">
+          <h2><?= ($listing['title']) ?></h2>
+          <p><strong>When:</strong>
+            <?= ((new DateTime($booking['start']))->format('D, d M Y · H:i')) ?>
+            — <?= ((new DateTime($booking['end']))->format('H:i')) ?>
+          </p>
+          <p><strong>Price:</strong> <?= ($listing['price']) ?> FUSS credits</p>
+          <?php if (!empty($booking['topic'])): ?>
+            <p><strong>Topic:</strong> <?= ($booking['topic']) ?></p>
+          <?php endif; ?>
+          <?php if (!empty($booking['description'])): ?>
+            <p><?= ($booking['description']) ?></p>
+          <?php endif; ?>
+        </section>
+        <p><a href="/user/skill_search_handler/skill_listing.php?id=<?= ($booking['service_id']) ?>">Back to listing</a></p>
+        <p><a href="/user/skill_search.php">Back to search</a></p>
       </main>
     </div>
     <script src="./confirmation_popup_script.js"></script>

@@ -78,7 +78,7 @@ try {
 } catch (Exception $e) {
   $conn->rollback();
   if ($e->getMessage() === 'INSUFFICIENT_CREDITS') {
-    bad(402, 'Insufficient credits to complete this booking.');
+    bad(402, 'Insufficient credits.');
   }
   bad(409, 'Could not complete booking.');
 }

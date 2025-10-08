@@ -3,6 +3,10 @@
       session_start();
     }
 
+    if (empty($_SESSION['csrf'])) {
+      $_SESSION['csrf'] = bin2hex(random_bytes(16));
+    }
+
     $currentPage = basename($_SERVER['PHP_SELF']);
 
     require_once __DIR__ . '/../../inc/dbconn.inc.php';
@@ -10,7 +14,7 @@
 
     $id = (int)$_GET['id'];
     $listing = get_listings_by_id($id);
-    $slots = get_available_slots_for_listing((int)$listing['listing_id'], 14);
+    $slots = get_available_slots_for_listing((int)$listing['listing_id'], 30);
     $username     = $_SESSION['username'] ?? null;
     $userCredits  = $username ? (float)get_user_credits($username) : 0.0;
     $price        = (float)$listing['price'];
@@ -52,13 +56,16 @@
           </li>
         </ul>
         <form id="booking-form" action="./booking_request.php" method="post">
-          <section id="booking-root">
+        <section id="booking-root">
           <select id="availability-select" name="slot" required>
-            <option selected disabled>Availabile times</option>
+            <option selected disabled>Available times</option>
           </select>
         </section>
 
-        <br><input type="submit" value="Request">
+          <input type="hidden" name="listing_id" value="<?= (int)$listing['listing_id'] ?>">
+          <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf'], ENT_QUOTES) ?>">
+
+          <br><input type="submit" value="Request">
         </form>
       </main>
       
@@ -102,7 +109,7 @@
         populateAvailabilitySelect(sel, AVAILABLE_SLOTS);
       });
     </script>
-    <script src="./confirmation_popup_script.js"></script>
+    <script src="./confirmation_popup_script.js?v=3" defer></script>
     <script src="../scripts/global_scripts.js"></script>
     <script src="../scripts/script.js"></script>
   </body>
