@@ -62,7 +62,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
           <tbody>
               <?php
 
-                $sql = "SELECT id, f_name, l_name, email, role FROM Users;";
+                $sql = "SELECT id, f_name, l_name, email, role, fuss_credit FROM Users;";
                 $stmt = mysqli_prepare($conn, $sql);
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
@@ -87,7 +87,8 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
                           data-fname='" . htmlspecialchars($row['f_name']) . "' 
                           data-lname='" . htmlspecialchars($row['l_name']) . "' 
                           data-email='" . htmlspecialchars($row['email']) . "' 
-                          data-role='" . htmlspecialchars($row['role'] ?? '') . "'>
+                          data-role='" . htmlspecialchars($row['role'] ?? '') . "'
+                          data-credits='" . htmlspecialchars($row['fuss_credit'] ?? 0) . "'>
                           Edit
                         </a>
                         <a href='delete_user.php?id=" . urlencode($row['id']) . "' class='delete-btn'>Delete</a>
@@ -122,7 +123,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
             <label>Role:</label>
             <input type="text" name="role" id="edit-role" required>
             <label>FUSS Credits:</label>
-            <input type="text" name="credits" id="fuss-credits" required>
+            <input type="number" name="credits" id="edit-credits" min="0" max="100" required>
             <button type="submit">Save Changes</button>
           </form>
         </div>
