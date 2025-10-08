@@ -37,8 +37,8 @@ CREATE TABLE Listings(
     description VARCHAR(250),
     successful_exchanges INT NOT NULL CHECK (successful_exchanges >= 0) DEFAULT 0,
     is_negotiable BOOL NOT NULL,
-    likes INT,
-    dislikes INT,
+    likes INT DEFAULT 0,
+    dislikes INT DEFAULT 0,
     type VARCHAR(50) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     UNIQUE KEY service_owner(user_id, title)
@@ -63,8 +63,8 @@ CREATE TABLE Messages(
     end_date DATETIME NOT NULL,
     unseen INT,
     unseen_2 INT,
-    FOREIGN KEY (sender_id) REFERENCES Users(id),
-    FOREIGN KEY (receiver_id) REFERENCES Users(id)
+    FOREIGN KEY (sender_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (receiver_id) REFERENCES Users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ChatMessages(
@@ -83,8 +83,8 @@ CREATE TABLE Friendships (
     friend_id INT NOT NULL,
     requester_id INT NOT NULL,
     status ENUM('pending', 'accepted', 'blocked') DEFAULT 'pending',
-    FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (friend_id) REFERENCES Users(id),
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (friend_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (requester_id) REFERENCES Users(id),
     UNIQUE KEY unique_friendship (user_id, friend_id)
 );
@@ -98,7 +98,7 @@ CREATE TABLE Bookings (
     service_id INT NOT NULL,
     status ENUM('confirmed', 'pending') DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (booker_id) REFERENCES Users(id),
+    FOREIGN KEY (booker_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (service_provider_id) REFERENCES Users(id),
     FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
 );
@@ -127,6 +127,6 @@ CREATE TABLE TransactionHistory (
     booker_id INT NOT NULL,
     price INT NOT NULL,
     FOREIGN KEY (service_id) REFERENCES Listings(listing_id),
-    FOREIGN KEY (provider_id) REFERENCES Users(id),
-    FOREIGN KEY (booker_id) REFERENCES Users(id)
+    FOREIGN KEY (provider_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (booker_id) REFERENCES Users(id) ON DELETE CASCADE
 );
