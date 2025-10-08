@@ -44,17 +44,6 @@ CREATE TABLE Listings(
     UNIQUE KEY service_owner(user_id, title)
 );
 
-CREATE TABLE Disputes(
-    dispute_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    initiator_id INT NOT NULL,
-    respondent_id INT NOT NULL,
-    listing_id INT NOT NULL,
-    status VARCHAR(20) NOT NULL,
-    FOREIGN KEY (initiator_id) REFERENCES Users(id),
-    FOREIGN KEY (respondent_id) REFERENCES Users(id),
-    FOREIGN KEY (listing_id) REFERENCES Listings(listing_id)
-);
-
 CREATE TABLE Messages(
     conversation_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     sender_id INT NOT NULL,
@@ -74,7 +63,7 @@ CREATE TABLE ChatMessages(
     message_text TEXT NOT NULL,
     sent_at DATETIME NOT NULL,
     FOREIGN KEY (conversation_id) REFERENCES Messages(conversation_id),
-    FOREIGN KEY (sender_id) REFERENCES Users(id)
+    FOREIGN KEY (sender_id) REFERENCES Users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Friendships (
@@ -85,7 +74,7 @@ CREATE TABLE Friendships (
     status ENUM('pending', 'accepted', 'blocked') DEFAULT 'pending',
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (friend_id) REFERENCES Users(id) ON DELETE CASCADE,
-    FOREIGN KEY (requester_id) REFERENCES Users(id),
+    FOREIGN KEY (requester_id) REFERENCES Users(id) ON DELETE CASCADE,
     UNIQUE KEY unique_friendship (user_id, friend_id)
 );
 
@@ -99,7 +88,7 @@ CREATE TABLE Bookings (
     status ENUM('confirmed', 'pending') DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (booker_id) REFERENCES Users(id) ON DELETE CASCADE,
-    FOREIGN KEY (service_provider_id) REFERENCES Users(id),
+    FOREIGN KEY (service_provider_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
 );
 
