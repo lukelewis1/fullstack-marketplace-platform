@@ -6,8 +6,8 @@
 
     $currentPage = basename($_SERVER['PHP_SELF']);
 
-    require_once __DIR__ . '/../inc/dbconn.inc.php';
-    require_once __DIR__ . '/../inc/functions.php';
+    require_once __DIR__ . '/../../inc/dbconn.inc.php';
+    require_once __DIR__ . '/../../inc/functions.php';
 
     $bid = $_POST['bid'];
     $type = $_POST['type'];

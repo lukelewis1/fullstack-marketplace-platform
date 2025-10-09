@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             review: reviewText.value,
             sid: serviceId
         };
+        console.log(reviewData);
 
         fetch('skill_management_handler/booker_accept.php', {
             method: 'POST',
@@ -50,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(reviewData);
                 if (data) {
                     modal.style.display = 'none';
                     const skill = document.querySelector(`.confirm-btn[data-id="${selectedBooking}"]`).closest('.skill-el');
