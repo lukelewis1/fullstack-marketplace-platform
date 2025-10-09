@@ -78,6 +78,7 @@
                 <a href="/user/skill_manage.php"> Service Management </a>
                 <a href="/user/skill_search.php"> Skill Search </a>
                 <a href="/user/skill_bookings.php">Skill Bookings</a>
+                <a href="/user/my_skills.php"> My Skills</a>
             </div>
           </div>
 
