@@ -87,6 +87,8 @@ CREATE TABLE Bookings (
     service_id INT NOT NULL,
     status ENUM('confirmed', 'pending') DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    provider_confirm BOOL NOT NULL DEFAULT FALSE,
+    booker_confirm BOOL NOT NULL DEFAULT FALSE,
     FOREIGN KEY (booker_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (service_provider_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
@@ -98,7 +100,7 @@ CREATE TABLE Availability (
     day ENUM('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') NOT NULL,
     start TIME NOT NULL,
     end TIME NOT NULL,
-    FOREIGN KEY (service_id) REFERENCES Listings(listing_id)  ON DELETE CASCADE
+    FOREIGN KEY (service_id) REFERENCES Listings(listing_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Reviews (
@@ -106,16 +108,16 @@ CREATE TABLE Reviews (
     service_id INT NOT NULL,
     type ENUM('positive', 'negative', 'neutral') DEFAULT 'neutral' NOT NULL,
     review VARCHAR(500) NOT NULL,
-    FOREIGN KEY (service_id) REFERENCES Listings(listing_id)
+    FOREIGN KEY (service_id) REFERENCES Listings(listing_id) ON DELETE CASCADE
 );
 
 CREATE TABLE TransactionHistory (
     transaction_id INT AUTO_INCREMENT PRIMARY KEY,
     service_id INT NOT NULL,
+    service_title VARCHAR(50) NOT NULL,
     provider_id INT NOT NULL,
     booker_id INT NOT NULL,
     price INT NOT NULL,
-    FOREIGN KEY (service_id) REFERENCES Listings(listing_id),
     FOREIGN KEY (provider_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (booker_id) REFERENCES Users(id) ON DELETE CASCADE
 );
