@@ -14,7 +14,7 @@
     $no_confirmed = false;
 
     // Getting confirmed bookings
-    $sql = "SELECT booker_id, start, end, service_id FROM Bookings WHERE service_provider_id = ? AND status = 'confirmed';";
+    $sql = "SELECT booking_id, booker_id, start, end, service_id FROM Bookings WHERE service_provider_id = ? AND status = 'confirmed';";
     $statement = $conn->prepare($sql);
     $statement->bind_param('i', $uid);
     $statement->execute();
@@ -85,7 +85,10 @@ include_header($_SESSION['username'] ?? null);
 
                 <div class="submit-btn">
                     <button class="btn confirm-btn"
-                            type="button">
+                            type="button"
+                            data-id="<?=
+                            $listing['booking_id']
+                            ?>">
                         Confirm Service Completion
                     </button>
                 </div>
