@@ -85,11 +85,8 @@
 
                 <div class="submit-btn">
                     <button class="btn confirm-btn"
-                            type="button"
-                            data-id="<?= json_encode([
-                                    $listing['booking_id'],
-                                    $listing['service_id']
-                            ]) ?>">
+                            data-bid="<?= $listing['booking_id'] ?>"
+                            data-sid="<?= $listing['service_id'] ?>">
                         Confirm Service Completion
                     </button>
                 </div>

@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Open modal on confirm button click
     document.querySelectorAll('.confirm-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            [selectedBooking, serviceId] = JSON.parse(btn.dataset.id);
+            selectedBooking = btn.dataset.bid;
+            serviceId = btn.dataset.sid;
             modal.style.display = 'flex';
         });
     });
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 if (data) {
                     modal.style.display = 'none';
-                    const skill = document.querySelector(`.confirm-btn[data-id="${selectedBooking}"]`).closest('.skill-el');
+                    const skill = document.querySelector(`.confirm-btn[data-bid="${selectedBooking}"]`).closest('.skill-el');
                     skill.outerHTML = `<div class="skill-el"><h3>Thank you for confirming and reviewing this service.</h3></div>`;
                 }
             });
