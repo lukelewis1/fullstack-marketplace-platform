@@ -20,7 +20,7 @@ require_once __DIR__ . '/../inc/functions.php';
 <body>
 <?php include_header($_SESSION['username'] ?? null); ?>
 
-<div class="page-wrapper">
+<div class="page-wrapper-msg">
     <aside class="sidebar">
         <div class="sidebar-header">Chats</div>
 
