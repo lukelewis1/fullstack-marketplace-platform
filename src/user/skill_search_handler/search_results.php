@@ -5,10 +5,12 @@
 
     $currentPage = basename($_SERVER['PHP_SELF']);
 
-    require_once __DIR__ . '/../inc/dbconn.inc.php';
-    require_once __DIR__ . '/../inc/functions.php';
+    require_once __DIR__ . '/../../inc/dbconn.inc.php';
+    require_once __DIR__ . '/../../inc/functions.php';
 
-    $results = get_popular();
+    $query = $_GET['q'];
+    $results = get_listings_popular($query);
+    $count = count($results);
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +19,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Home Page</title>
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="skill_search_handler/skill_search_style.css" />
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="skill_search_style.css" />
   </head>
   <body>
     <?php 
@@ -34,7 +36,7 @@
       <h1>Skill Search</h1>
 
       <div class="skill-search-bar">
-        <form id="search-form" method="get" action="./skill_search_handler/search_results.php">
+        <form id="search-form" method="get" action="search_results.php">
             <input
                     type="search"
                     id="search-input"
@@ -45,18 +47,21 @@
     </div>
 
     <div class="skills">
-      <h1>Trending Services</h1>
+      <p class="search-response"><span class="query"><?= $count ?></span> 
+       <?= ($count === 1 ? 'result' : 'results') ?> for 
+       <span class="query"><?= htmlspecialchars($query) ?></span></p>
       <ul class="skill-listings">
         <?php 
           foreach ($results as $listing):
         ?>
+        
         
         <li class="skill-item">
           <a href="/user/skill_search_handler/skill_listing.php?id=<?= (int)$listing['listing_id'] ?>">
             <h3><?= htmlspecialchars($listing['title']) ?></h3>
             <p><?= htmlspecialchars($listing['topic']) ?></p>
             <p class="price"><?= htmlspecialchars($listing['price']) ?> FUSS Credits</p>
-            <p>Likes: <?= htmlspecialchars((string)($listing['likes'] ?? 0), ENT_QUOTES, 'UTF-8') ?></p>
+            <p>Likes: <?= htmlspecialchars($listing['likes']) ?></p>
           </a>
         </li>
         <?php 
