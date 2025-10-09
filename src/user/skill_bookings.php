@@ -14,7 +14,7 @@
     $no_confirmed = false;
 
     // Getting confirmed bookings
-    $sql = "SELECT service_provider_id, start, end, service_id FROM Bookings WHERE booker_id = ? AND status = 'confirmed';";
+    $sql = "SELECT service_provider_id, start, end, service_id FROM Bookings WHERE booker_id = ? AND status = 'confirmed' AND booker_confirm = FALSE;";
     $statement = $conn->prepare($sql);
     $statement->bind_param('i', $uid);
     $statement->execute();
