@@ -1,4 +1,3 @@
-
 document.querySelectorAll('.cancel-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const [providerId, serviceId, serviceName, credits] = JSON.parse(btn.dataset.id);
