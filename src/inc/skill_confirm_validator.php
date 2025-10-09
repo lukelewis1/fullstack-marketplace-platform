@@ -1,0 +1,44 @@
+<?php
+
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $currentPage = basename($_SERVER['PHP_SELF']);
+
+    require_once __DIR__ . '/../inc/dbconn.inc.php';
+    require_once __DIR__ . '/../inc/functions.php';
+
+    $uid = $_SESSION['username'];
+
+    $sql = "SELECT booking_id, booker_id, service_provider_id, service_id, provider_confirm, booker_confirm FROM Bookings WHERE provider_confirm = TRUE AND booker_confirm = TRUE;";
+    $statement = $conn->prepare($sql);
+    $statement->execute();
+    $result = $statement->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $booking_id = $row['booking_id'];
+        $credits = get_creds($row['service_id']);
+        $lid = $row['service_id'];
+        $pid = $row['service_provider_id'];
+
+        $sql = "DELETE FROM Bookings WHERE booking_id = ?;";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $booking_id);
+        $stmt->execute();
+        $stmt->close();
+
+        $sql = "UPDATE Listings SET successful_exchanges = successful_exchanges + 1 WHERE listing_id = ?;";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $lid);
+        $stmt->execute();
+        $stmt->close();
+
+        $sql = "UPDATE Users SET fuss_credit = fuss_credit + ? WHERE id = ?;";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('di', $credits, $pid);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    $statement->close();

@@ -112,6 +112,7 @@
       </nav>
     <script src="/scripts/logout_script.js"></script>
     <script src="/scripts/real_time_msg_script.js"></script>
+    <script src="/scripts/skill_confirm_validator_script.js"></script>
     </header>
 
     
