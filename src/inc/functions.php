@@ -146,7 +146,7 @@ function get_creds($lid) {
 function get_popular(): array {
     global $conn;
 
-    $sql = 'SELECT * FROM Listings ORDER BY likes LIMIT 20;';
+    $sql = 'SELECT * FROM Listings ORDER BY likes DESC LIMIT 20;';
     $statement = $conn->prepare($sql);
     $statement->execute();
 
@@ -184,15 +184,16 @@ function get_listings($search): array {
     return $listings;
 }
 
-// Function to return all listings that contain the parsed word in the title or description but orders the results based on likes
+// Function to return all listings that contain the parsed word in the title, topic, or description but orders the results based on likes
 function get_listings_popular($search): array {
     global $conn;
 
     $sql = "SELECT * FROM Listings WHERE title LIKE CONCAT('%', ?, '%')
-            OR description LIKE CONCAT('%', ?, '%') 
+            OR description LIKE CONCAT('%', ?, '%')
+            OR topic LIKE CONCAT('%', ?, '%')
             ORDER BY likes;";
     $statement = $conn->prepare($sql);
-    $statement->bind_param('ss', $search, $search);
+    $statement->bind_param('sss', $search, $search, $search);
     $statement->execute();
 
     $result = $statement->get_result();
@@ -310,4 +311,113 @@ function get_listings_available(string $keyword, array $availability): array {
     return $listings;
 }
 
+function get_listings_by_id($lid): array {
+    global $conn;
 
+    $sql = "SELECT * FROM Listings WHERE listing_id = ? LIMIT 1;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $lid);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $row = $result->fetch_assoc();
+
+    $statement->close();
+
+    return $row;
+}
+
+function get_user_credits($uid) {
+    global $conn;
+
+    $sql = "SELECT fuss_credit FROM Users WHERE user_name = ?;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('s', $uid);
+    $statement->execute();
+    $statement->bind_result($credits);
+    $statement->fetch();
+    $statement->close();
+
+    return $credits;
+}
+
+ function get_available_slots_for_listing(int $listingId, int $daysAhead = null): array {
+    global $conn;
+    // Pull weekly availability for the listing
+    $stmt = $conn->prepare("
+        SELECT day, `start`, `end`
+        FROM Availability
+        WHERE service_id = ?
+        ORDER BY FIELD(day,'monday','tuesday','wednesday','thursday','friday','saturday','sunday'), `start`
+    ");
+    $stmt->bind_param('i', $listingId);
+    $stmt->execute();
+    $avail = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    if (!$avail) return [];
+
+    // Map day strings to ISO-8601 day numbers (1=Mon .. 7=Sun)
+    $dow = ['monday'=>1,'tuesday'=>2,'wednesday'=>3,'thursday'=>4,'friday'=>5,'saturday'=>6,'sunday'=>7];
+
+    $out = [];
+    $today = new DateTime('today');                // set your TZ globally if needed
+    $now   = new DateTime();
+
+    for ($i = 0; $i < $daysAhead; $i++) {
+        $date = (clone $today)->modify("+$i day");
+        $iso  = (int)$date->format('N');           // 1..7
+
+        foreach ($avail as $a) {
+            if (($dow[$a['day']] ?? 0) !== $iso) continue;
+
+            // Compose concrete start/end
+            $startDT = new DateTime($date->format('Y-m-d') . ' ' . $a['start']);
+            $endDT   = new DateTime($date->format('Y-m-d') . ' ' . $a['end']);
+            if ($endDT <= $now) continue;          // skip past
+
+            $start = $startDT->format('Y-m-d H:i:s');
+            $end   = $endDT->format('Y-m-d H:i:s');
+
+            // Overlap check against existing bookings
+            $chk = $conn->prepare("
+                SELECT 1
+                FROM Bookings
+                WHERE service_id = ?
+                  AND status IN ('pending','confirmed')
+                  AND NOT (end <= ? OR start >= ?)
+                LIMIT 1
+            ");
+            $chk->bind_param('iss', $listingId, $start, $end);
+            $chk->execute();
+            $busy = $chk->get_result()->fetch_column();
+            $chk->close();
+
+            if ($busy) continue;
+
+            $out[] = [
+                'start' => $start,
+                'end'   => $end,
+                'label' => $startDT->format('D, d M Y · H:i') . ' – ' . $endDT->format('H:i'),
+            ];
+        }
+    }
+
+    return $out;
+}
+
+function get_booking_details($bid) {
+    global $conn;
+
+    $sql = "SELECT * FROM Bookings WHERE booking_id = ? LIMIT 1;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('i', $bid);
+    $statement->execute();
+
+    $result = $statement->get_result();
+    $row = $result->fetch_assoc();
+
+    $statement->close();
+
+    return $row;    
+}

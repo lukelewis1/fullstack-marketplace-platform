@@ -1,5 +1,5 @@
 /* page layout */
-.page-wrapper {
+.page-wrapper-msg {
     display: flex;
     height: calc(100vh - 120px);
     background: #f9f9f9;
@@ -104,7 +104,7 @@
 
 /* flinders colouring for new chat selector */
 .new-chat select {
-    width: calc(100% - 60px);
+    width: calc(100% - 75px);
     padding: 0.25rem;
     margin-right: 0.25rem;
     background: #000F2C;
@@ -140,7 +140,7 @@
 
 /* the start chat button is controlled by a global style for buttons this is all just to make it smaller and fit */
 #startChatBtn {
-    position: absolute;
+    position: sticky;
     width: auto;
     min-width: 60px;
     height: 28px;

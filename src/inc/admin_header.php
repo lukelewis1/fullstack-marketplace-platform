@@ -94,6 +94,7 @@
                 <a href="/user/skill_manage.php"> Service Management </a>
                 <a href="/user/skill_search.php"> Skill Search </a>
                 <a href="/user/skill_bookings.php">Skill Bookings</a>
+                <a href="/user/my_skills.php"> My Skills</a>
             </div>
           </div>
           
@@ -136,6 +137,7 @@
       </nav>
     <script src="/scripts/logout_script.js"></script>
     <script src="/scripts/real_time_msg_script.js"></script>
+    <script src="/scripts/skill_confirm_validator_script.js"></script>
     </header>
 
     

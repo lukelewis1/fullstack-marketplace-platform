@@ -8,8 +8,8 @@
     require_once __DIR__ . '/../../inc/dbconn.inc.php';
     require_once __DIR__ . '/../../inc/functions.php';
 
-    $booker_id = get_uid($_SESSION['username']);
-    $provider_id = $_POST['pid'];
+    $provider_id = get_uid($_SESSION['username']);
+    $booker_id = $_POST['pid'];
     $service_id = $_POST['sid'];
     $reason = $_POST['reason'];
     $skill_name = $_POST['title'];
@@ -31,10 +31,10 @@
 
     // Send a message to the provider for why the cancellation happened, first check for if a conversation already exists
     $sql = "SELECT conversation_id 
-            FROM Messages 
-            WHERE (sender_id = ? AND receiver_id = ?) 
-               OR (sender_id = ? AND receiver_id = ?) 
-            LIMIT 1";
+                FROM Messages 
+                WHERE (sender_id = ? AND receiver_id = ?) 
+                   OR (sender_id = ? AND receiver_id = ?) 
+                LIMIT 1";
     $statement = $conn->prepare($sql);
     $statement->bind_param('iiii', $booker_id, $provider_id, $provider_id, $booker_id);
     $statement->execute();
@@ -45,9 +45,9 @@
     // if a conversation doesn't already exist create one
     if (!$conversation_id) {
         $sql = "INSERT INTO Messages (sender_id, receiver_id, start_date, end_date, unseen, unseen_2)
-                VALUES (?, ?, NOW(), NOW(), 0, 0)";
+                    VALUES (?, ?, NOW(), NOW(), 0, 0)";
         $statement = $conn->prepare($sql);
-        $statement->bind_param('ii', $booker_id, $provider_id);
+        $statement->bind_param('ii', $provider_id, $booker_id);
         if (!$statement->execute()) {
             echo "Failed to create conversation: (" . $statement->errno . ") " . $statement->error;
             $statement->close();
@@ -60,9 +60,9 @@
     // Sends a message to the service provider letting them know the booking is canceled and why
     $msg = $skill_name . "Booking cancelled: " . $reason;
     $sql = "INSERT INTO ChatMessages (conversation_id, sender_id, message_text, sent_at)
-            VALUES (?, ?, ?, NOW())";
+                VALUES (?, ?, ?, NOW())";
     $statement = $conn->prepare($sql);
-    $statement->bind_param('iis', $conversation_id, $booker_id, $msg);
+    $statement->bind_param('iis', $conversation_id, $provider_id, $msg);
     if (!$statement->execute()) {
         echo "Failed to send message: (" . $statement->errno . ") " . $statement->error;
     }
@@ -71,7 +71,7 @@
     // Make it work with live message notifications
     $sql = "UPDATE Messages SET unseen = 1 WHERE receiver_id = ?;";
     $statement = $conn->prepare($sql);
-    $statement->bind_param('i', $provider_id);
+    $statement->bind_param('i', $booker_id);
     $statement->execute();
     $statement->close();
 
