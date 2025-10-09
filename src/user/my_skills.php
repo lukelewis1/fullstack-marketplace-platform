@@ -94,7 +94,7 @@ include_header($_SESSION['username'] ?? null);
                     <button class="btn cancel-btn"
                             type="button"
                             data-id='<?= json_encode([
-                                $listing['service_provider_id'],
+                                $listing['booker_id'],
                                 $listing['service_id'],
                                 get_listing_name($listing['service_id']),
                                 get_creds($listing['service_id'])
@@ -129,7 +129,7 @@ include_header($_SESSION['username'] ?? null);
                     <button class="btn cancel-btn"
                             type="button"
                             data-id='<?= json_encode([
-                                $listing['service_provider_id'],
+                                $listing['booker_id'],
                                 $listing['service_id'],
                                 get_listing_name($listing['service_id']),
                                 get_creds($listing['service_id'])
@@ -142,6 +142,5 @@ include_header($_SESSION['username'] ?? null);
     </ul>
 </div>
 
-<script src="skill_management_handler/cancel_booking_script.js"></script>
 </body>
 </html>
