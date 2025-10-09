@@ -1,4 +1,3 @@
-// skill_management_handler/cancel_booking_script.js
 
 document.querySelectorAll('.cancel-btn').forEach(btn => {
     btn.addEventListener('click', () => {

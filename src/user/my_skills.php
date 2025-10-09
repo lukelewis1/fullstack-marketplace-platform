@@ -141,6 +141,6 @@ include_header($_SESSION['username'] ?? null);
         <?php endforeach; ?>
     </ul>
 </div>
-
+<script src="skill_management_handler/my_cancel_booking_script.js"></script>
 </body>
 </html>
