@@ -21,6 +21,8 @@
         $credits = get_creds($row['service_id']);
         $lid = $row['service_id'];
         $pid = $row['service_provider_id'];
+        $bid = $row['booker_id'];
+        $title = get_listing_name($lid);
 
         $sql = "DELETE FROM Bookings WHERE booking_id = ?;";
         $stmt = $conn->prepare($sql);
@@ -37,6 +39,13 @@
         $sql = "UPDATE Users SET fuss_credit = fuss_credit + ? WHERE id = ?;";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('di', $credits, $pid);
+        $stmt->execute();
+        $stmt->close();
+
+        $sql = "INSERT INTO TransactionHistory (service_id, service_title, provider_id, booker_id, price)
+                VALUES (?, ?, ?, ?, ?);";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('isiid', $lid, $title, $pid, $bid, $credits);
         $stmt->execute();
         $stmt->close();
     }
