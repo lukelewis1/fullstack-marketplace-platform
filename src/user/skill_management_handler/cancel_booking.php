@@ -13,6 +13,7 @@
     $service_id = $_POST['sid'];
     $reason = $_POST['reason'];
     $skill_name = $_POST['title'];
+    $credits = $_POST['cost'];
 
 
     // Delete the booking from the booking table
@@ -71,6 +72,13 @@
     $sql = "UPDATE Messages SET unseen = 1 WHERE receiver_id = ?;";
     $statement = $conn->prepare($sql);
     $statement->bind_param('i', $provider_id);
+    $statement->execute();
+    $statement->close();
+
+    // Refund the FUSS credits
+    $sql = "UPDATE Users SET fuss_credit = fuss_credit + ? WHERE id = ?;";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param('di', $credits, $booker_id);
     $statement->execute();
     $statement->close();
 

@@ -2,7 +2,7 @@
 
 document.querySelectorAll('.cancel-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        const [providerId, serviceId, serviceName] = JSON.parse(btn.dataset.id);
+        const [providerId, serviceId, serviceName, credits] = JSON.parse(btn.dataset.id);
         const message = prompt(`Please enter the reason for cancelling "${serviceName}":`);
         if (!message) return;
 
@@ -15,7 +15,8 @@ document.querySelectorAll('.cancel-btn').forEach(btn => {
                 pid: providerId,
                 sid: serviceId,
                 reason: message,
-                title: serviceName
+                title: serviceName,
+                cost: credits
             })
         })
             .then(res => res.json())

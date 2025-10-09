@@ -96,7 +96,8 @@
                             data-id='<?= json_encode([
                                     $listing['service_provider_id'],
                                     $listing['service_id'],
-                                    get_listing_name($listing['service_id'])
+                                    get_listing_name($listing['service_id']),
+                                    get_creds($listing['service_id'])
                             ]) ?>'>
                         Cancel Service Booking
                     </button>
@@ -130,7 +131,8 @@
                         data-id='<?= json_encode([
                                 $listing['service_provider_id'],
                                 $listing['service_id'],
-                                get_listing_name($listing['service_id'])
+                                get_listing_name($listing['service_id']),
+                                get_creds($listing['service_id'])
                         ]) ?>'>
                     Cancel
                 </button>
