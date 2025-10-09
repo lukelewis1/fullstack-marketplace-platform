@@ -32,7 +32,7 @@
     $statement->close();
 
     // Getting pending bookings
-    $sql = "SELECT booker_id, start, end, service_id FROM Bookings WHERE service_provider_id = ? AND status = 'pending';";
+    $sql = "SELECT booking_id, booker_id, start, end, service_id FROM Bookings WHERE service_provider_id = ? AND status = 'pending';";
     $statement = $conn->prepare($sql);
     $statement->bind_param('i', $uid);
     $statement->execute();
@@ -129,6 +129,14 @@ include_header($_SESSION['username'] ?? null);
                 </li>
 
                 <div class="submit-btn">
+                    <button class="btn pending-conf"
+                            type="button"
+                            data-id="<?= $listing['booking_id'] ?>">
+                        Confirm Booking
+                    </button>
+                </div>
+
+                <div class="submit-btn">
                     <button class="btn cancel-btn"
                             type="button"
                             data-id='<?= json_encode([
@@ -146,5 +154,6 @@ include_header($_SESSION['username'] ?? null);
 </div>
 <script src="skill_management_handler/provider_accept_script.js"></script>
 <script src="skill_management_handler/my_cancel_booking_script.js"></script>
+<script src="skill_management_handler/confirm_booking_script.js"></script>
 </body>
 </html>
