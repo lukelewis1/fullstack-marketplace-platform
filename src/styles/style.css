@@ -161,7 +161,7 @@ nav {
 .nav-links li a:hover,
 .nav-links li a.active {
   border-bottom-color: #050505; /* underline appears */
-  color: #050505; /* optional, change text color */
+  color: #050505; 
 }
 
 .nav-links li.credits {

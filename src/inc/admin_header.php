@@ -6,16 +6,19 @@
     require_once __DIR__ . '/../inc/dbconn.inc.php';
     require_once __DIR__ . '/../inc/functions.php';
 
-    $sql = 'SELECT fuss_credit FROM Users WHERE user_name = ?;';
-    $statement = $conn->prepare($sql);
-    $statement->bind_param('s', $_SESSION['username']);
-    $statement->execute();
+    $stmt = $conn->prepare("SELECT id, fuss_credit FROM Users WHERE user_name = ?");
+    $stmt->bind_param('s', $_SESSION['username']);
+    $stmt->execute();
+    $stmt->bind_result($user_id_result, $credit_balance_result);
+    if ($stmt->fetch()) {
+        $user_id = $user_id_result;
+        $credit_balance = $credit_balance_result;
+    }
+    $stmt->close();
 
-    $result = $statement->get_result();
-    $row = $result->fetch_assoc();
-    $credit_balance = isset($row['fuss_credit']) ? $row['fuss_credit'] : 0;
-    $statement->close();
+
 ?>
+
 
 <header>
     <link rel="stylesheet" href="../styles/real_time_style.css" />
@@ -46,8 +49,6 @@
             <span class="user-name"><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </span>
             <span class="user-role">
               <?php
-
-                if (isset($_SESSION['username'])) {
                     $sql = "SELECT role FROM Users WHERE user_name = ?";
                     $stmt = mysqli_prepare($conn, $sql);
                     mysqli_stmt_bind_param($stmt, 's', $_SESSION['username']);
@@ -56,20 +57,17 @@
                     mysqli_stmt_fetch($stmt);
                     echo htmlspecialchars($role ?? 'Student'); // fallback if role is null
                     mysqli_stmt_close($stmt);
-                } else {
-                    echo "Student";
-                }
                 ?>
             </span>
               
           </div>
           <div class="avatar">
             <div class="dropdown avatar-dropdown">
-              <img src="<?php echo htmlspecialchars(get_profile_image($_SESSION['username'] ?? '')); ?>" alt="Profile Picture" />
+              <img src="/images/user_pfp/<?= $user_id ?>.png?t=<?= time() ?>" alt="Profile Picture" />
               <div class="dropdown-content avatar-dropdown-content">
-                  <a href="#">View Profile</a>
+                  <a href="../user/view_profile.php">View Profile</a>
+                  <a href="../user/edit_profile.php">Edit Profile</a>
                   <a href="/inc/logout.php" id="logout-link">Logout</a>
-              
               </div>
             </div>
             
