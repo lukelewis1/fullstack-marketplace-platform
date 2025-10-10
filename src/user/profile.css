@@ -194,6 +194,25 @@ textarea {
 }
 
 /* ------------------------------
+   SKILLS SECTION
+------------------------------ */
+.skills-list {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.skill-box {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #fafafa;
+  min-width: 150px;
+}
+
+/* ------------------------------
    RESPONSIVE DESIGN
 ------------------------------ */
 @media (max-width: 700px) {

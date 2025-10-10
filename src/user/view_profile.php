@@ -24,6 +24,13 @@ $email      = $user['email'] ?? '';
 $bio        = $user['bio'] ?? '';
 $role  = $user['role'] ?? '';
 
+// Fetch services
+$stmt_services = $conn->prepare("SELECT title, topic, type FROM Listings WHERE user_id = ?");
+$stmt_services->bind_param('i', $user['id']);
+$stmt_services->execute();
+$user_services = $stmt_services->get_result()->fetch_all(MYSQLI_ASSOC);
+$stmt_services->close();
+
 // Handle POST submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitize inputs
@@ -105,8 +112,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Bio -->
         <section class="card">
-            <h2>Bio</h2>
+            <h2>Bio / Requested Skills</h2>
             <textarea name="bio" rows="4" placeholder="Tell us about yourself..."><?= htmlspecialchars($bio) ?></textarea>
+        </section>
+
+         <!-- Skills Section -->
+        <section class="card">
+            <h2>Current Skills</h2>
+            <div class="skills-list">
+                <?php if (!empty($user_services)): ?>
+                    <?php foreach ($user_services as $service): ?>
+                        <div class="skill-box">
+                            <strong><?= htmlspecialchars($service['title']) ?></strong>
+                            <p>Topic: <?= htmlspecialchars($service['topic']) ?></p>
+                            <p>Type: <?= htmlspecialchars($service['type']) ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No skills listed yet.</p>
+                <?php endif; ?>
+            </div>
         </section>
 
         <div class="save-row">
