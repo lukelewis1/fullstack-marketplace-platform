@@ -208,6 +208,21 @@ function get_listings_popular($search): array {
     return $listings;
 }
 
+// Function that returns the given topic for a listing id
+function get_topic($lid): string {
+    global $conn;
+
+    $sql = "SELECT topic FROM Listings WHERE listing_id = ?;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $lid);
+    $stmt->execute();
+    $stmt->bind_result($topic);
+    $stmt->fetch();
+    $stmt->close();
+
+    return $topic;
+}
+
 // Function to return all listings that contain the parsed word in the title or description but orders the results based on successful transactions
 function get_listings_success($search): array {
     global $conn;
