@@ -62,6 +62,7 @@ if (!empty($_FILES['profile_pic']['name']) && !empty($user_id)) {
         // Move uploaded file to target location
         if (move_uploaded_file($tmp_name, $target_file)) {
             $message = "Profile picture updated successfully!";
+            header("Location: " . $_SERVER['REQUEST_URI']); // refresh page to show new image
         } else {
             $message = "Failed to upload profile picture. Please try again.";
         }
@@ -86,7 +87,7 @@ if (!empty($_FILES['profile_pic']['name']) && !empty($user_id)) {
 </header>
 
 <main class="content">
-    <h1>Edit Profile</h1>
+    <h1>Profile Customisation</h1>
     <?php if($message): ?>
         <div class="message"><?= htmlspecialchars($message) ?></div>
     <?php endif; ?>
@@ -95,19 +96,19 @@ if (!empty($_FILES['profile_pic']['name']) && !empty($user_id)) {
     <form method="POST" enctype="multipart/form-data">
         <!-- Personal Info -->
         <section class="card">
-            <h2>Personal Info</h2>
             <div class="profile-fields">
                 <div class="user-profile-pic">
                     <h2>Profile Picture</h2>
                     <?php
                      $picPath = "../images/user_pfp/{$user_id}.png";
+                     echo '<img src="' . (file_exists($picPath) ? $picPath : '../images/user_pfp/default.png') . '" alt="Profile Picture" class="profile-pic-preview">';
                     ?>
                     <input type="file" name="profile_pic" accept="image/*">
                 </div>
 
                 <div class="username">
                     <h2>Username</h2>
-                    <input type="text" name="first_name" placeholder="Username" value="<?= htmlspecialchars($user_name) ?>">
+                    <input type="text" name="username" placeholder="Username" value="<?= htmlspecialchars($user_name) ?>">
                 </div>
 
                 <div class="user-first-name">
@@ -136,6 +137,12 @@ if (!empty($_FILES['profile_pic']['name']) && !empty($user_id)) {
         <section class="card">
             <h2>Bio</h2>
             <textarea name="bio" rows="4" placeholder="Tell us about yourself..."><?= htmlspecialchars($bio) ?></textarea>
+        </section>
+
+         <!-- Bio -->
+        <section class="card">
+            <h2>Skills</h2>
+            <!-- <textarea name="bio" rows="4" placeholder="Tell us about yourself..."><?= htmlspecialchars($bio) ?></textarea> -->
         </section>
 
         <div class="save-row">
