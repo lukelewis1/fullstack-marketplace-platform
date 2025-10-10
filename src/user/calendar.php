@@ -20,7 +20,7 @@
     $results = [];
 
     while ($row = $result->fetch_assoc()) {
-        $result[] = $row;
+        $results[] = $row;
     }
     $statement->close();
 
@@ -40,6 +40,18 @@
 include_header($_SESSION['username'] ?? null);
 ?>
 
+<script>
+    const bookings = <?php echo json_encode($results); ?>;
+    const uid = <?php echo json_encode($uid); ?>;
+</script>
+
+
+
 <h1>Bookings Calendar</h1>
+<div id="calendar">
+
+</div>
+
+<script src="calendar_handler/calendar_script.js"></script>
 </body>
 </html>

@@ -5,3 +5,45 @@ h1 {
     text-align: center;
     color: #000F2C;
 }
+
+#calendar {
+    max-width: 900px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.header {
+    font-weight: bold;
+    text-align: center;
+    background: #eee;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.day {
+    height: 100px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 5px;
+    position: relative;
+    font-size: 0.9em;
+}
+
+.booking-badge {
+    color: white;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-size: 0.75em;
+    margin-top: 4px;
+}
+
+.booking-link {
+    text-decoration: none;
+}
+
+.booking-badge:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}
