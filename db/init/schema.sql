@@ -115,6 +115,7 @@ CREATE TABLE TransactionHistory (
     transaction_id INT AUTO_INCREMENT PRIMARY KEY,
     service_id INT NOT NULL,
     service_title VARCHAR(50) NOT NULL,
+    service_topic VARCHAR(60) NOT NULL,
     provider_id INT NOT NULL,
     booker_id INT NOT NULL,
     price INT NOT NULL,
