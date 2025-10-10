@@ -436,3 +436,34 @@ function get_booking_details($bid) {
 
     return $row;    
 }
+
+function recommended($uid): array {
+    global $conn;
+
+    $sql = "SELECT l.*,
+            COALESCE(topic_counts.topic_count, 0) AS topic_popularity
+            FROM Listings AS l
+            LEFT JOIN (
+                SELECT
+                    service_topic,
+                    COUNT(*) AS topic_count
+                    FROM TransactionHistory
+                    WHERE booker_id = ?
+                    GROUP BY service_topic
+            ) AS topic_counts
+            ON l.topic = topic_counts.service_topic
+            ORDER BY topic_counts.topic_count DESC, l.title ASC;";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $listings = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $listings[] = $row;
+    }
+
+    return $listings;
+}

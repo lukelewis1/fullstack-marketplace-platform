@@ -8,7 +8,7 @@
     require_once __DIR__ . '/../inc/dbconn.inc.php';
     require_once __DIR__ . '/../inc/functions.php';
 
-    $results = get_popular();
+    $results = recommended(get_uid($_SESSION['username']));
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="skills">
-      <h1>Trending Services</h1>
+      <h1>Recommended Services</h1>
       <ul class="skill-listings">
         <?php 
           foreach ($results as $listing):
