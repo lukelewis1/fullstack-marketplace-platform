@@ -42,10 +42,11 @@
         $stmt->execute();
         $stmt->close();
 
-        $sql = "INSERT INTO TransactionHistory (service_id, service_title, provider_id, booker_id, price)
-                VALUES (?, ?, ?, ?, ?);";
+        $topic = get_topic($lid);
+        $sql = "INSERT INTO TransactionHistory (service_id, service_title, service_topic, provider_id, booker_id, price)
+                VALUES (?, ?, ?, ?, ?, ?);";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('isiid', $lid, $title, $pid, $bid, $credits);
+        $stmt->bind_param('issiid', $lid, $title, $topic, $pid, $bid, $credits);
         $stmt->execute();
         $stmt->close();
     }
