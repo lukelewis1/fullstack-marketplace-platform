@@ -10,6 +10,11 @@ if (!isset($_SESSION['username'])) {
 
 require_once __DIR__ . '/../inc/dbconn.inc.php';
 require_once __DIR__ . '/../inc/functions.php';
+
+$stmt_services = $conn->prepare("SELECT title, topic, type FROM Listings");
+$stmt_services->execute();
+$all_services = $stmt_services->get_result()->fetch_all(MYSQLI_ASSOC);
+$stmt_services->close();
 ?>
 
 <!DOCTYPE html>
@@ -81,11 +86,23 @@ require_once __DIR__ . '/../inc/functions.php';
             </div>
         </div>
 
-        <div class="it-stats-container" style="width: 80%; height: 500px;">
-            <div class="it-stats-content">
-              <h3 class="it-stats-title">Recent Skills</h3>
-            </div>
-        </div>
+        <div class="it-stats-container" style="width: 80%; margin: 0 auto;">
+    <h1>Popular Services</h1>
+    <div class="skills-list" style="display: flex; flex-direction: column; gap: 20px;">
+        <?php if (!empty($all_services)): ?>
+            <?php foreach ($all_services as $service): ?>
+                <div class="skill-box" style="border: 1px solid #ccc; padding: 15px; width: 100%;">
+                    <strong><?= htmlspecialchars($service['title']) ?></strong>
+                    <p>Topic: <?= htmlspecialchars($service['topic']) ?></p>
+                    <p>Type: <?= htmlspecialchars($service['type']) ?></p>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No skills listed yet.</p>
+        <?php endif; ?>
+    </div>
+</div>
+
 
     </main>
     

@@ -4,19 +4,19 @@ session_start();
 require_once __DIR__ . '/../inc/dbconn.inc.php';
 require_once __DIR__ . '/../inc/functions.php';
 
-$user_name = $_SESSION['username'] ?? '';
-$message = "";
+# Gets user ID from query parameter, defaults to 0 if not set or invalid
+$profile_user_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// Fetch user details
-$stmt = $conn->prepare("SELECT id, f_name, l_name, email, bio, role 
+// Fetch other user's details
+$stmt = $conn->prepare("SELECT id, user_name, f_name, l_name, email, bio, role 
                         FROM Users 
-                        WHERE user_name = ?");
-$stmt->bind_param('s', $user_name);
+                        WHERE id = ?");
+$stmt->bind_param('i', $profile_user_id);
 $stmt->execute();
-$user = $stmt->get_result()->fetch_assoc() ?? [];
-$stmt->close();
+$user = $stmt->get_result()->fetch_assoc();
 
 // Set defaults
+$other_user_name = $user['user_name'] ?? '';
 $user_id    = $user['id'] ?? '';
 $first_name = $user['f_name'] ?? '';
 $last_name  = $user['l_name'] ?? '';
@@ -26,11 +26,10 @@ $role  = $user['role'] ?? '';
 
 // Fetch services
 $stmt_services = $conn->prepare("SELECT title, topic, type FROM Listings WHERE user_id = ?");
-$stmt_services->bind_param('i', $user['id']);
+$stmt_services->bind_param('i', $user_id);
 $stmt_services->execute();
 $user_services = $stmt_services->get_result()->fetch_all(MYSQLI_ASSOC);
 $stmt_services->close();
-
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +48,6 @@ $stmt_services->close();
 
 <main class="content">
     <h1>Profile Preview</h1>
-    <?php if($message): ?>
-        <div class="message"><?= htmlspecialchars($message) ?></div>
-    <?php endif; ?>
 
     <!-- Form with file upload -->
     <form method="POST" enctype="multipart/form-data">
@@ -62,13 +58,13 @@ $stmt_services->close();
                     <h2>Profile Picture</h2>
                     <?php
                      $picPath = "../images/user_pfp/{$user_id}.png";
-                     echo '<img src="' . (file_exists($picPath) ? $picPath : '../images/user_pfp/default.png') . '" alt="Profile Picture" class="profile-pic-preview" style="width:180px; height:180px;"> ';
+                     echo '<img src="' . (file_exists($picPath) ? $picPath : '../images/user_pfp/default.jpg') . '" alt="Profile Picture" class="profile-pic-preview" style="width:180px; height:180px;"> ';
                     ?>
                 </div>
 
                 <div class="username">
                     <h2>Username</h2>
-                    <input type="text" name="username" placeholder="Username" value="<?= htmlspecialchars($user_name) ?>" readonly>
+                    <input type="text" name="username" placeholder="Username" value="<?= htmlspecialchars($other_user_name) ?>" readonly>
                 </div>
 
                 <div class="user-first-name">
@@ -116,7 +112,6 @@ $stmt_services->close();
                 <?php endif; ?>
             </div>
         </section>
-
     </form>
 </main>
 </body>

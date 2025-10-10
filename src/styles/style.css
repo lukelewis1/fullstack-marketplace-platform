@@ -8,11 +8,12 @@ li {
   padding: 0;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* prevents horizontal scroll and white gaps */
-  background-color: #f1f5f9; 
+  background-color: #f1f5f9;
 }
 
 /* Side bar + content */
@@ -54,8 +55,6 @@ html, body {
   font-family: "Inter", sans-serif;
   color: #050505;
 }
-
-
 
 ul {
   list-style: none;
@@ -161,7 +160,7 @@ nav {
 .nav-links li a:hover,
 .nav-links li a.active {
   border-bottom-color: #050505; /* underline appears */
-  color: #050505; 
+  color: #050505;
 }
 
 .nav-links li.credits {
@@ -342,7 +341,7 @@ nav {
 .it-card-action:hover {
   background-color: #1d4ed8;
 }
- 
+
 /* Admin Stats Section */
 
 /* Event Cards */
@@ -353,6 +352,7 @@ nav {
   gap: 1rem;
   justify-content: center;
   padding: 1rem 0;
+  font-family: "Poppins", sans-serif;
 }
 
 .it-stats-container {
@@ -362,11 +362,47 @@ nav {
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 250px;
-  height: 150px;
+  height: 100%;
   margin: 1rem;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 15px;
+}
+
+/* Skills List as Feed */
+.skills-list {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  gap: 20px; /* Space between each skill */
+  margin-top: 15px;
+  max-height: 600px; /* limit height */
+  overflow-y: auto; /* enable scroll */
+}
+
+.skill-box {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px 20px;
+  background: #fafafa;
+  width: 100%; /* Take full width of container */
+  box-sizing: border-box; /* Include padding in width */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.skill-box strong {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.skill-box p {
+  margin: 2px 0;
 }
 
 .it-stats-container:hover {
@@ -393,14 +429,14 @@ nav {
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
-  text-align: center
+  text-align: center;
 }
 
 .it-stats-number {
   font-size: 1.25rem;
   font-weight: 600;
   padding: 5px;
-  text-align: center
+  text-align: center;
 }
 
 .it-stats-description {
@@ -410,14 +446,31 @@ nav {
 }
 
 .stats-circle {
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 70px;
-  height: 70px; 
-  border-radius: 50%; 
+  height: 70px;
+  border-radius: 50%;
   background-color: #ff9800;
   color: white;
   font-weight: bold;
   text-align: center;
+  font-size: 50px;
+}
+
+/* Anchor tag styles within search results */
+.search-results a {
+  text-decoration: none;
+  color: inherit;
+}
+.friend-link {
+  font-weight: normal;
+  text-decoration: none;
+  color: black;
+  transition: font-weight 0.2s ease; /* Nice little effect I found*/
+}
+
+.friend-link:hover {
+  font-weight: bold;
 }
