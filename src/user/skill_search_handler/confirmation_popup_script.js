@@ -91,6 +91,24 @@ function createConfirmModal() {
         return; // keep modal open
       }
 
+        const slotId = select.value;
+        try {
+            const res = await fetch('check_availability.php', {
+                method: 'POST',
+                body: new URLSearchParams({ slot_id: slotId }),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            });
+            const data = await res.json();
+
+            if (!data.available) {
+                errLine.textContent = data.reason || 'This slot is no longer available.';
+                return; // stop here, keep modal open
+            }
+        } catch (err) {
+            errLine.textContent = 'Network or server error checking availability.';
+            return;
+        }
+
       // 2) submit to server (authoritative re-check & deduction)
       errLine.textContent = 'Submitting…';
       try {
