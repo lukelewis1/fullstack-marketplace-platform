@@ -91,6 +91,8 @@
                 </div>
             </div>
 
+            <li><a href="/user/calendar.php" class="<?= ($currentPage == 'calendar.php') ? 'active' : '' ?>">Calendar</a></li>
+
 
           <li class="credits"
               class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
