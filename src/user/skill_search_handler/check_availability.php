@@ -24,11 +24,11 @@
     if ($row = $result->fetch_assoc()) {
         // User is either the booker or the provider for this slot
         if ($row['booker_id'] == $uid) {
-            echo json_encode(['available' => false, 'reason' => 'You already booked this slot.']);
+            echo json_encode(['available' => false, 'reason' => 'You already booked this time slot.']);
         } elseif ($row['service_provider_id'] == $uid) {
-            echo json_encode(['available' => false, 'reason' => 'You are the provider for this slot.']);
+            echo json_encode(['available' => false, 'reason' => 'You are providing a service for this time slot.']);
         } else {
-            echo json_encode(['available' => false, 'reason' => 'This slot is unavailable.']);
+            echo json_encode(['available' => false, 'reason' => 'This time slot is unavailable.']);
         }
     } else {
         // No conflicts found
