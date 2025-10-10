@@ -6,16 +6,16 @@ USE FUSS_DB;
 INSERT INTO Listings (user_id, price, title, topic, description, successful_exchanges, is_negotiable, likes, dislikes, type)
 VALUES
 -- Hans' listings
-(2, 25, 'Java Tutoring', 'Programming', 'Learn Java basics to advanced topics', 3, TRUE, 5, 0, 'tutoring'),
-(2, 15, 'PC Troubleshooting', 'Tech', 'Help fix your slow PC and install software', 2, FALSE, 2, 1, 'tech_support'),
+(2, 2, 'Java Tutoring', 'Programming', 'Learn Java basics to advanced topics', 3, TRUE, 5, 0, 'tutoring'),
+(2, 1, 'PC Troubleshooting', 'Tech', 'Help fix your slow PC and install software', 2, FALSE, 2, 1, 'tech_support'),
 
 -- Luke's listings
-(3, 30, 'Cooking Basics', 'Life Skills', 'Beginner-friendly cooking lessons', 5, TRUE, 8, 0, 'life_skill'),
-(3, 40, 'Data Structures Help', 'CS', 'Advanced DSA for uni assignments', 1, FALSE, 1, 0, 'tutoring'),
+(3, 3, 'Cooking Basics', 'Life Skills', 'Beginner-friendly cooking lessons', 5, TRUE, 8, 0, 'life_skill'),
+(3, 4, 'Data Structures Help', 'CS', 'Advanced DSA for uni assignments', 1, FALSE, 1, 0, 'tutoring'),
 
 -- Seth's listings
-(4, 20, 'Math Tutoring', 'Mathematics', 'Calculus, Linear Algebra, and beyond', 4, TRUE, 10, 2, 'tutoring'),
-(4, 50, '3D Printing Setup', 'Practical', 'Help you set up and calibrate your 3D printer', 0, FALSE, 0, 0, 'practical');
+(4, 2, 'Math Tutoring', 'Mathematics', 'Calculus, Linear Algebra, and beyond', 4, TRUE, 10, 2, 'tutoring'),
+(4, 5, '3D Printing Setup', 'Practical', 'Help you set up and calibrate your 3D printer', 0, FALSE, 0, 0, 'practical');
 
 -- ================================
 -- Bookings where Oliver (id=1) is the booker
