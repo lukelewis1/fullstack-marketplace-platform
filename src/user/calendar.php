@@ -46,11 +46,24 @@ include_header($_SESSION['username'] ?? null);
 </script>
 
 
-
 <h1>Bookings Calendar</h1>
-<div id="calendar">
 
+<div id="calendar-legend">
+    <div class="legend-item">
+        <span class="legend-color booker-pending"></span> Booker – Pending
+    </div>
+    <div class="legend-item">
+        <span class="legend-color booker-confirmed"></span> Booker – Confirmed
+    </div>
+    <div class="legend-item">
+        <span class="legend-color provider-pending"></span> Provider – Pending
+    </div>
+    <div class="legend-item">
+        <span class="legend-color provider-confirmed"></span> Provider – Confirmed
+    </div>
 </div>
+
+<div id="calendar"></div>
 
 <script src="calendar_handler/calendar_script.js"></script>
 </body>
