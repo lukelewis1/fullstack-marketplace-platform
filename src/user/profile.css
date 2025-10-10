@@ -1,0 +1,225 @@
+input[readonly],
+textarea[readonly] {
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: default;
+}
+
+/* ------------------------------
+   GLOBAL STYLES
+------------------------------ */
+body {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  background-color: #f3f6f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+main.content {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1,
+h2 {
+  font-weight: 600;
+  color: #222;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* ------------------------------
+   MESSAGE / STATUS
+------------------------------ */
+.message {
+  background-color: #eaf7ea;
+  color: #2b6b2b;
+  border: 1px solid #b6dfb6;
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* ------------------------------
+   CARD SECTIONS
+------------------------------ */
+.card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ------------------------------
+   FORM FIELDS
+------------------------------ */
+.profile-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  margin-top: 10px;
+}
+
+.profile-fields input,
+.profile-fields textarea,
+.profile-fields select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.profile-fields h2 {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.user-profile-pic input {
+  width: 40%;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  padding: 5px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #2979ff;
+  box-shadow: 0 0 0 3px rgba(41, 121, 255, 0.2);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ------------------------------
+   PROFILE PICTURE
+------------------------------ */
+.user-profile-pic {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.user-profile-pic h2 {
+  margin-bottom: 10px;
+}
+
+.user-profile-pic input[type="file"] {
+  display: inline-block;
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #f7f7f7;
+}
+
+/* If you add image preview later */
+.user-profile-pic img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #e0e0e0;
+  margin-bottom: 12px;
+}
+
+/* ------------------------------
+   SAVE BUTTON
+------------------------------ */
+.save-row {
+  text-align: right;
+  margin-top: 24px;
+}
+
+.save-btn {
+  background-color: #2979ff;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.save-btn:hover {
+  background-color: #1565d8;
+}
+
+.save-btn:active {
+  transform: scale(0.98);
+}
+
+/* ------------------------------
+   SKILLS SECTION
+------------------------------ */
+.skills-list {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.skill-box {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #fafafa;
+  min-width: 150px;
+}
+
+/* ------------------------------
+   RESPONSIVE DESIGN
+------------------------------ */
+@media (max-width: 700px) {
+  .profile-fields {
+    grid-template-columns: 1fr;
+  }
+  main.content {
+    padding: 20px;
+  }
+}
