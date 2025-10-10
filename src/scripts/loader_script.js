@@ -12,7 +12,9 @@ messages = [
     'Complaining about Group Assignments',
     'Doom Scrolling TikTok...',
     '🙏 Google Internship 🙏',
-    'What is COMP2030 even about 😭😭😭'
+    'What is COMP2030 even about 😭😭😭',
+    'git push --force origin main',
+    'sudo rm -rf / --no-preserve-root'
 ]
 
 setInterval(() => {
