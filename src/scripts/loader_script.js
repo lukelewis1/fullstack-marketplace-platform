@@ -11,8 +11,10 @@ messages = [
     'Asking ChatGPT for Help',
     'Complaining about Group Assignments',
     'Doom Scrolling TikTok...',
-    'Asking for Peoples LinkedIn',
-    'Praying for the Jane Street Internship'
+    '🙏 Google Internship 🙏',
+    'What is COMP2030 even about 😭😭😭',
+    'git push --force origin main',
+    'sudo rm -rf / --no-preserve-root'
 ]
 
 setInterval(() => {
