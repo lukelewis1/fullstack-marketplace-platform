@@ -77,6 +77,21 @@ function get_uid($username) {
     return $uid;
 }
 
+// Function that returns the booker id for a given booking id
+function get_booker($bid): int {
+    global $conn;
+
+    $sql = "SELECT booker_id FROM Bookings WHERE booking_id = ?;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $bid);
+    $stmt->execute();
+    $stmt->bind_result($booker);
+    $stmt->fetch();
+    $stmt->close();
+
+    return $booker;
+}
+
 // Function to return uid based on a listing id
 function get_uid_listing($lid): int {
     global $conn;
