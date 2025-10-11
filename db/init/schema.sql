@@ -127,7 +127,7 @@ CREATE TABLE TransactionHistory (
 CREATE TABLE Notifications (
     notification_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    type ENUM('service_request', 'accepted_request', 'canceled_request', 'completed_service_confirm', 'completed_service', 'review'),
+    type ENUM('service_request', 'accepted_request', 'completed_service_confirm', 'completed_service', 'review'),
     seen BOOL DEFAULT FALSE,
     time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(id)
