@@ -14,6 +14,7 @@
     $sentiment = $_POST['sentiment'];
     $review = $_POST['review'];
     $sid = $_POST['sid'];
+    $uid = get_uid_listing($sid);
 
     $sql = "UPDATE Bookings SET booker_confirm = TRUE WHERE booking_id = ?;";
     $statement = $conn->prepare($sql);
@@ -21,11 +22,19 @@
     $statement->execute();
     $statement->close();
 
-    $sql = "INSERT INTO Reviews (service_id, type, review) VALUES (?, ?, ?);";
-    $statement = $conn->prepare($sql);
-    $statement->bind_param('iss', $sid, $type, $review);
-    $statement->execute();
-    $statement->close();
+    if (!empty($review)) {
+        $sql = "INSERT INTO Reviews (service_id, type, review) VALUES (?, ?, ?);";
+        $statement = $conn->prepare($sql);
+        $statement->bind_param('iss', $sid, $type, $review);
+        $statement->execute();
+        $statement->close();
+
+        $sql = "INSERT INTO Notifications (user_id, type) VALUES (?, 'review');";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $uid);
+        $stmt->execute();
+        $stmt->close();
+    }
 
     if ($sentiment === 'like') {
         $sql = "UPDATE Listings SET likes = likes + 1 WHERE listing_id = ?;";

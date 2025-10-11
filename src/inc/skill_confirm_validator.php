@@ -49,6 +49,20 @@
         $stmt->bind_param('issiid', $lid, $title, $topic, $pid, $bid, $credits);
         $stmt->execute();
         $stmt->close();
+
+        // update for the service provider
+        $sql = "INSERT INTO Notifications (user_id, type) VALUES (?, 'completed_service');";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $pid);
+        $stmt->execute();
+        $stmt->close();
+
+        // update for the booker
+        $sql = "INSERT INTO Notifications (user_id, type) VALUES (?, 'completed_service');";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $bid);
+        $stmt->execute();
+        $stmt->close();
     }
 
     $statement->close();

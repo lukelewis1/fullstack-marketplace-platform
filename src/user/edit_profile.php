@@ -84,8 +84,8 @@ if (!empty($_FILES['profile_pic']['name']) && !empty($user_id)) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="../user/profile.css"/>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/user/profile_handler/profile.css"/>
 </head>
 <body>
 <header>

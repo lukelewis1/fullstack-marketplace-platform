@@ -43,7 +43,7 @@
         <h1 class="list-heading"><?= htmlspecialchars($listing['title']) ?></h1>
         <ul>
           <li>
-            <a href="../view_users_profile.php?id=<?= (int)$listing['user_id'] ?>" class="friend-link">
+            <a href="../profile_handler/view_users_profile.php?id=<?= (int)$listing['user_id'] ?>" class="friend-link">
                 <p class="user">By <?= get_username($listing['user_id']) ?></p>
             </a>
             <h3><?= htmlspecialchars($listing['price']) ?> FUSS Credits</h3>

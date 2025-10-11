@@ -1,4 +1,4 @@
--- A query that populates some bookings for skills so skill management testing can be streamlined, to be ran in combo with msg_user_populate.sql
+-- A query that populates some bookings for skills so skill management testing can be streamlined, to be ran in combo with user_pop.sql
 
 USE FUSS_DB;
 

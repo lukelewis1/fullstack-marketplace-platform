@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS FUSS_DB;
 CREATE DATABASE FUSS_DB;
 USE FUSS_DB;
 
+DROP TABLE IF EXISTS Notifications;
 DROP TABLE IF EXISTS TransactionHistory;
 DROP TABLE IF EXISTS Reviews;
 DROP TABLE IF EXISTS Availability;
@@ -13,7 +14,7 @@ DROP TABLE IF EXISTS Disputes;
 DROP TABLE IF EXISTS Listings;
 DROP TABLE IF EXISTS Users;
 
-CREATE TABLE Users(
+CREATE TABLE Users (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_name VARCHAR(30) NOT NULL UNIQUE,
     email VARCHAR(50) NOT NULL UNIQUE,
@@ -28,7 +29,7 @@ CREATE TABLE Users(
     fuss_credit FLOAT NOT NULL
 );
 
-CREATE TABLE Listings(
+CREATE TABLE Listings (
     listing_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     user_id INT NOT NULL,
     price FLOAT NOT NULL CHECK (100 > price AND price > 0),
@@ -44,7 +45,7 @@ CREATE TABLE Listings(
     UNIQUE KEY service_owner(user_id, title)
 );
 
-CREATE TABLE Messages(
+CREATE TABLE Messages (
     conversation_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     sender_id INT NOT NULL,
     receiver_id INT NOT NULL,
@@ -56,7 +57,7 @@ CREATE TABLE Messages(
     FOREIGN KEY (receiver_id) REFERENCES Users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE ChatMessages(
+CREATE TABLE ChatMessages (
     msg_id INT AUTO_INCREMENT PRIMARY KEY,
     conversation_id INT NOT NULL,
     sender_id INT NOT NULL,
@@ -121,4 +122,12 @@ CREATE TABLE TransactionHistory (
     price INT NOT NULL,
     FOREIGN KEY (provider_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (booker_id) REFERENCES Users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Notifications (
+    notification_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    type ENUM('service_request', 'accepted_request', 'completed_service_confirm', 'completed_service', 'review'),
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(id)
 );

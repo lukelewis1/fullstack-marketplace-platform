@@ -17,5 +17,13 @@
     $statement->execute();
     $statement->close();
 
+    $booker = get_booker($booking_id);
+
+    $sql = "INSERT INTO Notifications (user_id, type) VALUES (?, 'accepted_request');";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $booker);
+    $stmt->execute();
+    $stmt->close();
+
     header('Content-Type: application/json');
     echo json_encode(true);

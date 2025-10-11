@@ -94,6 +94,8 @@
 
             <li><a href="/user/calendar.php" class="<?= ($currentPage == 'calendar.php') ? 'active' : '' ?>">Calendar</a></li>
 
+            <li><a href="/notifications/notifications.php" class="<?= ($currentPage == 'notifications.php') ? 'active' : '' ?>">Notifications</a></li>
+
 
           <li class="credits"
               class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
