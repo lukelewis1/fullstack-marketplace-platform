@@ -92,6 +92,21 @@ function get_booker($bid): int {
     return $booker;
 }
 
+// Function that returns the provider id for a given booking id
+function get_provider($bid): int {
+    global $conn;
+
+    $sql = "SELECT service_provider_id FROM Bookings WHERE booking_id = ?;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $bid);
+    $stmt->execute();
+    $stmt->bind_result($provider);
+    $stmt->fetch();
+    $stmt->close();
+
+    return $provider;
+}
+
 // Function to return uid based on a listing id
 function get_uid_listing($lid): int {
     global $conn;
