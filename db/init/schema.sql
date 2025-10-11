@@ -120,6 +120,7 @@ CREATE TABLE TransactionHistory (
     provider_id INT NOT NULL,
     booker_id INT NOT NULL,
     price INT NOT NULL,
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (provider_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (booker_id) REFERENCES Users(id) ON DELETE CASCADE
 );
