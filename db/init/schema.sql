@@ -24,7 +24,7 @@ CREATE TABLE Users (
     bio VARCHAR(500),
     dob DATETIME NOT NULL,
     is_admin BOOL NOT NULL,
-    acc_status INT NOT NULL,
+    acc_status BOOL DEFAULT TRUE,
     role VARCHAR(25) NOT NULL,
     fuss_credit FLOAT NOT NULL
 );

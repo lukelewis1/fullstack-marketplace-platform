@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("suspendModal");
   const closeBtn = document.querySelector("#suspendModal .close");
-  const submitForm = document.getElementById("submitForm");
+  const submitForm = document.getElementById("submitForms");
 
-  let deleteUrl = "";
+  let suspUrl = "";
 
   // Open modal
   document.querySelectorAll(".suspend-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      deleteUrl = btn.getAttribute("href");
+      suspUrl = btn.getAttribute("href");
       modal.style.display = "block";
     });
   });
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   submitForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    fetch(deleteUrl)
+    fetch(suspUrl)
       .then((response) => response.text())
       .then(() => {
         modal.style.display = "none";
