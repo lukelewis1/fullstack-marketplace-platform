@@ -1,27 +1,28 @@
-INSERT INTO Notifications (user_id, type)
+INSERT INTO Notifications (user_id, type, seen)
 VALUES
-    -- Service requests
-    (1, 'service_request'),
-    (2, 'service_request'),
-    (3, 'service_request'),
+    -- Service requests (unseen)
+    (1, 'service_request', FALSE),
+    (2, 'service_request', FALSE),
+    (3, 'service_request', FALSE),
 
-    -- Accepted requests
-    (1, 'accepted_request'),
-    (2, 'accepted_request'),
-    (4, 'accepted_request'),
+    -- Accepted requests (some seen)
+    (1, 'accepted_request', TRUE),
+    (2, 'accepted_request', FALSE),
+    (4, 'accepted_request', TRUE),
 
-    -- Completed service confirmations
-    (4, 'completed_service_confirm'),
-    (1, 'completed_service_confirm'),
-    (3, 'completed_service_confirm'),
+    -- Completed service confirmations (mixed)
+    (4, 'completed_service_confirm', FALSE),
+    (1, 'completed_service_confirm', TRUE),
+    (3, 'completed_service_confirm', FALSE),
 
-    -- Completed services
-    (2, 'completed_service'),
-    (3, 'completed_service'),
-    (4, 'completed_service'),
+    -- Completed services (some seen)
+    (2, 'completed_service', TRUE),
+    (3, 'completed_service', FALSE),
+    (4, 'completed_service', TRUE),
 
-    -- Reviews
-    (1, 'review'),
-    (2, 'review'),
-    (3, 'review'),
-    (4, 'review');
+    -- Reviews (mixed)
+    (1, 'review', FALSE),
+    (2, 'review', TRUE),
+    (3, 'review', FALSE),
+    (4, 'review', TRUE);
+
