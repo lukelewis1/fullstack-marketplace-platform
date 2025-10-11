@@ -10,11 +10,6 @@ VALUES
     (2, 'accepted_request'),
     (4, 'accepted_request'),
 
-    -- Canceled requests
-    (3, 'canceled_request'),
-    (2, 'canceled_request'),
-    (1, 'canceled_request'),
-
     -- Completed service confirmations
     (4, 'completed_service_confirm'),
     (1, 'completed_service_confirm'),
