@@ -128,5 +128,6 @@ CREATE TABLE Notifications (
     notification_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     type ENUM('service_request', 'accepted_request', 'canceled_request', 'completed_service_confirm', 'completed_service', 'review'),
+    seen BOOL DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
