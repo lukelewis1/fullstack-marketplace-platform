@@ -1,4 +1,5 @@
 <?php
+//<!-- Authored by Seth Lear, FAN LEAR0022, Edited By (Hans Pujalte, FAN PUJA0009) -->
 session_start();
 
 require_once __DIR__ . '/../inc/dbconn.inc.php';

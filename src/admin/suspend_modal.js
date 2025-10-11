@@ -1,3 +1,4 @@
+//<!-- Authored by Hans Pujalte, FAN PUJA0009 -->
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("suspendModal");
   const closeBtn = document.querySelector("#suspendModal .close");

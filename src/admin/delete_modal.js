@@ -1,3 +1,5 @@
+//<!-- Authored by Hans Pujalte, FAN PUJA0009 -->
+
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("confirmModal");
   const closeBtn = document.querySelector("#confirmModal .close");

@@ -1,4 +1,5 @@
 <?php
+//<!-- Authored by Hans Pujalte, FAN PUJA0009 -->
 require_once __DIR__ . '/../inc/dbconn.inc.php';
 
 if (!isset($_GET['id'])) {

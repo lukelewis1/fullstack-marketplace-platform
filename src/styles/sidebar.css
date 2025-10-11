@@ -1,3 +1,5 @@
+/*<!-- Authored by Hans Pujalte, FAN PUJA0009 -->*/
+
 /* Only include on pages with a sidebar */
 .page-wrapper {
   display: flex; /* sidebar + content row */
