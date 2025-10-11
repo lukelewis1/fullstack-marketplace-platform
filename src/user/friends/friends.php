@@ -64,7 +64,7 @@ include_header($_SESSION['username'] ?? null);
 <!--       Dynamically populates the list of current friends with an option to remove them -->
         <?php foreach ($friend_names as $fid => $name): ?>
         <li class="friends-res">
-            <a href="../view_users_profile.php?id=<?= $fid ?>" class="friend-link">
+            <a href="../profile_handler/view_users_profile.php?id=<?= $fid ?>" class="friend-link">
                 <?= htmlspecialchars($name) ?>
             </a> - <button class="remove-friend" data-id="<?= $fid ?>">Remove</button>
         </li>
