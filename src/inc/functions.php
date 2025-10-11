@@ -77,6 +77,22 @@ function get_uid($username) {
     return $uid;
 }
 
+// Function to return uid based on a listing id
+function get_uid_listing($lid): int {
+    global $conn;
+
+    $sql = "SELECT user_id FROM Listings WHERE listing_id = ?;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $lid);
+    $stmt->execute();
+    $stmt->bind_result($uid);
+    $stmt->fetch();
+    $stmt->close();
+
+    return $uid;
+}
+
+
 // Function which takes a user_id and listing title and returns a listing id
 function get_lid($uid, $title) {
     global $conn;
