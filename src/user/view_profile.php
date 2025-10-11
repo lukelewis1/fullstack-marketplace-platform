@@ -6,6 +6,7 @@ require_once __DIR__ . '/../inc/functions.php';
 
 $user_name = $_SESSION['username'] ?? '';
 $message = "";
+$uid = get_uid($user_name);
 
 // Fetch user details
 $stmt = $conn->prepare("SELECT id, f_name, l_name, email, bio, role 
@@ -30,6 +31,19 @@ $stmt_services->bind_param('i', $user['id']);
 $stmt_services->execute();
 $user_services = $stmt_services->get_result()->fetch_all(MYSQLI_ASSOC);
 $stmt_services->close();
+
+$sql = "SELECT * FROM TransactionHistory WHERE booker_id = ? ORDER BY time DESC;";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $uid);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$transactions = [];
+
+while ($row = $result->fetch_assoc()) {
+    $transactions[] = $row;
+}
+$stmt->close();
 
 ?>
 
@@ -82,7 +96,7 @@ $stmt_services->close();
                 </div>
 
                 <div class="user-role">
-                    <h2>Role</h2>
+                    <h2>Role/Degree</h2>
                     <input type="text" name="role" placeholder="Role" value="<?= htmlspecialchars($role) ?>" readonly>
                 </div>
 
@@ -113,6 +127,24 @@ $stmt_services->close();
                     <?php endforeach; ?>
                 <?php else: ?>
                     <p>No skills listed yet.</p>
+                <?php endif; ?>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Transaction History</h2>
+            <div class="skills-list">
+                <?php if(!empty($transactions)): ?>
+                    <?php foreach ($transactions as $item): ?>
+                <div class="skill-box">
+                    <strong><?= htmlspecialchars($item['service_title']) ?></strong>
+                    <p>Topic: <?= htmlspecialchars($item['service_topic']) ?></p>
+                    <p>Price: <?= htmlspecialchars($item['price']) ?></p>
+                    <p>Time of completion: <?= htmlspecialchars($item['time']) ?></p>
+                </div>
+                <?php endforeach; ?>
+                <?php else: ?>
+                <p>No transactions completed</p>
                 <?php endif; ?>
             </div>
         </section>

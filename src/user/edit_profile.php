@@ -128,13 +128,13 @@ if (!empty($_FILES['profile_pic']['name']) && !empty($user_id)) {
                 </div>
 
                 <div class="user-role">
-                    <h2>Role</h2>
+                    <h2>Role/Degree</h2>
                     <input type="text" name="role" placeholder="Role" value="<?= htmlspecialchars($role) ?>">
                 </div>
 
                 <div class="user-email">
                     <h2>Email Address</h2>
-                    <input type="email" name="email" placeholder="Email Address" value="<?= htmlspecialchars($email) ?>">
+                    <input type="email" name="email" placeholder="Email Address" value="<?= htmlspecialchars($email) ?>" readonly>
                 </div>
             </div>
         </section>
