@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS FUSS_DB;
 CREATE DATABASE FUSS_DB;
 USE FUSS_DB;
 
+DROP TABLE IF EXISTS Notifications;
 DROP TABLE IF EXISTS TransactionHistory;
 DROP TABLE IF EXISTS Reviews;
 DROP TABLE IF EXISTS Availability;
@@ -121,4 +122,11 @@ CREATE TABLE TransactionHistory (
     price INT NOT NULL,
     FOREIGN KEY (provider_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (booker_id) REFERENCES Users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Notifications (
+    notification_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    type ENUM('service_request', 'accepted_request', 'canceled_request', 'completed_service_confirm', 'completed_service', 'review'),
+    FOREIGN KEY (user_id) REFERENCES Users(id)
 );
