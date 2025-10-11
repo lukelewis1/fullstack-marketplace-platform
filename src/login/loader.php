@@ -5,10 +5,11 @@ $hashed_password = hash('sha256', $password);
 $name_good = false;
 $password_good = false;
 $admin = false;
+$status = true;
 
 require_once '../inc/dbconn.inc.php';
 
-$sql = 'SELECT user_name, hashed_password, bio, is_admin FROM Users WHERE user_name = ? AND hashed_password = ?;';
+$sql = 'SELECT user_name, hashed_password, bio, is_admin, acc_status FROM Users WHERE user_name = ? AND hashed_password = ?;';
 
 $statement = mysqli_stmt_init($conn);
 mysqli_stmt_prepare($statement, $sql);
@@ -29,12 +30,15 @@ if (mysqli_stmt_execute($statement)) {
         if ($row['is_admin'] === 1) {
             $admin = true;
         }
+        if ($row['acc_status'] === 0) {
+            $status = false;
+        }
     }
 } else {
     echo mysqli_error($conn);
 }
 
-if ($name_good && $password_good) {
+if ($name_good && $password_good && $status) {
     $redirect_page = '../user/user_homepage.php';
     session_start();
     $_SESSION['username'] = $user;
@@ -44,7 +48,7 @@ if ($name_good && $password_good) {
     if ($admin) {
         $redirect_page = '../admin/admin_homepage.php';
     }
-} else if (!$name_good || !$password_good) {
+} else if (!$name_good || !$password_good || !$status) {
     $redirect_page = '../index.php';
 }
 
