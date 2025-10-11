@@ -1,4 +1,6 @@
 <?php
+//<!-- Authored by Hans Pujalte, FAN PUJA0009 -->
+
 // Start session and check login before any HTML output
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
