@@ -1,3 +1,5 @@
+<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 <?php
 $user = $_POST['username_log'] ?? null;
 $password = $_POST['password_log'] ?? null;

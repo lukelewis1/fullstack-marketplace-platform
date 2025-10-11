@@ -1,3 +1,5 @@
+<!-- Authored by Luke Lewis, FAN lewi0454, Edited by (Oliver Wuttke, FAN WUTT0019), (Luke Lewis, FAN lewi0454) -->
+
 <?php
     if (session_status() === PHP_SESSION_NONE) {
       session_start();

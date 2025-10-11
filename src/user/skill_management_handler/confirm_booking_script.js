@@ -1,3 +1,5 @@
+// <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.pending-conf').forEach(btn => {
         btn.addEventListener('click', () => {

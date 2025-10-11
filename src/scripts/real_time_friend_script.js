@@ -1,3 +1,5 @@
+// <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 setInterval(() => {
     fetch('/user/friends/check_requests.php') // your new PHP file
         .then(res => res.json())

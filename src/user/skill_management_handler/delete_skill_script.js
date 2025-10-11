@@ -1,3 +1,5 @@
+// <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 document.querySelectorAll('.delete-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const listingId = btn.dataset.lid;

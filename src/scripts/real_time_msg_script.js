@@ -1,3 +1,5 @@
+// <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 setInterval(() => {
     fetch('/messages/check_unseen.php') // returns a bool true or false
         .then(res => res.json())

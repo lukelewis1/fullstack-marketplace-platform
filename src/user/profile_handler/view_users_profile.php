@@ -1,3 +1,5 @@
+<!-- Authored by Hans Pujalte, FAN puja0009, Edited by (Oliver Wuttke, FAN WUTT0019), (Hans Pujalte, FAN puja0009) -->
+
 <?php
 session_start();
 

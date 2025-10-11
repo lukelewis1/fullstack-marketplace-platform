@@ -1,3 +1,5 @@
+// <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 const titleInput = document.getElementById('title');
 const topicInput = document.getElementById('topic');
 const lenError = document.querySelectorAll('.posting-err');

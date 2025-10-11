@@ -1,3 +1,5 @@
+// <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 document.querySelectorAll('.cancel-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const [providerId, serviceId, serviceName, credits] = JSON.parse(btn.dataset.id);

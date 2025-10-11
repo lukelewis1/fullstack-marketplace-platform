@@ -1,3 +1,5 @@
+<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 <?php
 
 $username = $_POST['username'] ?? null;

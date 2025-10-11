@@ -1,3 +1,5 @@
+// <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 // All JS files in the friends directory are all just variants of each other to handle the different types of buttons
 // around friend requests. They all are click event listeners that when the click happens they call their respective
 // PHP sql handler that updates the information in the DB accordingly. Once the call is made the bool is returned they update the

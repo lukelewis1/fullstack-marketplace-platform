@@ -1,3 +1,5 @@
+// <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 const link = document.getElementById('logout-link');
 const modal = document.getElementById('logout-modal');
 

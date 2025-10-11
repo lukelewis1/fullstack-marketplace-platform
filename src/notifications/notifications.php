@@ -1,3 +1,5 @@
+<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 <?php
 
     if (session_status() === PHP_SESSION_NONE) {
