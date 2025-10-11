@@ -1,3 +1,5 @@
+<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +37,7 @@
 
         <div class="first-time-su" id="bio-box">
             <label for="bio">
-                Enter a bio about yourself.
+                Enter a bio about yourself, mention any skills you may be interested in.
                 <span id="char-remaining">500</span> characters remaining:
             </label><br>
             <textarea name="bio" id="bio" maxlength="500"></textarea>

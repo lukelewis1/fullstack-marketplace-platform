@@ -1,3 +1,5 @@
+<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 <?php
 
 $username = $_POST['username'] ?? null;
@@ -154,7 +156,7 @@ if ($username != null) {
 
             <div class="reg-fields">
                 <input type="text" name="role" id="role">
-                <label for="">Role/Title</label>
+                <label for="">Role/Degree</label>
                 <span class="error-msg "id="role-error"></span>
             </div>
 

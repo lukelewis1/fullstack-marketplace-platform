@@ -24,7 +24,7 @@ CREATE TABLE Users (
     bio VARCHAR(500),
     dob DATETIME NOT NULL,
     is_admin BOOL NOT NULL,
-    acc_status INT NOT NULL,
+    acc_status BOOL DEFAULT TRUE,
     role VARCHAR(25) NOT NULL,
     fuss_credit FLOAT NOT NULL
 );
@@ -120,6 +120,7 @@ CREATE TABLE TransactionHistory (
     provider_id INT NOT NULL,
     booker_id INT NOT NULL,
     price INT NOT NULL,
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (provider_id) REFERENCES Users(id) ON DELETE CASCADE,
     FOREIGN KEY (booker_id) REFERENCES Users(id) ON DELETE CASCADE
 );

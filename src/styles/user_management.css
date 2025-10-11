@@ -148,3 +148,27 @@ search {
 #submitForm .cancel-btn {
   background-color: grey;
 }
+
+#submitForms .button-group {
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center;
+    gap: 10px; /* space between buttons */
+    margin-top: 10px;
+}
+
+#submitForms button {
+    padding: 8px 16px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#submitForms .confirm-btn {
+    background-color: red;
+}
+
+#submitForms .cancel-btn {
+    background-color: grey;
+}

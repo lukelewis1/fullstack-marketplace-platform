@@ -1,3 +1,5 @@
+// <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+
 document.querySelectorAll('.confirm-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const skill = btn.closest('.skill-el');

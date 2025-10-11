@@ -1,8 +1,10 @@
+<!-- Authored by Hans Pujalte, FAN puja0009, Edited by (Oliver Wuttke, FAN WUTT0019), (Hans Pujalte, FAN puja0009) -->
+
 <?php
 session_start();
 
-require_once __DIR__ . '/../inc/dbconn.inc.php';
-require_once __DIR__ . '/../inc/functions.php';
+require_once __DIR__ . '/../../inc/dbconn.inc.php';
+require_once __DIR__ . '/../../inc/functions.php';
 
 # Gets user ID from query parameter, defaults to 0 if not set or invalid
 $profile_user_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -30,6 +32,14 @@ $stmt_services->bind_param('i', $user_id);
 $stmt_services->execute();
 $user_services = $stmt_services->get_result()->fetch_all(MYSQLI_ASSOC);
 $stmt_services->close();
+
+$sql = "SELECT IFNULL(AVG(likes - dislikes), 0) AS avg_rating FROM Listings WHERE user_id = ?;";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $uid);
+$stmt->execute();
+$stmt->bind_result($average_rating);
+$stmt->fetch();
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -85,6 +95,10 @@ $stmt_services->close();
                 <div class="user-email">
                     <h2>Email Address</h2>
                     <input type="email" name="email" placeholder="Email Address" value="<?= htmlspecialchars($email) ?>" readonly>
+                </div>
+
+                <div class="rating">
+                    <h2>Average Rating for Services: <?= htmlspecialchars($average_rating) ?></h2>
                 </div>
             </div>
         </section>

@@ -150,7 +150,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
         <span class="close">&times;</span>
         <h2>Confirm Suspension</h2>
         <p>Are you sure you want to suspend this user?</p>
-        <form id="submitForm">
+        <form id="submitForms">
           <div class="button-group">
           <button type="submit" class="confirm-btn">Yes</button>
           <button type="button" class="cancel-btn">Cancel</button>

@@ -8,4 +8,12 @@ if (!isset($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
+$sql = "UPDATE Users SET acc_status = FALSE WHERE id = ?;";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $id);
+$stmt->execute();
+$stmt->close();
+
+header("Location: user_management.php");
+exit;
 ?>

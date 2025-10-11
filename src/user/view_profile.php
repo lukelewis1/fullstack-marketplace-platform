@@ -1,3 +1,5 @@
+<!-- Authored by Hans Pujalte, FAN puja0009, Edited by (Oliver Wuttke, FAN WUTT0019), (Hans Pujalte, FAN puja0009) -->
+
 <?php
 session_start();
 
@@ -6,6 +8,7 @@ require_once __DIR__ . '/../inc/functions.php';
 
 $user_name = $_SESSION['username'] ?? '';
 $message = "";
+$uid = get_uid($user_name);
 
 // Fetch user details
 $stmt = $conn->prepare("SELECT id, f_name, l_name, email, bio, role 
@@ -30,6 +33,28 @@ $stmt_services->bind_param('i', $user['id']);
 $stmt_services->execute();
 $user_services = $stmt_services->get_result()->fetch_all(MYSQLI_ASSOC);
 $stmt_services->close();
+
+$sql = "SELECT * FROM TransactionHistory WHERE booker_id = ? ORDER BY time DESC;";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $uid);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$transactions = [];
+
+while ($row = $result->fetch_assoc()) {
+    $transactions[] = $row;
+}
+$stmt->close();
+
+$sql = "SELECT IFNULL(AVG(likes - dislikes), 0) AS avg_rating FROM Listings WHERE user_id = ?;";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $uid);
+$stmt->execute();
+$stmt->bind_result($average_rating);
+$stmt->fetch();
+$stmt->close();
+
 
 ?>
 
@@ -82,13 +107,17 @@ $stmt_services->close();
                 </div>
 
                 <div class="user-role">
-                    <h2>Role</h2>
+                    <h2>Role/Degree</h2>
                     <input type="text" name="role" placeholder="Role" value="<?= htmlspecialchars($role) ?>" readonly>
                 </div>
 
                 <div class="user-email">
                     <h2>Email Address</h2>
                     <input type="email" name="email" placeholder="Email Address" value="<?= htmlspecialchars($email) ?>" readonly>
+                </div>
+
+                <div class="rating">
+                    <h2>Average Rating for Services: <?= htmlspecialchars($average_rating) ?></h2>
                 </div>
             </div>
         </section>
@@ -113,6 +142,24 @@ $stmt_services->close();
                     <?php endforeach; ?>
                 <?php else: ?>
                     <p>No skills listed yet.</p>
+                <?php endif; ?>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Transaction History</h2>
+            <div class="skills-list">
+                <?php if(!empty($transactions)): ?>
+                    <?php foreach ($transactions as $item): ?>
+                <div class="skill-box">
+                    <strong><?= htmlspecialchars($item['service_title']) ?></strong>
+                    <p>Topic: <?= htmlspecialchars($item['service_topic']) ?></p>
+                    <p>Price: <?= htmlspecialchars($item['price']) ?></p>
+                    <p>Time of completion: <?= htmlspecialchars($item['time']) ?></p>
+                </div>
+                <?php endforeach; ?>
+                <?php else: ?>
+                <p>No transactions completed</p>
                 <?php endif; ?>
             </div>
         </section>
