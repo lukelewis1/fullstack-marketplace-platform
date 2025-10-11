@@ -18,6 +18,19 @@
     $username     = $_SESSION['username'] ?? null;
     $userCredits  = $username ? (float)get_user_credits($username) : 0.0;
     $price        = (float)$listing['price'];
+
+    $lid = $listing['listing_id'];
+    $stmt = $conn->prepare("SELECT * FROM Reviews WHERE service_id = ?;");
+    $stmt->bind_param('i', $lid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $reviews = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $reviews[] = $row;
+    }
+    $stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +82,17 @@
 
           <br><input type="submit" value="Request">
         </form>
+          <div class="reviews-box">
+              <h2>Reviews</h2>
+              <ul class="reviews">
+                  <?php foreach ($reviews as $rev): ?>
+                  <li class="review">
+                      <h5>Type: <?= htmlspecialchars($rev['type']) ?></h5>
+                      <p><?= htmlspecialchars($rev['review']) ?></p>
+                  </li>
+                  <?php endforeach; ?>
+              </ul>
+          </div>
       </main>
       
     </div>
