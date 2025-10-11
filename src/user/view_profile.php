@@ -45,6 +45,15 @@ while ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
+$sql = "SELECT IFNULL(AVG(likes - dislikes), 0) AS avg_rating FROM Listings WHERE user_id = ?;";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $uid);
+$stmt->execute();
+$stmt->bind_result($average_rating);
+$stmt->fetch();
+$stmt->close();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -103,6 +112,10 @@ $stmt->close();
                 <div class="user-email">
                     <h2>Email Address</h2>
                     <input type="email" name="email" placeholder="Email Address" value="<?= htmlspecialchars($email) ?>" readonly>
+                </div>
+
+                <div class="rating">
+                    <h2>Average Rating for Services: <?= htmlspecialchars($average_rating) ?></h2>
                 </div>
             </div>
         </section>
