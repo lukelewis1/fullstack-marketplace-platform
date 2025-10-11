@@ -1,7 +1,5 @@
-<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
 <?php
-
+//<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }

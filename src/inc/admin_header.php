@@ -1,6 +1,5 @@
-<!-- Authored by Hans Pujalte, FAN puja0009, Edited by (Oliver Wuttke, FAN WUTT0019), (Hans Pujalte, FAN puja0009) -->
-
 <?php
+//<!-- Authored by Hans Pujalte, FAN puja0009, Edited by (Oliver Wuttke, FAN WUTT0019), (Hans Pujalte, FAN puja0009) -->
     if (session_status() === PHP_SESSION_NONE) {
       session_start();
     }

@@ -1,6 +1,5 @@
-<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
 <?php
+//<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
 $user = $_POST['username_log'] ?? null;
 $password = $_POST['password_log'] ?? null;
 $hashed_password = hash('sha256', $password);

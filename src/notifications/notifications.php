@@ -1,7 +1,5 @@
-<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
 <?php
-
+//<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -13,7 +11,7 @@
 
     $uid = get_uid($_SESSION['username']);
 
-    $sql = "SELECT type, time, seen FROM Notifications WHERE user_id = ? ORDER BY seen ASC, time DESC;";
+    $sql = "SELECT type, time FROM Notifications WHERE user_id = ? ORDER BY time DESC;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('i', $uid);
     $stmt->execute();
