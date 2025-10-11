@@ -129,5 +129,6 @@ CREATE TABLE Notifications (
     user_id INT NOT NULL,
     type ENUM('service_request', 'accepted_request', 'canceled_request', 'completed_service_confirm', 'completed_service', 'review'),
     seen BOOL DEFAULT FALSE,
+    time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
