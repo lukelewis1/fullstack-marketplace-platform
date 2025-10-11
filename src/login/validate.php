@@ -1,6 +1,5 @@
-<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
 <?php
+//<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
 require_once '../inc/dbconn.inc.php';
 
 header('Content-Type: application/json');

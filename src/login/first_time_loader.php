@@ -1,6 +1,5 @@
-<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
 <?php
+//<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
 session_start();
 
 $bio = $_POST['bio'] ?? '';
