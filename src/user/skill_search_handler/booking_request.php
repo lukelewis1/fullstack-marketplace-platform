@@ -71,6 +71,12 @@ try {
 
   $conn->commit();
 
+  $sql = "INSERT INTO Notifications (user_id, type) VALUES (?, 'service_request');";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param('i', $L['provider_id']);
+  $stmt->execute();
+  $stmt->close();
+
   // Redirect to booking confirmation page
   header("Location: /user/skill_search_handler/booking_success.php?booking_id=".$booking_id);
   exit;

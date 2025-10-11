@@ -39,7 +39,7 @@
                 $item['loc'] = '/user/skill_bookings.php';
                 break;
             case 'completed_service':
-                $item['msg'] = "A service has been completed.";
+                $item['msg'] = "A service has been completed and confirmed by both you and the other party.";
                 $item['loc'] = '#';
                 break;
             case 'review':
