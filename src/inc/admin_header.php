@@ -66,8 +66,8 @@
             <div class="dropdown avatar-dropdown">
               <img src="/images/user_pfp/<?= $user_id ?>.png?t=<?= time() ?>" alt="Profile Picture" />
               <div class="dropdown-content avatar-dropdown-content">
-                  <a href="../user/view_profile.php">View Profile</a>
-                  <a href="../user/edit_profile.php">Edit Profile</a>
+                  <a href="/user/view_profile.php">View Profile</a>
+                  <a href="/user/edit_profile.php">Edit Profile</a>
                   <a href="/inc/logout.php" id="logout-link">Logout</a>
               </div>
             </div>
