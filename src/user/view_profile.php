@@ -59,117 +59,127 @@ $stmt->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Profile Page</title>
     <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="profile_handler/profile.css"/>
+    <link rel="stylesheet" href="profile_handler/profile.css" />
 </head>
+
 <body>
-<header>
-    <?php include_header($_SESSION['username'] ?? null); ?>  
-</header>
+    <header>
+        <?php include_header($_SESSION['username'] ?? null); ?>
+    </header>
 
-<!-- Parent Container Class --> 
-<main class="content">
-    <h1>Profile Preview</h1>
-    <?php if($message): ?>
-        <div class="message"><?= htmlspecialchars($message) ?></div>
-    <?php endif; ?>
+    <!-- Parent Container Class -->
+    <main class="content">
+        <h1>Profile Preview</h1>
+        <?php if ($message): ?>
+            <div class="message"><?= htmlspecialchars($message) ?></div>
+        <?php endif; ?>
 
-    <!-- Form with file upload -->
-    <form method="POST" enctype="multipart/form-data">
-        <!-- Personal Info -->
-        <section class="card">
-            <div class="profile-fields">
+        <!-- Form with file upload -->
+        <form method="POST" enctype="multipart/form-data">
+            <!--
+        * AI Tool used
+        * Line Number: 98 in AI-Acknowledgements
+        * Used to confirm enctype usage for file uploads and to explain why it's needed. 
+        -->
 
-                <!-- User Profile Picture -->
-                <div class="user-profile-pic">
-                    <h2>Profile Picture</h2>
-                    <?php
-                    // Display profile picture or default
-                     $picPath = "../images/user_pfp/{$user_id}.png"; // Path to profile picture
-                     echo '<img src="' . (file_exists($picPath) ? $picPath : '../images/user_pfp/default.png') . '" alt="Profile Picture" class="profile-pic-preview" style="width:180px; height:180px;"> '; // Set pic path
-                    ?>
+            <!-- Personal Info -->
+            <section class="card">
+                <div class="profile-fields">
+
+                    <!-- User Profile Picture -->
+                    <div class="user-profile-pic">
+                        <h2>Profile Picture</h2>
+                        <?php
+                        // Display profile picture or default
+                        $picPath = "../images/user_pfp/{$user_id}.png"; // Path to profile picture
+                        echo '<img src="' . (file_exists($picPath) ? $picPath : '../images/user_pfp/default.png') . '" alt="Profile Picture" class="profile-pic-preview" style="width:180px; height:180px;"> '; // Set pic path
+                        ?>
+                    </div>
+
+                    <!-- Different Input Fields -->
+                    <div class="username">
+                        <h2>Username</h2>
+                        <input type="text" name="username" placeholder="Username" value="<?= htmlspecialchars($user_name) ?>" readonly>
+                    </div>
+
+                    <div class="user-first-name">
+                        <h2>First Name</h2>
+                        <input type="text" name="first_name" placeholder="First Name" value="<?= htmlspecialchars($first_name) ?>" readonly>
+                    </div>
+
+                    <div class="user-last-name">
+                        <h2>Last Name</h2>
+                        <input type="text" name="last_name" placeholder="Last Name" value="<?= htmlspecialchars($last_name) ?>" readonly>
+                    </div>
+
+                    <div class="user-role">
+                        <h2>Role/Degree</h2>
+                        <input type="text" name="role" placeholder="Role" value="<?= htmlspecialchars($role) ?>" readonly>
+                    </div>
+
+                    <div class="user-email">
+                        <h2>Email Address</h2>
+                        <input type="email" name="email" placeholder="Email Address" value="<?= htmlspecialchars($email) ?>" readonly>
+                    </div>
+
+                    <div class="rating">
+                        <h2>Average Rating for Services: <?= htmlspecialchars($average_rating) ?></h2>
+                    </div>
                 </div>
-                
-                <div class="username">
-                    <h2>Username</h2>
-                    <input type="text" name="username" placeholder="Username" value="<?= htmlspecialchars($user_name) ?>" readonly>
+            </section>
+
+            <!-- Bio -->
+            <section class="card">
+                <h2>Bio / Requested Skills</h2>
+                <textarea name="bio" rows="4" placeholder="Tell us about yourself..."><?= htmlspecialchars($bio) ?></textarea>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="card">
+                <h2>Current Skills</h2>
+                <div class="skills-list">
+                    <!-- Populate Skills Field-->
+                    <?php if (!empty($user_services)): ?> <!-- Check if user has services -->
+                        <?php foreach ($user_services as $service): ?> <!-- Iterate over each one -->
+                            <div class="skill-box">
+                                <strong><?= htmlspecialchars($service['title']) ?></strong>
+                                <p>Topic: <?= htmlspecialchars($service['topic']) ?></p>
+                                <p>Type: <?= htmlspecialchars($service['type']) ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No skills listed yet.</p>
+                    <?php endif; ?>
                 </div>
+            </section>
 
-                <div class="user-first-name">
-                    <h2>First Name</h2>
-                    <input type="text" name="first_name" placeholder="First Name" value="<?= htmlspecialchars($first_name) ?>" readonly>
+            <!-- Transaction History -->
+            <section class="card">
+                <h2>Transaction History</h2>
+                <div class="skills-list">
+                    <?php if (!empty($transactions)): ?>
+                        <?php foreach ($transactions as $item): ?>
+                            <div class="skill-box">
+                                <strong><?= htmlspecialchars($item['service_title']) ?></strong>
+                                <p>Topic: <?= htmlspecialchars($item['service_topic']) ?></p>
+                                <p>Price: <?= htmlspecialchars($item['price']) ?></p>
+                                <p>Time of completion: <?= htmlspecialchars($item['time']) ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No transactions completed</p>
+                    <?php endif; ?>
                 </div>
+            </section>
 
-                <div class="user-last-name">
-                    <h2>Last Name</h2>
-                    <input type="text" name="last_name" placeholder="Last Name" value="<?= htmlspecialchars($last_name) ?>" readonly>
-                </div>
-
-                <div class="user-role">
-                    <h2>Role/Degree</h2>
-                    <input type="text" name="role" placeholder="Role" value="<?= htmlspecialchars($role) ?>" readonly>
-                </div>
-
-                <div class="user-email">
-                    <h2>Email Address</h2>
-                    <input type="email" name="email" placeholder="Email Address" value="<?= htmlspecialchars($email) ?>" readonly>
-                </div>
-
-                <div class="rating">
-                    <h2>Average Rating for Services: <?= htmlspecialchars($average_rating) ?></h2>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bio -->
-        <section class="card">
-            <h2>Bio / Requested Skills</h2>
-            <textarea name="bio" rows="4" placeholder="Tell us about yourself..."><?= htmlspecialchars($bio) ?></textarea>
-        </section>
-
-         <!-- Skills Section -->
-        <section class="card">
-            <h2>Current Skills</h2>
-            <div class="skills-list">
-                <!-- Populate Skills Field-->
-                <?php if (!empty($user_services)): ?>
-                    <?php foreach ($user_services as $service): ?>
-                        <div class="skill-box">
-                            <strong><?= htmlspecialchars($service['title']) ?></strong>
-                            <p>Topic: <?= htmlspecialchars($service['topic']) ?></p>
-                            <p>Type: <?= htmlspecialchars($service['type']) ?></p>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No skills listed yet.</p>
-                <?php endif; ?>
-            </div>
-        </section>
-
-        <!-- Transaction History -->
-        <section class="card">
-            <h2>Transaction History</h2>
-            <div class="skills-list">
-                <?php if(!empty($transactions)): ?>
-                    <?php foreach ($transactions as $item): ?>
-                <div class="skill-box">
-                    <strong><?= htmlspecialchars($item['service_title']) ?></strong>
-                    <p>Topic: <?= htmlspecialchars($item['service_topic']) ?></p>
-                    <p>Price: <?= htmlspecialchars($item['price']) ?></p>
-                    <p>Time of completion: <?= htmlspecialchars($item['time']) ?></p>
-                </div>
-                <?php endforeach; ?>
-                <?php else: ?>
-                <p>No transactions completed</p>
-                <?php endif; ?>
-            </div>
-        </section>
-
-    </form>
-</main>
+        </form>
+    </main>
 </body>
+
 </html>

@@ -24,7 +24,7 @@ if (isset($_POST['add'])) {
         $categories[] = $new;
         file_put_contents($file, json_encode($categories, JSON_PRETTY_PRINT));
     }
-    header("Location: ".$_SERVER['PHP_SELF']);
+    header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
 
@@ -35,12 +35,13 @@ if (isset($_POST['delete'])) {
         array_splice($categories, $index, 1);
         file_put_contents($file, json_encode($categories, JSON_PRETTY_PRINT));
     }
-    header("Location: ".$_SERVER['PHP_SELF']);
+    header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,35 +49,36 @@ if (isset($_POST['delete'])) {
     <link rel="stylesheet" href="../styles/style.css" />
     <link rel="stylesheet" href="/styles/admin_skillcat_style.css" />
 </head>
+
 <body>
-<?php
-include_header($_SESSION['username'] ?? null);
-?>
+    <?php
+    include_header($_SESSION['username'] ?? null);
+    ?>
 
-<h1>Skill Categories</h1>
-<div class="skill-cat-res">
+    <h1>Skill Categories</h1>
+    <div class="skill-cat-res">
 
-<!--    Displays list of current categories-->
-    <ul>
-        <?php foreach ($categories as $i => $item): ?>
-            <li class="skill-cats">
-                <?= htmlspecialchars($item) ?>
-                <form method="post">
-                    <button class="btn" type="submit" name="delete" value="<?= $i ?>">Delete</button>
-                </form>
-            </li>
+        <!--    Displays list of current categories-->
+        <ul>
+            <?php foreach ($categories as $i => $item): ?>
+                <li class="skill-cats">
+                    <?= htmlspecialchars($item) ?>
+                    <form method="post">
+                        <button class="btn" type="submit" name="delete" value="<?= $i ?>">Delete</button>
+                    </form>
+                </li>
+                <br>
+            <?php endforeach; ?>
+        </ul>
+
+        <!--Allows text input for adding a new skill category-->
+        <form method="post">
+            <input type="text" name="new_item" placeholder="Add new category" required>
+            <button type="submit" name="add" class="btn">Add</button>
+        </form>
         <br>
-        <?php endforeach; ?>
-    </ul>
-
-
-<!--Allows text input for adding a new skill category-->
-    <form method="post">
-        <input type="text" name="new_item" placeholder="Add new category" required>
-        <button type="submit" name="add" class="btn">Add</button>
-    </form>
-    <br>
-</div>
+    </div>
 
 </body>
+
 </html>

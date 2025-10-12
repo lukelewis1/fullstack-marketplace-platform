@@ -173,24 +173,4 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
      <script src="../admin/suspend_modal.js"></script>
   </body>
 </html>
-
-<!-- $sql = "SELECT id FROM Users WHERE user_name = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, 's', $username);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $id);
-        mysqli_stmt_fetch($stmt);
-        mysqli_stmt_close($stmt); -->
-
-<!-- $sql = "SELECT id, name FROM StudentResults;";
-if ($result = mysqli_query($conn, $sql)) {
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-      echo "<option value=\"" . $row["id"] . "\" name=\"" . $row["name"] . "\">" . $row["name"] . "</option>";
-        }
-      // Free up memory consumed by the $result object
-      mysqli_free_result($result);
-        }
-    }
-mysqli_close($conn);
         

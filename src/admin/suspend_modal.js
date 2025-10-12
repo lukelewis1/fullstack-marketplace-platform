@@ -38,3 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error:", error));
   });
 });
+
+/*
+ * AI Tool used
+ * Line Number: 72 in AI-Acknowledgements
+ * AJAX code structure inspired by ChatGPT. Also used ChatGPT to explain code.
+ */
