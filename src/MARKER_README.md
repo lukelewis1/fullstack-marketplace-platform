@@ -11,7 +11,7 @@ Names and FAN's of group members:
 This document will contain all other references and serve as a guide for marking this assignment explaining which parts of the directory contain requirement implementations
 alongside anything else considered noteworthy.
 ****
-###Other References (NOT AI):
+## Other References (NOT AI):
 The [AI-Acknowledgements](AI-Acknowledgement.md) document contains all AI references for this assignment this section will summarise some other sources used in this assignment.
 
 Licensed code found in the dev_assets directory contains multiple elements in HTML, CSS and JS that were adapted to our website,
