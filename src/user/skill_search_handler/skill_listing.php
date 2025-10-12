@@ -40,7 +40,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= $listing['title'] ?></title>
     <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="skill_search_handler/skill_search_style.css" />
+    <link rel="stylesheet" href="skill_search_style.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
   </head>
   <body>
@@ -80,10 +80,11 @@
           <input type="hidden" name="listing_id" value="<?= (int)$listing['listing_id'] ?>">
           <input type="hidden" name="csrf" value="<?= htmlspecialchars($_SESSION['csrf'], ENT_QUOTES) ?>">
 
-          <br><input type="submit" value="Request">
+          <br><input id="req-btn" type="submit" value="Request">
         </form>
+          <div id="line"></div>
+          <h2>Reviews</h2>
           <div class="reviews-box">
-              <h2>Reviews</h2>
               <ul class="reviews">
                   <?php foreach ($reviews as $rev): ?>
                   <li class="review">
