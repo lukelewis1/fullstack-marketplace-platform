@@ -46,20 +46,6 @@ h2 {
     gap: 12px;
 }
 
-/* .skills {
-    text-align: center;
-} */
-
-.skill-item {
-    border: solid #FFCC00;
-    border-radius: 8px;
-    width: 250px;
-    margin: 10px auto;
-    padding-left: 10px;
-    line-height: 1.0;
-    text-align: left;
-}
-
 li a {
     text-decoration: none;
     color: black;
@@ -117,7 +103,7 @@ input[type="time"] {
 .page-wrapper {
     border: solid #FFCC00;
     border-radius: 8px;
-    width: 750px;
+    width: 1000px;
     margin: 10px auto;
     padding-left: 10px;
     line-height: 1.0;
