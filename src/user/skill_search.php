@@ -10,6 +10,13 @@
     require_once __DIR__ . '/../inc/functions.php';
 
     $results = recommended(get_uid($_SESSION['username']));
+
+    // Load current skill categories
+    $file = __DIR__ . '/../data/skill_categories.json';
+    $categories = [];
+    if (file_exists($file)) {
+        $categories = json_decode(file_get_contents($file), true) ?? [];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -50,10 +57,11 @@
                 <!-- Dropdown -->
                 <select name="category" id="category">
                     <option value="">All Categories</option>
-                    <option value="music">Music</option>
-                    <option value="coding">Coding</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="art">Art</option>
+                    <?php
+                    foreach ($categories as $cat) {
+                        echo '<option value="' . htmlspecialchars($cat) . '">' . htmlspecialchars($cat) . '</option>';
+                    }
+                    ?>
                 </select>
 
                 <!-- Availability Selector -->
