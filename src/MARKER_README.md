@@ -9,12 +9,16 @@ Names and FAN's of group members:
 | Seth Lear      | LEAR0022 |
 
 This document will contain all other references and serve as a guide for marking this assignment explaining which parts of the directory contain requirement implementations
-alongside anything else considered noteworthy.
+alongside anything else considered noteworthy. To view who has created a file a comment at the top defines the author and who else has edited it.
 ****
 ## Helper Script:
 Go to [marker](../marking-help) to find a DB populate script that will insert 30 users some listings and pretty much every table with something, passwords are all admin.
 Users Brett and Bod are both admins and when logged in as Brett or Bod they will have admin privileges. There is also a folder containing profile pictures for Brett and Bod users.
 Just copy the 2 pfp images into [here](images/user_pfp) and they will appear normally when testing when logged in as Brett or Bob if logged in as another user you will need to change pfp through the edit profile page.
+****
+## Database:
+The database export is found [here](sql-exports/FUSS_DB_2025-10-12_120133.sql) but in codespaces you can connect to the database using HOST: db, USER: admin, PASSWORD: admin, DATABASE: FUSS_DB.
+Host is different if your using a different container it will be: localhost instead.
 ****
 ## Other References (NOT AI):
 The [AI-Acknowledgements](AI-Acknowledgement.md) document contains all AI references for this assignment this section will summarise some other sources used in this assignment.
@@ -96,3 +100,4 @@ This section will include each requirement for the FUSS website and where/how th
   - **Implementation**: The functions that handle the advanced searching are found [here](inc/functions.php) near the bottom and they are seamlessly integrated into the search page [here](user/skill_search.php). The way it works is when skills are searched for the query looks for partial and full matches in skill titles and descriptions and orders based on the strength of the match, additionally users can add category filtering and search for skills with a specific availability and chain all these filters together.
 
 ****
+
