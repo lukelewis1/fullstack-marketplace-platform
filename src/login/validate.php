@@ -9,6 +9,7 @@ $email = $_POST['email'] ?? '';
 
 $response = ['valid' => true, 'errors' => []];
 
+// Validates the username and email before full sign up form is available to a user
 if ($user === '') {
     $response['valid'] = false;
     $response['errors']['username'] = "Username is required.";
@@ -19,6 +20,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) || !str_ends_with($email, '@flind
     $response['errors']['email'] = "Invalid Flinders email address.";
 }
 
+// Checks if the username or email are already in use
 if ($response['valid']) {
     $sql = 'SELECT user_name, email FROM Users WHERE user_name = ? OR email = ?;';
     $stmt = mysqli_prepare($conn, $sql);

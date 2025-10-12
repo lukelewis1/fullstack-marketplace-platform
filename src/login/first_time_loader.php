@@ -7,6 +7,7 @@ $pfp = $_FILES['pfp'] ?? null;
 
 require_once '../inc/dbconn.inc.php';
 
+// Grabs user id to be used as the pfp name
 $sql = 'SELECT id FROM Users WHERE user_name = ?;';
 $statement = mysqli_stmt_init($conn);
 mysqli_stmt_prepare($statement, $sql);
@@ -17,11 +18,13 @@ if (mysqli_stmt_execute($statement)) {
     $row = $result->fetch_assoc();
     $id = $row['id'];
 
+//    Ensures that the directory does exist, it is a bit redundant
     $upload_dir = "../images/user_pfp/";
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0777, true);
     }
 
+//    Assigns the default pfp to users who choose not to upload a pfp
     $default_file = $upload_dir . "default.jpg";
     $target_file = $upload_dir . $id . ".png";
 
@@ -34,6 +37,7 @@ if (mysqli_stmt_execute($statement)) {
             exit;
         }
 
+//        Assigns the user uploaded pfp to their id
         if (!move_uploaded_file($pfp['tmp_name'], $target_file)) {
             copy($default_file, $target_file);
         }
@@ -44,7 +48,7 @@ if (mysqli_stmt_execute($statement)) {
     echo mysqli_error($conn);
 }
 
-
+// Sets the users bio
 $sql = 'UPDATE Users SET bio = ? WHERE user_name = ?';
 
 $statement = mysqli_stmt_init($conn);

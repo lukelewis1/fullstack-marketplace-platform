@@ -5,3 +5,51 @@
 
 I acknowledge the use of ChatGPT in generating content included in this submission (OpenAI, 2025). The prompts and output from ChatGPT are included in the file below.
 ****
+### Oliver Wuttke, FAN: WUTT0019
+This section will contain my AI acknowledgements, all AI usage for my parts was from:
+- (2025). ChatGPT (October, 2025, ChatGPT 5) [Large language model]. https://chat.openai.com/chat
+
+[Get conversations SQL query](messages/get_conversations.php): 
+
+**Prompt:** 
+
+(pasted the current schema.sql file first, it's in db/init/schema.sql), given the above schema can you help me craft a SQL query that will return all conversations for a given user, timestamps and their unseen status.
+
+**Output:**
+
+SELECT m.conversation_id,
+CASE WHEN m.sender_id = ? THEN u2.user_name ELSE u1.user_name END AS other_name,
+COALESCE(MAX(cm.sent_at), m.start_date) AS last_message_time,
+CASE
+WHEN m.receiver_id = ? THEN m.unseen
+ELSE m.unseen_2
+END AS unseen
+FROM Messages m
+JOIN Users u1 ON u1.id = m.sender_id
+JOIN Users u2 ON u2.id = m.receiver_id
+LEFT JOIN ChatMessages cm ON cm.conversation_id = m.conversation_id
+WHERE m.sender_id = ? OR m.receiver_id = ?
+GROUP BY m.conversation_id, other_name, m.start_date, m.unseen, m.unseen_2
+ORDER BY last_message_time DESC;
+
+[SQL queries to support complex search weighting and filtering](inc/functions.php):
+
+**Prompt:** 
+
+(pasted the current schema.sql file first, it's in db/init/schema.sql), I want to build a PHP functions that performs an advanced search through my Listings table, ranking results by how relevant the title/description are to a term and by popularity (likes – dislikes). How should I write the SQL for that?
+
+**Output:**
+
+You can achieve that by combining a CASE expression (for relevance scoring) with a popularity metric and a simple ORDER BY.
+
+**Prompt:**
+
+(pasted the current schema.sql file first, it's in db/init/schema.sql), I also have an Availability table linked by listing_id. Could we adapt the same search so it only returns listings available on a given day and within a start/end time window?
+
+**Output:**
+
+Perfect use case for a JOIN — you can connect your listings to their availability slots and add time-based filters.
+
+> Note that all these queries involve pasting the schema.sql file in to save room I didn't paste that in here for each time.
+
+****

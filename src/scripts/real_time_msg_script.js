@@ -1,5 +1,5 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+// Checks every second for unseen messages so users don't have to refresh to see new messages
 setInterval(() => {
     fetch('/messages/check_unseen.php') // returns a bool true or false
         .then(res => res.json())

@@ -1,5 +1,5 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+// Similar to the other accept script but for the service provider
 document.querySelectorAll('.confirm-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const skill = btn.closest('.skill-el');

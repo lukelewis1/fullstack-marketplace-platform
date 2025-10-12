@@ -63,7 +63,7 @@
 <?php
     include_header($_SESSION['username'] ?? null);
 ?>
-
+<!--Displays all confirmed skill bookings where the user is the booker-->
 <h1>Skills You Booked: Confirmed</h1>
 <div class="skills">
     <ul class="my-skills">
@@ -107,6 +107,7 @@
         <?php endforeach; ?>
     </ul>
 </div>
+<!--Displays all pending skill bookings where the user is the booker-->
 <h1>Skills You Booked: Pending</h1>
 <div class="skills">
     <ul class="my-skills">
@@ -142,7 +143,8 @@
         <?php endforeach; ?>
     </ul>
 </div>
-<!-- Review Modal -->
+
+<!-- Review modal which allows users to enter a review and like or dislike and the sentiment of the review-->
 <div id="reviewModal" class="modal">
     <div class="modal-content">
         <h3>Confirm Service Completion</h3>
@@ -159,7 +161,7 @@
             <button id="dislikeBtn" class="dislike">👎 Dislike</button>
         </div>
         <p>Review: 500 Characters Max</p>
-        <textarea id="reviewText" placeholder="Write your review here..."></textarea>
+        <textarea id="reviewText" maxlength="500" placeholder="Write your review here..."></textarea>
 
         <div class="modal-actions">
             <button id="confirmSubmit" class="btn">Submit Review</button>

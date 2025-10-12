@@ -64,6 +64,7 @@
 include_header($_SESSION['username'] ?? null);
 ?>
 
+<!--Displays all confirmed skill bookings where the user is the provider-->
 <h1>My Confirmed Skill Bookings</h1>
 <div class="skills">
     <ul class="my-skills">
@@ -109,6 +110,7 @@ include_header($_SESSION['username'] ?? null);
         <?php endforeach; ?>
     </ul>
 </div>
+<!--Displays all pending skill bookings where the user is the provider-->
 <h1>My Pending Skill Bookings</h1>
 <div class="skills">
     <ul class="my-skills">

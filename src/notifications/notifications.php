@@ -11,6 +11,7 @@
 
     $uid = get_uid($_SESSION['username']);
 
+//    Gets all the notficaitons for a given user
     $sql = "SELECT type, time FROM Notifications WHERE user_id = ? ORDER BY time DESC;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('i', $uid);
@@ -24,6 +25,7 @@
     }
     $stmt->close();
 
+//    Depending on notification type a different page and message is assigned
     foreach ($notifications as &$item) {
         switch ($item['type']) {
             case 'service_request':
@@ -66,6 +68,8 @@
     include_header($_SESSION['username'] ?? null);
 ?>
 
+
+<!--Displays notifications in a list where users can click on them to be taken to the relative part of the site the manage that notification-->
 <h1>Notifications</h1>
 
 <div class="notifications">
