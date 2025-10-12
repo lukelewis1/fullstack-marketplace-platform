@@ -7,42 +7,66 @@ select {
     padding: 0.4em;
 }
 
-.btn{
-    margin-top: 25px;
-    position: relative;
-    width: 50%;
-    height: 45px;
-    background: transparent;
-    border-radius: 40px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    border: 2px solid #FFCC00;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.submit-btn {
-    color: #000F2C;
+#post-page {
+    font-family: 'Poppins', sans-serif;
+    color: #000F2C; /* Flinders navy text */
+    background: #FFFFFF; /* white background */
+    border: 3px solid #FFCC00; /* flinders gold border */
+    border-radius: 16px;
+    max-width: 800px;
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    align-items: center;
     text-align: center;
 }
 
-.btn::before{
-    content: "";
-    position: absolute;
-    height: 300%;
-    width: 100%;
-    background: linear-gradient(#FFCC00, #FFCC00, #FFCC00, #FFCC00);
-    top: -100%;
-    left: 0;
-    z-index: -1;
-    transition: .5s;
+/* Labels */
+.posting-field label,
+#avail-label {
+    color: #000F2C; /* navy text */
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
 }
 
-.btn:hover:before{
-    top: 0;
+/* Inputs, selects, and textarea */
+.posting-field input[type="text"],
+.posting-field input[type="number"],
+.posting-field input[type="time"],
+.posting-field select,
+.posting-field textarea {
+    width: 90%;
+    padding: 0.5em;
+    border-radius: 8px;
+    border: 2px solid #FFCC00;
+    background: #FFFFFF;
+    color: #000F2C;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 25px;
 }
 
+.posting-field input:focus,
+.posting-field select:focus,
+.posting-field textarea:focus {
+    outline: none;
+    border-color: #000F2C; /* navy focus */
+    box-shadow: 0 0 6px #FFCC00;
+}
+
+/* Radio button fieldset */
+.posting-field fieldset {
+    border: 2px solid #FFCC00;
+    border-radius: 10px;
+    background-color: #FFFDF2;
+    max-width: 250px;
+    margin: 1rem auto;
+    color: #000F2C;
+}
+
+/* Scheduler grid */
 .scheduler {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -54,6 +78,7 @@ select {
     font-weight: bold;
     display: block;
     margin-bottom: 0.3rem;
+    color: #000F2C;
 }
 
 .slot {
@@ -69,52 +94,55 @@ select {
     padding: 0;
 }
 
-#avail-label {
-    display: block;
+/* Button */
+.btn {
+    margin-top: 25px;
+    width: 50%;
+    height: 45px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #FFCC00;
+    background: transparent;
+    color: #000F2C; /* navy text */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    height: 300%;
     width: 100%;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
+    background: linear-gradient(#FFCC00, #FFCC00, #FFCC00, #FFCC00);
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: 0.5s;
 }
 
-#post-page {
-    font-family: 'Poppins', sans-serif;
-    color: #FFCC00;
-    max-width: 800px;
-    width: 90%;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #000F2C;
-    border: 2px solid #FFCC00;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+.btn:hover::before {
+    top: 0;
 }
 
-.posting-field {
-    margin-bottom: 25px;
+.btn:hover {
+    color: #000F2C;
+}
+
+/* Submit button container */
+.submit-btn {
     text-align: center;
+    color: #000F2C;
 }
 
-/* Make labels sit above their input/textarea/select */
-.posting-field label,
-#avail-label {
-    display: block;          /* forces full-width block */
-    margin-bottom: 0.4rem;   /* little space below the label */
-    font-weight: 600;        /* optional, make it stand out */
-}
-
-.posting-field fieldset {
-    border: 2px solid #FFCC00;
-    border-radius: 8px;
-    max-width: 200px;
-    margin: 1rem auto;
-}
-
-#avail-label {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
+/* Error text */
 .posting-err {
     color: red !important;
     display: none;
+}
+
+#price {
+    width: 50px;
 }
