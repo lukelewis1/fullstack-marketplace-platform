@@ -1,4 +1,6 @@
 //<!-- Authored by Hans Pujalte, FAN PUJA0009 -->
+
+// Run after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("editModal");
   const closeBtn = document.querySelector(".modal .close");
@@ -22,6 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Close modal window
   closeBtn.onclick = () => (modal.style.display = "none");
+
+  // If user clicks outside the modal, close it
   window.onclick = (event) => {
     if (event.target == modal) modal.style.display = "none";
   };
@@ -29,15 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Submit form (AJAX)
   editForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    const formData = new FormData(editForm);
+    const formData = new FormData(editForm); // Collect form data
 
+    // Send data to server
     fetch("edit_user.php", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.text())
       .then((data) => {
-        modal.style.display = "none";
+        modal.style.display = "none"; // Close modal
         location.reload(); // Refresh to show updates
       })
       .catch((error) => console.error("Error:", error));

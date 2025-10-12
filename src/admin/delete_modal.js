@@ -1,10 +1,12 @@
 //<!-- Authored by Hans Pujalte, FAN PUJA0009 -->
 
+// Run after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("confirmModal");
   const closeBtn = document.querySelector("#confirmModal .close");
   const submitForm = document.getElementById("submitForm");
 
+  // Temporary variable to hold the delete URL
   let deleteUrl = "";
 
   // Open modal
@@ -24,12 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Handle confirm action
   submitForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
 
     fetch(deleteUrl)
       .then((response) => response.text())
       .then(() => {
-        modal.style.display = "none";
+        modal.style.display = "none"; // Hide modal
         location.reload(); // refresh page after deletion
       })
       .catch((error) => console.error("Error:", error));
