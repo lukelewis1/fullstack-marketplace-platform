@@ -43,6 +43,7 @@
 
         <div class="skill-search-bar">
             <!-- Main Search Bar -->
+            <div>
             <form id="search-form" method="get" action="./skill_search_handler/search_results.php">
                 <input
                         type="search"
@@ -50,13 +51,13 @@
                         name="q"
                         placeholder="      Search for Skills"
                 />
-            </form>
+            </div>
 
             <!-- Filter Options Below -->
             <div class="filter-options">
                 <!-- Dropdown -->
                 <select name="category" id="category">
-                    <option value="">All Categories</option>
+                    <option value="all">All Categories</option>
                     <?php
                     foreach ($categories as $cat) {
                         echo '<option value="' . htmlspecialchars($cat) . '">' . htmlspecialchars($cat) . '</option>';
@@ -68,7 +69,7 @@
                 <div class="availability">
                     <label for="day">Day:</label>
                     <select name="day" id="day">
-                        <option value="">Select Day</option>
+                        <option value="none">Select Day</option>
                         <option value="monday">Monday</option>
                         <option value="tuesday">Tuesday</option>
                         <option value="wednesday">Wednesday</option>
@@ -85,6 +86,7 @@
                     <input type="time" id="end" name="end_time">
                 </div>
             </div>
+            </form>
         </div>
 
 

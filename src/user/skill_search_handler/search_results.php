@@ -8,8 +8,19 @@
     require_once __DIR__ . '/../../inc/dbconn.inc.php';
     require_once __DIR__ . '/../../inc/functions.php';
 
-    $query = $_GET['q'];
-    $results = get_listings_popular($query);
+    $query = $_GET['q'] ?? '';
+    $category = $_GET['category'] ?? '';
+    $day = $_GET['day'] ?? '';
+    $start = $_GET['start_time'] ?? '';
+    $end = $_GET['end_time'] ?? '';
+    $results = [];
+
+    if ($category === 'all' && $day === 'none' || $category === '') {
+        $results = advanced_search($query);
+    }
+
+
+
     $count = count($results);
 ?>
 

@@ -484,7 +484,8 @@ function get_booking_details($bid) {
     return $row;    
 }
 
-function recommended($uid): array {
+function recommended($uid): array
+{
     global $conn;
 
     $sql = "SELECT l.*,
@@ -511,6 +512,35 @@ function recommended($uid): array {
     while ($row = $result->fetch_assoc()) {
         $listings[] = $row;
     }
+
+    return $listings;
+}
+
+function advanced_search ($term): array {
+    global $conn;
+
+    $sql = "
+            SELECT listing_id, user_id, title, description, topic, likes, dislikes, price, (likes - dislikes) as popularity,
+            CASE
+                WHEN title = ? THEN 3
+                WHEN title LIKE CONCAT(?, '%') THEN 2
+                WHEN title LIKE CONCAT('%', ?, '%') THEN 1
+                WHEN description LIKE CONCAT('%', ?, '%') THEN 0
+                ELSE -1
+            END AS relevance
+            FROM Listings
+            WHERE title LIKE CONCAT('%', ?, '%')
+            OR description LIKE CONCAT('%', ?, '%')
+            ORDER BY 
+                relevance DESC,
+                popularity DESC;
+            ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssssss', $term, $term, $term, $term, $term, $term);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $listings = $result->fetch_all(MYSQLI_ASSOC);
 
     return $listings;
 }
