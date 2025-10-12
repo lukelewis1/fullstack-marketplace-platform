@@ -336,43 +336,6 @@ function get_listings_friend_search($search, $fid): array {
     return $listings;
 }
 
-// Function to return listings that are also available given an array of  availabilities
-function get_listings_available(string $keyword, array $availability): array {
-    global $conn;
-
-    $search = "%$keyword%";
-    $params = [];
-    $sql = "SELECT DISTINCT l.* FROM Listings l ";
-    $joinIndex = 1;
-
-    foreach ($availability as $a) {
-        $alias = "a$joinIndex";
-        $sql .= "JOIN Availability $alias
-                 ON $alias.service_id = l.listing_id
-                 AND $alias.day = ?
-                 AND $alias.start <= ?
-                 AND $alias.end >= ? ";
-        $params[] = $a['day'];
-        $params[] = $a['start'];
-        $params[] = $a['end'];
-        $joinIndex++;
-    }
-
-    $sql .= "WHERE (l.title LIKE ? OR l.description LIKE ?)";
-    $params[] = $search;
-    $params[] = $search;
-
-    $statement = $conn->prepare($sql);
-    $types = str_repeat('s', count($params));
-    $statement->bind_param($types, ...$params);
-    $statement->execute();
-    $result = $statement->get_result();
-    $listings = $result->fetch_all(MYSQLI_ASSOC);
-    $statement->close();
-
-    return $listings;
-}
-
 function get_listings_by_id($lid): array {
     global $conn;
 
@@ -484,7 +447,8 @@ function get_booking_details($bid) {
     return $row;    
 }
 
-function recommended($uid): array {
+function recommended($uid): array
+{
     global $conn;
 
     $sql = "SELECT l.*,
@@ -514,3 +478,159 @@ function recommended($uid): array {
 
     return $listings;
 }
+
+// Function that applies advanced search weighting by how strong of a match the term is in skill title and description,
+// also orders results by popularity based on like to dislike ratio
+function advanced_search ($term): array {
+    global $conn;
+
+    $sql = "
+            SELECT listing_id, user_id, title, description, topic, likes, dislikes, price, (likes - dislikes) AS popularity,
+            CASE
+                WHEN title = ? THEN 3
+                WHEN title LIKE CONCAT(?, '%') THEN 2
+                WHEN title LIKE CONCAT('%', ?, '%') THEN 1
+                WHEN description LIKE CONCAT('%', ?, '%') THEN 0
+                ELSE -1
+            END AS relevance
+            FROM Listings
+            WHERE title LIKE CONCAT('%', ?, '%')
+            OR description LIKE CONCAT('%', ?, '%')
+            ORDER BY 
+                relevance DESC,
+                popularity DESC;
+            ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssssss', $term, $term, $term, $term, $term, $term);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $listings = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    return $listings;
+}
+
+// Function that does the same as the above one but also adds a topic filter term to the results
+function advanced_search_category($term, $cat): array {
+    global $conn;
+
+    $sql = "
+            SELECT listing_id, user_id, title, description, topic, likes, dislikes, price, (likes - dislikes) AS popularity,
+            CASE
+                WHEN title = ? THEN 3
+                WHEN title LIKE CONCAT(?, '%') THEN 2
+                WHEN title LIKE CONCAT('%', ?, '%') THEN 1
+                WHEN description LIKE CONCAT('%', ?, '%') THEN 0
+                ELSE -1
+            END AS relevance
+            FROM Listings
+            WHERE type = ?
+            AND title LIKE CONCAT('%', ?, '%')
+            OR description LIKE CONCAT('%', ?, '%')
+            ORDER BY 
+                relevance DESC,
+                popularity DESC;
+            ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sssssss', $term, $term, $term, $term, $cat, $term, $term);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $listings = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    return $listings;
+}
+
+// Function that uses same weighting as before but also joins on the availability where it can match
+function advanced_search_availability($term, $day, $start, $end): array {
+    global $conn;
+
+    $sql = "
+         SELECT 
+            L.listing_id,
+            L.user_id,
+            L.title,
+            L.description,
+            L.topic,
+            L.likes,
+            L.dislikes,
+            L.price,
+            (L.likes - L.dislikes) AS popularity,
+            CASE
+                WHEN L.title = ? THEN 3
+                WHEN L.title LIKE CONCAT(?, '%') THEN 2
+                WHEN L.title LIKE CONCAT('%', ?, '%') THEN 1
+                WHEN L.description LIKE CONCAT('%', ?, '%') THEN 0
+                ELSE -1
+            END AS relevance
+        FROM Listings L
+        INNER JOIN Availability A ON L.listing_id = A.service_id
+        WHERE 
+            (L.title LIKE CONCAT('%', ?, '%')
+             OR L.description LIKE CONCAT('%', ?, '%'))
+            AND A.day = ?
+            AND A.start <= ?
+            AND A.end >= ?
+        ORDER BY 
+            relevance DESC,
+            popularity DESC;
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sssssssss', $term, $term, $term, $term, $term, $term, $day, $start, $end);
+    $stmt->execute();
+    $results = $stmt->get_result();
+    $listings = $results->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    return $listings;
+}
+
+// same as one above but also takes a category param
+function advanced_search_availability_category($term, $day, $start, $end, $cat): array {
+    global $conn;
+
+    $sql = "
+         SELECT 
+            L.listing_id,
+            L.user_id,
+            L.title,
+            L.description,
+            L.topic,
+            L.likes,
+            L.dislikes,
+            L.price,
+            (L.likes - L.dislikes) AS popularity,
+            CASE
+                WHEN L.title = ? THEN 3
+                WHEN L.title LIKE CONCAT(?, '%') THEN 2
+                WHEN L.title LIKE CONCAT('%', ?, '%') THEN 1
+                WHEN L.description LIKE CONCAT('%', ?, '%') THEN 0
+                ELSE -1
+            END AS relevance
+        FROM Listings L
+        INNER JOIN Availability A ON L.listing_id = A.service_id
+        WHERE 
+            type = ?
+            AND (L.title LIKE CONCAT('%', ?, '%')
+             OR L.description LIKE CONCAT('%', ?, '%'))
+            AND A.day = ?
+            AND A.start <= ?
+            AND A.end >= ?
+        ORDER BY 
+            relevance DESC,
+            popularity DESC;
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssssssssss', $term, $term, $term, $term, $cat, $term, $term, $day, $start, $end);
+    $stmt->execute();
+    $results = $stmt->get_result();
+    $listings = $results->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    return $listings;
+}
+

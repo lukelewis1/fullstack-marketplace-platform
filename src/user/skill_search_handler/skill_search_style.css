@@ -70,3 +70,42 @@ li a {
     font-weight: bold;
 }
 
+.skill-search-bar {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.filter-options {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-options select,
+.filter-options input[type="time"] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.availability {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.availability label {
+    font-weight: 500;
+}
+
+/*Gets rid of the search icon on top of the start end time selectors*/
+input[type="time"] {
+    background: none !important;
+    background-image: none !important;
+    padding-left: 8px !important;
+}

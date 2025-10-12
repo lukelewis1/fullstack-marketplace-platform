@@ -8,8 +8,23 @@
     require_once __DIR__ . '/../../inc/dbconn.inc.php';
     require_once __DIR__ . '/../../inc/functions.php';
 
-    $query = $_GET['q'];
-    $results = get_listings_popular($query);
+    $query = $_GET['q'] ?? '';
+    $category = $_GET['category'] ?? '';
+    $day = $_GET['day'] ?? '';
+    $start = $_GET['start_time'] ?? '';
+    $end = $_GET['end_time'] ?? '';
+    $results = [];
+
+    if ($category === 'all' && $day === 'none' || $category === '') {
+        $results = advanced_search($query);
+    } elseif ($category != 'all' && $category != '' && ($day === 'none' || $day === '')) {
+        $results = advanced_search_category($query, $category);
+    } elseif ($category === 'all' || $category === '' && ($day != 'none' && $day != '')) {
+        $results = advanced_search_availability($query, $day, $start, $end);
+    } elseif ($category != 'all' && $category != '' && $day != 'none' && $day != '') {
+        $results = advanced_search_availability_category($query, $day, $start, $end, $category);
+    }
+
     $count = count($results);
 ?>
 
