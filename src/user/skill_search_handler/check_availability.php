@@ -1,5 +1,6 @@
 <?php
 //<!-- Authored by Luke Lewis, FAN lewi0454, Edited by (Luke Lewis, FAN lewi0454) -->
+// This file checks availability for a given time slot.
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }

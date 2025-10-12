@@ -373,6 +373,7 @@ function get_listings_available(string $keyword, array $availability): array {
     return $listings;
 }
 
+// Function to return a listing from its id
 function get_listings_by_id($lid): array {
     global $conn;
 
@@ -389,6 +390,7 @@ function get_listings_by_id($lid): array {
     return $row;
 }
 
+// Function to return FUSS credit amount from given user id
 function get_user_credits($uid) {
     global $conn;
 
@@ -403,6 +405,7 @@ function get_user_credits($uid) {
     return $credits;
 }
 
+// Function to return available slots for given listing 
  function get_available_slots_for_listing(int $listingId, int $daysAhead = null): array {
     global $conn;
     // Pull weekly availability for the listing
@@ -468,6 +471,7 @@ function get_user_credits($uid) {
     return $out;
 }
 
+// Function to return the booking details from given booking id
 function get_booking_details($bid) {
     global $conn;
 

@@ -1,5 +1,6 @@
 <?php
 //<!-- Authored by Luke Lewis, FAN lewi0454, Edited by (Luke Lewis, FAN lewi0454) -->
+// This file creates a page that displays the selected listing. 
     if (session_status() === PHP_SESSION_NONE) {
       session_start();
     }
@@ -135,6 +136,11 @@
         const sel = document.getElementById('availability-select');
         populateAvailabilitySelect(sel, AVAILABLE_SLOTS);
       });
+/*
+* AI Tool used
+* Line number 34
+* AI was used to help guide with creating a drop down that displays available time slots.
+*/
     </script>
     <script src="./confirmation_popup_script.js?v=3" defer></script>
     <script src="../scripts/global_scripts.js"></script>

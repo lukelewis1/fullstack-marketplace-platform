@@ -1,5 +1,6 @@
 <?php
 //<!-- Authored by Luke Lewis, FAN lewi0454, Edited by (Luke Lewis, FAN lewi0454) -->
+// This file generates a booking success page with the booking details.
     if (session_status() === PHP_SESSION_NONE) {
       session_start();
     }

@@ -5,3 +5,72 @@
 
 I acknowledge the use of ChatGPT in generating content included in this submission (OpenAI, 2025). The prompts and output from ChatGPT are included in the file below.
 ****
+### Luke Lewis, FAN: LEWI0454
+This section will contain my AI acknowledgements, all AI usage for my parts was from:
+- (2025). ChatGPT (October, 2025, ChatGPT 5) [Large language model]. https://chat.openai.com/chat
+
+[Create booking request](user/skill_search_handler/booking_request.php): 
+
+**Prompt:** 
+
+Help me create a booking request file that checks if the user has selected a valid time slot, and sufficient funds. 
+
+**Output:**
+
+[File](user/skill_search_handler/booking_request.php)
+
+[Create confirmation pop-up](user/skill_search_handler/confirmation_popup_script.js): 
+
+**Prompt:** 
+
+Help me create a confirmation pop up that displays how much the booking costs, and checks if the user has enough credits when they select yes.
+
+**Output:**
+
+[File](user/skill_search_handler/confirmation_popup_script.js)
+
+**Prompt:** 
+
+Help me create code that displays the available time slots from the Listings and Availability tables.
+
+**Output:**
+
+    window.BOOKING_CONTEXT = {
+        price: <?= json_encode($price) ?>,
+        userCredits: <?= json_encode($userCredits) ?>,
+        isLoggedIn: <?= json_encode((bool)$username) ?>
+      };
+      // Data from PHP
+      const AVAILABLE_SLOTS = <?= json_encode($slots, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>;
+
+      // Simple: fill a <select> with options from slots
+      function populateAvailabilitySelect(selectEl, slots) {
+        if (!selectEl) return;
+
+        // Clear existing dynamic options (keep the first placeholder)
+        while (selectEl.options.length > 1) selectEl.remove(1);
+
+        if (!Array.isArray(slots) || slots.length === 0) {
+          // Replace placeholder text if nothing available
+          selectEl.options[0].textContent = 'No availability';
+          selectEl.disabled = true;
+          return;
+        }
+
+        // Add options: value as "start|end", label as human-readable
+        for (const s of slots) {
+          const opt = document.createElement('option');
+          opt.value = `${s.start}|${s.end}`;
+          opt.textContent = s.label ?? `${s.start} – ${s.end}`;
+          selectEl.appendChild(opt);
+        }
+        selectEl.disabled = false;
+      }
+
+      // Run after DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        const sel = document.getElementById('availability-select');
+        populateAvailabilitySelect(sel, AVAILABLE_SLOTS);
+      });
+
+****

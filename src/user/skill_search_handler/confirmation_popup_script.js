@@ -153,4 +153,8 @@ function createConfirmModal() {
     btnYes.onclick = onYes;
   });
 })();
-
+/*
+* AI Tool used
+* Line number 22
+* AI was used to help guide with creating the functions, and was used to generate all the inline css for the pop up.
+*/
