@@ -1,4 +1,6 @@
 <?php
+//<!-- Authored by Luke Lewis, FAN lewi0454, Edited by (Luke Lewis, FAN lewi0454) -->
+// This file lists all listings related to the relevant query.
     if (session_status() === PHP_SESSION_NONE) {
       session_start();
     }

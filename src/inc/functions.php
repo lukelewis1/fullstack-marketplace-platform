@@ -335,6 +335,44 @@ function get_listings_friend_search($search, $fid): array {
     return $listings;
 }
 
+// Function to return listings that are also available given an array of  availabilities
+function get_listings_available(string $keyword, array $availability): array {
+    global $conn;
+
+    $search = "%$keyword%";
+    $params = [];
+    $sql = "SELECT DISTINCT l.* FROM Listings l ";
+    $joinIndex = 1;
+
+    foreach ($availability as $a) {
+        $alias = "a$joinIndex";
+        $sql .= "JOIN Availability $alias
+                 ON $alias.service_id = l.listing_id
+                 AND $alias.day = ?
+                 AND $alias.start <= ?
+                 AND $alias.end >= ? ";
+        $params[] = $a['day'];
+        $params[] = $a['start'];
+        $params[] = $a['end'];
+        $joinIndex++;
+    }
+
+    $sql .= "WHERE (l.title LIKE ? OR l.description LIKE ?)";
+    $params[] = $search;
+    $params[] = $search;
+
+    $statement = $conn->prepare($sql);
+    $types = str_repeat('s', count($params));
+    $statement->bind_param($types, ...$params);
+    $statement->execute();
+    $result = $statement->get_result();
+    $listings = $result->fetch_all(MYSQLI_ASSOC);
+    $statement->close();
+
+    return $listings;
+}
+
+// Function to return a listing from its id
 function get_listings_by_id($lid): array {
     global $conn;
 
@@ -351,6 +389,7 @@ function get_listings_by_id($lid): array {
     return $row;
 }
 
+// Function to return FUSS credit amount from given user id
 function get_user_credits($uid) {
     global $conn;
 
@@ -365,6 +404,7 @@ function get_user_credits($uid) {
     return $credits;
 }
 
+// Function to return available slots for given listing 
  function get_available_slots_for_listing(int $listingId, int $daysAhead = null): array {
     global $conn;
     // Pull weekly availability for the listing
@@ -430,6 +470,7 @@ function get_user_credits($uid) {
     return $out;
 }
 
+// Function to return the booking details from given booking id
 function get_booking_details($bid) {
     global $conn;
 

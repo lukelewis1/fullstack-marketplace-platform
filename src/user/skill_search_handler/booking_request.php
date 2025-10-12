@@ -1,4 +1,6 @@
 <?php
+//<!-- Authored by Luke Lewis, FAN lewi0454, Edited by (Luke Lewis, FAN lewi0454) -->
+// This file helps create a booking for a selected service listing and time slot.
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 require_once $_SERVER['DOCUMENT_ROOT'].'/inc/dbconn.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/inc/functions.php';
@@ -88,3 +90,8 @@ try {
   }
   bad(409, 'Could not complete booking.');
 }
+/*
+* AI Tool used
+* Line number 12
+* AI was used to help when generating this code, to help create time slot validation, and check user FUSS credits.
+*/
