@@ -525,16 +525,16 @@ function advanced_search_category($term, $cat): array {
                 ELSE -1
             END AS relevance
             FROM Listings
-            WHERE title LIKE CONCAT('%', ?, '%')
+            WHERE type = ?
+            AND title LIKE CONCAT('%', ?, '%')
             OR description LIKE CONCAT('%', ?, '%')
-            AND type = ?
             ORDER BY 
                 relevance DESC,
                 popularity DESC;
             ";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('sssssss', $term, $term, $term, $term, $term, $term, $cat);
+    $stmt->bind_param('sssssss', $term, $term, $term, $term, $cat, $term, $term);
     $stmt->execute();
     $result = $stmt->get_result();
     $listings = $result->fetch_all(MYSQLI_ASSOC);
@@ -613,19 +613,19 @@ function advanced_search_availability_category($term, $day, $start, $end, $cat):
         FROM Listings L
         INNER JOIN Availability A ON L.listing_id = A.service_id
         WHERE 
-            (L.title LIKE CONCAT('%', ?, '%')
+            type = ?
+            AND (L.title LIKE CONCAT('%', ?, '%')
              OR L.description LIKE CONCAT('%', ?, '%'))
             AND A.day = ?
             AND A.start <= ?
             AND A.end >= ?
-            AND type = ?
         ORDER BY 
             relevance DESC,
             popularity DESC;
     ";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ssssssssss', $term, $term, $term, $term, $term, $term, $day, $start, $end, $cat);
+    $stmt->bind_param('ssssssssss', $term, $term, $term, $term, $cat, $term, $term, $day, $start, $end);
     $stmt->execute();
     $results = $stmt->get_result();
     $listings = $results->fetch_all(MYSQLI_ASSOC);
