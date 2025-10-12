@@ -2,7 +2,6 @@
 //<!-- Authored by Hans Pujalte, FAN puja0009, Edited by (Oliver Wuttke, FAN WUTT0019), (Hans Pujalte, FAN puja0009), (Luke Lewis, lewi0454) -->
 
 // Include the appropriate header based on user role
-
 function include_header($username) {
     global $conn;
 
@@ -488,7 +487,9 @@ function get_booking_details($bid) {
     return $row;    
 }
 
-function recommended($uid): array {
+// Function that for a given user returns listings based on the users transaction history, returns listings with highest count of a users most purchased category
+function recommended($uid): array
+{
     global $conn;
 
     $sql = "SELECT l.*,
@@ -518,3 +519,165 @@ function recommended($uid): array {
 
     return $listings;
 }
+
+// Function that applies advanced search weighting by how strong of a match the term is in skill title and description,
+// also orders results by popularity based on like to dislike ratio
+function advanced_search ($term): array {
+    global $conn;
+
+    $sql = "
+            SELECT listing_id, user_id, title, description, topic, likes, dislikes, price, (likes - dislikes) AS popularity,
+            CASE
+                WHEN title = ? THEN 3
+                WHEN title LIKE CONCAT(?, '%') THEN 2
+                WHEN title LIKE CONCAT('%', ?, '%') THEN 1
+                WHEN description LIKE CONCAT('%', ?, '%') THEN 0
+                ELSE -1
+            END AS relevance
+            FROM Listings
+            WHERE title LIKE CONCAT('%', ?, '%')
+            OR description LIKE CONCAT('%', ?, '%')
+            ORDER BY 
+                relevance DESC,
+                popularity DESC;
+            ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssssss', $term, $term, $term, $term, $term, $term);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $listings = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    return $listings;
+}
+
+// Function that does the same as the above one but also adds a topic filter term to the results
+function advanced_search_category($term, $cat): array {
+    global $conn;
+
+    $sql = "
+            SELECT listing_id, user_id, title, description, topic, likes, dislikes, price, (likes - dislikes) AS popularity,
+            CASE
+                WHEN title = ? THEN 3
+                WHEN title LIKE CONCAT(?, '%') THEN 2
+                WHEN title LIKE CONCAT('%', ?, '%') THEN 1
+                WHEN description LIKE CONCAT('%', ?, '%') THEN 0
+                ELSE -1
+            END AS relevance
+            FROM Listings
+            WHERE type = ?
+            AND title LIKE CONCAT('%', ?, '%')
+            OR description LIKE CONCAT('%', ?, '%')
+            ORDER BY 
+                relevance DESC,
+                popularity DESC;
+            ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sssssss', $term, $term, $term, $term, $cat, $term, $term);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $listings = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    return $listings;
+}
+
+// Function that uses same weighting as before but also joins on the availability where it can match
+function advanced_search_availability($term, $day, $start, $end): array {
+    global $conn;
+
+    $sql = "
+         SELECT 
+            L.listing_id,
+            L.user_id,
+            L.title,
+            L.description,
+            L.topic,
+            L.likes,
+            L.dislikes,
+            L.price,
+            (L.likes - L.dislikes) AS popularity,
+            CASE
+                WHEN L.title = ? THEN 3
+                WHEN L.title LIKE CONCAT(?, '%') THEN 2
+                WHEN L.title LIKE CONCAT('%', ?, '%') THEN 1
+                WHEN L.description LIKE CONCAT('%', ?, '%') THEN 0
+                ELSE -1
+            END AS relevance
+        FROM Listings L
+        INNER JOIN Availability A ON L.listing_id = A.service_id
+        WHERE 
+            (L.title LIKE CONCAT('%', ?, '%')
+             OR L.description LIKE CONCAT('%', ?, '%'))
+            AND A.day = ?
+            AND A.start <= ?
+            AND A.end >= ?
+        ORDER BY 
+            relevance DESC,
+            popularity DESC;
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sssssssss', $term, $term, $term, $term, $term, $term, $day, $start, $end);
+    $stmt->execute();
+    $results = $stmt->get_result();
+    $listings = $results->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    return $listings;
+}
+
+// same as one above but also takes a category param
+function advanced_search_availability_category($term, $day, $start, $end, $cat): array {
+    global $conn;
+
+    $sql = "
+         SELECT 
+            L.listing_id,
+            L.user_id,
+            L.title,
+            L.description,
+            L.topic,
+            L.likes,
+            L.dislikes,
+            L.price,
+            (L.likes - L.dislikes) AS popularity,
+            CASE
+                WHEN L.title = ? THEN 3
+                WHEN L.title LIKE CONCAT(?, '%') THEN 2
+                WHEN L.title LIKE CONCAT('%', ?, '%') THEN 1
+                WHEN L.description LIKE CONCAT('%', ?, '%') THEN 0
+                ELSE -1
+            END AS relevance
+        FROM Listings L
+        INNER JOIN Availability A ON L.listing_id = A.service_id
+        WHERE 
+            type = ?
+            AND (L.title LIKE CONCAT('%', ?, '%')
+             OR L.description LIKE CONCAT('%', ?, '%'))
+            AND A.day = ?
+            AND A.start <= ?
+            AND A.end >= ?
+        ORDER BY 
+            relevance DESC,
+            popularity DESC;
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssssssssss', $term, $term, $term, $term, $cat, $term, $term, $day, $start, $end);
+    $stmt->execute();
+    $results = $stmt->get_result();
+    $listings = $results->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    return $listings;
+}
+
+/*
+ * AI Tool used
+ * Line Number: 35 in AI-Acknowledgements
+ * AI was used to help craft the 4 SQL queries above that help support the advanced search system. All 4 where based on the AI interpretation of the current database schema
+ * These queries are quite involved and I don't believe I could come up with these on my own given what I wanted them to return
+ */

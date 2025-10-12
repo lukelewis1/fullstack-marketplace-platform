@@ -7,8 +7,10 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
+# Fetch user id from query string
 $id = intval($_GET['id']);
 
+# Basic sql query to delete user
 $sql = "DELETE FROM Users WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, 'i', $id);

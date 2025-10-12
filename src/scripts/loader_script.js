@@ -1,5 +1,5 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+// very basic script used to dynamically display a variety of fun messages to users as they load im
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }

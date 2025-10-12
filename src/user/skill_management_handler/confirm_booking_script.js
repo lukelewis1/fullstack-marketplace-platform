@@ -1,5 +1,5 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+// Basic js that when a booking is confirmed it will updated the db through confirm_booking.php then if it returns true gives the user a new message
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.pending-conf').forEach(btn => {
         btn.addEventListener('click', () => {

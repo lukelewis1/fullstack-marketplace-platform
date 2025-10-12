@@ -1,4 +1,5 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+// A script to prevent default browser behavior for the logout modal
 
 const link = document.getElementById('logout-link');
 const modal = document.getElementById('logout-modal');

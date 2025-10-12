@@ -12,6 +12,7 @@
 
     $uid = get_uid($_SESSION['username']);
 
+//    Grabs all types of bookings and status of those bookings for the logged in user
     $sql = "SELECT * FROM Bookings WHERE booker_id = ? OR service_provider_id = ?;";
     $statement = $conn->prepare($sql);
     $statement->bind_param('ii', $uid, $uid);
@@ -48,7 +49,7 @@ include_header($_SESSION['username'] ?? null);
 
 
 <h1>Bookings Calendar</h1>
-
+<!--Legend for the colours in calendar js handles the creation-->
 <div id="calendar-legend">
     <div class="legend-item">
         <span class="legend-color booker-pending"></span> Booker – Pending

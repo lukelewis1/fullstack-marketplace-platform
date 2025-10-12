@@ -1,5 +1,5 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+// Will attempt to delete a skill for a user but if there are any bookings then the delete_skill.php file will return false and the js make the error span tags visible so the user knows
 document.querySelectorAll('.delete-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const listingId = btn.dataset.lid;

@@ -13,6 +13,7 @@ $acc_status = 0;
 $role = $_POST['role'] ?? null;
 $credits = 5;
 
+// Insertion of a new user into the db, all input checks/validation are done through js to ensure no bad values can be parsed
 if ($username != null) {
     require_once './inc/dbconn.inc.php';
 
@@ -37,7 +38,7 @@ if ($username != null) {
 
 ?>
 
-
+<!--This file is heavily inspired by code covered in LICENSE.txt found in the dev_assets directory which was adapted the meet site requirements-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +47,6 @@ if ($username != null) {
     <title>FUSS</title>
     <link rel="stylesheet" href="login/style.css">
     <link rel="icon" href="images/site/flinderslogo.png">
-
 </head>
 <body>
 <div class="step-wrapper">
@@ -55,6 +55,7 @@ if ($username != null) {
     <div class="curved-shape2"></div>
     <div class="form-box Login">
         <h2 id="login-btn" class="animation" style="--D:0; --S:21">Login</h2>
+<!--        Login form-->
         <form action="login/loader.php" method="post">
             <div class="input-box animation" style="--D:1; --S:22">
                 <input type="text" required name="username_log">
@@ -81,6 +82,7 @@ if ($username != null) {
         <p class="animation" style="--D:1; --S:21">Flinders University Skill Share is excited to see you back. <br>Login to see what's been happening and what new skills are being shared.</p>
     </div>
 
+<!--    Registration form-->
     <div class="form-box Register">
         <h2 id="register" class="animation" style="--li:17; --S:0">Register</h2>
         <form method="post">
@@ -112,6 +114,7 @@ if ($username != null) {
     </div>
 
 </div>
+<!--    This div starts off as hidden and is displayed once a user registers with a valid email and username, this div contains the rest of the sign up information form-->
 <div class="register-form hidden" id="step2">
     <div class="full-reg-form">
         <form id="reg-form" method="post" action="index.php">
@@ -173,11 +176,9 @@ if ($username != null) {
 </div>
 </div>
 
+<!--Listens for a click on the register button and parses information to the login_validate page-->
 <script>
-    console.log("Script loaded");
-
     document.getElementById('register-btn').addEventListener('click', function() {
-        console.log("Register button clicked");
     });
 
     document.getElementById('register-btn').addEventListener('click', function() {

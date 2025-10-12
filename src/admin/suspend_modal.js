@@ -1,9 +1,12 @@
 //<!-- Authored by Hans Pujalte, FAN PUJA0009 -->
+
+// Run after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("suspendModal");
   const closeBtn = document.querySelector("#suspendModal .close");
   const submitForm = document.getElementById("submitForms");
 
+  // Temporary variable to hold the suspend URL
   let suspUrl = "";
 
   // Open modal
@@ -25,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   submitForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    // Send suspend request to server
     fetch(suspUrl)
       .then((response) => response.text())
       .then(() => {
@@ -34,3 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error:", error));
   });
 });
+
+/*
+ * AI Tool used
+ * Line Number: 72 in AI-Acknowledgements
+ * AJAX code structure inspired by ChatGPT. Also used ChatGPT to explain code.
+ */

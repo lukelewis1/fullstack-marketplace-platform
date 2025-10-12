@@ -1,4 +1,6 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
+// This file contains js that dynamically validates user inputs for the sign up form
+
 const letters = /^[A-Za-z\s]+$/;
 
 const form = document.getElementById("reg-form");

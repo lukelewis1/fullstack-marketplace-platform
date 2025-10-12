@@ -1,5 +1,5 @@
 <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+<!--A file that allows a user to upload a pfp and choose a bio/skills they want to receive, both these fields are optional-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,8 +52,8 @@
     </form>
 </div>
 
+<!--Dynamically lets user know how many characters are left while typing their bio and manges file upload-->
 <script>
-
     const dropArea = document.getElementById('drop-area');
     const fileInput = document.getElementById('pfp');
 

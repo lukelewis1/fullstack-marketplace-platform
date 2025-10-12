@@ -8,6 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $redirect_page = '/index.php';
 include __DIR__ . '/loader.html';
 
+// Sets the session array to empty and destroys the session data
 $_SESSION = [];
 session_unset();
 session_destroy();

@@ -10,6 +10,7 @@ $status = true;
 
 require_once '../inc/dbconn.inc.php';
 
+// Grabs relative user information so that we can determine whether or not they are an admin and if they provided the correct login information
 $sql = 'SELECT user_name, hashed_password, bio, is_admin, acc_status FROM Users WHERE user_name = ? AND hashed_password = ?;';
 
 $statement = mysqli_stmt_init($conn);
@@ -39,6 +40,7 @@ if (mysqli_stmt_execute($statement)) {
     echo mysqli_error($conn);
 }
 
+// Depending and if they are an admin and entered the correct information it will decide which page they are redirected to
 if ($name_good && $password_good && $status) {
     $redirect_page = '../user/user_homepage.php';
     session_start();

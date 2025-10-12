@@ -8,6 +8,10 @@ h1 {
     color: #000F2C;
 }
 
+h2 {
+    text-align: center;
+}
+
 /* Search Bar */
 .skill-search-bar form {
     display: flex;
@@ -44,20 +48,6 @@ h1 {
     gap: 12px;
 }
 
-/* .skills {
-    text-align: center;
-} */
-
-.skill-item {
-    border: solid #FFCC00;
-    border-radius: 8px;
-    width: 250px;
-    margin: 10px auto;
-    padding-left: 10px;
-    line-height: 1.0;
-    text-align: left;
-}
-
 li a {
     text-decoration: none;
     color: black;
@@ -72,3 +62,88 @@ li a {
     font-weight: bold;
 }
 
+.skill-search-bar {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.filter-options {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-options select,
+.filter-options input[type="time"] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.availability {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.availability label {
+    font-weight: 500;
+}
+
+/*Gets rid of the search icon on top of the start end time selectors*/
+input[type="time"] {
+    background: none !important;
+    background-image: none !important;
+    padding-left: 8px !important;
+}
+
+.page-wrapper {
+    border: solid #FFCC00;
+    border-radius: 8px;
+    width: 1000px;
+    margin: 10px auto;
+    padding-left: 10px;
+    line-height: 1.0;
+    text-align: center;
+}
+
+.review {
+    border: solid #FFCC00;
+    border-radius: 8px;
+    width: 250px;
+    margin: 10px auto;
+    padding-left: 10px;
+    line-height: 1.0;
+    text-align: center;
+}
+
+#line {
+    margin-top: 25px;
+    border: solid #FFCC00;
+}
+
+#req-btn {
+    background-color: #FFCC00;
+    color: #000F2C;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* Hover state */
+#req-btn:hover {
+    background-color: #e6b800;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+}

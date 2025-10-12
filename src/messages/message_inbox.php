@@ -25,7 +25,7 @@ require_once __DIR__ . '/../inc/functions.php';
     <aside class="sidebar">
         <div class="sidebar-header">Chats</div>
 
-        <!-- New Chat UI -->
+        <!-- New chat drop down which contains friends of a given user -->
         <div class="new-chat">
             <select id="friendSelect">
                 <option value="">-- Start new chat --</option>
@@ -36,6 +36,7 @@ require_once __DIR__ . '/../inc/functions.php';
         <ul class="chat-list" id="chatList"></ul>
     </aside>
 
+<!--    Chat area that allows two users to message each other-->
     <main class="chat-area">
         <div class="chat-header" id="chatHeader">Select a conversation</div>
         <div class="chat-messages" id="chatMessages"></div>

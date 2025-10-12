@@ -6,7 +6,8 @@
 
     require_once __DIR__ . '/../inc/dbconn.inc.php';
     require_once __DIR__ . '/../inc/functions.php';
-
+    
+    /// Grab user id and credit balance for profile image and credit display
     $stmt = $conn->prepare("SELECT id, fuss_credit FROM Users WHERE user_name = ?");
     $stmt->bind_param('s', $_SESSION['username']);
     $stmt->execute();
@@ -20,7 +21,7 @@
 
 ?>
 
-
+<!-- Note: Separated Admin Header for Easy Templating -->
 <header>
     <link rel="stylesheet" href="../styles/real_time_style.css" />
       <!-- Top Row: Logo, Search, User Info -->
@@ -34,6 +35,7 @@
           </a>
         </div>
 
+        <!-- Search Bar -->
         <div class="search-bar">
           <form action="#" method="get">
             <input
@@ -45,6 +47,7 @@
           </form>
         </div>
 
+        <!-- User, Name, Role-->
         <div class="user-info">
           <div class="user-name-role">
             <span class="user-name"><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </span>
@@ -62,12 +65,13 @@
             </span>
               
           </div>
+          <!-- Avatar -->
           <div class="avatar">
             <div class="dropdown avatar-dropdown">
               <img src="/images/user_pfp/<?= $user_id ?>.png?t=<?= time() ?>" alt="Profile Picture" />
               <div class="dropdown-content avatar-dropdown-content">
-                  <a href="../user/view_profile.php">View Profile</a>
-                  <a href="../user/edit_profile.php">Edit Profile</a>
+                  <a href="/user/view_profile.php">View Profile</a>
+                  <a href="/user/edit_profile.php">Edit Profile</a>
                   <a href="/inc/logout.php" id="logout-link">Logout</a>
               </div>
             </div>
@@ -77,15 +81,23 @@
       </div>
 
       <!-- Navbar Row -->
+      <!-- $currentPage used to highlight which page is active -->
       <nav>
+        <!-- Navbar Links -->
         <ul class="nav-links">
+
+          <!-- Home -->
           <li><a href="/admin/admin_homepage.php" class="<?= ($currentPage == 'admin_homepage.php') ? 'active' : '' ?>">Home</a></li>
           <li>
-              <a href="/messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">
-                  Messages
-                  <span id="msg-badge" class="notification-dot hidden"></span>
-              </a>
+          
+          <!-- Messages -->
+            <a href="/messages/message_inbox.php" class="<?= ($currentPage == 'message_inbox.php') ? 'active' : '' ?>">
+                Messages
+                <span id="msg-badge" class="notification-dot hidden"></span>
+            </a>
           </li>
+
+          <!-- Skill Share -->
           <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill_manage.php') ? 'active' : '' ?>">Skill Share</a></li>
             <div class="dropdown-content">
@@ -97,6 +109,7 @@
             </div>
           </div>
           
+          <!-- Dashboard -->
           <div class="dropdown">
             <li><a  class="<?= ($currentPage == 'skill_manage.php') ? 'active' : '' ?>">Dashboard</a></li>
             <div class="dropdown-content">
@@ -106,26 +119,32 @@
             </div>
           </div>
 
-            <div class="dropdown">
-                <li><a class="<?= ($currentPage == 'friends.php') ? 'active' : '' ?>">Friends</a></li>
-                <div class="dropdown-content">
-                    <a href="/user/friends/friends.php">Friends</a>
-                    <a href="/user/friends/search_friends.php">Add Friend</a>
-                    <a href="/user/friends/pending_friends.php">Pending Friends</a>
-                </div>
-            </div>
+          <!-- Friends -->
+          <div class="dropdown">
+              <li><a class="<?= ($currentPage == 'friends.php') ? 'active' : '' ?>">Friends</a></li>
+              <div class="dropdown-content">
+                  <a href="/user/friends/friends.php">Friends</a>
+                  <a href="/user/friends/search_friends.php">Add Friend</a>
+                  <a href="/user/friends/pending_friends.php">Pending Friends</a>
+              </div>
+          </div>
 
-            <li><a href="/user/calendar.php" class="<?= ($currentPage == 'calendar.php') ? 'active' : '' ?>">Calendar</a></li>
+          <!-- Calendar -->
+          <li><a href="/user/calendar.php" class="<?= ($currentPage == 'calendar.php') ? 'active' : '' ?>">Calendar</a></li>
 
-            <li><a href="/notifications/notifications.php" class="<?= ($currentPage == 'notifications.php') ? 'active' : '' ?>">Notifications</a></li>
+          <!-- Notifications -->
+          <li><a href="/notifications/notifications.php" class="<?= ($currentPage == 'notifications.php') ? 'active' : '' ?>">Notifications</a></li>
             
-            <li class="credits"
-              class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
-              <a href="#">
-                Credits <span class="credit-circle"><?php echo htmlspecialchars($credit_balance); ?></span>
-              </a>
+          <!-- Credits -->
+          <li class="credits"
+            class="<?= ($currentPage == 'home.php') ? 'active' : '' ?>">
+            <a href="#">
+              Credits <span class="credit-circle"><?php echo htmlspecialchars($credit_balance); ?></span>
+            </a>
           </li>
 
+          <!-- Logout Window Popup -->
+          <!-- Need to clean up -->
           <div id="logout-modal" style="display:none; position:fixed; top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);">
                 <div style="background:#fff;padding:20px;margin:100px auto;width:300px;text-align:center" id="logout">
                     <p>Are you sure you want to log out?</p>

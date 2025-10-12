@@ -1,5 +1,5 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+// Script that creates a calendar based on the month anc colours different cells based on the type of booking and status of it
 const bookerPage = "skill_bookings.php";
 const providerPage = "my_skills.php";
 
@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     : (confirmed ? "#006400" : "#2E8B57")
                 badge.textContent = isBooker ? "Booked" : "Providing";
 
+                // Adds link so when users click on a booked slot it takes them to the right part of the site
                 link.appendChild(badge);
                 cell.appendChild(link);
             }

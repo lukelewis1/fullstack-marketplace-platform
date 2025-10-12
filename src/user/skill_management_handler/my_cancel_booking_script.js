@@ -1,5 +1,5 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+// Same as the other cancel booking script but for the provider serves same purpose with slight difference in implementation
 document.querySelectorAll('.cancel-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const [bookerId, serviceId, serviceName, credits] = JSON.parse(btn.dataset.id);

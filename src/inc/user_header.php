@@ -10,6 +10,7 @@
     require_once __DIR__ . '/../inc/dbconn.inc.php';
     require_once __DIR__ . '/../inc/functions.php';
 
+    /// Get credit balance
     $sql = 'SELECT fuss_credit FROM Users WHERE user_name = ?;';
     $statement = $conn->prepare($sql);
     $statement->bind_param('s', $_SESSION['username']);
@@ -23,6 +24,7 @@
 
 <header>
     <link rel="stylesheet" href="../styles/real_time_style.css" />
+
       <!-- Top Row: Logo, Search, User Info -->
       <div class="header-top">
         <div class="site-logo">
@@ -34,6 +36,7 @@
           </a>
         </div>
 
+        <!-- Search Bar -->
         <div class="search-bar">
           <form action="#" method="get">
             <input
@@ -45,6 +48,7 @@
           </form>
         </div>
 
+        
         <div class="user-info">
           <div class="user-name-role">
             <span class="user-name"><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </span>
@@ -54,8 +58,8 @@
             <div class="dropdown avatar-dropdown">
               <img src="<?php echo htmlspecialchars(get_profile_image($_SESSION['username'] ?? '')); ?>" alt="Profile Picture" />
               <div class="dropdown-content avatar-dropdown-content">
-                  <a href="../user/view_profile.php">View Profile</a>
-                  <a href="../user/edit_profile.php">Edit Profile</a>
+                  <a href="/user/view_profile.php">View Profile</a>
+                  <a href="/user/edit_profile.php">Edit Profile</a>
                   <a href="/inc/logout.php" id="logout-link">Logout</a>
               
               </div>
