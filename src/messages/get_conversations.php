@@ -31,6 +31,13 @@ LEFT JOIN ChatMessages cm ON cm.conversation_id = m.conversation_id
 WHERE m.sender_id = ? OR m.receiver_id = ?
 GROUP BY m.conversation_id, other_name, m.start_date, m.unseen, m.unseen_2
 ORDER BY last_message_time DESC";
+/*
+ * AI Tool used
+ * Line Number: in AI-Acknowledgements
+ * AI was used to help craft this query I gave it the current schema of our database and needed a query that returns all conversations for a given user,
+ * also needed to determine the unseen status of the message so CSS elements controlled by JS could dynamically show users what messages they have and haven't seen
+ * the complexity of this query does come down to suboptimal database architecture but it does work
+ */
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('iiii', $uid, $uid, $uid, $uid);

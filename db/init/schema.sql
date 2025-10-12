@@ -1,3 +1,6 @@
+# This is the entire database file, it has gone through many iterations but in its current state it supports all site functionality.
+# Created and maintained by Oliver Wuttke, FAN: WUTT0019
+
 DROP DATABASE IF EXISTS FUSS_DB;
 CREATE DATABASE FUSS_DB;
 USE FUSS_DB;

@@ -56,6 +56,7 @@ include_header($_SESSION['username'] ?? null);
 <h1>Skill Categories</h1>
 <div class="skill-cat-res">
 
+<!--    Displays list of current categories-->
     <ul>
         <?php foreach ($categories as $i => $item): ?>
             <li class="skill-cats">
@@ -68,6 +69,8 @@ include_header($_SESSION['username'] ?? null);
         <?php endforeach; ?>
     </ul>
 
+
+<!--Allows text input for adding a new skill category-->
     <form method="post">
         <input type="text" name="new_item" placeholder="Add new category" required>
         <button type="submit" name="add" class="btn">Add</button>

@@ -1,5 +1,6 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+// This file gives a pop up for a user to enter a reason for cancelling a service and then calls the cancel_booking.php file which returns a true json object if no errors occur,
+// Then we change the element so it tells the user the booking is cancelled
 document.querySelectorAll('.cancel-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const [providerId, serviceId, serviceName, credits] = JSON.parse(btn.dataset.id);

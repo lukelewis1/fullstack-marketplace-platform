@@ -57,6 +57,7 @@
      include_header($_SESSION['username'] ?? null);
      ?>
 
+<!--    Displays all skills a user has posted -->
     <h1>My Skills/Services</h1>
     <div class="skills">
         <ul class="my-skills">
@@ -98,6 +99,7 @@
                             Delete
                         </button>
                     </div>
+<!--                    Starts hidden but if a user tries to delete a skill which has a booking this span tag becomes visible-->
                     <span class="skill-booked" hidden="">Skill is currently booked, you need to cancel or fulfill all bookings associated with this listing.</span>
                 </li>
             <?php endforeach; ?>

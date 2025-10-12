@@ -1,5 +1,5 @@
 /*<!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->*/
-
+/*Allows the JS to trigger this CSS to show if new messages have been sent to a user*/
 /* red dot for when there is an unseen message */
 .notification-dot {
     display: inline-block;

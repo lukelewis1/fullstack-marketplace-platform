@@ -9,9 +9,9 @@ select {
 
 #post-page {
     font-family: 'Poppins', sans-serif;
-    color: #000F2C; /* Flinders navy text */
-    background: #FFFFFF; /* white background */
-    border: 3px solid #FFCC00; /* flinders gold border */
+    color: #000F2C;
+    background: #FFFFFF;
+    border: 3px solid #FFCC00;
     border-radius: 16px;
     max-width: 800px;
     width: 90%;
@@ -25,13 +25,13 @@ select {
 /* Labels */
 .posting-field label,
 #avail-label {
-    color: #000F2C; /* navy text */
+    color: #000F2C;
     display: block;
     margin-bottom: 0.4rem;
     font-weight: 600;
 }
 
-/* Inputs, selects, and textarea */
+
 .posting-field input[type="text"],
 .posting-field input[type="number"],
 .posting-field input[type="time"],
@@ -52,7 +52,7 @@ select {
 .posting-field select:focus,
 .posting-field textarea:focus {
     outline: none;
-    border-color: #000F2C; /* navy focus */
+    border-color: #000F2C;
     box-shadow: 0 0 6px #FFCC00;
 }
 
@@ -66,7 +66,7 @@ select {
     color: #000F2C;
 }
 
-/* Scheduler grid */
+
 .scheduler {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -94,7 +94,7 @@ select {
     padding: 0;
 }
 
-/* Button */
+
 .btn {
     margin-top: 25px;
     width: 50%;
@@ -105,7 +105,7 @@ select {
     font-weight: 600;
     border: 2px solid #FFCC00;
     background: transparent;
-    color: #000F2C; /* navy text */
+    color: #000F2C;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -131,13 +131,13 @@ select {
     color: #000F2C;
 }
 
-/* Submit button container */
+
 .submit-btn {
     text-align: center;
     color: #000F2C;
 }
 
-/* Error text */
+
 .posting-err {
     color: red !important;
     display: none;

@@ -1,5 +1,5 @@
 // <!-- Authored by Oliver Wuttke, FAN WUTT0019, Edited by (Oliver Wuttke, FAN WUTT0019) -->
-
+//
 document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById('reviewModal');
     const reviewType = document.getElementById('reviewType');
@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         console.log(reviewData);
 
+        // Sends the review and confirmation data to the booker_accept.php file where db is updated appropriately and if all goes well returns a true json object
         fetch('skill_management_handler/booker_accept.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
