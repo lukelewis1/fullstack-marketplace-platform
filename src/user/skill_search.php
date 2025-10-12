@@ -34,18 +34,54 @@
 
       <h1>Skill Search</h1>
 
-      <div class="skill-search-bar">
-        <form id="search-form" method="get" action="./skill_search_handler/search_results.php">
-            <input
-                    type="search"
-                    id="search-input"
-                    name="q"
-                    placeholder="Search for Skills"
-            />
-        </form>
-    </div>
+        <div class="skill-search-bar">
+            <!-- Main Search Bar -->
+            <form id="search-form" method="get" action="./skill_search_handler/search_results.php">
+                <input
+                        type="search"
+                        id="search-input"
+                        name="q"
+                        placeholder="      Search for Skills"
+                />
+            </form>
 
-    <div class="skills">
+            <!-- Filter Options Below -->
+            <div class="filter-options">
+                <!-- Dropdown -->
+                <select name="category" id="category">
+                    <option value="">All Categories</option>
+                    <option value="music">Music</option>
+                    <option value="coding">Coding</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="art">Art</option>
+                </select>
+
+                <!-- Availability Selector -->
+                <div class="availability">
+                    <label for="day">Day:</label>
+                    <select name="day" id="day">
+                        <option value="">Select Day</option>
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                    </select>
+
+                    <label for="start">From:</label>
+                    <input type="time" id="start" name="start_time">
+
+                    <label for="end">To:</label>
+                    <input type="time" id="end" name="end_time">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="skills">
       <h1>Recommended Services</h1>
       <ul class="skill-listings">
         <?php 
