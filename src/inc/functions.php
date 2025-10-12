@@ -637,7 +637,7 @@ function advanced_search_availability_category($term, $day, $start, $end, $cat):
 
 /*
  * AI Tool used
- * Line Number: in AI-Acknowledgements
+ * Line Number: 35 in AI-Acknowledgements
  * AI was used to help craft the 4 SQL queries above that help support the advanced search system. All 4 where based on the AI interpretation of the current database schema
  * These queries are quite involved and I don't believe I could come up with these on my own given what I wanted them to return
  */
