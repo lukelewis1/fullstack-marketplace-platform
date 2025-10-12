@@ -23,7 +23,7 @@
   <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>User Home Page</title>
+      <title>Skill Post Page</title>
       <link rel="stylesheet" href="../styles/style.css" />
       <link rel="stylesheet" href="skill_post_handler/skill_post_style.css" />
   </head>

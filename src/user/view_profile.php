@@ -62,7 +62,7 @@ $stmt->close();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Profile</title>
+    <title>View Profile Page</title>
     <link rel="stylesheet" href="../styles/style.css" />
     <link rel="stylesheet" href="profile_handler/profile.css"/>
 </head>
@@ -71,6 +71,7 @@ $stmt->close();
     <?php include_header($_SESSION['username'] ?? null); ?>  
 </header>
 
+<!-- Parent Container Class --> 
 <main class="content">
     <h1>Profile Preview</h1>
     <?php if($message): ?>
@@ -82,14 +83,17 @@ $stmt->close();
         <!-- Personal Info -->
         <section class="card">
             <div class="profile-fields">
+
+                <!-- User Profile Picture -->
                 <div class="user-profile-pic">
                     <h2>Profile Picture</h2>
                     <?php
-                     $picPath = "../images/user_pfp/{$user_id}.png";
-                     echo '<img src="' . (file_exists($picPath) ? $picPath : '../images/user_pfp/default.png') . '" alt="Profile Picture" class="profile-pic-preview" style="width:180px; height:180px;"> ';
+                    // Display profile picture or default
+                     $picPath = "../images/user_pfp/{$user_id}.png"; // Path to profile picture
+                     echo '<img src="' . (file_exists($picPath) ? $picPath : '../images/user_pfp/default.png') . '" alt="Profile Picture" class="profile-pic-preview" style="width:180px; height:180px;"> '; // Set pic path
                     ?>
                 </div>
-
+                
                 <div class="username">
                     <h2>Username</h2>
                     <input type="text" name="username" placeholder="Username" value="<?= htmlspecialchars($user_name) ?>" readonly>
@@ -131,6 +135,7 @@ $stmt->close();
         <section class="card">
             <h2>Current Skills</h2>
             <div class="skills-list">
+                <!-- Populate Skills Field-->
                 <?php if (!empty($user_services)): ?>
                     <?php foreach ($user_services as $service): ?>
                         <div class="skill-box">
@@ -145,6 +150,7 @@ $stmt->close();
             </div>
         </section>
 
+        <!-- Transaction History -->
         <section class="card">
             <h2>Transaction History</h2>
             <div class="skills-list">

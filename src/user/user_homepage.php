@@ -29,9 +29,10 @@ if (!isset($_SESSION['username'])) {
   include('../inc/user_header.php');
   ?>
     
-    
+    <!-- Parent Content Container -->
     <main class="content">
-
+      
+      <!-- Dynamic Welcome Section -->
       <div class="welcome-section">
         <h2 class="welcome-message"> Good to have you back, </h2>
         <h1 class="welcome-name"> <?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?> </h1>
@@ -40,6 +41,8 @@ if (!isset($_SESSION['username'])) {
 
       <!-- News/Announcements Section -->
       <div class="news-container"> 
+
+        <!-- Individual Child Container --> 
             <div class="news-card-container">
               <img src="../images/news/news_1.png" alt="Image of university students outside" class="news-card-image">
               <div class="news-card-content">
