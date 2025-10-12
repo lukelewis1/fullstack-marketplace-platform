@@ -30,7 +30,7 @@ JOIN Users u2 ON u2.id = m.receiver_id
 LEFT JOIN ChatMessages cm ON cm.conversation_id = m.conversation_id
 WHERE m.sender_id = ? OR m.receiver_id = ?
 GROUP BY m.conversation_id, other_name, m.start_date, m.unseen, m.unseen_2
-ORDER BY last_message_time DESC";
+ORDER BY last_message_time DESC;";
 /*
  * AI Tool used
  * Line Number: in AI-Acknowledgements

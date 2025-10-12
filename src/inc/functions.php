@@ -447,6 +447,7 @@ function get_booking_details($bid) {
     return $row;    
 }
 
+// Function that for a given user returns listings based on the users transaction history, returns listings with highest count of a users most purchased category
 function recommended($uid): array
 {
     global $conn;
