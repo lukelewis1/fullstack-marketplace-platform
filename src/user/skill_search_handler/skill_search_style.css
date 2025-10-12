@@ -75,20 +75,6 @@ li a {
     text-align: center;
 }
 
-.skill-search-bar form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#search-input {
-    width: 60%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
 .filter-options {
     margin-top: 15px;
     display: flex;
