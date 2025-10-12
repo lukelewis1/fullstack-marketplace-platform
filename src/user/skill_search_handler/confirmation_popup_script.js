@@ -1,3 +1,4 @@
+//<!-- Authored by Luke Lewis, FAN lewi0454, Edited by (Luke Lewis, FAN lewi0454) -->
 // --- styles (once) ---
 (function ensureStyles(){
   if (document.getElementById('confirm-modal-style')) return;

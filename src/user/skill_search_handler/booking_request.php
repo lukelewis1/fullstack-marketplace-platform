@@ -1,4 +1,5 @@
 <?php
+//<!-- Authored by Luke Lewis, FAN lewi0454, Edited by (Luke Lewis, FAN lewi0454) -->
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 require_once $_SERVER['DOCUMENT_ROOT'].'/inc/dbconn.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/inc/functions.php';
