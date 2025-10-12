@@ -17,9 +17,13 @@
 
     if ($category === 'all' && $day === 'none' || $category === '') {
         $results = advanced_search($query);
+    } elseif ($category != 'all' && $category != '' && ($day === 'none' || $day === '')) {
+        $results = advanced_search_category($query, $category);
+    } elseif ($category === 'all' || $category === '' && ($day != 'none' && $day != '')) {
+        $results = advanced_search_availability($query, $day, $start, $end);
+    } else {
+        $results = advanced_search_availability_category($query, $day, $start, $end, $category);
     }
-
-
 
     $count = count($results);
 ?>
