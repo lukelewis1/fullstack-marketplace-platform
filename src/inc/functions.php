@@ -2,7 +2,6 @@
 //<!-- Authored by Hans Pujalte, FAN puja0009, Edited by (Oliver Wuttke, FAN WUTT0019), (Hans Pujalte, FAN puja0009), (Luke Lewis, lewi0454) -->
 
 // Include the appropriate header based on user role
-
 function include_header($username) {
     global $conn;
 

@@ -7,8 +7,10 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
+// Fetch user id from query string
 $id = intval($_GET['id']);
 
+// Basic sql query to suspend user
 $sql = "UPDATE Users SET acc_status = FALSE WHERE id = ?;";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('i', $id);

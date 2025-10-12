@@ -17,21 +17,25 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Home Page</title>
+    <title>Admin Management Page</title>
     <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="../styles/user_management.css" />
+    <link rel="stylesheet" href="../styles/user_management.css" /> <!-- Specific CSS for this page -->
   </head>
   <body>
 
+    <!-- Include Admin Header -->
     <?php 
      include('../inc/admin_header.php');
     ?>
-  
+
+    <!-- Parent Page Wrapper -->
     <div class="page-wrapper">
 
     <!-- Main Content -->
      <main class="content">
-  
+
+      <!-- Search Bar  -->
+      <!-- Note: Doesn't work lmao  -->
       <search> 
       <div class="search-bar admin-search-bar">
         <form action="#" method="get">
@@ -39,14 +43,13 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
           type="search"
           id="search-input"
           name="q"
-          placeholder="Search"
-                  />
+          placeholder="Search"/>
         </form>
       </div>
      
      </search>
       
-
+      <!-- User Management Table !-->
       <div class="table-wrapper">
         <table>
           <thead>
@@ -62,7 +65,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
           </thead>
           <tbody>
               <?php
-
+                /// Fetch all users from db
                 $sql = "SELECT id, f_name, l_name, email, role, fuss_credit FROM Users;";
                 $stmt = mysqli_prepare($conn, $sql);
                 mysqli_stmt_execute($stmt);
@@ -76,7 +79,8 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
                   echo "<td>" . htmlspecialchars($row['email']) . "</td>";
                   echo "<td>" . htmlspecialchars($row['role'] ?? 'N/A' ) . "</td>";
                   echo "<td>" . 'N/A' . "</td>";
-                  
+
+                  /// Action Dropdown Menu
                   echo "<td>
                     <div class='dropdown action-dropdown'>
                       <button>Options</button>
@@ -131,7 +135,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
       </div>
 
       <!-- Delete Confirm Modal -->
-      <div id="confirmModal" class="modal">
+    <div id="confirmModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Confirm Deletion</h2>
@@ -149,22 +153,21 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
       <div id="suspendModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <h2>Confirm Suspension</h2>
-        <p>Are you sure you want to suspend this user?</p>
-        <form id="submitForms">
-          <div class="button-group">
-          <button type="submit" class="confirm-btn">Yes</button>
-          <button type="button" class="cancel-btn">Cancel</button>
-          </div>
-        </form>
+          <h2>Confirm Suspension</h2>
+          <p>Are you sure you want to suspend this user?</p>
+          <form id="submitForms">
+            <div class="button-group">
+            <button type="submit" class="confirm-btn">Yes</button>
+            <button type="button" class="cancel-btn">Cancel</button>
+            </div>
+          </form>
       </div>
     </div>
-
-
 
     </main>
 
     </div>
+    <!-- Include JS for modals -->
      <script src="../admin/edit_modal.js"></script>
      <script src="../admin/delete_modal.js"></script>
      <script src="../admin/suspend_modal.js"></script>

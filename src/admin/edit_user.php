@@ -2,6 +2,7 @@
 //<!-- Authored by Hans Pujalte, FAN PUJA0009 -->
 require_once __DIR__ . '/../inc/dbconn.inc.php';
 
+// Process form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $f_name = $_POST['f_name'];
