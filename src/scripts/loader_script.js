@@ -7,16 +7,12 @@ function randomInt(min, max) {
 let dynamicMsg = document.getElementById('msg');
 
 messages = [
-    'Submitting Extension Requests',
-    'Skipping Lectures',
-    'Watching Lecture Recordings on 2x speed',
-    'Asking ChatGPT for Help',
-    'Complaining about Group Assignments',
-    'Doom Scrolling TikTok...',
     '🙏 Google Internship 🙏',
     'What is COMP2030 even about 😭😭😭',
     'git push --force origin main',
-    'sudo rm -rf / --no-preserve-root'
+    'sudo rm -rf / --no-preserve-root ✌️😭',
+    '🦁 The lion does not concern himself with AI-Acknowledgements 🦁',
+    'How to centre a div?'
 ]
 
 setInterval(() => {
