@@ -9,7 +9,7 @@ $f_name = $_POST['fname'] ?? null;
 $l_name = $_POST['lname'] ?? null;
 $dob = $_POST['dob'] ?? null;
 $admin = false;
-$acc_status = 0;
+$acc_status = 1;
 $role = $_POST['role'] ?? null;
 $credits = 5;
 
