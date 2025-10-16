@@ -85,7 +85,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
                     <div class='dropdown action-dropdown'>
                       <button>Options</button>
                       <div class='dropdown-content'>
-                        <a href='/user/view_profile.php?id=" . urlencode($row['id']) . "'>View</a>
+                        <a href='/user/profile_handler/view_users_profile.php?id=" . urlencode($row['id']) . "'>View</a>
                         <a href='#'
                           class='edit-btn' 
                           data-id='" . htmlspecialchars($row['id']) . "' 
