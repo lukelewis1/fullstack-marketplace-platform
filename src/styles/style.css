@@ -172,13 +172,15 @@ nav {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   border-radius: 50%; /* Makes news a circle */
   background-color: #ff9800;
   color: white;
   font-weight: bold;
   text-align: center;
+  white-space: nowrap;
+  padding: 0 6px; 
 }
 
 /* Dropdown Menu */
@@ -262,7 +264,7 @@ nav {
   align-items: center;
   padding: 0.8rem 1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.3s;
 }
 
 .menu li:hover {
@@ -444,7 +446,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
+  min-width: 70px;
   height: 70px;
   border-radius: 50%;
   background-color: #ff9800;
@@ -452,6 +454,8 @@ nav {
   font-weight: bold;
   text-align: center;
   font-size: 50px;
+  white-space: nowrap;
+  padding: 0 6px; 
 }
 
 /* Anchor tag styles within search results */

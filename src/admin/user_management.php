@@ -85,7 +85,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
                     <div class='dropdown action-dropdown'>
                       <button>Options</button>
                       <div class='dropdown-content'>
-                        <a href='/user/view_profile.php?id=" . urlencode($row['id']) . "'>View</a>
+                        <a href='/user/profile_handler/view_users_profile.php?id=" . urlencode($row['id']) . "'>View</a>
                         <a href='#'
                           class='edit-btn' 
                           data-id='" . htmlspecialchars($row['id']) . "' 
@@ -128,7 +128,7 @@ require_once __DIR__ . '/../inc/dbconn.inc.php';
             <label>Role:</label>
             <input type="text" name="role" id="edit-role" required>
             <label>FUSS Credits:</label>
-            <input type="number" name="credits" id="edit-credits" min="0" max="100" required>
+            <input type="number" name="credits" id="edit-credits" min="0" max="999" step=0.5 required>
             <button type="submit">Save Changes</button>
           </form>
         </div>

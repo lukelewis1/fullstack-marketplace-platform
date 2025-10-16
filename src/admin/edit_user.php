@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "UPDATE Users SET f_name = ?, l_name = ?, email = ?, role = ?, fuss_credit = ? WHERE id = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssssii", $f_name, $l_name, $email, $role, $credits, $id);
+    mysqli_stmt_bind_param($stmt, "ssssdi", $f_name, $l_name, $email, $role, $credits, $id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
