@@ -1,5 +1,5 @@
 -- ---------- SEED: CORE USERS ----------
--- DSA and Docker Help monday's 9-11 for conflict detection
+-- DSA and Docker Help monday's 9-10 for conflict detection
 -- SHA-256('admin') -> 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
 INSERT INTO Users (user_name, email, hashed_password, f_name, l_name, bio, dob, is_admin, acc_status, role, fuss_credit) VALUES
                                                                                                                              ('WUTT0019','oliver.wuttke@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Oliver','Wuttke','Builder of FUSS.','2005-02-01 00:00:00', TRUE, TRUE, 'Computer Science', 75.0),
@@ -72,11 +72,11 @@ INSERT INTO Availability (service_id, day, start, end) VALUES
                                                            ((SELECT listing_id FROM Listings WHERE title='Git & GitHub Help'), 'tuesday', '09:00:00','10:30:00'),
                                                            ((SELECT listing_id FROM Listings WHERE title='Build a Simple Website'), 'thursday', '15:00:00','17:00:00'),
                                                            ((SELECT listing_id FROM Listings WHERE title='Music Theory Crash'), 'friday', '13:00:00','14:30:00'),
-                                                           ((SELECT listing_id FROM Listings WHERE title='Data Structures Tutor'), 'monday', '09:00:00','11:00:00'),
+                                                           ((SELECT listing_id FROM Listings WHERE title='Data Structures Tutor'), 'monday', '09:00:00','10:00:00'),
                                                            ((SELECT listing_id FROM Listings WHERE title='Laptop Cleanup & Speedup'), 'saturday', '11:00:00','12:30:00'),
                                                            ((SELECT listing_id FROM Listings WHERE title='Unity Basics'), 'wednesday', '10:00:00','12:00:00'),
                                                            ((SELECT listing_id FROM Listings WHERE title='SQL Query Clinic'), 'tuesday', '17:00:00','18:30:00'),
-                                                           ((SELECT listing_id FROM Listings WHERE title='Docker for Beginners'), 'monday', '09:00:00','11:00:00'),
+                                                           ((SELECT listing_id FROM Listings WHERE title='Docker for Beginners'), 'monday', '09:00:00','10:00:00'),
                                                            ((SELECT listing_id FROM Listings WHERE title='Study Skills Tune-up'), 'sunday', '10:00:00','11:00:00'),
                                                            ((SELECT listing_id FROM Listings WHERE title='CSS Grid & Flexbox'), 'friday', '15:00:00','17:00:00'),
                                                            ((SELECT listing_id FROM Listings WHERE title='Basic PC Security'), 'saturday', '09:00:00','11:00:00');
