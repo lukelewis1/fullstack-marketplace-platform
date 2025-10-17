@@ -1,4 +1,5 @@
 -- ---------- SEED: CORE USERS ----------
+-- DSA and Docker Help monday's 9-11 for conflict detection
 -- SHA-256('admin') -> 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
 INSERT INTO Users (user_name, email, hashed_password, f_name, l_name, bio, dob, is_admin, acc_status, role, fuss_credit) VALUES
                                                                                                                              ('WUTT0019','oliver.wuttke@example.com','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Oliver','Wuttke','Builder of FUSS.','2005-02-01 00:00:00', TRUE, TRUE, 'Computer Science', 75.0),
