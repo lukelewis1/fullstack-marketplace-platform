@@ -25,7 +25,7 @@
           {
             "q1": 7,
             "q2": 7,
-            "observations": "Completed task with no struggle"
+            "observations": "Completed task but struggled to find dashboard initially"
           }
         ],
         "Task_3": [
@@ -39,7 +39,7 @@
           {
             "q1": 7,
             "q2": 7,
-            "observations": "Completed the task as intended"
+            "observations": "Completed the task as intended but needed help finding skill search area"
           }
         ],
         "Task_5": [
@@ -184,7 +184,7 @@
           {
             "q1": 6,
             "q2": 7,
-            "observations": "Completed the task as intended"
+            "observations": "Completed the task as intended but needed help with finding booking area"
           }
         ]
       }
