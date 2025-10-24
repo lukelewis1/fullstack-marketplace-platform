@@ -1,0 +1,29 @@
+# Changes and Justifications
+
+Based on the user feedback from usability testing for the FUSS website, several changes can be made to improve the user experience. 
+Although single ease and SUS questions indicate that users generally had a fluid and positive experience performing tasks, observations show that there were some clear pain points and parts that users struggled on. 
+Most of these include some sort of bad or non-existent user feedback for task completion and confusing naming conventions and placements of elements that made it harder for users to complete intended tasks.
+
+Login and signup input boxes have issue where you need to click to the side of the placeholder text and can't click on the placeholder text. 
+This issue seemed to be an annoyance that multiple users ran into when testing the FUSS website. 
+The issue stems from the dynamic effect when users click on the input box, which instead of removing the placeholder text, it instead jumps above the input box. 
+By removing the dynamic effect and using the standard placeholder text within the HTML element, it'll resolve this issue.
+
+A minor bug where users couldn't enter non-integer types of numbers for FUSS credit amounts for a skill listing was also found. 
+Although the database and other parts of the site support floating-point types for FUSS credit balances, the HTML input field doesn't allow users to enter those floating point types. 
+To fix this, we can adjust the *step* attribute of that input tag to allow for floating-point types of input.
+
+The admin dashboard also wasn't distinct enough from other nav-bar elements for users to clearly know where it was and resulted in users taking more time than needed to find the admin dashboard. 
+This fix will just require some styling to make the admin dashboard more distinct from other elements on the page.
+In addition, another more clear element separate from the nav-bar could be used to take users to the admin section of the site.
+
+The skill share area and its naming conventions also proved to be a point of confusion for users during testing, multiple users were unclear on affordances based on the names of different areas.
+The combination of it being the largest drop-down menu and having a confusing naming convention that leads to false affordances.
+The solution is to overhaul the naming convention for this area and possibly to break up the skill area into two distinct areas, one for a users' own skills and another for managing skills they seek.
+
+Overall, users seemed to enjoy using FUSS and navigating the site. 
+Most of the identified issues came down to annoyances and inconveniences instead of site breaking bugs.
+This in mind are demographics were exclusively university students with experience in using web applications.
+Further testing on a more diverse demographic may yield different results and find issues that weren't uncovered yet.
+
+
