@@ -18,7 +18,7 @@
           {
             "q1": 7,
             "q2": 7,
-            "observations": "Completed task with no struggle"
+            "observations": "Completed task with but had initial struggle with where to click allow typing in input fields"
           }
         ],
         "Task_2": [
@@ -94,14 +94,14 @@
           {
             "q1": 7,
             "q2": 7,
-            "observations": "Completed task with no struggle"
+            "observations": "Completed task with as intended but couldn't find the correct part of dashboard initially"
           }
         ],
         "Task_3": [
           {
             "q1": 7,
             "q2": 7,
-            "observations": "Completed the task as intended"
+            "observations": "Completed the task as intended, but had initial struggle with where to click allow typing in input fields"
           }
         ],
         "Task_4": [
@@ -156,7 +156,7 @@
           {
             "q1": 5,
             "q2": 7,
-            "observations": "Completed task but found minor bug with FUSS credit adjustments."
+            "observations": "Completed task, had slight issue with clicking on user input fields to enable typing"
           }
         ],
         "Task_2": [
@@ -177,7 +177,7 @@
           {
             "q1": 6,
             "q2": 7,
-            "observations": "Completed the task as intended"
+            "observations": "Completed the task as intended, but found minor bug with FUSS credit adjustments."
           }
         ],
         "Task_5": [
@@ -239,7 +239,7 @@
           {
             "q1": 6,
             "q2": 7,
-            "observations": "Completed the task as intended, minor issue with logging in"
+            "observations": "Completed the task as intended, minor issue with logging in after signup and no user validation on incorrect login"
           }
         ],
         "Task_4": [
