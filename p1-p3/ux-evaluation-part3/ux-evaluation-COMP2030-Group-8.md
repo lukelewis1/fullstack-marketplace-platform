@@ -17,7 +17,9 @@
 
 ****
 ## Introduction
-
+This report contains developmental insights into the FUSS website's features and design choices and how they can be improved.
+The user experience evaluation has a focus on core functionality for both regular users and administrators and with a primary focus on the ease of navigation whilst performing tasks on the FUSS website.
+Five scenarios have been created to help us test and improve the usability of the FUSS website.
 ****
 ## Test Plan
 When conducting our tests, when asking our testers to fill out information about themselves, from these three of our four testers are enrolled in Computer Science degree. With this we saw our testers were in the age range of 16-30 and were very confident in using a new web application however none of them had ever used an online skill exchange application before.
@@ -54,9 +56,7 @@ Task 5: Confirm booking and leave a review
 
 For the methodology of our site, we used a pre-test demographic questionnaire to find our information about our users. From this we asked questions regarding our testers background knowledge with using web applications and if they had used a skill share service before. With this we use a SUS at the end of our tests to receive feedback on how easy tasks were to complete, one being not confident and five being very. We also used SEQ’s at the end of the test so the user could sum up their experience with the tasks. With this we also asked our testers to leave other post-test questions, so we were able to receive more feedback on our application.
 
-With our Metrics for success, we measured success by if completed the task successfully, their navigation efficiency and SUS score. With this we measured success by at the end of each test asking our users to provide a score out of five as to how they found the task and how confident they completed the task. We measured success by how users navigated to the task and how easy the found the menus to navigate around the site.
-
-
+With our Metrics for success, we measured success by if completed the task successfully, their navigation efficiency and SUS score. With this we measured success by at the end of each test asking our users to provide a score out of five as to how they found the task and how confident they completed the task. We measured success by how users navigated to the task and how easy to find the menus to navigate around the site.
 ****
 ## Summary and Analysis
 
