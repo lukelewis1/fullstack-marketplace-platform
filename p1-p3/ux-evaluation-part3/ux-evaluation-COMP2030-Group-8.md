@@ -13,7 +13,11 @@
 - [Test Plan](#test-plan)
 - [Summary and Analysis](#summary-and-analysis)
 - [Iteration Description](#iteration-description)
-- [Appendix](#appendix)
+- [Appendices](#appendices)
+  - [Appendix 1](#appendix-1-script---instructor-copy)
+  - [Appendix 2](#appendix-2-script---participant-copy)
+  - [Appendix 3](#appendix-3-usability-test-results)
+  - [Appendix 4](#appendix-4-tables-and-figures)
 
 ****
 ## Introduction
@@ -74,4 +78,16 @@ The skill share area and its naming conventions also proved to be a point of con
 
 Overall, users seemed to enjoy using FUSS and navigating the site. Most of the identified issues came down to annoyances and inconveniences instead of site breaking bugs. This in mind are demographics were exclusively university students with experience in using web applications. Further testing on a more diverse demographic may yield different results and find issues that weren't uncovered yet.
 ****
-## Appendix
+## Appendices
+
+****
+### Appendix 1: Script - Instructor Copy
+
+****
+### Appendix 2: Script - Participant Copy
+
+****
+### Appendix 3: Usability Test Results
+
+****
+### Appendix 4: Tables and Figures
