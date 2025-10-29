@@ -1,0 +1,500 @@
+18e0ec8,Oliver Wuttke,9 hours ago,Merge pull request #95 from wutt0019/docs/wutt0019/ux-eval
+52f5356,wutt0019,9 hours ago,refactor(ux-eval-intro): Renamed the intro to intro-revised-test-plan, since it also contains a test plan.
+301d999,wutt0019,9 hours ago,refactor(gitignore): Added my personal git commit tempalte to the gitignore.
+d904d5c,txngsten,14 hours ago,docs(ux-eval): Added slight change to appendix 3.
+ceb97e9,puja0009,18 hours ago,Merge pull request #94 from wutt0019/docs/wutt0019/ux-eval
+c07cec7,wutt0019,18 hours ago,docs(ux-eval): Minor formatting change.
+d02c1e5,wutt0019,18 hours ago,docs(ux-eval): Compiled all parts of the ux eval into a single markdown file. This isn't the FINAL copy and is still subject to change.
+3c8b67b,wutt0019,18 hours ago,docs(testing-material): Added the dev and user copies and the eval tests into a closer folder to the actual report.
+cc8157b,puja0009,21 hours ago,docs(summary-and-analyis.md): Added my section of the ux eval. Also added the SUS scores into the test_results.json file.
+b56889b,puja0009,19 hours ago,Merge pull request #93 from wutt0019/docs/puja0009/eval_analysis
+70d84ce,wutt0019,20 hours ago,docs(ux-eval): Updated the appendices section of the report so everything has its correct place.
+92ca6b6,puja0009,21 hours ago,docs(summary-and-analyis.md): Added my section of the ux eval. Also added the SUS scores into the test_results.json file.
+8032f1d,txngsten,35 hours ago,docs(ux-eval): Added the introduction section to the report and also touched up on a minor error in the test plan.
+0d8535a,txngsten,35 hours ago,docs(ux-eval): Added the test plan and iteration description sections to the final report.
+bd92047,txngsten,35 hours ago,docs(ux-eval-report): Added the template for the usability testing report. Included the table of contents.
+3242e31,Oliver Wuttke,3 days ago,Delete .vscode directory
+8bc2798,Oliver Wuttke,3 days ago,Merge pull request #92 from wutt0019/docs/wutt0019/ux-eval-intro
+64c7086,txngsten,3 days ago,docs(intro-test-plan): Added the intro and cleared the test-plan.md doc.
+7803575,Oliver Wuttke,3 days ago,Merge pull request #91 from wutt0019/docs/lear0022/ux-eval-test-plan
+23f4c3c,lear0022,3 days ago,Added the test plan section of the doc and changed it to a markdown version
+e4de97d,txngsten,3 days ago,Added code owners file for safer branch protection.
+2c5bc1a,wutt0019,4 days ago,refactor(.gitignore): Added .env files to gitignore so I can keep my PAT safe.
+5f4f768,wutt0019,4 days ago,docs(test-plan): Added the test-plan.md file and wrote the test plan part. May need changes to more accurately reflect assignment components.
+0c7b59f,puja0009,6 days ago,Merge pull request #88 from wutt0019/docs/wutt0019/ux-eval
+0f36dc8,wutt0019,6 days ago,data(plots-for-results): Added an avg score single ease questions graph and an avg time per user graph.
+c8005bd,wutt0019,6 days ago,docs(iteration-description): iteration-description.md minor spelling mistake.
+c8e6f27,wutt0019,6 days ago,docs(iteration-description): iteration-description.md has now been completed and includes 4 main fixes/bugs that need to be fixed based on user feedback.
+30bf563,wutt0019,6 days ago,docs(ux-test-results): Updated test results to be up to date with recorded results.
+c8d4d7d,lear0022,6 days ago,Merge pull request #87 from wutt0019/docs/wutt0019/ex-eval-test-results
+9e7341f,wutt0019,6 days ago,docs(ux-test-results): Added final participants results.
+bc33869,Oliver Wuttke,7 days ago,Merge pull request #86 from wutt0019/docs/wutt0019/ux-eval
+a0b3983,wutt0019,7 days ago,docs(ux-eval): Added the markdown files for the 3 parts of the Usability Testing Report.
+104326a,wutt0019,7 days ago,this is cooked
+7af0c4d,wutt0019,7 days ago,bugfix(.gitignore): Added DS_Store files to gitignore.
+594be4e,puja0009,8 days ago,Merge pull request #85 from wutt0019/docs/wutt0019/ex-eval-test-results
+2d8dde4,puja0009,8 days ago,Merge pull request #84 from wutt0019/docs/wutt0019/ux-eval
+7d4077e,wutt0019,8 days ago,docs(eval-test-results): Updated the results data to more accurately represent the results.
+b1a96db,wutt0019,8 days ago,docs(eval-test): Added the updated user copy of the test.
+56422d2,wutt0019,8 days ago,docs(eval-test): Changed the dev copy of the test to have distinct name from the user copy.
+05c31a7,puja0009,8 days ago,Merge pull request #83 from wutt0019/docs/wutt0019/ex-eval-test-results
+536df91,wutt0019,8 days ago,docs(eval-test-results): Added users 2, 3 and 4 results to test_results.json.
+cb4d963,wutt0019,8 days ago,docs(eval-test-results): Added first users results to test_results.json.
+8ff2b7a,wutt0019,8 days ago,docs(eval-test-results): Added the raw test results for 4 of the participants.
+a4ccd5b,puja0009,9 days ago,Merge pull request #82 from wutt0019/docs/wutt0019/ux-eval
+497935f,wutt0019,9 days ago,docs(eval-test): Added the full test document that is to be given to test participants.
+b4b8664,wutt0019,9 days ago,feat(ux-test): Added eval_test.sql script to be ran to complete all test.
+fa7ae4f,Oliver Wuttke,9 days ago,Merge pull request #81 from wutt0019/docs/lewi0454/ux-eval
+5a047ea,lewi0454,9 days ago,docs(ux-test): Added test for creating a new user.
+264a11f,Oliver Wuttke,9 days ago,Merge pull request #80 from wutt0019/docs/lear0022/ux-eval-test
+80b6453,lear0022,9 days ago,docs(ux test)- Tests comitted for how to book a service and how to leave a review
+0abeb59,lear0022,9 days ago,Merge pull request #79 from wutt0019/feature/wutt0019/ux-eval-script
+4d3fa26,wutt0019,9 days ago,feat(ux-test): Added a review.sql file for testing the review system.
+f87fcfa,Oliver Wuttke,9 days ago,Merge pull request #78 from wutt0019/docs/puja0009/ux_eval
+2963d82,puja0009,9 days ago,docs(ux-test): Added my ux test
+2fa1679,puja0009,9 days ago,Merge pull request #77 from wutt0019/docs/wutt0019/ux-eval
+9bef082,wutt0019,9 days ago,docs(ux-test): Added my ux-test for posting a skill.
+e30f2b1,wutt0019,9 days ago,refactor(project-docs): Cleaned up the project-docs directory so we can start adding ux-eval docs as well.
+0da756a,wutt0019,13 days ago,feat(presentation): Minor change for presentation.sql.
+a04cdda,wutt0019,13 days ago,feat(presentation): Minor change for presentation.sql.
+79e1979,wutt0019,2 weeks ago,feat(presentation): Slight change to presentation.sql, bio's updated for 4 core users.
+c576b05,Oliver Wuttke,2 weeks ago,Merge pull request #76 from wutt0019/refactor/wutt0019/presentation-changes
+13badf9,wutt0019,2 weeks ago,feat(presentation): Updated the demo pfp's.
+93e915e,Oliver Wuttke,2 weeks ago,Merge pull request #75 from wutt0019/refactor/wutt0019/presentation-changes
+45fd739,wutt0019,2 weeks ago,feat(presentation): Presentation script and files are all ready to use now.
+05f6871,Oliver Wuttke,2 weeks ago,Merge pull request #74 from wutt0019/refactor/wutt0019/presentation-changes
+9b9fec1,wutt0019,2 weeks ago,bugfix(sign-up): Fixed bug where sign up didn't properly set account status.
+3e45c2f,Oliver Wuttke,2 weeks ago,Merge pull request #73 from wutt0019/docs/puja0009/fixing-bugs
+2c513c2,puja0009,2 weeks ago,bugfix(user_management.php): Credits are now incremented by 0.5 rather than 1
+a730cc2,puja0009,2 weeks ago,bugfix(src): Fixed stat circle not resizing properly and fuss credits not displaying float values
+75eae6d,Oliver Wuttke,2 weeks ago,Update user_management.php
+b5ce9c6,lewi0454,2 weeks ago,Merge pull request #72 from wutt0019/refactor/wutt0019/presentation-changes
+d30376c,wutt0019,2 weeks ago,feat(presentation): Got a script for the presentation.sql but needs some touch ups.
+1f3623e,wutt0019,2 weeks ago,feat(presentation): Added the default pfp to the presentation folder will add more later.
+ed00394,wutt0019,2 weeks ago,bugfix(sql-export): Deleted the old sql export that was sitting in src.
+a2e3a2c,wutt0019,2 weeks ago,feat(presentation): Added a script for the presentation to populate the site.
+9a61f22,wutt0019,2 weeks ago,feat(loader-msgs): Changed the loader_script.js to include some more dynamic messages to be displayed during the loading screens.
+f165388,txngsten,2 weeks ago,Final commit for the project added the sql export and updated MARKER_README.md.
+1ff1ca4,Oliver Wuttke,2 weeks ago,Final db export
+0ca1c78,Oliver Wuttke,2 weeks ago, Final db export
+ece0fe3,Oliver Wuttke,2 weeks ago,Merge pull request #71 from wutt0019/refactor/lewi0454/commenting-and-docs
+dc36ee7,Oliver Wuttke,2 weeks ago,Merge branch 'main' into refactor/lewi0454/commenting-and-docs
+906ecb9,lewi0454,2 weeks ago,docs(AI): Added acknowledgements for AI usage. Also added comments for each file.
+46641d8,txngsten,3 weeks ago,bugfix(random-folder): Hans did some cooked thing with a js file.
+2814c0e,Oliver Wuttke,3 weeks ago,Merge pull request #70 from wutt0019/docs/puja0009/updating-comments-and-file-authors
+e760f41,puja0009,3 weeks ago,docs(AI): Made AI acknowledgements
+a1f20b4,lewi0454,3 weeks ago,Merge pull request #68 from wutt0019/docs/wutt0019/marker-guide
+c00fd87,txngsten,3 weeks ago,docs(marker-help): Updated MARKER_README.md and added a helper script to assist who ever is marking this assignment.
+ed841aa,txngsten,3 weeks ago,style(bug): skill_search_style.css had slight change to support a better UX.
+b894558,lewi0454,3 weeks ago,chor(commenting): Added authorship commenting to docs
+7c34719,puja0009,3 weeks ago,chor(commenting): Fixed style.css
+17941d9,puja0009,3 weeks ago,docs(src): Added more comments
+6a6b91a,puja0009,3 weeks ago,Merge branch 'docs/puja0009/updating-comments-and-file-authors' of https://github.com/wutt0019/COMP2030-Group-8-Assignment into docs/puja0009/updating-comments-and-file-authors
+e233511,puja0009,3 weeks ago,docs(src): Fixing up comments and sections of the code
+cc46b3e,puja0009,3 weeks ago,docs(src): Fixing up comments and sections of the code
+f71bbcd,lewi0454,3 weeks ago,Merge pull request #67 from wutt0019/refactor/wutt0019/commenting-and-docs
+043e77b,txngsten,3 weeks ago,docs(readme): Updated the MARKER_README.md to include how all requirements are implemented. Still needs the helper SQL script and git work distribution graphs.
+604befa,txngsten,3 weeks ago,docs(readme): Updated the MARKER_README.md to include how all requirements are implemented. Still needs the helper SQL script and git work distribution graphs.
+8892ad0,txngsten,3 weeks ago,docs(AI): Added my AI acknowledgements for my usage of AI.
+fcc3903,txngsten,3 weeks ago,docs(AI): Added my AI acknowledgements for my usage of AI.
+4e95768,txngsten,3 weeks ago,chor(commenting): Added comments to all files that I wrote to explain implementations where they might not seem clear.
+0772678,txngsten,3 weeks ago,chor(commenting): Added comments to all files that I wrote to explain implementations where they might not seem clear.
+9b0bf6b,lear0022,3 weeks ago,Merge pull request #65 from wutt0019/style/wutt0019/fixing-styles
+21953ee,txngsten,3 weeks ago,style(skill-post): Refined styles for the skill listing page to match site style better.
+5d96bb4,txngsten,3 weeks ago,style(skill-post): Refined styles for the skill_post.php file so that they are more consistent with the rest of the site styling.
+af93f03,Oliver Wuttke,3 weeks ago,Merge pull request #64 from wutt0019/feature/wutt0019/advanced-search
+7f865f1,txngsten,3 weeks ago,feat(db): Added an advanced search testing sql file.
+ccf74d7,txngsten,3 weeks ago,bugfix(advanced-search): Advanced search now works as intended with category and availability selection on top of advanced weighting in background to order results by relevance.
+26ce27c,txngsten,3 weeks ago,feat(advanced-search): Advanced search options including weightings, category and availability now are functional.
+892af88,txngsten,3 weeks ago,feat(advanced-search): Basic advanced search without applying category filter results our now displayed based on how much they match and how popular they are.
+6521406,txngsten,3 weeks ago,feat(advanced-search): Category drop down now uses skill_categories.json to populate options.
+e3d6794,txngsten,3 weeks ago,feat(advanced-search): Added the UI components for applying advanced search features, need to now implement the backend for functionality.
+882fc20,txngsten,3 weeks ago,feat(advanced-search): Added the UI components for applying advanced search features, need to now implement the backend for functionality.
+1b38a8d,txngsten,3 weeks ago,bugfix(header): Hotfix for file pathing in headers view and edit profile links didn't have absolute file pathing before now they do.
+97925da,lewi0454,3 weeks ago,Merge pull request #63 from wutt0019/docs/puja0009/updating-comments-and-file-authors
+e22476a,puja0009,3 weeks ago,docs(src): Authored my individual sections of the assignment
+3f6cc37,puja0009,3 weeks ago,Merge pull request #62 from wutt0019/feature/wutt0019/reviews-showing
+2b68b2f,txngsten,3 weeks ago,feat(reviews): Reviews are now displayed for each listing.
+86cbc00,Oliver Wuttke,3 weeks ago,Merge pull request #61 from wutt0019/refactor/wutt0019/general-cleanup
+9f0b48b,txngsten,3 weeks ago,bug(commenting): Fixed error where php files need some bullshit about comments being within the php tags and no white space at the top, such a stupid language feature had to manually comb through 70+ files looking for this error, FUCK PHP.
+521d63e,Oliver Wuttke,3 weeks ago,Merge pull request #60 from wutt0019/refactor/wutt0019/general-cleanup
+3af5897,txngsten,3 weeks ago,chor(ownership): Have added ownership comment at the top of each file for ones I've wrote.
+50fb9c0,txngsten,3 weeks ago,feat(suspend): Suspension of an account will now not allow it to log back in.
+c13d409,txngsten,3 weeks ago,feat(suspend): You can now suspend users as an admin.
+1914288,txngsten,3 weeks ago,feat(average-rating): Profiles now display average rating.
+8ea8abb,txngsten,3 weeks ago,feat(average-rating): Profiles now display average rating.
+0754a8a,txngsten,3 weeks ago,feat(transaction-history): Transaction history is now viewable from user profiles and certain fields have been updated to more accurately reflect site requirements.
+922ac0f,txngsten,3 weeks ago,feat(db): Added timestamp for transactions.
+b5b636b,puja0009,3 weeks ago,Merge pull request #59 from wutt0019/feature/wutt0019/live-notification-system
+02ec4c7,txngsten,3 weeks ago,feat(notification-system): Notification system now works as intended tracking different actions from all different parts of the website.
+9977372,txngsten,3 weeks ago,feat(notification-system): functions.php has now got a get provider id function which returns the booker id for a given booking id.
+573ebf1,txngsten,3 weeks ago,feat(notification-system): functions.php has now got a get booker id function which returns the booker id for a given booking id.
+545e17a,txngsten,3 weeks ago,feat(notification-system): functions.php has now got a get user id based on listing id function.
+99079ee,txngsten,3 weeks ago,feat(notification-system): notifications.php now displays all types of notifications with links to the relevant parts of the site where those notifications can be managed.
+1f266d1,txngsten,3 weeks ago,refactor(db): Removed cancel request item from ENUM in the Notification table since we already handle cancels through the message system.
+f1a0035,txngsten,3 weeks ago,refactor(db): Removed cancel request item from ENUM in the Notification table since we already handle cancels through the message system.
+3a860e5,txngsten,3 weeks ago,refactor(db): Removed cancel request item from ENUM in the Notification table since we already handle cancels through the message system.
+14e65b8,txngsten,3 weeks ago,refactor(notification-system): Directory overhaul to better suit notification system layout.
+42c6251,txngsten,3 weeks ago,refactor(notification-system): Directory overhaul to better suit notification system layout.
+b0978c8,txngsten,3 weeks ago,testing(db): Added a notifications insert script for testing the notification system.
+61c424c,txngsten,3 weeks ago,refactor(db): Added timestamp to notification table.
+9375f0a,txngsten,3 weeks ago,refactor(db): Added the notification table so we can track notifications for users.
+0c3a806,txngsten,3 weeks ago,refactor(db): Added the notification table so we can track notifications for users.
+990fc35,txngsten,3 weeks ago,feat(notification-system): Added the notification page and added the links to the admin and user header files.
+d6791cb,txngsten,3 weeks ago,feat(notification-system): Added the notification page and added the links to the admin and user header files.
+b802910,txngsten,3 weeks ago,refactor(profiles): Refactored directories and file locations relating to the user profile sections to more accurately reflect project structure and conventions.
+de30a89,txngsten,3 weeks ago,refactor(db): Changed the user_pop.sql so it just inserts 4 users with password admin.
+da86adb,txngsten,3 weeks ago,chor(db): White space clean up. No functional changes.
+5c09c1b,wutt0019,3 weeks ago,Merge pull request #58 from wutt0019/docs/wutt0019/acknowledgements-documentation
+9e08832,puja0009,3 weeks ago,Merge pull request #57 from wutt0019/feature/wutt0019/recommendation-engine
+2f35a6f,txngsten,3 weeks ago,docs(project-documentation): Added an AI acknowledgement doc and a marker read me to ensure proper documentation of AI use and a guide for a marker to how the site functions.
+92b7ed6,txngsten,3 weeks ago,feat(recommendation-engine): Added a sql file for testing the recommendation engine.
+5b1feaa,txngsten,3 weeks ago,feat(recommendation-engine): When user goes to search tab recommend listings will appear based on their transaction history.
+4857ef5,txngsten,3 weeks ago,bugfix(skill-confirm): Updated skill_confirm_validator.php so it includes topic in the insert statement.
+e12b623,txngsten,3 weeks ago,refactor(db): Added a topic row to the transaction history table so we can use topics in the recommendation engine.
+300adea,txngsten,3 weeks ago,feat(functions.php): Added a get topic function that returns the topic for a given service id.
+83bf90e,wutt0019,3 weeks ago,Delete src/images/user_pfp/2.png
+eb02182,wutt0019,3 weeks ago,Merge pull request #56 from wutt0019/feature/puja0009/view-user-profile
+cb51ebc,puja0009,3 weeks ago,feature(src): Added functionality that allows the viewing of other user's profiles
+de53d63,lear0022,3 weeks ago,Merge pull request #55 from wutt0019/feature/wutt0019/calendar
+279e49f,puja0009,3 weeks ago,feature(edit_profile.php): Current skills posted by users now appear on their profile
+419bd91,puja0009,3 weeks ago,feature(edit_profile.php and view_profile.php): Both websites now work as intended
+90b5eaf,puja0009,3 weeks ago,feature(src): Made several changes to the profile customisation page so that it now updates properly
+c029e7c,txngsten,3 weeks ago,feat(calendar): Added legend to top of calendar that explains what each colour means.
+39cf657,txngsten,3 weeks ago,feat(calendar): Now we have an interactive calendar which shows bookings for services that a user has booked and is booked for with links to the relative sections to manage those services/skills.
+57724e1,txngsten,3 weeks ago,refactor(skill_manage_testing.sql): Made the prices more reasonable so testing can be more streamlined.
+3d66178,txngsten,3 weeks ago,feat(loader): Added some compsci themed dynamic messages for the loader_script.js.
+e8ff190,puja0009,3 weeks ago,Merge pull request #54 from wutt0019/feature/wutt0019/skill-search-conflict-detection
+7859b72,wutt0019,3 weeks ago,feat(conflict-detection): Conflict detection is implemented for exact timeslot conflicts will add feature for cross conflicts as well.
+e33d94d,wutt0019,3 weeks ago,feat(conflict-detection): Conflict detection is implemented for exact timeslot conflicts will add feature for cross conflicts as well.
+86621d8,wutt0019,3 weeks ago,feat(calendar): Added the style sheet and js files for the calendar.php. Still needs implementation but the needed data is stored in result array ready to use and dynamically populate the page.
+d76e3b5,wutt0019,3 weeks ago,feat(calendar): Added nav links for the calendar page
+2546df8,txngsten,3 weeks ago,feat(loader): Added some dynamic messages to the loader.html with the loader_script.js file.
+2169fdd,lear0022,3 weeks ago,Merge pull request #53 from wutt0019/feature/wutt0019/booking-confirmation
+b5f752c,txngsten,3 weeks ago,bug(transaction-history): Fixed bug where transaction history wouldn't be updated when a skill was fully processed.
+109d28e,txngsten,3 weeks ago,feat(booker-confirmation): Now service providers can choose to confirm or cancel a booking.
+385e750,txngsten,3 weeks ago,feat(booker-confirmation): Now credit validation runs in the background checking for bookings that have been confirmed on both ends, then updating balances accordingly.
+cee0931,txngsten,3 weeks ago,feat(booker-confirmation): Dynamic js message now alerts booker with input validation of their review and service confirmation being submitted.
+a3d0db7,txngsten,3 weeks ago,feat(booker-confirmation): Backend functionality now supports the review and confirmation we need dynamic js to work now.
+5a0a90d,txngsten,3 weeks ago,feat(booker-confirmation): Almost working you can enter review, like or dislike and choose the type of review but there is some sort of issue where it's not actually falling through yet in the db.
+5372f8e,txngsten,3 weeks ago,bug(skill-confirmation): Fixed minor bug where skills that a booker has confirmed were still showing.
+4f5b3c9,txngsten,3 weeks ago,feat(skill-confirmation): Added php and sql backend to now support the seller side completely with confirming a skill has been completed.
+bd0c638,txngsten,3 weeks ago,feat(skill-confirmation): Added php and sql backend to now support the seller side completely with confirming a skill has been completed.
+7ddc584,txngsten,3 weeks ago,feat(skill-confirmation): Added js to dynamically notify service provider that they've confirmed their skills been completed.
+2443829,txngsten,3 weeks ago,chor(cancel_booking_script.js): White space removed near top.
+d8b9ef5,txngsten,3 weeks ago,refactor(db): Added provider and seller confirm rows to the bookings table. This will allow sellers and providers to confirm the booking for a given service. Later we will implement live tracking of these variables to dynamically notify users when bookings are complete.
+d831616,txngsten,3 weeks ago,feat(my-skill): When a service provider cancels the skill booking it will refund the booker and notify them.
+2dbb5dc,txngsten,3 weeks ago,feat(my-skill): Currently displays skills based on status no proper functionality has been implemented.
+d09e179,txngsten,3 weeks ago,feat(db): Added a delete_all.sql file so we can wipe the db quickly and run test scripts without having to rebuild the container and/or reconnect to the db.
+d4734dd,txngsten,3 weeks ago,feat(my-skills): Added the initial my_skills.php file and also updated the headers to include it.
+2199d3e,txngsten,3 weeks ago,feat(cancel-booking): FUSS Credits are now refunded when bookings are canceled. This works for both confirmed and pending bookings.
+434fa5e,txngsten,3 weeks ago,bug(messages): Fixed issue where messages were appearing underneath the inbox instead of side by side. Error was due to a CSS conflict in style.css when headers were updated.
+c07bcfd,txngsten,3 weeks ago,feat(db): Added a skill_search_testing.sql file to streamline the skill search and booking confirmation testing.
+5df31b1,txngsten,3 weeks ago,Merge branch 'feature/lewi0454/skill-search' into feature/wutt0019/booking-confirmation
+a69d317,lewi0454,3 weeks ago,feat(skill-search): Added service request functionality
+44b4dde,txngsten,3 weeks ago,bug(db): Fixed minor SQL errors and DB config.
+78b7fa8,txngsten,3 weeks ago,bug(db): Fixed minor SQL errors and DB config.
+b35b6e9,txngsten,3 weeks ago,bug(db): Fixed minor SQL errors and DB config.
+b7a7a56,lear0022,3 weeks ago,Merge pull request #51 from wutt0019/feature/puja0009/admin-insights-dashboard
+79ebd62,lewi0454,3 weeks ago,feat(skill-search): Added available time slot functionality
+acd8c4b,lewi0454,3 weeks ago,Merge pull request #50 from wutt0019/feature/wutt0019/skill-search-db-fix
+db3f4ab,puja0009,3 weeks ago,feat(insights.php): Dynamic stats for total users and total credits now works
+0e4469c,wutt0019,3 weeks ago,refactor(db): Added default values of 0 for likes and dislikes in the listing's table.
+f956e79,lewi0454,3 weeks ago,feat(skill-search): Added search feature
+1427c6a,puja0009,3 weeks ago,feat(insights.php): Completed html and css for admin insights page
+3fde226,lewi0454,3 weeks ago,feat(skill-search): Added skill search area and skill isting area
+2557340,puja0009,3 weeks ago,feat(src): Moved logout button and made avatar pfp a dropdown menu
+224e671,puja0009,3 weeks ago,feat(admin): Updated edit modal so that credits can now be edited and updated
+e74ca6e,puja0009,3 weeks ago,feat(admin_header.php and user_header.php): Moved FUSS Credits to the nav bar
+b8e6304,wutt0019,3 weeks ago,Merge pull request #49 from wutt0019/feature/puja0009/admin-user-management
+ca47328,puja0009,3 weeks ago,feat(src): Added edit, delete, and suspend modal in admin dashboard. Also added a news section on the home page
+f412469,puja0009,4 weeks ago,Merge branch 'feature/puja0009/admin-user-management' of https://github.com/wutt0019/COMP2030-Group-8-Assignment into feature/puja0009/admin-user-management
+47cdd1f,puja0009,4 weeks ago,feat(user_homepage.php): Added news section to user homepage
+696d90b,puja0009,4 weeks ago,feat(user): Added news section in landing page
+10c162e,puja0009,4 weeks ago,feat(admin): Added a delete confirmation modal window
+2b6ee32,puja0009,4 weeks ago,feat(admin): Modal window pops up when "Edit" is selected in admin table
+2900b7b,puja0009,4 weeks ago,feature(user_homepage.php): Added dynamic welcome message using user name
+dfb182f,puja0009,5 weeks ago,feature(user_management.php): Admin table updates based on recorded users in database
+23fcdb2,puja0009,5 weeks ago,feat(src): Added search bar and action button for user management page
+96c814b,puja0009,4 weeks ago,feat(user_homepage.php): Added news section to user homepage
+8693662,puja0009,4 weeks ago,feat(user): Added news section in landing page
+e745d4f,puja0009,4 weeks ago,feat(admin): Added a delete confirmation modal window
+2b4fdab,wutt0019,4 weeks ago,Merge pull request #48 from wutt0019/feature/wutt0019/admin-topic-management
+1758e8b,wutt0019,4 weeks ago,Merge branch 'main' into feature/wutt0019/admin-topic-management
+ef58201,wutt0019,4 weeks ago,Merge pull request #47 from wutt0019/feature/wutt0019/skill-management
+64223fd,txngsten,4 weeks ago,feat(skill-category-management): Now the skill_post.php will dynamically populate the options of skill categories based on the skill_categories.json file.
+52a0ef1,txngsten,4 weeks ago,feat(skill-category-management): Admins can now remove and add skill categories at will through skill_category_management.php which can be accessed through the admin dashboard drop-down menu.
+05e606f,txngsten,4 weeks ago,feat(skill-category-management): Added an area in the admin drop-down where admins can now manage skill categories. No implementation yet.
+32cf924,txngsten,4 weeks ago,refactor(db): Changed the type row in Listings to VARCHAR(50) from ENUM so admins can dynamically remove and add topics/areas for skill postings.
+639e3a9,txngsten,4 weeks ago,feat(admin-skill-management): skill_categories.json now contains skill categories that are existing by default.
+ab8a960,txngsten,4 weeks ago,feat(admin-skill-management): skill_categories.json now contains skill categories that are existing by default.
+7a75676,txngsten,4 weeks ago,feat(skill-booking): Full booking cancellation with seamless integration with the existing messaging system. Provides the service provider with live notification that their service booking has been cancelled.
+835761b,txngsten,4 weeks ago,feat(skill-booking): You can now cancel skills that are booked and it will notify the provider.
+373b4bd,txngsten,4 weeks ago,refactor(db): Added transaction history table to DB.
+bb76d4a,txngsten,4 weeks ago,feat(db): Added a skill_manage_testing.sql script to streamline testing of the skill management services and features.
+748deac,puja0009,4 weeks ago,feat(admin): Modal window pops up when "Edit" is selected in admin table
+458b1d0,txngsten,4 weeks ago,feat(booking-management): Displays amount of FUSS Credits that booked and pending listings cost.
+cfd9da0,txngsten,4 weeks ago,feat(functions.php): Added function that returns credits for a given listing.
+76ece1b,txngsten,4 weeks ago,feat(functions.php): Currently displays all pending and confirmed bookings need to add button functionality now.
+dd78a37,txngsten,4 weeks ago,feat(functions.php): In progress on displaying currently booked and pending listings for a user.
+deec9d6,txngsten,4 weeks ago,feat(functions.php): In progress on displaying currently booked and pending listings for a user.
+b2ec186,txngsten,4 weeks ago,feat(functions.php): Added a get_listing_name function which takes a listing_id as a param and returns a listing title/name.
+bd4f794,puja0009,4 weeks ago,feature(user_homepage.php): Added dynamic welcome message using user name
+460b6f6,txngsten,4 weeks ago,feat(skill-management): Added skill bookings to nav bar and skill_bookings.php will serve as a content area where users can accept, cancel and deny skill requests alongside managing their own skill requests/purchases
+e0221e4,txngsten,4 weeks ago,feat(skill-management): Can't delete skill if there are current booking available for that skill.
+ef79bb8,txngsten,4 weeks ago,feat(skill-management): Removed edit skill feature as it's not required instead users can delete and repost the adjusted skill if they so desire.
+6eeae3e,txngsten,4 weeks ago,feat(skill-management): Added edit_skill_script.js and edit_skill.php for handling skill editing of an existing skill. Will likely be conditional on not having any bookings for said skill, yet no implementation has been done yet so we will see.
+bc627dd,txngsten,4 weeks ago,feat(skill-management): Users can now delete skills they own from the skill_manage.php page.
+fdd5591,txngsten,4 weeks ago,refactor(db): Delete on cascade with listing table.
+d2b0df3,txngsten,4 weeks ago,feat(skill-management): Added edit and delete buttons for skill management, they currently do nothing but will have functionality in the future.
+8bf3575,txngsten,4 weeks ago,feat(skill-management): Now the My Skills area also displays the current availability for those skills.
+3de1a14,txngsten,4 weeks ago,bugfix(skill-management): Fixed bug where title of listing was being inserted into previous div.
+fe48f58,txngsten,4 weeks ago,feat(skill-management): Added skill management for current users skills. Currently displays details about the said skill in list style.
+d6707a1,txngsten,4 weeks ago,refactor(db): In listing table set default values of 0 for likes, dislikes and successful transactions.
+060ee86,txngsten,4 weeks ago,refactor(skill-management): Updated the nav bar to replace request a service with skill management instead.
+1234a94,wutt0019,4 weeks ago,Merge pull request #46 from wutt0019/refactor/wutt0019/functions-and-db
+2b2489a,wutt0019,4 weeks ago,feat(db): Added a listing_populate.sql file to insert some listings, users, friendships and availabilities for those listings for testing.
+57b516d,wutt0019,4 weeks ago,feat(functions.php): Added a set of functions to functions.php that return listings based on arguments parsed.
+0f43009,wutt0019,4 weeks ago,refactor(db): Added review table for listings also added likes and dislikes to the listing table.
+6732aef,wutt0019,4 weeks ago,chor(commenting): Commented all the friend directory JS and PHP, improves readability and explains unintuitive design choices when present.
+329791d,lear0022,4 weeks ago,Merge pull request #45 from wutt0019/feature/wutt0019/logout-session-management
+782e134,txngsten,4 weeks ago,feat(logout): Logout button now has popup that asks user to confirm whether or not they want to log out.
+2d4e802,txngsten,4 weeks ago,feat(logout): Logout button now has popup that asks user to confirm whether or not they want to log out.
+87e93a6,txngsten,4 weeks ago,bugfix(logout): logout.php now properly takes users back to index.php and correctly displays the loader.html.
+2f8bd6f,txngsten,4 weeks ago,feat(logout): Added logout to nav bar so users can log out of a current session. All current session data is destroyed users have to log back in after clicking it.
+0f54840,lewi0454,5 weeks ago,Merge pull request #44 from wutt0019/feature/wutt0019/friend-system
+14d7803,txngsten,5 weeks ago,bugfix(real-time): Fixed real time messages so they work again, file pathing had been changed on accident.
+3ee2fc5,txngsten,5 weeks ago,bugfix(real-time): Temp removed the friend realtime notification system because it broke certain functionality.
+d6cce8d,txngsten,5 weeks ago,bugfix(remove friend): Fixed bug where removing friend would not work if they added you
+503773c,txngsten,5 weeks ago,refactor(msg-realtime): Finally you can now also accept friend requests.
+1da88a3,txngsten,5 weeks ago,refactor(msg-realtime): Added initial parts for real time friend request notifications.
+f704858,txngsten,5 weeks ago,refactor(msg-realtime): Added absolute file pathing to real_time_msg_script.js.
+6d06c6e,txngsten,5 weeks ago,feat(functions.php): You can now deny friend requests sent to you.
+be72f2e,txngsten,5 weeks ago,feat(functions.php): You can now cancel friend requests you have sent.
+e938a13,txngsten,5 weeks ago,feat(functions.php): Added a get_username function to functions.php that takes in a user id and returns the username.
+7f85314,txngsten,5 weeks ago,refactor(db-innit): Changed db innit script to reflect schema.
+8d66a3d,txngsten,5 weeks ago,refactor(friend-request): Added a requester_id for the insert statement for adding friends.
+191d897,txngsten,5 weeks ago,refactor(db): Added a requester_id for the Friendships table so we can tell who sent the friend request.
+16c34a4,txngsten,5 weeks ago,refactor(db): Added a requester_id for the Friendships table so we can tell who sent the friend request.
+86509a5,txngsten,5 weeks ago,style(nav-bar): Changed all yellows the flinders gold.
+9f8a74f,txngsten,5 weeks ago,refactor(nav-bar): Added absolute file pathing to nav-bar links to ensure they work as intended no matter what page the user is currently on.
+24f9ee0,txngsten,5 weeks ago,refactor(nav-bar): Added absolute file pathing to nav-bar links to ensure they work as intended no matter what page the user is currently on.
+4a3e385,txngsten,5 weeks ago,refactor(nav-bar): Added absolute file pathing to nav-bar links to ensure they work as intended no matter what page the user is currently on.
+45b0e5c,txngsten,5 weeks ago,refactor(nav-bar): Added absolute file pathing to nav-bar links to ensure they work as intended no matter what page the user is currently on.
+fb14c25,txngsten,5 weeks ago,feat(friend-management): Added a friend management system where you can remove friends as well. Something went wrong with the nav bar I think it needs absolute pathing for everything to be safe. Also, realtime friend notifications need to be added.
+1d891fc,txngsten,5 weeks ago,refactor(headers): Since file name changed for friend area needed to update that in the header files.
+ec49f68,txngsten,5 weeks ago,feat(adding-friends): You can now search for users to add as friends with responsive feedback indicating a friend request has been sent.
+de1dbf8,txngsten,5 weeks ago,refactor(db): Added a user populate sql file that adds 10 different users all with the password admin for easier testing.
+90510b5,txngsten,5 weeks ago,feat(add-friends): Temp save just in case shit goes wrong here
+67fe7c2,txngsten,5 weeks ago,feat(add-friends): Added search bar for adding friends and the sql to make it happen now needs js to dynamically populate the list.
+accd144,puja0009,5 weeks ago,feature(user_management.php): Admin table updates based on recorded users in database
+04d845e,txngsten,5 weeks ago,refactor(skill-categories): Currently skill categories are hardcoded into the database with an ENUM, but I've added a skill_categories.json into the data directory.
+9958c56,txngsten,5 weeks ago,feat/refactor(friends-system): Added absolute file pathing so that nav bar works better and friend pages.
+11935f6,puja0009,5 weeks ago,feat(src): Added search bar and action button for user management page
+7e1adf8,lear0022,5 weeks ago,Merge pull request #43 from wutt0019/feature/wutt0019/skill-posting
+cd360ae,txngsten,5 weeks ago,chor(commenting): Added commenting to all skill posting files to improve readability. May need some more in the .css file later.
+699ad52,txngsten,5 weeks ago,feat(time-slot-validation): Added JS to enforce at least one time slot is selected for posting a service.
+a32ea27,txngsten,5 weeks ago,feat(skill-posting-validation): Added some js to help enforce skill posting validation.
+1b9bf83,txngsten,5 weeks ago,style(skill-posting): Added some basic styling to the skill_post.php
+0e4b003,txngsten,5 weeks ago,refactor(renaming): Moved and renamed some files for better project consistency.
+35a0e47,txngsten,5 weeks ago,bugfix(loader): Fixed bug where css wouldn't load in for the loader.html depending on where it was included. Fix was having the loader_style.css being absolute path instead of relative.
+bfd96e6,txngsten,5 weeks ago,refactor(loader): Created a loader.html to be used as template so it can be included on .php loader files.
+ee61bd8,txngsten,5 weeks ago,refactor(loader): Created a loader.html to be used as template so it can be included on .php loader files.
+07dd3d6,txngsten,5 weeks ago,feat(skill-posting): Availability integration into DB so that users can set a given availability for any weekday and times. Still needs user validation with some js to ensure only safe/legal values can be parsed but the functionality is now there.
+69ddb13,txngsten,5 weeks ago,feat(listing_id-func): Created a function in functions.php that takes a user_id and a listing title and returns the listing id for that pair.
+8ba6fb6,txngsten,5 weeks ago,refactor(db): Modified Listings table to enforce unique user_id, title pair so that no duplicate listing names can exist for the same user.
+54394a9,txngsten,5 weeks ago,refactor(db): Modified availability table to include a day row and start and end converted into just TIME datatype.
+1fc385b,txngsten,5 weeks ago,feat(user-posting-timeslots): Added to form method for users to assign different time slots for the availability of a given service/skill.
+073e7f9,txngsten,5 weeks ago,refactor(loader-script): Added a loader script so that loading pages didn't need repeated inline js.
+081a408,txngsten,5 weeks ago,feat(skill-posting): Values parsed into the database successfully now we need to add javascript the alert user to what are sensible values that can be entered.
+7a8f6a4,txngsten,5 weeks ago,feat(uid-func): Added a function to functions.php which can return the user id for a given username.
+9d5fedd,txngsten,5 weeks ago,feat(skill-posting): Form successfully submits to the loader/checker. Now for db support.
+f0ee456,txngsten,5 weeks ago,feat(skill-posting): Added initial html for the skill_post.php page. Still needs styling, scripting and DB support along with validation on if the skill was posted or not.
+dd7ed8d,txngsten,5 weeks ago,refactor(db): Database overhaul to ensure proper site functionality, booking and availability tables. Also dropping Inactive Listings table since we are not going to store deleted listings anymore.
+1ffa147,txngsten,5 weeks ago,refactor(db): Database overhaul to ensure proper site functionality, booking and availability tables. Also dropping Inactive Listings table since we are not going to store deleted listings anymore.
+4a3d65e,txngsten,5 weeks ago,refactor(user_post): Removed folder which would contain user postings as it is no longer needed.
+79eb51c,wutt0019,5 weeks ago,Merge pull request #42 from wutt0019/feature/wutt0019/fuss_credit_implementation
+f347d06,txngsten,5 weeks ago,feat(fuss-credits): FUSS Credits are now displayed through the nav bar so users can always view their FUSS Credit balance no matter where they are in the site.
+08c0d1e,txngsten,5 weeks ago,bugfix(db-user-pop-script): Added fuss credit insert so script initialises accounts correctly.
+31673c7,txngsten,5 weeks ago,bugfix(index.php): Each new user now gets 5 fuss credits in there balance.
+3c95e18,txngsten,5 weeks ago,refactor(db): Added fuss credit balance row to users db so that it can be used in future implementations.
+fcb80a7,puja0009,5 weeks ago,Merge pull request #41 from wutt0019/feature/wutt0019/message_system
+a0ecc94,txngsten,5 weeks ago,feat(real-time-notify): Added a proper realtime notification system to the nav bar.
+8b66104,txngsten,5 weeks ago,Merge branch 'refs/heads/main' into feature/wutt0019/message_system
+b32ddb0,wutt0019,5 weeks ago,Merge pull request #40 from wutt0019/feature/puja0009/dynamic-profile-picture
+c03ad3f,puja0009,5 weeks ago,refactor(src): Changed file names from - to _
+cb36a3b,txngsten,5 weeks ago,refactor(admin-functionality): Added admin header in message_inbox.php.
+8608f79,txngsten,5 weeks ago,Merge branch 'main' into feature/wutt0019/message_system
+9afe706,wutt0019,5 weeks ago,Merge pull request #39 from wutt0019/feature/puja0009/dynamic-profile-picture
+ec54099,puja0009,5 weeks ago,Merge branch 'main' into feature/puja0009/dynamic-profile-picture
+bdcbad5,puja0009,5 weeks ago,chore(src): Templated dynamic profile picture, user role and content flex box
+066b834,txngsten,5 weeks ago,chor(commenting): Commented some lines in message_inbox.php to improve readability.
+5123673,wutt0019,5 weeks ago,chor(message_system): Sanity checking and commenting lines for better readability for the entire message system directory.
+80bfcb1,wutt0019,5 weeks ago,chor(message_system): Sanity checking and commenting lines for better readability for the entire message system directory.
+e0ea6a4,puja0009,5 weeks ago,bug(admin-header.php): Admin nav bar bug fixed. Duplicate db connections handled
+952734a,puja0009,5 weeks ago,feature(src): Templating dynamic profile picture function
+41f3374,txngsten,5 weeks ago,refactor(pull-req-temp): Updated the PR template.
+a5c11a0,lear0022,5 weeks ago,Merge pull request #38 from wutt0019/feature/wutt0019/message_system
+2b80061,txngsten,5 weeks ago,feeat(msg): Messages now fully supports the following: - Live ajax polling for messages no refresh needed - Live notification that indicates message is not read yet. - Seamless integration within existing infrastructure.
+e09d28d,txngsten,5 weeks ago,refactor(db): Minor innit script mods.
+6e9491a,txngsten,5 weeks ago,refactor(db): unseen_2 row in Messages table for bidirectional notification support.
+5bb80d1,txngsten,5 weeks ago,refactor(db_init_script): Modified msg_user_populate.sql to include some friendships initialisation to test some messaging features.
+9fa90dd,txngsten,5 weeks ago,refactor(.gitkeep) Removed most of the .gitkeep files since directories now have files in them that git can track.
+3af3ed8,txngsten,5 weeks ago,feat(messages) You can now start conversations with friends.
+23890c5,txngsten,5 weeks ago,refactor(db): Dropped BuyerSeller table since it is no longer needed. Same information can be attained through joins.
+b2a300b,txngsten,5 weeks ago,refactor(db): Dropped BuyerSeller table since it is no longer needed. Same information can be attained through joins.
+8cc3937,txngsten,5 weeks ago,refactor(db): Dropped BuyerSeller table since it is no longer needed. Same information can be attained through joins.
+e16d170,txngsten,5 weeks ago,refactor(db): Dropped BuyerSeller table since it is no longer needed. Same information can be attained through joins.
+1430b7c,txngsten,5 weeks ago,feat(msg): Live ajax polling for live chat updates. Need some more DB overhaul to support creating a new conversation.
+17ba578,puja0009,5 weeks ago,Merge branch 'feature/puja0009/dynamic-profile-picture' of https://github.com/wutt0019/COMP2030-Group-8-Assignment into feature/puja0009/dynamic-profile-picture
+53fe811,puja0009,5 weeks ago,feature(src): Added admin dashboard websites
+570c2e5,puja0009,5 weeks ago,feature(src): Updated admin navlink
+62e270f,puja0009,5 weeks ago,Merge branch 'feature/puja0009/dynamic-profile-picture' of https://github.com/wutt0019/COMP2030-Group-8-Assignment into feature/puja0009/dynamic-profile-picture
+10df748,puja0009,5 weeks ago,feature(src): Added admin dashboard websites
+a773f18,puja0009,5 weeks ago,feature(src): Updated admin navlink
+a34f3f1,puja0009,5 weeks ago,feature(src): Added admin dashboard websites
+bb484b4,txngsten,5 weeks ago,feat(msg): Implemented a template for the messaging it's a bit rough around the edges but with some DB support and smoother CSS should be looking good in no time.
+d43fee2,puja0009,5 weeks ago,feature(src): Updated admin navlink
+6eeebf5,txngsten,5 weeks ago,Merge remote-tracking branch 'origin/main' into feature/wutt0019/message_system
+81e282e,puja0009,5 weeks ago,Merge pull request #37 from wutt0019/feature/wutt0019/login_page
+d350b7f,txngsten,5 weeks ago,bug(login): Now when user is detected as admin it properly redirects to admin version of home.
+aa5d648,txngsten,5 weeks ago,Merge remote-tracking branch 'origin/main' into feature/wutt0019/login_page
+6932ddf,txngsten,5 weeks ago,feat(db): Added a sql script to populate the db with some initial records.
+205a0d1,txngsten,5 weeks ago,feat(db): Added a sql script to populate the db with some initial records.
+2dbe0cb,puja0009,5 weeks ago,Merge pull request #36 from wutt0019/feature/wutt0019/message_system
+9e1b446,txngsten,5 weeks ago,bug(login): Login loader was throwing null access error when incorrect login information was parsed. Fix by checking $row first. Also changed the loading time to a fixed 4.5 seconds
+3fcf1de,txngsten,5 weeks ago,Merge remote-tracking branch 'origin/feature/wutt0019/message_system' into feature/wutt0019/message_system
+e3801a2,txngsten,5 weeks ago,feat(msg): Initialised the msg and inbox setup.
+f2faa80,wutt0019,5 weeks ago,feat(messages): Added messages.php it will serve as the message hub for users hopefully no changes to DB schema are needed.
+f00d8bb,wutt0019,5 weeks ago,Merge pull request #35 from wutt0019/feature/puja0009/message-sidebar
+add6f53,puja0009,5 weeks ago,feature(src): Removed collapsible functionality on sidebar; Fixed Docker issue
+0ee23cf,txngsten,5 weeks ago,bug(db): Added a new row to messages for unseen
+8e14b14,lewi0454,5 weeks ago,Merge pull request #34 from wutt0019/feature/puja0009/sidebar
+01d6e25,kazaarplaya,5 weeks ago,feature(src): Added dynamic profile and role
+6d6cc70,puja0009,5 weeks ago,feature(src): Added profile functionality
+27803a0,wutt0019,5 weeks ago,Merge pull request #33 from wutt0019/feature/wutt0019/login_page
+636513f,wutt0019,5 weeks ago,feat(signup): Created first time signup page which allows the user to create a bio and upload a PFP.
+ff74fac,puja0009,5 weeks ago,Merge pull request #32 from wutt0019/feature/wutt0019/login_page
+ea2372a,wutt0019,5 weeks ago,feat(signup): Created first time signup page which allows the user to create a bio and upload a PFP.
+2ce0f76,wutt0019,5 weeks ago,Merge pull request #31 from wutt0019/feature/puja0009/sidebar
+c5aabfd,puja0009,5 weeks ago,feature(src): Updated site structure and added side bar
+c4176f0,wutt0019,5 weeks ago,Merge branch 'main' into feature/wutt0019/login_page
+d137f6c,wutt0019,5 weeks ago,feat(signup): Created first time signup page which allows the user to create a bio and upload a PFP.
+8cb4869,wutt0019,5 weeks ago,refactor(database): Minor change to DB including a 500 character bio row in the User table
+7e6da15,wutt0019,5 weeks ago,feat(messages): Added messages.php it will serve as the message hub for users hopefully no changes to DB schema are needed.
+73041a6,wutt0019,5 weeks ago,refactor(src): Update site structure with directories, may be subject to change.
+a985909,wutt0019,5 weeks ago,Merge pull request #30 from wutt0019/docs/puja0009/html-testing
+a3c793f,puja0009,5 weeks ago,feat(src): Finalised Site Structure
+058669c,wutt0019,5 weeks ago,refactor(src): Update site structure with directories, may be subject to change.
+3b5c2ff,kazaarplaya,5 weeks ago,feat(src): Updated site structure
+99ba55f,kazaarplaya,5 weeks ago,Merge branch 'main' into docs/puja0009/html-testing
+092204e,wutt0019,5 weeks ago,refactor(src): Update site structure with directories, may be subject to change.
+857c41b,kazaarplaya,5 weeks ago,Merge branch 'main' into docs/puja0009/html-testing
+999d47e,puja0009,5 weeks ago,Merge pull request #29 from wutt0019/feature/wutt0019/login_page
+ac4a5cf,wutt0019,5 weeks ago,refactor(src): Update site structure with directories, may be subject to change.
+86a6ae8,wutt0019,5 weeks ago,feat(login page): The complete signup page is working with DB integration and some validation checks. Also, a fun loader was added. Some future refactoring will be needed but that is a problem for another day.
+adb2ff5,puja0009,5 weeks ago,docs(src): Finalised templating
+4dfa020,kazaarplaya,5 weeks ago,Merge branch 'main' into docs/puja0009/html-testing
+f810777,wutt0019,5 weeks ago,feat(login page): Sign up is complete all that's left is login and the start/login page will be complete.
+e793465,kazaarplaya,5 weeks ago,docs(index.html): Navbar completed
+99d1cef,wutt0019,5 weeks ago,feat(login page): Signup form now has AJAX polling for testing validity of user inputs. Also DB connection is finally working :)
+5e10428,wutt0019,5 weeks ago,feat(login page): Added full form sign up db validation is still needed.
+a790aa7,wutt0019,6 weeks ago,feat(login page): Added a lot not going to keep it all.
+9a0d7d0,wutt0019,6 weeks ago,feat(login page): Added temp login page to play around with for now.
+cedf382,wutt0019,6 weeks ago,refactor(devcontainer): Slight configuration changes for dev env.
+8455424,wutt0019,6 weeks ago,refactor(devcontainer): Slight configuration changes for dev env.
+452c787,wutt0019,6 weeks ago,Auto DB Config
+77d969f,wutt0019,6 weeks ago,Update devcontainer.json
+c4e888d,wutt0019,6 weeks ago,Update devcontainer.json
+74df5a6,wutt0019,6 weeks ago,Merge pull request #28 from wutt0019/refactor/wutt0019/db_setup
+0fa7bb6,wutt0019,6 weeks ago,refactor(project db): Slight configuration and sql changes.
+d887206,wutt0019,6 weeks ago,refactor(project db): Slight configuration and sql changes.
+ae2b58f,wutt0019,6 weeks ago,refactor(project db): Added schema.sql and container db configurations.
+22fd264,wutt0019,7 weeks ago,refactor(.devcontainer): Changes to.devcontainer
+1a98d26,wutt0019,7 weeks ago,refactor(.devcontainer): Changes to.devcontainer
+b383969,kazaarplaya,7 weeks ago,docs(style.css): Updated header
+0258687,kazaarplaya,7 weeks ago,feat(style.css): Created style.css for experimentation
+fa3eb4d,kazaarplaya,7 weeks ago,feat(index.html): Added index.html for user home page
+8acf0b9,wutt0019,7 weeks ago,refactor(.devcontainer): Changes to.devcontainer
+822f5bb,wutt0019,7 weeks ago,refactor(.devcontainer): Changes to.devcontainer
+8d75d75,wutt0019,7 weeks ago,refactor(.devcontainer): Changes to.devcontainer
+61e485e,wutt0019,7 weeks ago,refactor(.devcontainer): Changes to.devcontainer
+48ed327,wutt0019,7 weeks ago,refactor(.devcontainer): Changes to.devcontainer
+d900b6d,wutt0019,7 weeks ago,refactor(.devcontainer): Changes to.devcontainer
+f299b1e,puja0009,7 weeks ago,Merge pull request #27 from wutt0019/project-structure/wutt0019/dev-container-setup
+c89dec2,wutt0019,7 weeks ago,refactor(.devcontainer): Added .devcontainer
+0485e84,wutt0019,9 weeks ago,Created the git logs.
+00d4ac2,wutt0019,9 weeks ago,docs(final report): Updated line counter
+426c54a,wutt0019,9 weeks ago,Merge pull request #26 from wutt0019/docs/puja0009/user-research-p1/final-report-changes
+18ee609,kazaarplaya,9 weeks ago,docs(final): Added references for user personas to final report
+1c5fd11,puja0009,9 weeks ago,Merge pull request #25 from wutt0019/docs/wutt0019/user-research-p1/final-report
+fa7218a,wutt0019,9 weeks ago,docs(final report): Added and compiled all parts into a final .md file.
+dfc2d7b,lear0022,9 weeks ago,Merge pull request #24 from wutt0019/docs/puja0009/user-research-p1/competitor-analysis
+f937120,kazaarplaya,9 weeks ago,docs(competitor-analysis): Updated competitor-analysis.md
+b3ab48d,lear0022,9 weeks ago,Merge pull request #23 from wutt0019/docs/lewi0454/user-research-p1/complex-story-board-selecting-service
+3b4a39f,lewi0454,9 weeks ago,docs(story-board-selecting-service-lewi0454): Added complex story board
+f45e2a2,puja0009,9 weeks ago,Merge pull request #22 from wutt0019/docs/lewi0454/user-research-p1/added-complex-story-board-resolving-dispute
+e86c328,lewi0454,9 weeks ago,docs(story-board-resolving-dispute-lewi0454): Added complex story
+92ea729,wutt0019,9 weeks ago,Merge pull request #21 from wutt0019/docs/lear0022/user-research-p1/user-flow-dispute
+faab57b,lear0022,9 weeks ago,docs(user-flow): Updated user-flow-diagram
+3e8cb8d,wutt0019,9 weeks ago,Merge pull request #20 from wutt0019/docs/wutt0019/housekeeping/cleanup-repo
+68b3c0e,wutt0019,9 weeks ago,docs(housekeeping): A variety of 'housekeeping' changes to the repo.
+bfe162f,lewi0454,9 weeks ago,Merge pull request #19 from wutt0019/docs/lewi0454/user-research-p1/persona-tutor
+1c9b052,puja0009,9 weeks ago,Merge pull request #18 from wutt0019/docs/puja0009/user-research-p1/persona-student
+b019e04,kazaarplaya,9 weeks ago,docs(user-persona): Updated user persona
+408c16c,wutt0019,9 weeks ago,Merge pull request #17 from wutt0019/docs/puja0009/user-research-p1/user-flow-diagram
+f59e752,lear0022,9 weeks ago,Merge pull request #16 from wutt0019/docs/puja0009/user-research-p1/storyboards
+1e37b49,lewi0454,9 weeks ago,Merge pull request #15 from wutt0019/docs/puja0009/user-research-p1/wireframes
+f19ffd7,puja0009,9 weeks ago,Merge pull request #14 from wutt0019/docs/puja0009/user-research-p1/competitor-analysis
+ae8e9be,lear0022,9 weeks ago,Merge pull request #13 from wutt0019/docs/wutt0019/user-research-p1/wireframes
+c659c41,puja0009,9 weeks ago,Merge pull request #12 from wutt0019/docs/wutt0019/user-research-p1/storyboard-messaging
+30eed94,lewi0454,9 weeks ago,Merge pull request #11 from wutt0019/docs/wutt0019/user-research-p1/storyboard-posting-service
+8676c23,wutt0019,9 weeks ago,Merge pull request #10 from wutt0019/docs/wutt0019/user-research-p1/sitemap
+4b32a26,lear0022,9 weeks ago,Merge pull request #9 from wutt0019/docs/wutt0019/user-research-p1/project-proposal
+2c3df6d,lewi0454,9 weeks ago,Merge pull request #8 from wutt0019/docs/lear0022/user-research-p1/user-flow-dispute
+f61702e,puja0009,9 weeks ago,Merge pull request #7 from wutt0019/docs/lear0022/user-research-p1/persona-admin
+43c72a8,wutt0019,9 weeks ago,Merge pull request #6 from wutt0019/docs/lear0022/user-research-p1/wireframe-paper
+2f74378,kazaarplaya,9 weeks ago,docs(storyboards): Added story-board-puja0009.png
+9d2e081,kazaarplaya,9 weeks ago,docs(user-flow-diagram): Added user-flow-diagram-puja0009.png
+ccf98a3,kazaarplaya,9 weeks ago,docs(wireframes): Added 5 wireframes
+6c1f327,lewi0454,9 weeks ago,docs(Persona-lewi0454): Added persona for tutor
+98b8c03,wutt0019,9 weeks ago,docs(wireframes): Updated admin-home-page-wireframe-wutt0019.png, messaging-wireframe-wutt0019.png and post-a-service-wireframe-wutt0019.png.
+819fa0e,wutt0019,9 weeks ago,docs(wireframes): Updated admin-home-page-wireframe-wutt0019.png, messaging-wireframe-wutt0019.png and post-a-service-wireframe-wutt0019.png.
+d5022f5,wutt0019,9 weeks ago,docs(wireframes): Updated storyboard-user-messaging-wutt0019.png.
+c10bc5b,wutt0019,9 weeks ago,docs(wireframes): Updated messaging-wireframe-wutt0019.png.
+85fd1d3,lear0022,10 weeks ago,docs(paper-wireframes): Added the paper-wireframes-lear0022.png.
+736447a,lear0022,10 weeks ago,docs(user-persona): Added the user-persona-lear0022.png.
+883c04e,lear0022,10 weeks ago,docs(dispute-user-flow): Added the dispute-user-flow-lear0022.png.
+0a2e43d,wutt0019,10 weeks ago,docs(wireframes): Added admin-home-page-wireframe-wutt0019.png, messaging-wireframe-wutt0019.png and post-a-service-wireframe-wutt0019 files.
+ca9671c,wutt0019,10 weeks ago,docs(simple storyboard): Added the storyboard-user-messaging-wutt0019.png file.
+8d141a9,wutt0019,10 weeks ago,docs(simple storyboard): Added the storyboard-posting-a-service-wutt0019.png file.
+0a72921,kazaarplaya,10 weeks ago,docs(competitor-analysis): Created competitor-analysis.md
+164e42f,wutt0019,10 weeks ago,docs(sitemap): Updated the sitemap-wutt0019.png.
+05959af,wutt0019,10 weeks ago,docs(project-proposal): Updated the project-proposal-wutt019.md.
+5be3701,wutt0019,10 weeks ago,docs(research-methods): Updated the research-methods-wutt0019.md.
+569c516,lewi0454,10 weeks ago,docs(UserPostFlow-lewi0454): Added user flow diagram
+3200752,Kazaar,10 weeks ago,Update of documents (User Persona)
+62ba931,wutt0019,2 months ago,Update of Documents (User Research Methods)
+f26f77d,wutt0019,2 months ago,Update of Documents (Project Proposal)
+e3e9f7a,wutt0019,2 months ago,Update of Documents (Project Proposal)
+30c645e,wutt0019,2 months ago,Update of Documents (User flow diagram)
+a1abbf2,wutt0019,2 months ago,Update of Documents (Sitemap)
+d8689f6,wutt0019,2 months ago,Update of Documents (Sitemap)
+e128e60,wutt0019,2 months ago,Merge branch 'main' into docs/wutt019/user-research-p1/sitemap
+c3d164f,wutt0019,2 months ago,Merge branch 'main' into docs/wutt019/user-research-p1/project-proposal
+0af000f,wutt0019,2 months ago,Update of Project Directory (Added PR Roster)
+118c249,wutt0019,2 months ago,Update of documents (Sitemap)
+fc2a1a4,wutt0019,2 months ago,Update of documents (Project Proposal)
+1bce329,wutt0019,3 months ago,Updated Project Directory to include suitable subdirectories for deliverables.
+c429475,lewi0454,3 months ago,Merge pull request #4 from wutt0019/docs/wutt0019/changes-persona-draft
+7b51e5f,lewi0454,3 months ago,Merge branch 'main' into docs/wutt0019/changes-persona-draft
+0427abe,wutt0019,3 months ago,Merge pull request #2 from wutt0019/docs/puja0009/edited-persona-branch
+9de51be,wutt0019,3 months ago,Merge branch 'main' into docs/puja0009/edited-persona-branch
+c007020,puja0009,3 months ago,Merge pull request #3 from wutt0019/docs/lewi0454/updated-personas-draft
+fb8fdb3,wutt0019,3 months ago,docs(persona-drafts.md): Added FAN
+60573b4,lewi0454,3 months ago,docs(persona-draft): Added FAN to persona-drafts
+0a1ddba,Kazaar,3 months ago,docs(persona-drafts.md): Added FAN
+ef99392,wutt0019,3 months ago,Merge pull request #1 from wutt0019/docs/wutt0019/added-persona-draft
+0620059,wutt0019,3 months ago,docs(persona-draft): Added persona draft
+34ab1d0,wutt0019,3 months ago,Initial Commit
+be9fcf4,wutt0019,3 months ago,Initial commit
