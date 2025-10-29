@@ -122,7 +122,7 @@ Overall, users seemed to enjoy using FUSS and navigating the site. Most of the i
 ****
 ## Appendices
 Will contain embedded references to all material used throughout the user experience evaluation report.
-****
+
 ### Appendix 1: Script - Instructor Copy
 This contains a full script, questions, and task instructions for the user with diagrams to guide them, this copy was only made for the test instructor and NOT to be given to users. It served as a detailed guide, so if a user was stuck, the instructor could guide them.
 
