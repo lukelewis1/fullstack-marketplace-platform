@@ -134,7 +134,7 @@ The users copy of the test with minimal instructions to be given to each partici
 A full PDF copy is found [here](testing-material/ux-eval-test-user-copy.pdf)
 ****
 ### Appendix 3: Usability Test Results
-Test results were hand-recorded but then manually entered into JSON format so that we could easily run python scripts to create visuals.
+Test results were hand-recorded but then manually entered into JSON format so that we could easily run python scripts to create visuals (also just wanted to practice using JSON format).
 
 The JSON file is found [here](data/processed/test_results.json) and each participant is their own object in an array.
 ****
