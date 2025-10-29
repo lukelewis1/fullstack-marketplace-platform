@@ -1,6 +1,7 @@
 [
   {
     "user": "Participant 1",
+    "SUS_Score": 92.5,
     "pre_test_questions": [
       {
         "Is English your language of choice?": "Yes",
@@ -70,6 +71,7 @@
   },
   {
     "user": "Participant 2",
+    "SUS_Score": 80.0,
     "pre_test_questions": [
       {
         "Is English your language of choice?": "Yes",
@@ -139,6 +141,7 @@
   },
   {
     "user": "Participant 3",
+    "SUS_Score": 87.5,
     "pre_test_questions": [
       {
         "Is English your language of choice?": "Yes",
@@ -208,6 +211,7 @@
   },
   {
     "user": "Participant 4",
+    "SUS_Score": 87.5,
     "pre_test_questions": [
       {
         "Is English your language of choice?": "Yes",
@@ -277,6 +281,7 @@
   },
   {
     "user": "Participant 5",
+    "SUS_Score": 92.5,
     "pre_test_questions": [
       {
         "Is English your language of choice?": "Yes",
@@ -343,5 +348,8 @@
       }
     ],
     "other_comments": ""
+  },
+  {
+    "average_SUS": 88.0
   }
 ]
